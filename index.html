@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LBH LAPAN - Garda Terdepan Keadilan Anak Negeri</title>
+
+  <!-- FAVICON RESMI -->
+  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -133,7 +136,6 @@
       transform: rotate(180deg);
     }
 
-    /* DROPDOWN MENU BOX (DESKTOP) */
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -232,7 +234,7 @@
       line-height: 1;
     }
 
-    /* DRAWER MENU HP (AKORDION MUDAH DISENTUH) */
+    /* LACI MENU HP */
     .mobile-menu-drawer {
       display: none;
       position: absolute;
@@ -267,11 +269,6 @@
       align-items: center;
       cursor: pointer;
       text-align: left;
-    }
-
-    .m-item-title:hover {
-      background: rgba(251, 133, 0, 0.15);
-      color: #fb8500;
     }
 
     .m-sub-wrap {
@@ -487,10 +484,10 @@
       margin: 4px auto 0 auto;
     }
 
-    /* 4. LAYANAN KASUS */
+    /* 4. LAYANAN KASUS (3 KOLOM: PRO BONO, RETAINER, PROFESIONAL) */
     .services-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-bottom: 32px;
     }
@@ -504,10 +501,16 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .service-box:hover {
+      transform: translateY(-3px);
     }
 
     .service-box.green { border-top: 4px solid #15803d; }
-    .service-box.orange { border-top: 4px solid #fb8500; }
+    .service-box.gold { border-top: 4px solid #b45309; background: linear-gradient(180deg, #ffffff 0%, #fffcf8 100%); }
+    .service-box.orange { border-top: 4px solid #0284c7; }
 
     .service-badge {
       display: inline-block;
@@ -520,10 +523,11 @@
     }
 
     .badge-probono { background: #dcfce7; color: #15803d; }
-    .badge-prof { background: #fff7ed; color: #c2410c; }
+    .badge-retainer { background: #fef3c7; color: #b45309; }
+    .badge-prof { background: #e0f2fe; color: #0369a1; }
 
     .service-box h3 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #0b192c;
       margin-bottom: 6px;
@@ -533,6 +537,7 @@
       font-size: 12.5px;
       color: #64748b;
       margin-bottom: 14px;
+      line-height: 1.55;
     }
 
     .s-list {
@@ -541,7 +546,7 @@
     }
 
     .s-list li {
-      font-size: 12.5px;
+      font-size: 12px;
       color: #475569;
       margin-bottom: 6px;
       display: flex;
@@ -551,7 +556,7 @@
 
     .btn-service-link {
       color: #0b192c;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       text-decoration: none;
       display: inline-block;
@@ -1041,7 +1046,11 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
       }
-      .services-grid, .dual-promo {
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .dual-promo {
         grid-template-columns: 1fr;
         gap: 14px;
       }
@@ -1125,7 +1134,7 @@
             Bantuan Hukum <span class="arrow">▼</span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="layanan.html">⚖️ Layanan & Syarat SKTM</a></li>
+            <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
             <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
             <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
           </ul>
@@ -1155,11 +1164,10 @@
       </div>
     </div>
 
-    <!-- DRAWER MENU TAMPILAN HP (AKORDION RAMAH SENTUH) -->
+    <!-- DRAWER MENU TAMPILAN HP -->
     <div class="mobile-menu-drawer" id="mobileDrawer">
       <a href="index.html" class="m-direct-link" style="color:#fb8500;">🏠 Beranda</a>
       
-      <!-- SUB-MENU 1: TENTANG KAMI -->
       <div>
         <button class="m-item-title" onclick="toggleAccordion('mTentang')">
           <span>🏛️ Tentang Kami</span>
@@ -1171,20 +1179,18 @@
         </div>
       </div>
 
-      <!-- SUB-MENU 2: BANTUAN HUKUM -->
       <div>
         <button class="m-item-title" onclick="toggleAccordion('mBantuan')">
           <span>⚖️ Bantuan Hukum</span>
           <span>▾</span>
         </button>
         <div class="m-sub-wrap" id="mBantuan">
-          <a href="layanan.html">Layanan Pro Bono & Syarat SKTM</a>
+          <a href="layanan.html">Layanan, SKTM & Legal Retainer</a>
           <a href="alur.html">Alur SOP Penanganan Kasus</a>
           <a href="pengaduan.html">Formulir Pengaduan Online</a>
         </div>
       </div>
 
-      <!-- SUB-MENU 3: PUBLIKASI -->
       <div>
         <button class="m-item-title" onclick="toggleAccordion('mPublikasi')">
           <span>📰 Publikasi & Edukasi</span>
@@ -1211,14 +1217,14 @@
       </div>
       <span class="badge-hero">Pusat Bantuan Hukum & Advokasi Nasional</span>
       <h1>Garda Terdepan Penegakan Keadilan <span>Anak Negeri</span></h1>
-      <p>Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri mendampingi pencari keadilan melalui pembelaan pro bono bagi masyarakat kurang mampu serta advokasi perkara hukum profesional.</p>
+      <p>Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri mendampingi pencari keadilan melalui pembelaan pro bono bagi masyarakat kurang mampu, kemitraan legal retainer UMKM/korporasi, serta advokasi perkara profesional.</p>
       
       <div class="hero-actions">
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-main">
           💬 HALO LAPAN (Posko Pengaduan)
         </a>
         <a href="layanan.html" class="btn-outline">
-          ⚖️ Pelajari Layanan & Syarat SKTM
+          ⚖️ Pelajari Layanan, SKTM & Retainer
         </a>
       </div>
     </div>
@@ -1247,39 +1253,56 @@
       </div>
     </div>
 
-    <!-- 4. LAYANAN KASUS -->
+    <!-- 4. LAYANAN KASUS (3 PILAR LENGKAP) -->
     <div class="section-title-wrap">
       <span class="section-tag">Ruang Lingkup Advokasi</span>
-      <h2>Layanan Penanganan Kasus</h2>
+      <h2>Layanan Penanganan Kasus & Mitra Hukum</h2>
     </div>
 
     <div class="services-grid">
+      <!-- 1. PRO BONO -->
       <div class="service-box green">
         <div>
           <span class="service-badge badge-probono">Cuma-Cuma / Gratis</span>
           <h3>Bantuan Hukum Pro Bono</h3>
-          <p class="s-desc">Pendampingan dan pembelaan hukum penuh bagi masyarakat miskin/marginal yang berhadapan dengan masalah pidana maupun perdata tanpa dipungut honorarium advokat.</p>
+          <p class="s-desc">Pendampingan dan pembelaan hukum penuh bagi masyarakat miskin/marginal yang berhadapan dengan masalah pidana maupun perdata tanpa honorarium advokat.</p>
           <ul class="s-list">
             <li>✓ Syarat Surat Keterangan Tidak Mampu (SKTM)</li>
             <li>✓ Pendampingan pemeriksaan saksi & kepolisian</li>
             <li>✓ Pembelaan persidangan hingga putusan hakim</li>
           </ul>
         </div>
-        <a href="layanan.html" class="btn-service-link">Lihat Detail Syarat Pro Bono →</a>
+        <a href="layanan.html" class="btn-service-link">Detail Syarat Pro Bono →</a>
       </div>
 
-      <div class="service-box orange">
+      <!-- 2. LEGAL RETAINER -->
+      <div class="service-box gold">
         <div>
-          <span class="service-badge badge-prof">Kasus Khusus & Korporasi</span>
-          <h3>Advokasi Hukum Profesional</h3>
-          <p class="s-desc">Penyelesaian sengketa hukum terukur, mediasi komersial, serta mitigasi risiko yuridis bagi pelaku usaha, UMKM, dan perseorangan yang memerlukan kuasa hukum khusus.</p>
+          <span class="service-badge badge-retainer">Mitra Tetap / Retainer</span>
+          <h3>Legal Retainer Korporasi & UMKM</h3>
+          <p class="s-desc">Layanan konsultan hukum in-house eksternal berkala untuk audit kontrak bisnis, kepatuhan regulasi, somasi, dan mitigasi sengketa operasional usaha.</p>
           <ul class="s-list">
-            <li>✓ Sengketa kepemilikan tanah & agraria</li>
-            <li>✓ Wanprestasi kontrak bisnis & penerbitan somasi</li>
-            <li>✓ Legal audit dan penyusunan opini hukum</li>
+            <li>✓ Drafting & review kontrak bisnis rutin</li>
+            <li>✓ Akses prioritas konsultasi hukum harian</li>
+            <li>✓ Penerbitan somasi resmi & representasi negosiasi</li>
           </ul>
         </div>
-        <a href="layanan.html" class="btn-service-link">Lihat Kasus Profesional →</a>
+        <a href="layanan.html" class="btn-service-link">Skema Kemitraan Retainer →</a>
+      </div>
+
+      <!-- 3. KASUS KHUSUS -->
+      <div class="service-box orange">
+        <div>
+          <span class="service-badge badge-prof">Kasus Khusus & Litigasi</span>
+          <h3>Advokasi Kasus Khusus</h3>
+          <p class="s-desc">Penyelesaian perkara hukum perdata/pidana kompleks, sengketa lahan bernilai material signifikan, dan pembelaan hak dengan penanganan intensif terukur.</p>
+          <ul class="s-list">
+            <li>✓ Sengketa kepemilikan tanah & sertifikat (SHM/HGB)</li>
+            <li>✓ Gugatan wanprestasi dan PMH komersial</li>
+            <li>✓ Pembelaan perkara pidana korporasi</li>
+          </ul>
+        </div>
+        <a href="layanan.html" class="btn-service-link">Detail Kasus Khusus →</a>
       </div>
     </div>
 
@@ -1415,11 +1438,11 @@
 
       <div class="faq-item">
         <div class="faq-question">
-          <span>Bagaimana jika membutuhkan bantuan untuk perkara profesional/bisnis?</span>
+          <span>Bagaimana skema kemitraan Legal Retainer bagi perusahaan / UMKM?</span>
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-answer">
-          <p>LBH LAPAN memiliki divisi advokasi profesional untuk entitas bisnis dan perkara umum dengan skema operasional transparan sesuai standar kode etik profesi advokat.</p>
+          <p>Layanan Legal Retainer bertindak sebagai penasihat hukum tetap eksternal dengan biaya terjangkau secara berkala (bulanan/tahunan) untuk mengurus audit kontrak, kepatuhan perizinan, somasi, dan pencegahan sengketa litigasi bisnis.</p>
         </div>
       </div>
 
@@ -1471,7 +1494,7 @@
           <li><a href="index.html">Beranda</a></li>
           <li><a href="tentang.html">Sejarah Lembaga & Makna Logo</a></li>
           <li><a href="pengurus.html">Bagan Susunan Pengurus DPP</a></li>
-          <li><a href="layanan.html">Layanan Pro Bono & SKTM</a></li>
+          <li><a href="layanan.html">Layanan, SKTM & Retainer</a></li>
           <li><a href="alur.html">Alur SOP Penanganan Perkara</a></li>
           <li><a href="berita.html">Kabar Berita & Siaran Pers</a></li>
           <li><a href="edukasi.html">Edukasi & Opini Hukum</a></li>
