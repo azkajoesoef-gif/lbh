@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak & Lokasi Sekretariat - LBH LAPAN</title>
+
+  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
+
+  <meta name="description" content="Alamat sekretariat, jam operasional, dan peta lokasi DPP LBH Lingkar Peduli Anak Negeri di Rawamangun, Jakarta Timur.">
+  <meta name="keywords" content="kontak LBH LAPAN, alamat sekretariat LBH, lokasi LBH Jakarta, peta LBH LAPAN">
+  <meta name="author" content="LBH Lingkar Peduli Anak Negeri">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b192c">
+  <link rel="canonical" href="https://azkajoesoef-gif.github.io/lbh/kontak.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LBH LAPAN">
+  <meta property="og:title" content="Kontak & Lokasi Sekretariat - LBH LAPAN">
+  <meta property="og:description" content="Alamat sekretariat dan peta lokasi DPP LBH Lingkar Peduli Anak Negeri.">
+  <meta property="og:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
+  <meta property="og:url" content="https://azkajoesoef-gif.github.io/lbh/kontak.html">
+  <meta property="og:locale" content="id_ID">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kontak & Lokasi Sekretariat - LBH LAPAN">
+  <meta name="twitter:description" content="Alamat sekretariat dan peta lokasi DPP LBH LAPAN.">
+  <meta name="twitter:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
+
+  <!-- Leaflet CSS (peta interaktif) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+    .header-nav { background: linear-gradient(135deg, #0b192c 0%, #112240 100%); border-bottom: 3px solid #fb8500; box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25); width: 100%; position: sticky; top: 0; z-index: 999; padding: 12px 20px; }
+    .header-container { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 2px solid #fb8500; padding: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.15; }
+    .brand-text h1 span { color: #fb8500; }
+    .brand-text p { font-size: 10px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    .nav-links { display: flex; align-items: center; gap: 12px; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-link-btn { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s; cursor: pointer; background: none; border: none; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active { color: #fb8500; background: rgba(255, 255, 255, 0.05); }
+    .nav-link-btn span.arrow { font-size: 10px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link-btn span.arrow { transform: rotate(180deg); }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #0b192c; border: 1px solid #1e3e62; border-top: 3px solid #fb8500; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); min-width: 220px; padding: 8px; list-style: none; z-index: 1000; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-item:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 600; padding: 9px 12px; display: flex; align-items: center; gap: 8px; border-radius: 6px; transition: all 0.2s; }
+    .dropdown-menu li a:hover { background: rgba(251, 133, 0, 0.15); color: #fb8500; padding-left: 15px; }
+
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-kta-top { background: rgba(251, 133, 0, 0.15); border: 1px solid rgba(251, 133, 0, 0.4); color: #ffb703; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .btn-kta-top:hover { background: #fb8500; color: #ffffff; }
+    .btn-halo-top { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-hamburger { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px 6px; line-height: 1; }
+
+    .mobile-menu-drawer { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0b192c; border-bottom: 3px solid #fb8500; box-shadow: 0 10px 25px rgba(0,0,0,0.35); padding: 14px 18px 20px 18px; flex-direction: column; gap: 6px; max-height: 80vh; overflow-y: auto; }
+    .mobile-menu-drawer.active { display: flex; }
+    .m-item-title { width: 100%; background: rgba(255, 255, 255, 0.05); color: #ffffff; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
+    .m-sub-wrap { display: none; flex-direction: column; padding-left: 12px; gap: 4px; margin: 4px 0 8px 0; }
+    .m-sub-wrap.open { display: flex; }
+    .m-sub-wrap a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 9px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+    .m-sub-wrap a:hover { color: #fb8500; background: rgba(255, 255, 255, 0.04); }
+    .m-direct-link { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: block; }
+
+    .main-wrap { flex: 1; max-width: 1180px; width: 100%; margin: 0 auto; padding: 36px 16px 50px 16px; }
+    .page-header { text-align: center; margin-bottom: 32px; }
+    .badge-tag { display: inline-block; background: rgba(251, 133, 0, 0.12); color: #fb8500; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
+    .page-header p { color: #64748b; font-size: 14px; max-width: 680px; margin: 0 auto; }
+
+    /* PETA */
+    .map-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 12px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    #petaLBH {
+      width: 100%;
+      height: 480px;
+      border-radius: 14px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .map-hint {
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      padding: 10px 4px 2px 4px;
+    }
+
+    /* MARKER CUSTOM */
+    .custom-marker {
+      background: #fb8500;
+      width: 36px;
+      height: 36px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .custom-marker span {
+      transform: rotate(45deg);
+      font-size: 16px;
+      color: #ffffff;
+    }
+    .custom-marker.marker-korwil {
+      background: #2563eb;
+    }
+    .custom-marker.marker-dki {
+      background: #047857;
+    }
+
+    /* POPUP LEAFLET */
+    .leaflet-popup-content-wrapper {
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    .leaflet-popup-content {
+      margin: 14px 16px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-width: 220px;
+    }
+    .popup-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 6px;
+    }
+    .popup-addr {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .popup-btn {
+      display: inline-block;
+      background: #fb8500;
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    /* GRID KARTU LOKASI */
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .location-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 22px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .location-card:hover {
+      border-color: #fb8500;
+      transform: translateY(-3px);
+    }
+
+    .location-card.main-office { border-top: 5px solid #fb8500; }
+    .location-card.korwil-card { border-top: 5px solid #2563eb; }
+
+    .loc-badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      align-self: flex-start;
+    }
+
+    .loc-badge.primary { background: rgba(251, 133, 0, 0.12); color: #c2410c; }
+    .loc-badge.regional { background: #eff6ff; color: #1d4ed8; }
+
+    .location-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0b192c;
+      line-height: 1.35;
+    }
+
+    .loc-info-row {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.55;
+      align-items: flex-start;
+    }
+
+    .loc-info-row span.emoji {
+      flex-shrink: 0;
+      font-size: 15px;
+      margin-top: 1px;
+    }
+
+    .loc-btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .loc-btn {
+      background: #0b192c;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .loc-btn:hover { opacity: 0.9; }
+
+    .loc-btn.wa-btn { background: #25d366; }
+    .loc-btn.outline-btn { background: #f1f5f9; color: #0b192c; border: 1px solid #e2e8f0; }
+
+    /* SECTION KONTAK CEPAT */
+    .quick-contact-section {
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 36px 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.3);
+    }
+
+    .quick-contact-section h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .quick-contact-section > p {
+      text-align: center;
+      color: #cbd5e1;
+      font-size: 13.5px;
+      margin-bottom: 26px;
+    }
+
+    .quick-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .quick-contact-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .quick-contact-item span.icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .quick-contact-item h4 {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #fb8500;
+      margin-bottom: 6px;
+    }
+
+    .quick-contact-item p {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .quick-contact-item a {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 11.5px;
+      font-weight: 700;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .quick-contact-item a:hover { background: #fb8500; }
+
+    /* CTA */
+    .cta-banner {
+      background: #ffffff;
+      border: 2px solid #fb8500;
+      border-radius: 18px;
+      padding: 26px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: 0 6px 18px rgba(251, 133, 0, 0.08);
+    }
+
+    .cta-banner h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 4px;
+    }
+
+    .cta-banner p {
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    .btn-cta {
+      background: #fb8500;
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-cta:hover { opacity: 0.92; }
+
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      z-index: 9999;
+    }
+
+    .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
+
+    @media (max-width: 960px) {
+      .nav-links, .btn-kta-top, .brand-text p { display: none; }
+      .btn-hamburger { display: block; }
+      #petaLBH { height: 360px; }
+      .location-grid { grid-template-columns: 1fr; }
+      .quick-contact-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; text-align: center; }
+      .btn-cta { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-nav">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">
+          <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
+        </div>
+        <div class="brand-text">
+          <h1>LBH <span>LAPAN</span></h1>
+          <p>Lingkar Peduli Anak Negeri</p>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link-btn">Beranda</a></li>
+        <li class="nav-item">
+          <button class="nav-link-btn">Tentang Kami <span class="arrow">▼</span></button>
+          <ul class="dropdown-menu">
+            <li><a href="tentang.html">🏛️ Sejarah & Logo Lambang</a></li>
+            <li><a href="pengurus.html">👔 Struktur Pengurus DPP</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link-btn">Bantuan Hukum <span class="arrow">▼</span></button>
+          <ul class="dropdown-menu">
+            <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
+            <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
+            <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link-btn">Publikasi <span class="arrow">▼</span></button>
+          <ul class="dropdown-menu">
+            <li><a href="berita.html">📰 Kabar Berita & Siaran Pers</a></li>
+            <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="kontak.html" class="nav-link-btn active">Kontak</a>
+        </li>
+      </ul>
+
+      <div class="header-actions">
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">💬 HALO LAPAN</a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="index.html" class="m-direct-link">🏠 Beranda</a>
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mTentang')"><span>🏛️ Tentang Kami</span><span>▾</span></button>
+        <div class="m-sub-wrap" id="mTentang">
+          <a href="tentang.html">Sejarah Lembaga & Makna Lambang</a>
+          <a href="pengurus.html">Bagan Struktur Pengurus DPP</a>
+        </div>
+      </div>
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mBantuan')"><span>⚖️ Bantuan Hukum</span><span>▾</span></button>
+        <div class="m-sub-wrap" id="mBantuan">
+          <a href="layanan.html">Layanan, SKTM & Legal Retainer</a>
+          <a href="alur.html">Alur SOP Penanganan Kasus</a>
+          <a href="pengaduan.html">Formulir Pengaduan Online</a>
+        </div>
+      </div>
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')"><span>📰 Publikasi & Edukasi</span><span>▾</span></button>
+        <div class="m-sub-wrap" id="mPublikasi">
+          <a href="berita.html">Kabar Berita & Siaran Pers</a>
+          <a href="edukasi.html">Edukasi & Opini Hukum</a>
+        </div>
+      </div>
+      <a href="kontak.html" class="m-direct-link" style="color:#fb8500;">📍 Kontak & Lokasi</a>
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center;">🔍 Verifikasi KTA Anggota</a>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <div class="page-header">
+      <span class="badge-tag">Hubungi & Kunjungi Kami</span>
+      <h2>Kontak & Lokasi Sekretariat</h2>
+      <p>Temukan lokasi kantor sekretariat DPP LBH Lingkar Peduli Anak Negeri dan wilayah kerja kami di seluruh Indonesia.</p>
+    </div>
+
+    <!-- PETA INTERAKTIF -->
+    <div class="map-card">
+      <div id="petaLBH"></div>
+      <p class="map-hint">🗺️ Klik marker untuk melihat detail lokasi. Geser & zoom peta untuk menjelajah.</p>
+    </div>
+
+    <!-- KARTU DETAIL LOKASI -->
+    <div class="location-grid">
+
+      <!-- KANTOR PUSAT -->
+      <div class="location-card main-office">
+        <span class="loc-badge primary">🏛️ Kantor Pusat</span>
+        <h3>Sekretariat DPP LBH LAPAN</h3>
+        <div class="loc-info-row">
+          <span class="emoji">📍</span>
+          <span>Jl. Balai Pustaka Barat No. 337, Rawamangun, Pulo Gadung, Jakarta Timur, DKI Jakarta 13220</span>
+        </div>
+        <div class="loc-info-row">
+          <span class="emoji">📞</span>
+          <span>+62 812-2011-1001 (HALO LAPAN)</span>
+        </div>
+        <div class="loc-info-row">
+          <span class="emoji">⏰</span>
+          <span>Senin – Jumat: 09.00 – 17.00 WIB<br>Sabtu: 09.00 – 15.00 WIB (konsultasi tatap muka)</span>
+        </div>
+        <div class="loc-btn-row">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Jl.+Balai+Pustaka+Barat+No.+337+Rawamangun+Jakarta+Timur" target="_blank" class="loc-btn">
+            🧭 Rute ke Sini
+          </a>
+          <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20datang%20ke%20sekretariat" target="_blank" class="loc-btn wa-btn">
+            💬 Chat
+          </a>
+        </div>
+      </div>
+
+      <!-- KORWIL JAWA BARAT -->
+      <div class="location-card korwil-card">
+        <span class="loc-badge regional">🗺️ Korwil</span>
+        <h3>Korwil Jawa Barat</h3>
+        <div class="loc-info-row">
+          <span class="emoji">📍</span>
+          <span>Jl. Raya Bandung No. 100, Kota Bandung, Jawa Barat</span>
+        </div>
+        <div class="loc-info-row">
+          <span class="emoji">👤</span>
+          <span>Koordinator: Riyanto Wibowo, S.H.<br><small style="color:#94a3b8;">NIA: 22-26-001</small></span>
+        </div>
+        <div class="loc-info-row">
+          <span class="emoji">⏰</span>
+          <span>Senin – Jumat: 09.00 – 17.00 WIB</span>
+        </div>
+        <div class="loc-btn-row">
+          <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konsultasi%20ke%20Korwil%20Jawa%20Barat" target="_blank" class="loc-btn wa-btn">
+            💬 Konsultasi Korwil
+          </a>
+        </div>
+      </div>
+
+      <!-- KORWIL DKI JAKARTA -->
+      <div class="location-card korwil-card">
+        <span class="loc-badge regional">🗺️ Korwil</span>
+        <h3>Korwil DKI Jakarta</h3>
+        <div class="loc-info-row">
+          <span class="emoji">📍</span>
+          <span>Wilayah DKI Jakarta & sekitarnya</span>
+        </div>
+        <div class="loc-info-row">
+          <span class="emoji">👥</span>
+          <span>Paralegal: Kelvin David Sudomo<br><small style="color:#94a3b8;">NIA: 21-26-001</small></span>
+        </div>
+        <div class="loc-info-row">
+          <span class="emoji">⏰</span>
+          <span>Senin – Jumat: 09.00 – 17.00 WIB</span>
+        </div>
+        <div class="loc-btn-row">
+          <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konsultasi%20ke%20Korwil%20DKI%20Jakarta" target="_blank" class="loc-btn wa-btn">
+            💬 Konsultasi Korwil
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- KONTAK CEPAT -->
+    <div class="quick-contact-section">
+      <h3>Pusat Kontak LBH LAPAN</h3>
+      <p>Hubungi kami melalui saluran resmi berikut ini</p>
+
+      <div class="quick-contact-grid">
+        <div class="quick-contact-item">
+          <span class="icon">💬</span>
+          <h4>WhatsApp HALO LAPAN</h4>
+          <p>Posko pengaduan & konsultasi hukum 24/7</p>
+          <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN" target="_blank">Chat Sekarang →</a>
+        </div>
+
+        <div class="quick-contact-item">
+          <span class="icon">📝</span>
+          <h4>Formulir Pengaduan</h4>
+          <p>Isi formulir aduan perkara online</p>
+          <a href="pengaduan.html">Isi Formulir →</a>
+        </div>
+
+        <div class="quick-contact-item">
+          <span class="icon">🔍</span>
+          <h4>Verifikasi KTA</h4>
+          <p>Cek keabsahan NIA advokat resmi</p>
+          <a href="verifikasi-kta.html">Cek Sekarang →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div>
+        <h3>Butuh Konsultasi Hukum Tatap Muka?</h3>
+        <p>Kunjungi kantor sekretariat kami di Rawamangun atau buat janji terlebih dahulu.</p>
+      </div>
+      <div>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20buat%20janji%20konsultasi%20tatap%20muka" target="_blank" class="btn-cta">
+          📅 Buat Janji Konsultasi →
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
+    <span>💬</span><span>HALO LAPAN</span>
+  </a>
+
+  <footer class="footer-wrapper">
+    © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script>
+    // =========================================================
+    // KONFIGURASI LOKASI — EDIT DI SINI KALAU ALAMAT BEDA
+    // Koordinat: [latitude, longitude]
+    // Cara cari koordinat: buka Google Maps → klik kanan lokasi → copy angka
+    // =========================================================
+    const LOKASI = [
+      {
+        nama: "Sekretariat DPP LBH LAPAN",
+        alamat: "Jl. Balai Pustaka Barat No. 337, Rawamangun, Jakarta Timur",
+        lat: -6.1956,
+        lng: 106.8894,
+        tipe: "pusat",
+        wa: "https://wa.me/6281220111001"
+      },
+      {
+        nama: "Korwil Jawa Barat",
+        alamat: "Jl. Raya Bandung No. 100, Kota Bandung, Jawa Barat",
+        lat: -6.9175,
+        lng: 107.6191,
+        tipe: "korwil",
+        wa: "https://wa.me/6281220111001"
+      },
+      {
+        nama: "Korwil DKI Jakarta",
+        alamat: "Wilayah DKI Jakarta & sekitarnya",
+        lat: -6.2088,
+        lng: 106.8456,
+        tipe: "dki",
+        wa: "https://wa.me/6281220111001"
+      }
+    ];
+
+    // Inisialisasi peta
+    const map = L.map('petaLBH', {
+      scrollWheelZoom: false,
+      zoomControl: true
+    }).setView([-6.4, 107.0], 7); // Pusat awal (Indonesia bagian barat)
+
+    // Tile layer OpenStreetMap (gratis)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | LBH LAPAN',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Fungsi bikin marker custom
+    function buatMarkerIcon(tipe) {
+      let cls = 'custom-marker';
+      if (tipe === 'korwil') cls += ' marker-korwil';
+      if (tipe === 'dki') cls += ' marker-dki';
+      return L.divIcon({
+        html: `<div class="${cls}"><span>📍</span></div>`,
+        className: '',
+        iconSize: [36, 36],
+        iconAnchor: [18, 36],
+        popupAnchor: [0, -36]
+      });
+    }
+
+    // Tambah semua marker ke peta
+    const bounds = [];
+    LOKASI.forEach(lok => {
+      const marker = L.marker([lok.lat, lok.lng], { icon: buatMarkerIcon(lok.tipe) }).addTo(map);
+
+      const popupHTML = `
+        <div class="popup-title">${lok.nama}</div>
+        <div class="popup-addr">${lok.alamat}</div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${lok.lat},${lok.lng}" target="_blank" class="popup-btn">🧭 Rute ke Sini</a>
+      `;
+      marker.bindPopup(popupHTML);
+      bounds.push([lok.lat, lok.lng]);
+    });
+
+    // Zoom otomatis agar semua marker terlihat
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
+    }
+
+    // Aktifkan scroll zoom saat user klik peta
+    map.on('click', () => map.scrollWheelZoom.enable());
+
+    // Toggle drawer mobile
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('active');
+    }
+    function toggleAccordion(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      const drawer = document.getElementById('mobileDrawer');
+      const btn = document.querySelector('.btn-hamburger');
+      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        drawer.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
