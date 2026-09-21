@@ -12,607 +12,148 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-    body {
-      background-color: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    .header-nav { background: linear-gradient(135deg, #0b192c 0%, #112240 100%); border-bottom: 3px solid #fb8500; box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25); width: 100%; position: sticky; top: 0; z-index: 999; padding: 12px 20px; }
+    .header-container { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 2px solid #fb8500; padding: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.15; }
+    .brand-text h1 span { color: #fb8500; }
+    .brand-text p { font-size: 10px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
-    .header-nav {
-      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
-      width: 100%;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      padding: 12px 20px;
-    }
+    .nav-links { display: flex; align-items: center; gap: 12px; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-link-btn { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s; cursor: pointer; background: none; border: none; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active { color: #fb8500; background: rgba(255, 255, 255, 0.05); }
+    .nav-link-btn span.arrow { font-size: 10px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link-btn span.arrow { transform: rotate(180deg); }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #0b192c; border: 1px solid #1e3e62; border-top: 3px solid #fb8500; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); min-width: 220px; padding: 8px; list-style: none; z-index: 1000; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-item:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 600; padding: 9px 12px; display: flex; align-items: center; gap: 8px; border-radius: 6px; transition: all 0.2s; }
+    .dropdown-menu li a:hover { background: rgba(251, 133, 0, 0.15); color: #fb8500; padding-left: 15px; }
 
-    .header-container {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-kta-top { background: rgba(251, 133, 0, 0.15); border: 1px solid rgba(251, 133, 0, 0.4); color: #ffb703; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .btn-kta-top:hover { background: #fb8500; color: #ffffff; }
+    .btn-halo-top { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-hamburger { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px 6px; line-height: 1; }
 
-    .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+    .mobile-menu-drawer { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0b192c; border-bottom: 3px solid #fb8500; box-shadow: 0 10px 25px rgba(0,0,0,0.35); padding: 14px 18px 20px 18px; flex-direction: column; gap: 6px; max-height: 80vh; overflow-y: auto; }
+    .mobile-menu-drawer.active { display: flex; }
+    .m-item-title { width: 100%; background: rgba(255, 255, 255, 0.05); color: #ffffff; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
+    .m-sub-wrap { display: none; flex-direction: column; padding-left: 12px; gap: 4px; margin: 4px 0 8px 0; }
+    .m-sub-wrap.open { display: flex; }
+    .m-sub-wrap a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 9px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+    .m-sub-wrap a:hover { color: #fb8500; background: rgba(255, 255, 255, 0.04); }
+    .m-direct-link { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: block; }
 
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid #fb8500;
-      padding: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .main-wrap { flex: 1; max-width: 1180px; width: 100%; margin: 0 auto; padding: 36px 16px 50px 16px; }
+    .page-header { text-align: center; margin-bottom: 24px; }
+    .badge-tag { display: inline-block; background: rgba(251, 133, 0, 0.12); color: #fb8500; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
+    .page-header p { color: #64748b; font-size: 14px; max-width: 720px; margin: 0 auto; }
+    .sk-legal-doc { display: inline-block; font-size: 11.5px; font-weight: 700; color: #475569; background: #ffffff; border: 1px solid #e2e8f0; padding: 4px 14px; border-radius: 6px; margin-top: 8px; }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .brand-text h1 {
-      font-size: 17px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.15;
-    }
-
-    .brand-text h1 span {
-      color: #fb8500;
-    }
-
-    .brand-text p {
-      font-size: 10px;
-      color: #94a3b8;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      list-style: none;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link-btn {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.2s;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-link-btn span.arrow {
-      font-size: 10px;
-      transition: transform 0.2s;
-    }
-
-    .nav-item:hover .nav-link-btn span.arrow {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #0b192c;
-      border: 1px solid #1e3e62;
-      border-top: 3px solid #fb8500;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-      min-width: 220px;
-      padding: 8px;
-      list-style: none;
-      z-index: 1000;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .nav-item:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu li a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 9px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-
-    .dropdown-menu li a:hover {
-      background: rgba(251, 133, 0, 0.15);
-      color: #fb8500;
-      padding-left: 15px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-kta-top {
-      background: rgba(251, 133, 0, 0.15);
-      border: 1px solid rgba(251, 133, 0, 0.4);
-      color: #ffb703;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-kta-top:hover {
-      background: #fb8500;
-      color: #ffffff;
-    }
-
-    .btn-halo-top {
-      background: #25d366;
-      color: #ffffff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #ffffff;
-      font-size: 26px;
-      cursor: pointer;
-      padding: 4px 6px;
-      line-height: 1;
-    }
-
-    .mobile-menu-drawer {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: #0b192c;
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-      padding: 14px 18px 20px 18px;
-      flex-direction: column;
-      gap: 6px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .mobile-menu-drawer.active {
-      display: flex;
-    }
-
-    .m-item-title {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .m-sub-wrap {
-      display: none;
-      flex-direction: column;
-      padding-left: 12px;
-      gap: 4px;
-      margin: 4px 0 8px 0;
-    }
-
-    .m-sub-wrap.open {
-      display: flex;
-    }
-
-    .m-sub-wrap a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 9px 12px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .m-sub-wrap a:hover {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .m-direct-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      display: block;
-    }
-
-    .main-wrap {
-      flex: 1;
-      max-width: 1180px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 36px 16px 50px 16px;
-    }
-
-    .page-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .badge-tag {
-      display: inline-block;
-      background: rgba(251, 133, 0, 0.12);
-      color: #fb8500;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 4px 14px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .page-header h2 {
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 8px;
-    }
-
-    .page-header p {
-      color: #64748b;
-      font-size: 14px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .sk-legal-doc {
-      display: inline-block;
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #475569;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 4px 14px;
-      border-radius: 6px;
-      margin-top: 8px;
-    }
-
-    .chart-container-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 30px 16px;
-      margin-bottom: 40px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-      overflow-x: auto;
-    }
-
+    .chart-container-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 30px 16px; margin-bottom: 40px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03); overflow-x: auto; }
     .chart-container-card::-webkit-scrollbar { height: 8px; }
     .chart-container-card::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
     .chart-container-card::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
-    .diagram-viewport {
-      width: 980px;
-      height: 530px;
-      position: relative;
-      margin: 0 auto;
-    }
+    .diagram-viewport { width: 980px; height: 530px; position: relative; margin: 0 auto; }
+    .diagram-svg-layer { position: absolute; top: 0; left: 0; width: 980px; height: 530px; z-index: 1; pointer-events: none; }
+    .chart-box { position: absolute; z-index: 2; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
 
-    .diagram-svg-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 980px;
-      height: 530px;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .chart-box {
-      position: absolute;
-      z-index: 2;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-    }
-
-    .box-pembina {
-      top: 10px; left: 360px; width: 260px; height: 52px;
-      background: #1d4ed8; color: #ffffff; padding: 4px;
-    }
+    .box-pembina { top: 10px; left: 360px; width: 260px; height: 52px; background: #1d4ed8; color: #ffffff; padding: 4px; }
     .box-pembina h4 { font-size: 11px; font-weight: 800; letter-spacing: 0.5px; color: #bfdbfe; }
     .box-pembina p { font-size: 12px; font-weight: 800; color: #ffffff; }
 
-    .box-ketum {
-      top: 98px; left: 375px; width: 230px; height: 54px;
-      background: #0f172a; color: #ffffff; padding: 6px;
-    }
+    .box-ketum { top: 98px; left: 375px; width: 230px; height: 54px; background: #0f172a; color: #ffffff; padding: 6px; }
     .box-ketum h4 { font-size: 13px; font-weight: 800; color: #ffffff; margin-bottom: 2px; }
     .box-ketum p { font-size: 11.5px; color: #cbd5e1; }
 
-    .box-sekretariat {
-      top: 200px; left: 30px; width: 320px; height: 72px;
-      background: #2563eb; color: #ffffff; padding: 6px 8px;
-    }
+    .box-sekretariat { top: 200px; left: 30px; width: 320px; height: 72px; background: #2563eb; color: #ffffff; padding: 6px 8px; }
     .box-sekretariat h4 { font-size: 12px; font-weight: 800; margin-bottom: 6px; }
     .sekretariat-split { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
     .sek-inner { background: rgba(255, 255, 255, 0.15); border-radius: 4px; padding: 3px 4px; }
     .sek-inner h5 { font-size: 9.5px; font-weight: 700; color: #bfdbfe; }
     .sek-inner p { font-size: 10.5px; font-weight: 700; color: #ffffff; }
 
-    .box-counsel {
-      top: 200px; left: 390px; width: 200px; height: 72px;
-      background: #047857; color: #ffffff; padding: 6px;
-    }
+    .box-counsel { top: 200px; left: 390px; width: 200px; height: 72px; background: #047857; color: #ffffff; padding: 6px; }
     .box-counsel h4 { font-size: 11.5px; font-weight: 800; color: #ffffff; }
     .box-counsel p.name { font-size: 11.5px; font-weight: 700; color: #ffffff; }
     .box-counsel p.sub { font-size: 9px; color: #a7f3d0; }
 
-    .box-bendahara {
-      top: 200px; left: 630px; width: 320px; height: 72px;
-      background: #2563eb; color: #ffffff; padding: 6px;
-    }
+    .box-bendahara { top: 200px; left: 630px; width: 320px; height: 72px; background: #2563eb; color: #ffffff; padding: 6px; }
     .box-bendahara h4 { font-size: 12px; font-weight: 800; }
     .box-bendahara p.name { font-size: 11.5px; font-weight: 700; color: #ffffff; }
     .box-bendahara p.sub { font-size: 9.5px; color: #bfdbfe; }
 
-    .box-kadiv {
-      top: 330px; left: 45px; width: 290px; height: 52px;
-      background: #f0f9ff; border: 2px solid #0284c7; padding: 4px;
-    }
+    .box-kadiv { top: 330px; left: 45px; width: 290px; height: 52px; background: #f0f9ff; border: 2px solid #0284c7; padding: 4px; }
     .box-kadiv h4 { font-size: 10.5px; font-weight: 800; color: #0284c7; }
     .box-kadiv p { font-size: 11.5px; font-weight: 700; color: #0b192c; }
 
-    .box-advokat {
-      top: 440px; left: 15px; width: 165px; height: 52px;
-      background: #ffffff; border: 1px solid #cbd5e1; padding: 4px;
-    }
+    .box-advokat { top: 440px; left: 15px; width: 165px; height: 52px; background: #ffffff; border: 1px solid #cbd5e1; padding: 4px; }
     .box-advokat h5 { font-size: 10.5px; font-weight: 800; color: #0b192c; }
     .box-advokat p { font-size: 9px; color: #64748b; }
 
-    .box-researcher {
-      top: 440px; left: 200px; width: 165px; height: 52px;
-      background: #ffffff; border: 1px solid #cbd5e1; padding: 4px;
-    }
+    .box-researcher { top: 440px; left: 200px; width: 165px; height: 52px; background: #ffffff; border: 1px solid #cbd5e1; padding: 4px; }
     .box-researcher h5 { font-size: 10.5px; font-weight: 800; color: #0b192c; }
     .box-researcher p { font-size: 9px; color: #64748b; }
 
-    .box-korwil {
-      top: 330px; left: 645px; width: 290px; height: 60px;
-      background: #fff7ed; border: 2px solid #f97316; padding: 4px;
-    }
+    .box-korwil { top: 330px; left: 645px; width: 290px; height: 60px; background: #fff7ed; border: 2px solid #f97316; padding: 4px; }
     .box-korwil h4 { font-size: 11.5px; font-weight: 800; color: #c2410c; }
     .box-korwil p.sub1 { font-size: 10px; font-weight: 700; color: #0b192c; }
     .box-korwil p.sub2 { font-size: 9px; color: #ea580c; font-style: italic; }
 
-    .box-paralegal {
-      top: 440px; left: 645px; width: 290px; height: 52px;
-      background: #ffffff; border: 1px solid #cbd5e1; padding: 4px;
-    }
+    .box-paralegal { top: 440px; left: 645px; width: 290px; height: 52px; background: #ffffff; border: 1px solid #cbd5e1; padding: 4px; }
     .box-paralegal h5 { font-size: 10.5px; font-weight: 800; color: #0b192c; }
     .box-paralegal p { font-size: 9px; color: #64748b; }
 
-    .chart-label {
-      position: absolute; z-index: 3;
-      font-size: 8.5px; font-weight: 700; color: #be123c;
-      background: #ffffff; padding: 2px 6px;
-      border: 1px solid #fecdd3; border-radius: 4px;
-      white-space: nowrap;
-    }
+    .chart-label { position: absolute; z-index: 3; font-size: 8.5px; font-weight: 700; color: #be123c; background: #ffffff; padding: 2px 6px; border: 1px solid #fecdd3; border-radius: 4px; white-space: nowrap; }
 
-    .classification-title {
-      font-size: 1.25rem; font-weight: 800; color: #0b192c;
-      margin: 36px 0 18px 0;
-      display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;
-    }
-    .classification-title span.badge-count {
-      background: #0b192c; color: #fb8500; font-size: 11px;
-      padding: 3px 10px; border-radius: 6px; font-weight: 700;
-    }
+    .classification-title { font-size: 1.25rem; font-weight: 800; color: #0b192c; margin: 36px 0 18px 0; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; }
+    .classification-title span.badge-count { background: #0b192c; color: #fb8500; font-size: 11px; padding: 3px 10px; border-radius: 6px; font-weight: 700; }
 
     .ketum-hero-container { margin-bottom: 30px; }
-    .card-ketum-hero {
-      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      color: #ffffff; border-radius: 20px; padding: 30px 26px;
-      border: 3px solid #fb8500;
-      box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.35);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 20px;
-    }
-    .card-ketum-hero .left-side h3 {
-      font-size: 1.65rem; font-weight: 800; color: #ffffff;
-      margin-bottom: 4px; line-height: 1.2;
-    }
-    .card-ketum-hero .left-side p.role {
-      font-size: 14.5px; font-weight: 800; color: #fb8500;
-      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px;
-    }
-    .card-ketum-hero .right-meta {
-      display: flex; flex-direction: column;
-      align-items: flex-end; gap: 8px;
-    }
+    .card-ketum-hero { background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%); color: #ffffff; border-radius: 20px; padding: 30px 26px; border: 3px solid #fb8500; box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.35); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .card-ketum-hero .left-side h3 { font-size: 1.65rem; font-weight: 800; color: #ffffff; margin-bottom: 4px; line-height: 1.2; }
+    .card-ketum-hero .left-side p.role { font-size: 14.5px; font-weight: 800; color: #fb8500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px; }
+    .card-ketum-hero .right-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
 
-    .pembina-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 18px; margin-bottom: 24px;
-    }
-    .card-pembina-premium {
-      background: #ffffff; border: 1.5px solid #fed7aa;
-      border-top: 5px solid #fb8500; border-radius: 16px;
-      padding: 22px 20px;
-      box-shadow: 0 4px 12px rgba(251, 133, 0, 0.06);
-    }
-    .card-pembina-premium h3 {
-      font-size: 1.25rem; font-weight: 800; color: #0b192c; margin-bottom: 4px;
-    }
-    .card-pembina-premium p.role {
-      font-size: 13px; font-weight: 700; color: #c2410c; margin-bottom: 12px;
-    }
+    .pembina-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+    .card-pembina-premium { background: #ffffff; border: 1.5px solid #fed7aa; border-top: 5px solid #fb8500; border-radius: 16px; padding: 22px 20px; box-shadow: 0 4px 12px rgba(251, 133, 0, 0.06); }
+    .card-pembina-premium h3 { font-size: 1.25rem; font-weight: 800; color: #0b192c; margin-bottom: 4px; }
+    .card-pembina-premium p.role { font-size: 13px; font-weight: 700; color: #c2410c; margin-bottom: 12px; }
 
-    .members-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px; margin-bottom: 24px;
-    }
+    .members-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
 
-    .member-card {
-      background: #ffffff; border: 1px solid #e2e8f0;
-      border-radius: 14px; padding: 18px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-      transition: transform 0.2s, border-color 0.2s;
-    }
+    .member-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02); transition: transform 0.2s, border-color 0.2s; }
     .member-card:hover { border-color: #fb8500; transform: translateY(-3px); }
     .member-card.navy-card { border-top: 4px solid #0b192c; }
     .member-card.blue-card { border-top: 4px solid #3b82f6; }
 
-    .card-top-row {
-      display: flex; justify-content: space-between;
-      align-items: center; margin-bottom: 10px;
-    }
-    .nia-badge {
-      font-family: monospace; font-size: 11px;
-      background: #f1f5f9; color: #475569;
-      padding: 3px 8px; border-radius: 6px;
-      border: 1px solid #e2e8f0; font-weight: 700;
-    }
-    .nia-badge.gold {
-      background: rgba(251, 133, 0, 0.15);
-      border-color: rgba(251, 133, 0, 0.4);
-      color: #ffb703;
-    }
+    .card-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .nia-badge { font-family: monospace; font-size: 11px; background: #f1f5f9; color: #475569; padding: 3px 8px; border-radius: 6px; border: 1px solid #e2e8f0; font-weight: 700; }
+    .nia-badge.gold { background: rgba(251, 133, 0, 0.15); border-color: rgba(251, 133, 0, 0.4); color: #ffb703; }
 
-    .status-badge {
-      font-size: 10px; font-weight: 800;
-      padding: 2px 8px; border-radius: 20px;
-      text-transform: uppercase;
-      background: #dcfce7; color: #15803d;
-    }
+    .status-badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; background: #dcfce7; color: #15803d; }
 
-    .member-info h3 {
-      font-size: 1.15rem; font-weight: 800; color: #0b192c;
-      margin-bottom: 4px; line-height: 1.35;
-    }
-    .member-info p.role {
-      font-size: 12px; font-weight: 700;
-      color: #0369a1; margin-bottom: 12px;
-    }
+    .member-info h3 { font-size: 1.15rem; font-weight: 800; color: #0b192c; margin-bottom: 4px; line-height: 1.35; }
+    .member-info p.role { font-size: 12px; font-weight: 700; color: #0369a1; margin-bottom: 12px; }
 
-    .card-meta-row {
-      border-top: 1px solid #f1f5f9; padding-top: 10px;
-      display: flex; justify-content: space-between;
-      align-items: center; font-size: 11px; color: #64748b;
-    }
+    .card-meta-row { border-top: 1px solid #f1f5f9; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #64748b; }
 
-    .level-tag-pill {
-      background: #f8fafc; border: 1px solid #e2e8f0;
-      color: #0b192c; font-size: 10px; font-weight: 700;
-      padding: 2px 6px; border-radius: 4px;
-    }
+    .level-tag-pill { background: #f8fafc; border: 1px solid #e2e8f0; color: #0b192c; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; }
 
-    #loadingText {
-      text-align: center; font-size: 14px;
-      color: #64748b; padding: 40px;
-    }
+    #loadingText { text-align: center; font-size: 14px; color: #64748b; padding: 40px; }
 
-    .floating-wa-btn {
-      position: fixed; bottom: 24px; right: 20px;
-      background: #25d366; color: #ffffff;
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 18px; border-radius: 50px;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-      text-decoration: none; font-size: 13px; font-weight: 800;
-      z-index: 9999;
-    }
+    .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; }
 
-    .footer-wrapper {
-      background: #0b192c; color: #94a3b8;
-      border-top: 3px solid #fb8500;
-      padding: 24px 20px; text-align: center; font-size: 12px;
-    }
+    .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
 
     @media (max-width: 960px) {
       .nav-links, .btn-kta-top, .brand-text p { display: none; }
@@ -839,6 +380,14 @@
       <div class="members-grid" id="gridRiset"></div>
     </div>
 
+    <div id="wrapWilayah" style="display: none;">
+      <h3 class="classification-title">
+        🗺️ Pengurus Wilayah & Daerah 
+        <span class="badge-count" id="countWilayah">0</span>
+      </h3>
+      <div class="members-grid" id="gridWilayah"></div>
+    </div>
+
   </main>
 
   <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
@@ -850,6 +399,10 @@
   </footer>
 
   <script>
+    // =========================================================
+    // URL CSV Google Sheets — tab "Data Anggota"
+    // Kalau gid salah, ganti angka gid di bawah
+    // =========================================================
     const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=371817312&single=true&output=csv";
 
     function escapeHTML(str) {
@@ -896,99 +449,130 @@
         const csvText = await response.text();
         const rows = parseCSV(csvText);
 
-        let countPembina = 0, countBph = 0, countAdvokasi = 0, countRiset = 0;
-        let countKetum = 0;
+        console.log("Total baris CSV:", rows.length);
+        console.log("Header:", rows[0]);
+
+        let countPembina = 0, countBph = 0, countAdvokasi = 0, countRiset = 0, countWilayah = 0;
+        let countKetum = 0, countSkip = 0;
 
         for (let i = 1; i < rows.length; i++) {
           const col = rows[i];
-          if (col.length < 8) continue;
+
+          // FORMAT SHEET: A=Nama | B=Wilayah | C=Jabatan | D=NIA | E=Status
+          if (col.length < 5) { countSkip++; continue; }
 
           const nama    = normalize(col[0]);
-          const wilayah = normalize(col[4]) || "DPP";
-          const jabatan = normalize(col[5]) || "Pengurus";
-          const nia     = normalize(col[6]);
-          const status  = normalize(col[7]).toUpperCase();
+          const wilayah = normalize(col[1]) || "DPP";
+          const jabatan = normalize(col[2]) || "Pengurus";
+          const nia     = normalize(col[3]);
+          const status  = normalize(col[4]).toUpperCase();
 
-          if (!nama || !nia) continue;
-          if (wilayah.toUpperCase() !== "DPP") continue;
-          if (status !== "AKTIF") continue;
+          if (!nama || !nia) { countSkip++; continue; }
+          if (status !== "AKTIF") { countSkip++; continue; }
+
+          console.log(`Baris ${i}:`, { nama, wilayah, jabatan, nia, status });
 
           const jabLower = jabatan.toLowerCase();
+          const wilUpper = wilayah.toUpperCase();
 
-          if (jabLower.includes('ketua umum')) {
-            document.getElementById('gridKetum').innerHTML = `
-              <div class="card-ketum-hero">
-                <div class="left-side">
-                  <p class="role">Ketua Umum DPP LBH LAPAN</p>
+          // ---- KHUSUS DPP ----
+          if (wilUpper === "DPP") {
+            if (jabLower.includes('ketua umum')) {
+              document.getElementById('gridKetum').innerHTML = `
+                <div class="card-ketum-hero">
+                  <div class="left-side">
+                    <p class="role">Ketua Umum DPP LBH LAPAN</p>
+                    <h3>${escapeHTML(nama)}</h3>
+                    <span class="nia-badge gold">NIA: ${escapeHTML(nia)}</span>
+                  </div>
+                  <div class="right-meta">
+                    <span class="status-badge">✓ Aktif Terdaftar</span>
+                    <span class="level-tag-pill" style="color:#ffffff; background:rgba(255,255,255,0.15); border:none;">Dewan Pimpinan Pusat (DPP)</span>
+                  </div>
+                </div>`;
+              document.getElementById('wrapKetum').style.display = 'block';
+              countKetum++;
+            }
+            else if (jabLower.includes('pembina') || jabLower.includes('senior counsel')) {
+              document.getElementById('gridPembina').innerHTML += `
+                <div class="card-pembina-premium">
+                  <div class="card-top-row">
+                    <span class="nia-badge">${escapeHTML(nia)}</span>
+                    <span class="status-badge">✓ Aktif</span>
+                  </div>
                   <h3>${escapeHTML(nama)}</h3>
-                  <span class="nia-badge gold">NIA: ${escapeHTML(nia)}</span>
-                </div>
-                <div class="right-meta">
-                  <span class="status-badge">✓ Aktif Terdaftar</span>
-                  <span class="level-tag-pill" style="color:#ffffff; background:rgba(255,255,255,0.15); border:none;">Dewan Pimpinan Pusat (DPP)</span>
-                </div>
-              </div>`;
-            document.getElementById('wrapKetum').style.display = 'block';
-            countKetum++;
-          }
-          else if (jabLower.includes('pembina') || jabLower.includes('senior counsel')) {
-            document.getElementById('gridPembina').innerHTML += `
-              <div class="card-pembina-premium">
-                <div class="card-top-row">
-                  <span class="nia-badge">${escapeHTML(nia)}</span>
-                  <span class="status-badge">✓ Aktif</span>
-                </div>
-                <h3>${escapeHTML(nama)}</h3>
-                <p class="role">${escapeHTML(jabatan)}</p>
-                <div class="card-meta-row">
-                  <span>Kedudukan: <strong>DPP</strong></span>
-                  <span class="level-tag-pill">Advisory Level</span>
-                </div>
-              </div>`;
-            countPembina++;
-          }
-          else if (jabLower.includes('sekretaris') || jabLower.includes('bendahara')) {
-            document.getElementById('gridBph').innerHTML += `
-              <div class="member-card navy-card">
-                <div>
-                  <div class="card-top-row">
-                    <span class="nia-badge">${escapeHTML(nia)}</span>
-                    <span class="status-badge">✓ Aktif</span>
+                  <p class="role">${escapeHTML(jabatan)}</p>
+                  <div class="card-meta-row">
+                    <span>Kedudukan: <strong>DPP</strong></span>
+                    <span class="level-tag-pill">Advisory Level</span>
                   </div>
-                  <div class="member-info">
-                    <h3>${escapeHTML(nama)}</h3>
-                    <p class="role" style="color:#0284c7;">${escapeHTML(jabatan)}</p>
+                </div>`;
+              countPembina++;
+            }
+            else if (jabLower.includes('sekretaris') || jabLower.includes('bendahara')) {
+              document.getElementById('gridBph').innerHTML += `
+                <div class="member-card navy-card">
+                  <div>
+                    <div class="card-top-row">
+                      <span class="nia-badge">${escapeHTML(nia)}</span>
+                      <span class="status-badge">✓ Aktif</span>
+                    </div>
+                    <div class="member-info">
+                      <h3>${escapeHTML(nama)}</h3>
+                      <p class="role" style="color:#0284c7;">${escapeHTML(jabatan)}</p>
+                    </div>
                   </div>
-                </div>
-                <div class="card-meta-row">
-                  <span>Kedudukan: <strong>DPP</strong></span>
-                  <span class="level-tag-pill">Badan Pengurus Harian</span>
-                </div>
-              </div>`;
-            countBph++;
+                  <div class="card-meta-row">
+                    <span>Kedudukan: <strong>DPP</strong></span>
+                    <span class="level-tag-pill">Badan Pengurus Harian</span>
+                  </div>
+                </div>`;
+              countBph++;
+            }
+            else if (jabLower.includes('advokat') || jabLower.includes('advokasi') || jabLower.includes('kepala divisi')) {
+              document.getElementById('gridAdvokasi').innerHTML += `
+                <div class="member-card navy-card">
+                  <div>
+                    <div class="card-top-row">
+                      <span class="nia-badge">${escapeHTML(nia)}</span>
+                      <span class="status-badge">✓ Aktif</span>
+                    </div>
+                    <div class="member-info">
+                      <h3>${escapeHTML(nama)}</h3>
+                      <p class="role" style="color:#fb8500;">${escapeHTML(jabatan)}</p>
+                    </div>
+                  </div>
+                  <div class="card-meta-row">
+                    <span>Kedudukan: <strong>DPP</strong></span>
+                    <span class="level-tag-pill">Divisi Advokasi</span>
+                  </div>
+                </div>`;
+              countAdvokasi++;
+            }
+            else {
+              document.getElementById('gridRiset').innerHTML += `
+                <div class="member-card blue-card">
+                  <div>
+                    <div class="card-top-row">
+                      <span class="nia-badge">${escapeHTML(nia)}</span>
+                      <span class="status-badge">✓ Aktif</span>
+                    </div>
+                    <div class="member-info">
+                      <h3>${escapeHTML(nama)}</h3>
+                      <p class="role" style="color:#475569;">${escapeHTML(jabatan)}</p>
+                    </div>
+                  </div>
+                  <div class="card-meta-row">
+                    <span>Kedudukan: <strong>DPP</strong></span>
+                    <span class="level-tag-pill">Kajian & Riset Hukum</span>
+                  </div>
+                </div>`;
+              countRiset++;
+            }
           }
-          else if (jabLower.includes('advokat') || jabLower.includes('advokasi')) {
-            document.getElementById('gridAdvokasi').innerHTML += `
-              <div class="member-card navy-card">
-                <div>
-                  <div class="card-top-row">
-                    <span class="nia-badge">${escapeHTML(nia)}</span>
-                    <span class="status-badge">✓ Aktif</span>
-                  </div>
-                  <div class="member-info">
-                    <h3>${escapeHTML(nama)}</h3>
-                    <p class="role" style="color:#fb8500;">${escapeHTML(jabatan)}</p>
-                  </div>
-                </div>
-                <div class="card-meta-row">
-                  <span>Kedudukan: <strong>DPP</strong></span>
-                  <span class="level-tag-pill">Divisi Advokasi</span>
-                </div>
-              </div>`;
-            countAdvokasi++;
-          }
+          // ---- WILAYAH / DAERAH ----
           else {
-            document.getElementById('gridRiset').innerHTML += `
+            document.getElementById('gridWilayah').innerHTML += `
               <div class="member-card blue-card">
                 <div>
                   <div class="card-top-row">
@@ -997,25 +581,28 @@
                   </div>
                   <div class="member-info">
                     <h3>${escapeHTML(nama)}</h3>
-                    <p class="role" style="color:#475569;">${escapeHTML(jabatan)}</p>
+                    <p class="role" style="color:#0369a1;">${escapeHTML(jabatan)}</p>
                   </div>
                 </div>
                 <div class="card-meta-row">
-                  <span>Kedudukan: <strong>DPP</strong></span>
-                  <span class="level-tag-pill">Kajian & Riset Hukum</span>
+                  <span>Wilayah: <strong>${escapeHTML(wilayah)}</strong></span>
+                  <span class="level-tag-pill">Pengurus Wilayah</span>
                 </div>
               </div>`;
-            countRiset++;
+            countWilayah++;
           }
         }
+
+        console.log("Ringkasan:", { countKetum, countPembina, countBph, countAdvokasi, countRiset, countWilayah, countSkip });
 
         if (countPembina > 0) { document.getElementById('wrapPembina').style.display = 'block'; document.getElementById('countPembina').textContent = countPembina + " Personel"; }
         if (countBph > 0) { document.getElementById('wrapBph').style.display = 'block'; document.getElementById('countBph').textContent = countBph + " Personel"; }
         if (countAdvokasi > 0) { document.getElementById('wrapAdvokasi').style.display = 'block'; document.getElementById('countAdvokasi').textContent = countAdvokasi + " Personel"; }
         if (countRiset > 0) { document.getElementById('wrapRiset').style.display = 'block'; document.getElementById('countRiset').textContent = countRiset + " Personel"; }
+        if (countWilayah > 0) { document.getElementById('wrapWilayah').style.display = 'block'; document.getElementById('countWilayah').textContent = countWilayah + " Personel"; }
 
-        if (countKetum === 0 && countPembina === 0 && countBph === 0 && countAdvokasi === 0 && countRiset === 0) {
-          loadingEl.innerHTML = "⚠️ Tidak ada data yang lolos filter.<br><small>Periksa: kolom wilayah harus 'DPP' dan status harus 'AKTIF'.</small>";
+        if (countKetum === 0 && countPembina === 0 && countBph === 0 && countAdvokasi === 0 && countRiset === 0 && countWilayah === 0) {
+          loadingEl.innerHTML = "⚠️ Tidak ada data yang lolos filter.<br><small>Cek Console (F12) untuk lihat isi CSV mentah. Kemungkinan: status bukan 'AKTIF' atau kolom bergeser.</small>";
           return;
         }
 
@@ -1023,7 +610,7 @@
 
       } catch (err) {
         console.error("Gagal memuat:", err);
-        loadingEl.innerHTML = "⚠️ Gagal memuat susunan pengurus DPP.<br><small>" + escapeHTML(err.message) + "</small>";
+        loadingEl.innerHTML = "⚠️ Gagal menghubungkan ke Google Sheets.<br><small>Error: " + escapeHTML(err.message) + "</small><br><small>Buka Console (F12) untuk detail. Cek juga apakah gid sudah benar (klik tab Data Anggota di Sheet → lihat URL).</small>";
       }
     }
 
