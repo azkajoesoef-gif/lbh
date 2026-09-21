@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifikasi KTA & NIA Anggota - LBH LAPAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* 1. NAVBAR */
+    .header-nav {
+      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 12px 20px;
+    }
+
+    .header-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #fb8500;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text h1 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .brand-text h1 span {
+      color: #fb8500;
+    }
+
+    .brand-text p {
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #fb8500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-kta-top {
+      background: #fb8500;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-halo-top {
+      background: #25d366;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* CONTAINER UTAMA */
+    .main-wrap {
+      flex: 1;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 16px;
+    }
+
+    .verify-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 36px 24px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+      text-align: center;
+    }
+
+    .badge-check {
+      display: inline-block;
+      background: rgba(251, 133, 0, 0.12);
+      color: #fb8500;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .verify-box h2 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 8px;
+    }
+
+    .verify-box p.sub-desc {
+      color: #64748b;
+      font-size: 13.5px;
+      max-width: 540px;
+      margin: 0 auto 24px auto;
+    }
+
+    .search-input-group {
+      display: flex;
+      gap: 10px;
+      max-width: 520px;
+      margin: 0 auto 16px auto;
+    }
+
+    .search-input-group input {
+      flex: 1;
+      padding: 13px 18px;
+      border-radius: 12px;
+      border: 2px solid #cbd5e1;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input-group input:focus {
+      border-color: #fb8500;
+    }
+
+    .btn-search {
+      background: #0b192c;
+      color: #ffffff;
+      border: none;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.2s;
+    }
+
+    .btn-search:hover {
+      background: #1e3e62;
+    }
+
+    .sample-tags {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .sample-tags span {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: monospace;
+      margin: 0 3px;
+    }
+
+    .sample-tags span:hover {
+      background: #e2e8f0;
+      color: #0b192c;
+    }
+
+    /* KARTU HASIL IDENTITAS DIGITAL */
+    #resultCard {
+      display: none;
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-top: 24px;
+      text-align: left;
+      border-top: 4px solid #fb8500;
+      box-shadow: 0 8px 25px -4px rgba(11, 25, 44, 0.3);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .badge-status {
+      background: #15803d;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .card-body-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .card-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #fb8500;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #ffffff;
+      padding: 2px;
+    }
+
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .card-details h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .card-details p.role {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #ffb703;
+      margin-bottom: 6px;
+    }
+
+    .card-details p.nia-tag {
+      font-family: monospace;
+      font-size: 12px;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    /* KARTU TIDAK DITEMUKAN */
+    #notFoundCard {
+      display: none;
+      background: #fff1f2;
+      border: 1px solid #fecdd3;
+      border-radius: 14px;
+      padding: 20px;
+      color: #9f1239;
+      margin-top: 24px;
+      font-size: 13.5px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* FOOTER */
+    .footer-wrapper {
+      background: #0b192c;
+      color: #94a3b8;
+      border-top: 3px solid #fb8500;
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .brand-text p { display: none; }
+      .search-input-group { flex-direction: column; }
+      .btn-search { width: 100%; justify-content: center; }
+      .card-body-wrap { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header-nav">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">
+          <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
+        </div>
+        <div class="brand-text">
+          <h1>LBH <span>LAPAN</span></h1>
+          <p>Lingkar Peduli Anak Negeri</p>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & SKTM</a></li>
+        <li><a href="alur.html">Alur SOP</a></li>
+        <li><a href="pengurus.html">Pengurus DPP</a></li>
+        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
+          💬 HALO LAPAN
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTAINER PENCARIAN -->
+  <main class="main-wrap">
+    <div class="verify-box">
+      <span class="badge-check">Portal Registrasi Keanggotaan</span>
+      <h2>Verifikasi KTA Anggota & Pengurus</h2>
+      <p class="sub-desc">Pastikan legalitas dan keabsahan advokat atau pengurus LBH LAPAN yang bertindak atas nama organisasi dengan memasukkan Nomor Induk Anggota (NIA) resmi.</p>
+
+      <div class="search-input-group">
+        <input type="text" id="niaInput" placeholder="Masukkan NIA (Contoh: 10-26-001)" autocomplete="off">
+        <button class="btn-search" onclick="cekNIA()">🔍 Periksa NIA</button>
+      </div>
+
+      <div class="sample-tags">
+        Contoh NIA pengurus: 
+        <span onclick="setSample('10-26-001')">10-26-001</span>
+        <span onclick="setSample('10-26-013')">10-26-013</span>
+        <span onclick="setSample('10-26-002')">10-26-002</span>
+        <span onclick="setSample('10-26-005')">10-26-005</span>
+      </div>
+
+      <!-- KARTU HASIL DATA ANGGOTA -->
+      <div id="resultCard">
+        <div class="card-head">
+          <span style="font-size:12px; color:#cbd5e1; font-weight:700;">DPP LBH LINGKAR PEDULI ANAK NEGERI</span>
+          <span class="badge-status">✓ ANGGOTA AKTIF</span>
+        </div>
+        <div class="card-body-wrap">
+          <div class="card-photo">
+            <img id="memberPhoto" src="" alt="Foto Anggota">
+          </div>
+          <div class="card-details">
+            <h3 id="memberName">-</h3>
+            <p class="role" id="memberRole">-</p>
+            <p class="nia-tag" id="memberNiaDisplay">-</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTIFIKASI TIDAK DITEMUKAN -->
+      <div id="notFoundCard">
+        ⚠️ <strong>Data Tidak Ditemukan:</strong> Nomor Induk Anggota (NIA) yang Anda masukkan tidak terdaftar di sistem DPP LBH LAPAN. Pastikan format nomor sudah tepat atau hubungi posko HALO LAPAN untuk konfirmasi keabsahan.
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer-wrapper">
+    © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
+  </footer>
+
+  <script>
+    // BASIS DATA ANGGOTA RESMI
+    const memberDatabase = {
+      "10-26-001": {
+        name: "Andre Milko Pelawi",
+        role: "Ketua Umum DPP LBH LAPAN",
+        photo: "https://drive.google.com/thumbnail?id=1ftBg4czEv9nxmD0BNqtzG1hByf0buLND&sz=w400"
+      },
+      "10-26-013": {
+        name: "Dr. Dudung Hidayat, S.H., M.H.",
+        role: "Dewan Pembina DPP LBH LAPAN",
+        photo: "https://drive.google.com/thumbnail?id=1J8PSpS_Yln0hIvDa_gY1KOp9N5roHv_t&sz=w400"
+      },
+      "10-26-002": {
+        name: "Efrem Elman S. Ndruru, S.H.",
+        role: "Sekretaris Umum I DPP LBH LAPAN",
+        photo: "https://drive.google.com/thumbnail?id=1TUBZT8xTBfy1NVl9hyz0RO6qMs04FJRC&sz=w400"
+      },
+      "10-26-005": {
+        name: "Muhammad Azka Medira",
+        role: "Sekretaris Umum II DPP LBH LAPAN",
+        photo: "https://drive.google.com/thumbnail?id=1YoAtsC_Unsk3EBEKBfIRRdgNUoAixXbp&sz=w400"
+      },
+      "10-26-007": {
+        name: "Eko Supahwono, S.H.",
+        role: "Senior Counsel DPP LBH LAPAN",
+        photo: "https://drive.google.com/thumbnail?id=1E-64HTXcxB5sLE2x4bYF0metWbYj_x2V&sz=w400"
+      }
+    };
+
+    function cekNIA() {
+      const input = document.getElementById('niaInput').value.trim();
+      const resultCard = document.getElementById('resultCard');
+      const notFoundCard = document.getElementById('notFoundCard');
+
+      if (!input) return;
+
+      if (memberDatabase[input]) {
+        const data = memberDatabase[input];
+        document.getElementById('memberName').textContent = data.name;
+        document.getElementById('memberRole').textContent = data.role;
+        document.getElementById('memberNiaDisplay').textContent = "NIA: " + input;
+        document.getElementById('memberPhoto').src = data.photo;
+
+        resultCard.style.display = "block";
+        notFoundCard.style.display = "none";
+      } else {
+        resultCard.style.display = "none";
+        notFoundCard.style.display = "block";
+      }
+    }
+
+    function setSample(nia) {
+      document.getElementById('niaInput').value = nia;
+      cekNIA();
+    }
+
+    document.getElementById('niaInput').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        cekNIA();
+      }
+    });
+  </script>
+
+</body>
+</html>
