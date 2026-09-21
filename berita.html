@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kabar & Siaran Pers - LBH LAPAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+    /* NAVBAR */
+    .header-nav { background: linear-gradient(135deg, #0b192c 0%, #112240 100%); border-bottom: 3px solid #fb8500; box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25); width: 100%; position: sticky; top: 0; z-index: 999; padding: 12px 20px; }
+    .header-container { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 2px solid #fb8500; padding: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.15; }
+    .brand-text h1 span { color: #fb8500; }
+    .brand-text p { font-size: 10px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; }
+    .nav-links a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fb8500; }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-kta-top { background: rgba(251, 133, 0, 0.15); border: 1px solid rgba(251, 133, 0, 0.4); color: #ffb703; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; }
+    .btn-kta-top:hover { background: #fb8500; color: #ffffff; }
+    .btn-halo-top { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-hamburger { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px 6px; line-height: 1; }
+    .mobile-menu-drawer { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0b192c; border-bottom: 3px solid #fb8500; box-shadow: 0 10px 25px rgba(0,0,0,0.35); padding: 16px 20px; flex-direction: column; gap: 10px; }
+    .mobile-menu-drawer.active { display: flex; }
+    .mobile-menu-drawer a { color: #cbd5e1; text-decoration: none; font-size: 14px; font-weight: 700; padding: 10px 12px; border-radius: 8px; }
+    .mobile-menu-drawer a:hover, .mobile-menu-drawer a.active { color: #fb8500; background: rgba(251, 133, 0, 0.1); }
+
+    /* MAIN CONTENT */
+    .main-wrap { flex: 1; max-width: 1180px; width: 100%; margin: 0 auto; padding: 36px 16px 50px 16px; }
+    .page-header { text-align: center; margin-bottom: 36px; }
+    .badge-tag { display: inline-block; background: rgba(251, 133, 0, 0.12); color: #fb8500; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
+    .page-header p { color: #64748b; font-size: 14px; max-width: 680px; margin: 0 auto; }
+
+    /* GRID BERITA */
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-bottom: 32px; }
+    .news-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.2s, border-color 0.2s; }
+    .news-card:hover { transform: translateY(-3px); border-color: #fb8500; }
+    .news-thumb { width: 100%; height: 200px; background: #0b192c; overflow: hidden; position: relative; }
+    .news-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .news-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .news-tag { display: inline-block; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 4px; background: #eff6ff; color: #1d4ed8; text-transform: uppercase; margin-bottom: 10px; }
+    .news-body h3 { font-size: 1.2rem; font-weight: 800; color: #0b192c; margin-bottom: 10px; line-height: 1.4; }
+    .news-body p { font-size: 13px; color: #64748b; line-height: 1.65; margin-bottom: 16px; white-space: pre-line; }
+    .news-footer-meta { font-size: 11.5px; color: #94a3b8; border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; justify-content: space-between; align-items: center; }
+
+    #loadingText { text-align: center; font-size: 14px; color: #64748b; padding: 40px; }
+
+    /* FLOATING BUTTON & FOOTER */
+    .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; }
+    .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
+
+    @media (max-width: 860px) {
+      .nav-links, .btn-kta-top, .brand-text p { display: none; }
+      .btn-hamburger { display: block; }
+      .news-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header-nav">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">
+          <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
+        </div>
+        <div class="brand-text">
+          <h1>LBH <span>LAPAN</span></h1>
+          <p>Lingkar Peduli Anak Negeri</p>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html">Sejarah & Filosofi</a></li>
+        <li><a href="layanan.html">Layanan & SKTM</a></li>
+        <li><a href="alur.html">Alur SOP</a></li>
+        <li><a href="pengurus.html">Pengurus DPP</a></li>
+        <li><a href="berita.html" class="active">Kabar Berita</a></li>
+        <li><a href="edukasi.html">Edukasi Hukum</a></li>
+        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+      </ul>
+      <div class="header-actions">
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">💬 HALO LAPAN</a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="index.html">🏠 Beranda</a>
+      <a href="tentang.html">🏛️ Sejarah & Logo Lembaga</a>
+      <a href="layanan.html">⚖️ Layanan & SKTM</a>
+      <a href="alur.html">📋 Alur SOP Perkara</a>
+      <a href="pengurus.html">👔 Pengurus DPP</a>
+      <a href="berita.html" class="active">📰 Kabar Berita & Rilis Pers</a>
+      <a href="edukasi.html">📚 Edukasi Hukum</a>
+      <a href="pengaduan.html">📝 Formulir Pengaduan</a>
+      <a href="verifikasi-kta.html" style="background:#fb8500; color:#fff !important; text-align:center;">🔍 Verifikasi KTA Anggota</a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-wrap">
+    <div class="page-header">
+      <span class="badge-tag">Pemberitaan & Advokasi Publik</span>
+      <h2>Kabar Berita & Siaran Pers Resmi</h2>
+      <p>Publikasi resmi perkembangan penanganan perkara hukum, pernyataan sikap, dan kegiatan advokasi Dewan Pimpinan Pusat LBH LAPAN.</p>
+    </div>
+
+    <div id="loadingText">🔄 Mengambil rilis berita dari database resmi Google Sheets...</div>
+    <div class="news-grid" id="newsGrid"></div>
+  </main>
+
+  <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
+    <span>💬</span><span>HALO LAPAN</span>
+  </a>
+
+  <footer class="footer-wrapper">
+    © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
+  </footer>
+
+  <script>
+    const GOOGLE_SHEET_BERITA_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=1116304305&single=true&output=csv";
+
+    function parseCSV(text) {
+      let p = '', c = '', r = [];
+      let q = false;
+      let row = [''];
+      for (let i = 0; i < text.length; i++) {
+        c = text[i];
+        let next = text[i+1];
+        if (c === '"') {
+          if (q && next === '"') { row[row.length - 1] += '"'; i++; }
+          else { q = !q; }
+        } else if (c === ',' && !q) {
+          row.push('');
+        } else if ((c === '\r' || c === '\n') && !q) {
+          if (c === '\r' && next === '\n') { i++; }
+          r.push(row);
+          row = [''];
+        } else {
+          row[row.length - 1] += c;
+        }
+      }
+      if (row.length > 1 || row[0] !== '') { r.push(row); }
+      return r;
+    }
+
+    async function loadBerita() {
+      const loadingEl = document.getElementById('loadingText');
+      const newsGrid = document.getElementById('newsGrid');
+
+      try {
+        const response = await fetch(GOOGLE_SHEET_BERITA_CSV_URL);
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        newsGrid.innerHTML = "";
+        let count = 0;
+
+        for (let i = 1; i < rows.length; i++) {
+          const col = rows[i];
+          if (col.length >= 3) {
+            const judul = col[0]?.trim();
+            const kategori = col[1]?.trim() || "Siaran Pers";
+            const tanggal = col[2]?.trim() || "2026";
+            const penulis = col[3]?.trim() || "Humas DPP LBH LAPAN";
+            let foto = col[4]?.trim();
+            const isi = col[5]?.trim() || "";
+
+            if (!foto || !foto.startsWith("http")) {
+              foto = "https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w600";
+            }
+
+            if (judul) {
+              newsGrid.innerHTML += `
+                <div class="news-card">
+                  <div class="news-thumb">
+                    <img src="${foto}" alt="${judul}">
+                  </div>
+                  <div class="news-body">
+                    <div>
+                      <span class="news-tag">${kategori}</span>
+                      <h3>${judul}</h3>
+                      <p>${isi}</p>
+                    </div>
+                    <div class="news-footer-meta">
+                      <span>Oleh: <strong>${penulis}</strong></span>
+                      <span>${tanggal}</span>
+                    </div>
+                  </div>
+                </div>
+              `;
+              count++;
+            }
+          }
+        }
+
+        if (count === 0) {
+          newsGrid.innerHTML = `<p style="text-align:center; color:#64748b; grid-column:1/-1;">Belum ada rilis berita yang dipublikasikan.</p>`;
+        }
+
+        loadingEl.style.display = 'none';
+      } catch (err) {
+        console.error("Gagal sinkron berita:", err);
+        loadingEl.textContent = "⚠️ Gagal memuat berita dari database Google Sheets.";
+      }
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('active');
+    }
+
+    window.addEventListener('DOMContentLoaded', loadBerita);
+  </script>
+
+</body>
+</html>
