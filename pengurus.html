@@ -400,9 +400,11 @@
 
   <script>
     // =========================================================
-    // URL CSV Google Sheets — tab "Data Anggota" (GID: 1215966819)
+    // URL CSV Google Sheets — tab "Tabel 1" (GID: 371817312)
+    // FORMAT SHEET:
+    //   A=Nama | B=Email | C=Alamat | D=Telepon | E=Wilayah | F=Jabatan | G=NIA | H=Status
     // =========================================================
-    const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=1215966819&single=true&output=csv";
+    const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=371817312&single=true&output=csv";
 
     function escapeHTML(str) {
       if (str === null || str === undefined) return "";
@@ -457,14 +459,14 @@
         for (let i = 1; i < rows.length; i++) {
           const col = rows[i];
 
-          // FORMAT SHEET: A=Nama | B=Wilayah | C=Jabatan | D=NIA | E=Status
-          if (col.length < 5) { countSkip++; continue; }
+          // FORMAT: A=Nama | E=Wilayah | F=Jabatan | G=NIA | H=Status
+          if (col.length < 8) { countSkip++; continue; }
 
           const nama    = normalize(col[0]);
-          const wilayah = normalize(col[1]) || "DPP";
-          const jabatan = normalize(col[2]) || "Pengurus";
-          const nia     = normalize(col[3]);
-          const status  = normalize(col[4]).toUpperCase();
+          const wilayah = normalize(col[4]) || "DPP";
+          const jabatan = normalize(col[5]) || "Pengurus";
+          const nia     = normalize(col[6]);
+          const status  = normalize(col[7]).toUpperCase();
 
           if (!nama || !nia) { countSkip++; continue; }
           if (status !== "AKTIF") { countSkip++; continue; }
