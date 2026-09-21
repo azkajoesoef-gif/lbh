@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edukasi & Artikel Opini Hukum - LBH LAPAN</title>
+  <title>Edukasi & Opini Hukum - LBH LAPAN</title>
+
+  <!-- FAVICON RESMI -->
+  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +31,7 @@
       min-height: 100vh;
     }
 
-    /* NAVBAR */
+    /* 1. NAVBAR STANDAR RESMI */
     .header-nav {
       background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
       border-bottom: 3px solid #fb8500;
@@ -82,7 +85,9 @@
       line-height: 1.15;
     }
 
-    .brand-text h1 span { color: #fb8500; }
+    .brand-text h1 span {
+      color: #fb8500;
+    }
 
     .brand-text p {
       font-size: 10px;
@@ -92,22 +97,92 @@
       text-transform: uppercase;
     }
 
+    /* MENU DESKTOP */
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 12px;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link-btn {
       color: #cbd5e1;
       text-decoration: none;
       font-size: 13.5px;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: #fb8500; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active {
+      color: #fb8500;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link-btn span.arrow {
+      font-size: 10px;
+      transition: transform 0.2s;
+    }
+
+    .nav-item:hover .nav-link-btn span.arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0b192c;
+      border: 1px solid #1e3e62;
+      border-top: 3px solid #fb8500;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      min-width: 220px;
+      padding: 8px;
+      list-style: none;
+      z-index: 1000;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(251, 133, 0, 0.15);
+      color: #fb8500;
+      padding-left: 15px;
+    }
 
     .header-actions {
       display: flex;
@@ -124,6 +199,7 @@
       font-size: 12.5px;
       font-weight: 700;
       text-decoration: none;
+      transition: all 0.2s;
     }
 
     .btn-kta-top:hover {
@@ -144,7 +220,95 @@
       gap: 6px;
     }
 
-    /* MAIN CONTAINER */
+    .btn-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 4px 6px;
+      line-height: 1;
+    }
+
+    /* DRAWER MENU HP */
+    .mobile-menu-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #0b192c;
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      padding: 14px 18px 20px 18px;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .mobile-menu-drawer.active {
+      display: flex;
+    }
+
+    .m-item-title {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .m-sub-wrap {
+      display: none;
+      flex-direction: column;
+      padding-left: 12px;
+      gap: 4px;
+      margin: 4px 0 8px 0;
+    }
+
+    .m-sub-wrap.open {
+      display: flex;
+    }
+
+    .m-sub-wrap a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .m-sub-wrap a:hover {
+      color: #fb8500;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .m-direct-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      display: block;
+    }
+
+    /* MAIN WRAP */
     .main-wrap {
       flex: 1;
       max-width: 1180px;
@@ -238,7 +402,7 @@
       border-color: #fb8500;
     }
 
-    /* GRID ARTIKEL */
+    /* GRID ARTIKEL KLIKABEL */
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -255,13 +419,24 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
       transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
     }
 
     .article-card:hover {
       border-color: #fb8500;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+    }
+
+    .card-top-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
     }
 
     .card-category-tag {
@@ -271,7 +446,6 @@
       border-radius: 6px;
       text-transform: uppercase;
       display: inline-block;
-      margin-bottom: 12px;
     }
 
     .cat-pidana { background: #fee2e2; color: #b91c1c; }
@@ -279,12 +453,28 @@
     .cat-agraria { background: #fef3c7; color: #b45309; }
     .cat-ketenagakerjaan { background: #dcfce7; color: #15803d; }
 
+    .external-icon {
+      font-size: 14px;
+      color: #94a3b8;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .article-card:hover .external-icon {
+      color: #fb8500;
+      transform: translate(2px, -2px);
+    }
+
     .article-card h3 {
       font-size: 1.2rem;
       font-weight: 800;
       color: #0b192c;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       line-height: 1.4;
+      transition: color 0.2s;
+    }
+
+    .article-card:hover h3 {
+      color: #fb8500;
     }
 
     .article-card p.excerpt {
@@ -304,8 +494,14 @@
       color: #94a3b8;
     }
 
-    .article-meta strong {
-      color: #475569;
+    .source-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0369a1;
+      background: #f0f9ff;
+      border: 1px solid #e0f2fe;
+      padding: 2px 6px;
+      border-radius: 4px;
     }
 
     /* CTA KONSULTASI BOTTOM */
@@ -351,7 +547,36 @@
       opacity: 0.9;
     }
 
-    /* FOOTER */
+    /* FLOATING BUTTON & FOOTER */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      z-index: 9999;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .floating-wa-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .floating-wa-btn span.icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
     .footer-wrapper {
       background: #0b192c;
       color: #94a3b8;
@@ -359,22 +584,23 @@
       padding: 24px 20px;
       text-align: center;
       font-size: 12px;
-      margin-top: 40px;
     }
 
-    @media (max-width: 860px) {
-      .nav-links, .brand-text p { display: none; }
+    @media (max-width: 960px) {
+      .nav-links, .btn-kta-top, .brand-text p { display: none; }
+      .btn-hamburger { display: block; }
       .filter-search-row { flex-direction: column; align-items: stretch; }
       .search-box { width: 100%; }
       .articles-grid { grid-template-columns: 1fr; }
       .edu-cta-banner { flex-direction: column; text-align: center; }
       .btn-wa-edu { width: 100%; justify-content: center; }
+      .floating-wa-btn { bottom: 16px; right: 16px; padding: 10px 14px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- 1. NAVBAR STANDAR -->
   <header class="header-nav">
     <div class="header-container">
       <a href="index.html" class="brand-link">
@@ -387,30 +613,106 @@
         </div>
       </a>
 
+      <!-- MENU DESKTOP -->
       <ul class="nav-links">
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="layanan.html">Layanan & SKTM</a></li>
-        <li><a href="alur.html">Alur SOP</a></li>
-        <li><a href="pengurus.html">Pengurus DPP</a></li>
-        <li><a href="edukasi.html" class="active">Edukasi Hukum</a></li>
-        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+        <li class="nav-item">
+          <a href="index.html" class="nav-link-btn">Beranda</a>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Tentang Kami <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="tentang.html">🏛️ Sejarah & Logo Lambang</a></li>
+            <li><a href="pengurus.html">👔 Struktur Pengurus DPP</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Bantuan Hukum <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="layanan.html">⚖️ Layanan & Syarat SKTM</a></li>
+            <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
+            <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn active">
+            Publikasi <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="berita.html">📰 Kabar Berita & Siaran Pers</a></li>
+            <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
+          </ul>
+        </li>
       </ul>
 
+      <!-- TOMBOL AKSI & HAMBURGER HP -->
       <div class="header-actions">
         <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
           💬 HALO LAPAN
         </a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()" aria-label="Buka Menu">
+          ☰
+        </button>
       </div>
+    </div>
+
+    <!-- DRAWER MENU HP -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="index.html" class="m-direct-link">🏠 Beranda</a>
+      
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mTentang')">
+          <span>🏛️ Tentang Kami</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mTentang">
+          <a href="tentang.html">Sejarah Lembaga & Makna Lambang</a>
+          <a href="pengurus.html">Bagan Struktur Pengurus DPP</a>
+        </div>
+      </div>
+
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mBantuan')">
+          <span>⚖️ Bantuan Hukum</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mBantuan">
+          <a href="layanan.html">Layanan Pro Bono & Syarat SKTM</a>
+          <a href="alur.html">Alur SOP Penanganan Kasus</a>
+          <a href="pengaduan.html">Formulir Pengaduan Online</a>
+        </div>
+      </div>
+
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')">
+          <span style="color:#fb8500;">📰 Publikasi & Edukasi</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap open" id="mPublikasi">
+          <a href="berita.html">Kabar Berita & Siaran Pers</a>
+          <a href="edukasi.html" style="color:#fb8500; font-weight:700;">Edukasi & Opini Hukum</a>
+        </div>
+      </div>
+
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center; margin-top:8px;">
+        🔍 Verifikasi KTA Anggota Resmi
+      </a>
     </div>
   </header>
 
-  <!-- MAIN WRAP -->
+  <!-- MAIN CONTENT -->
   <main class="main-wrap">
     <div class="page-header">
       <span class="badge-tag">Pusat Kajian & Literasi Yuridis</span>
       <h2>Edukasi & Artikel Opini Hukum</h2>
-      <p>Kajian praktis, panduan hak-hak hukum warga negara, serta ulasan kasus aktual yang disusun oleh Tim Advokat & Legal Researcher DPP LBH LAPAN.</p>
+      <p>Kajian yuridis praktis, panduan hak-hak warga negara, serta ulasan putusan hukum. Klik kartu artikel untuk membaca referensi regulasi dan jurnal ilmiah aslinya.</p>
     </div>
 
     <!-- FILTER & PENCARIAN -->
@@ -428,106 +730,124 @@
       </div>
     </div>
 
-    <!-- GRID ARTIKEL EDUKASI -->
+    <!-- GRID ARTIKEL KLIKABEL (REDIRECT KE JURNAL / SUMBER RESMI) -->
     <div class="articles-grid" id="articleList">
 
       <!-- ARTIKEL 1 -->
-      <div class="article-card" data-category="pidana">
+      <a href="https://www.hukumonline.com/klinik/a/hak-tersangka-dan-saksi-dalam-kuhap-lt50529d2b2c9ad/" target="_blank" rel="noopener noreferrer" class="article-card" data-category="pidana">
         <div>
-          <span class="card-category-tag cat-pidana">Hukum Pidana</span>
+          <div class="card-top-header">
+            <span class="card-category-tag cat-pidana">Hukum Pidana</span>
+            <span class="external-icon">↗</span>
+          </div>
           <h3>Hak Konstitusional Saksi dan Tersangka saat Diperiksa Polisi</h3>
           <p class="excerpt">
-            Masyarakat kerap merasa tertekan saat menerima surat panggilan kepolisian. Kenali hak hukum Anda untuk didampingi advokat, hak menolak menjawab pertanyaan yang menjerat, serta larangan intimidasi fisik/verbal sesuai KUHAP.
+            Kenali hak hukum Anda untuk didampingi advokat, hak memberikan keterangan tanpa tekanan, serta larangan intimidasi fisik/verbal oleh penyidik berdasarkan KUHAP.
           </p>
         </div>
         <div class="article-meta">
-          <span>Oleh: <strong>Tim Advokat Publik DPP</strong></span>
+          <span class="source-tag">Rujukan: Hukumonline</span>
           <span>5 Menit Baca</span>
         </div>
-      </div>
+      </a>
 
       <!-- ARTIKEL 2 -->
-      <div class="article-card" data-category="agraria">
+      <a href="https://ejournal.kemnaker.go.id/" target="_blank" rel="noopener noreferrer" class="article-card" data-category="ketenagakerjaan">
         <div>
-          <span class="card-category-tag cat-agraria">Agraria & Tanah</span>
-          <h3>Girik, Letter C, dan Sertifikat Hak Milik (SHM): Kekuatan Pembuktiannya di Pengadilan</h3>
-          <p class="excerpt">
-            Sengketa kepemilikan tanah sering terjadi akibat tumpang tindih alas hak tradisional dengan sertifikat modern. Pahami batas daluwarsa penuntutan hak tanah serta cara mitigasi perampasan lahan sepihak.
-          </p>
-        </div>
-        <div class="article-meta">
-          <span>Oleh: <strong>Divisi Advokasi DPP</strong></span>
-          <span>7 Menit Baca</span>
-        </div>
-      </div>
-
-      <!-- ARTIKEL 3 -->
-      <div class="article-card" data-category="perdata">
-        <div>
-          <span class="card-category-tag cat-perdata">Perdata & Kontrak</span>
-          <h3>Batas Tegas Antara Gagal Bayar (Wanprestasi) dan Tindak Pidana Penipuan</h3>
-          <p class="excerpt">
-            Banyak perkara utang-piutang atau bisnis dilaporkan ke polisi sebagai pasal 378 KUHP (Penipuan). Pelajari yurisprudensi Mahkamah Agung yang menegaskan sengketa perjanjian perdata murni tidak boleh dipidanakan.
-          </p>
-        </div>
-        <div class="article-meta">
-          <span>Oleh: <strong>Senior Counsel DPP</strong></span>
-          <span>6 Menit Baca</span>
-        </div>
-      </div>
-
-      <!-- ARTIKEL 4 -->
-      <div class="article-card" data-category="ketenagakerjaan">
-        <div>
-          <span class="card-category-tag cat-ketenagakerjaan">Ketenagakerjaan</span>
+          <div class="card-top-header">
+            <span class="card-category-tag cat-ketenagakerjaan">Ketenagakerjaan</span>
+            <span class="external-icon">↗</span>
+          </div>
           <h3>Langkah Hukum Buruh Menghadapi PHK Sepihak Tanpa Pesangon</h3>
           <p class="excerpt">
-            Panduan praktis perundingan bipartit, mediasi tripartit di Dinas Tenaga Kerja, hingga tata cara pengajuan gugatan ke Pengadilan Hubungan Industrial (PHI) berdasarkan UU Ketenagakerjaan terbaru.
+            Panduan perundingan bipartit, pencatatan mediasi tripartit di Disnaker, hingga tata cara pengajuan gugatan hak pesangon ke Pengadilan Hubungan Industrial (PHI).
           </p>
         </div>
         <div class="article-meta">
-          <span>Oleh: <strong>Legal Researcher DPP</strong></span>
+          <span class="source-tag">Rujukan: Jurnal Kemnaker RI</span>
+          <span>6 Menit Baca</span>
+        </div>
+      </a>
+
+      <!-- ARTIKEL 3 -->
+      <a href="https://www.hukumonline.com/klinik/a/apakah-kegagalan-membayar-utang-dapat-dipidana-lt5b306443c683b/" target="_blank" rel="noopener noreferrer" class="article-card" data-category="perdata">
+        <div>
+          <div class="card-top-header">
+            <span class="card-category-tag cat-perdata">Perdata & Kontrak</span>
+            <span class="external-icon">↗</span>
+          </div>
+          <h3>Batas Tegas Antara Gagal Bayar (Wanprestasi) dan Penipuan</h3>
+          <p class="excerpt">
+            Ulasan yurisprudensi Mahkamah Agung mengenai perlindungan sengketa perjanjian utang-piutang perdata agar tidak serta-merta dikriminalisasi menjadi delik penipuan 378 KUHP.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span class="source-tag">Rujukan: Kaidah Yurisprudensi MA</span>
           <span>5 Menit Baca</span>
         </div>
-      </div>
+      </a>
+
+      <!-- ARTIKEL 4 -->
+      <a href="https://www.atrbpn.go.id/" target="_blank" rel="noopener noreferrer" class="article-card" data-category="agraria">
+        <div>
+          <div class="card-top-header">
+            <span class="card-category-tag cat-agraria">Agraria & Tanah</span>
+            <span class="external-icon">↗</span>
+          </div>
+          <h3>Girik, Letter C, dan Sertifikat Hak Milik (SHM): Kekuatan Pembuktian di Pengadilan</h3>
+          <p class="excerpt">
+            Pahami batas daluwarsa penuntutan hak kepemilikan tanah adat serta kedudukan hukum SHM sebagai alat bukti mutlak dari potensi penyerobotan lahan sepihak.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span class="source-tag">Rujukan: Regulasi ATR/BPN</span>
+          <span>7 Menit Baca</span>
+        </div>
+      </a>
 
       <!-- ARTIKEL 5 -->
-      <div class="article-card" data-category="pidana">
+      <a href="https://www.hukumonline.com/klinik/a/syarat-penerapan-restorative-justice-di-kepolisian-dan-kejaksaan-lt618b76c8c4a52/" target="_blank" rel="noopener noreferrer" class="article-card" data-category="pidana">
         <div>
-          <span class="card-category-tag cat-pidana">Hukum Pidana</span>
-          <h3>Mekanisme Keadilan Restoratif (Restorative Justice) dalam Kasus Pidana Ringan</h3>
+          <div class="card-top-header">
+            <span class="card-category-tag cat-pidana">Hukum Pidana</span>
+            <span class="external-icon">↗</span>
+          </div>
+          <h3>Mekanisme Keadilan Restoratif (Restorative Justice) Perkara Ringan</h3>
           <p class="excerpt">
-            Tidak semua laporan pidana harus berakhir di penjara. Kenali kriteria perdamaian resmi di tingkat kepolisian dan kejaksaan sesuai Peraturan Kapolri dan Peraturan Kejaksaan RI.
+            Ketentuan formal penghentian perkara pidana melalui mekanisme musyawarah mufakat dan pemulihan hak korban berdasarkan Peraturan Polri No. 8/2021 dan Perja No. 15/2020.
           </p>
         </div>
         <div class="article-meta">
-          <span>Oleh: <strong>Tim Advokat Publik DPP</strong></span>
+          <span class="source-tag">Rujukan: Peraturan Kejaksaan & Polri</span>
           <span>4 Menit Baca</span>
         </div>
-      </div>
+      </a>
 
       <!-- ARTIKEL 6 -->
-      <div class="article-card" data-category="perdata">
+      <a href="https://www.mkri.id/index.php?page=web.JurnalKonstitusi" target="_blank" rel="noopener noreferrer" class="article-card" data-category="perdata">
         <div>
-          <span class="card-category-tag cat-perdata">Perdata & Kontrak</span>
-          <h3>Pentingnya Somasi Tertulis Sebelum Mengajukan Gugatan ke Pengadilan</h3>
+          <div class="card-top-header">
+            <span class="card-category-tag cat-perdata">Perdata & Kontrak</span>
+            <span class="external-icon">↗</span>
+          </div>
+          <h3>Pentingnya Somasi Tertulis Sebelum Gugatan Diajukan ke Pengadilan</h3>
           <p class="excerpt">
-            Surat peringatan resmi (somasi) bukan sekadar formalitas, melainkan bukti otentik bahwa pihak debitur/mitra telah berada dalam keadaan lalai (*ingebrekestelling*) sebelum gugatan diajukan.
+            Tinjauan doktrin hukum acara perdata mengenai fungsi surat teguran (somasi) sebagai syarat mutlak menetapkan debitur dalam keadaan lalai (*ingebrekestelling*).
           </p>
         </div>
         <div class="article-meta">
-          <span>Oleh: <strong>Divisi Riset DPP</strong></span>
-          <span>4 Menit Baca</span>
+          <span class="source-tag">Rujukan: Jurnal Konstitusi MKRI</span>
+          <span>5 Menit Baca</span>
         </div>
-      </div>
+      </a>
 
     </div>
 
     <!-- CTA KONSULTASI BOTTOM -->
     <div class="edu-cta-banner">
       <div class="edu-cta-text">
-        <h3>Memiliki Persoalan Hukum Serupa?</h3>
-        <p>Konsultasikan kasus atau dokumen perjanjian Anda secara langsung bersama tim advokat piket HALO LAPAN.</p>
+        <h3>Memiliki Persoalan Hukum Terkait Topik di Atas?</h3>
+        <p>Konsultasikan berkas atau kronologi kasus Anda secara langsung bersama tim advokat piket HALO LAPAN.</p>
       </div>
       <div>
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20membaca%20artikel%20edukasi%20dan%20ingin%20berkonsultasi" target="_blank" class="btn-wa-edu">
@@ -536,6 +856,12 @@
       </div>
     </div>
   </main>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
+    <span class="icon">💬</span>
+    <span>HALO LAPAN</span>
+  </a>
 
   <!-- FOOTER -->
   <footer class="footer-wrapper">
@@ -574,6 +900,23 @@
         }
       });
     }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('active');
+    }
+
+    function toggleAccordion(id) {
+      const subMenu = document.getElementById(id);
+      subMenu.classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(e) {
+      const drawer = document.getElementById('mobileDrawer');
+      const btn = document.querySelector('.btn-hamburger');
+      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        drawer.classList.remove('active');
+      }
+    });
   </script>
 
 </body>
