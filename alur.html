@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alur SOP Penanganan Perkara - LBH LAPAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+    .header-nav {
+      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 12px 20px;
+    }
+
+    .header-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #fb8500;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text h1 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .brand-text h1 span { color: #fb8500; }
+
+    .brand-text p {
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #fb8500; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-kta-top {
+      background: rgba(251, 133, 0, 0.15);
+      border: 1px solid rgba(251, 133, 0, 0.4);
+      color: #ffb703;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-kta-top:hover {
+      background: #fb8500;
+      color: #ffffff;
+    }
+
+    .btn-halo-top {
+      background: #25d366;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* MAIN WRAP */
+    .main-wrap {
+      flex: 1;
+      max-width: 960px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 16px 50px 16px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      background: rgba(251, 133, 0, 0.12);
+      color: #fb8500;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .page-header h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 8px;
+    }
+
+    .page-header p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    /* TIMELINE FLOW */
+    .timeline-container {
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    .timeline-container::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      top: 20px;
+      bottom: 20px;
+      width: 3px;
+      background: #e2e8f0;
+    }
+
+    .timeline-step {
+      position: relative;
+      display: flex;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .timeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-badge-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: #0b192c;
+      color: #fb8500;
+      border: 3px solid #fb8500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      flex-shrink: 0;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(11, 25, 44, 0.2);
+    }
+
+    .step-content-box {
+      flex: 1;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .step-content-box:hover {
+      border-color: #fb8500;
+      transform: translateY(-2px);
+    }
+
+    .step-header-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .step-header-title h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0b192c;
+    }
+
+    .sla-tag {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .step-desc {
+      color: #475569;
+      font-size: 13px;
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+
+    .checklist-sub {
+      list-style: none;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .checklist-sub li {
+      font-size: 12px;
+      color: #475569;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .checklist-sub li:last-child {
+      margin-bottom: 0;
+    }
+
+    .checklist-sub li span.bullet {
+      color: #fb8500;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* NOTICE PRINCIPLE BOX */
+    .principles-box {
+      background: linear-gradient(135deg, #0b192c 0%, #172554 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 20px -4px rgba(11, 25, 44, 0.25);
+    }
+
+    .principles-box h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .principle-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .principle-item h4 {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #fb8500;
+      margin-bottom: 4px;
+    }
+
+    .principle-item p {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* CTA BOTTOM */
+    .cta-action-wrap {
+      text-align: center;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 28px 20px;
+    }
+
+    .cta-action-wrap h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 6px;
+    }
+
+    .cta-action-wrap p {
+      color: #64748b;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-main {
+      background: #fb8500;
+      color: #ffffff;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-halo {
+      background: #25d366;
+      color: #ffffff;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* FOOTER */
+    .footer-wrapper {
+      background: #0b192c;
+      color: #94a3b8;
+      border-top: 3px solid #fb8500;
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .brand-text p { display: none; }
+      .timeline-container::before { left: 22px; }
+      .step-badge-circle { width: 46px; height: 46px; font-size: 15px; border-radius: 12px; }
+      .step-content-box { padding: 18px 14px; }
+      .step-header-title h3 { font-size: 1.1rem; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .btn-main, .btn-halo { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header-nav">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">
+          <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
+        </div>
+        <div class="brand-text">
+          <h1>LBH <span>LAPAN</span></h1>
+          <p>Lingkar Peduli Anak Negeri</p>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & SKTM</a></li>
+        <li><a href="alur.html" class="active">Alur SOP</a></li>
+        <li><a href="pengurus.html">Pengurus DPP</a></li>
+        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
+          💬 HALO LAPAN
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAP -->
+  <main class="main-wrap">
+    <div class="page-header">
+      <span class="badge-tag">Standar Operasional Prosedur</span>
+      <h2>Alur Penanganan Perkara Hukum</h2>
+      <p>SOP resmi DPP LBH LAPAN untuk memastikan setiap perkara ditangani secara profesional, independen, tepat sasaran, dan akuntabel sesuai kode etik advokat.</p>
+    </div>
+
+    <!-- TIMELINE FLOW -->
+    <div class="timeline-container">
+      
+      <!-- STEP 1 -->
+      <div class="timeline-step">
+        <div class="step-badge-circle">01</div>
+        <div class="step-content-box">
+          <div class="step-header-title">
+            <h3>Pengajuan Berkas & Registrasi Kasus</h3>
+            <span class="sla-tag">⏱️ Respon Langsung</span>
+          </div>
+          <p class="step-desc">
+            Pencari keadilan mengajukan permohonan melalui formulir online portal LBH LAPAN atau langsung menghubungi pusat pengaduan resmi <strong>HALO LAPAN</strong>.
+          </p>
+          <ul class="checklist-sub">
+            <li><span class="bullet">✓</span> Pengisian identitas pemohon, pihak lawan, dan jenis perkara (pidana/perdata/agraria).</li>
+            <li><span class="bullet">✓</span> Penyerahan berkas awal (surat panggilan polisi, surat tanah, perjanjian kontrak, dll.).</li>
+            <li><span class="bullet">✓</span> Penerbitan Nomor Tiket Registrasi Aduan resmi oleh kesekretariatan DPP.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="timeline-step">
+        <div class="step-badge-circle">02</div>
+        <div class="step-content-box">
+          <div class="step-header-title">
+            <h3>Telaah Yuridis & Gelar Perkara DPP</h3>
+            <span class="sla-tag">⏱️ Maks. 3x24 Jam</span>
+          </div>
+          <p class="step-desc">
+            Tim advokat dan <em>Legal Researcher</em> DPP LBH LAPAN melakukan bedah perkara secara mendalam untuk menguji kelayakan yuridis dan konstruksi hukum.
+          </p>
+          <ul class="checklist-sub">
+            <li><span class="bullet">✓</span> Analisis <em>legal standing</em> (kedudukan hukum pemohon).</li>
+            <li><span class="bullet">✓</span> Penilaian kecukupan alat bukti minimal sesuai hukum acara.</li>
+            <li><span class="bullet">✓</span> Verifikasi keaslian dokumen pendukung / SKTM (bagi pemohon pro bono).</li>
+            <li><span class="bullet">✓</span> Keputusan pleno: Perkara diterima untuk didampingi atau diberi arahan nasihat hukum alternatif.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="timeline-step">
+        <div class="step-badge-circle">03</div>
+        <div class="step-content-box">
+          <div class="step-header-title">
+            <h3>Penerbitan Surat Kuasa Khusus (SKK)</h3>
+            <span class="sla-tag">⏱️ Penandatanganan Resmi</span>
+          </div>
+          <p class="step-desc">
+            Perkara yang disetujui dituangkan dalam perjanjian bantuan hukum dan penerbitan Surat Kuasa Khusus bermaterai sah.
+          </p>
+          <ul class="checklist-sub">
+            <li><span class="bullet">✓</span> Penunjukan minimal 2 (dua) orang advokat berizin resmi dan paralegal pendamping.</li>
+            <li><span class="bullet">✓</span> Penandatanganan fakta integritas & kode etik pendampingan perkara.</li>
+            <li><span class="bullet">✓</span> Advokat yang ditunjuk wajib tercatat dan terverifikasi di sistem KTA LBH LAPAN.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="timeline-step">
+        <div class="step-badge-circle">04</div>
+        <div class="step-content-box">
+          <div class="step-header-title">
+            <h3>Tindakan Hukum & Advokasi Beracara</h3>
+            <span class="sla-tag">⏱️ Berkelanjutan</span>
+          </div>
+          <p class="step-desc">
+            Tim kuasa hukum menjalankan mandat hukum secara terukur, berani, dan proporsional untuk membela hak-hak klien.
+          </p>
+          <ul class="checklist-sub">
+            <li><span class="bullet">✓</span> <strong>Jalur Non-Litigasi:</strong> Pendampingan BAP di kepolisian/kejaksaan, pengiriman somasi resmi, negosiasi, dan mediasi.</li>
+            <li><span class="bullet">✓</span> <strong>Jalur Litigasi:</strong> Beracara di sidang pengadilan negeri, pengajuan gugatan, eksepsi, replik/duplik, pembuktian, pembelaan (pledoi), hingga putusan.</li>
+            <li><span class="bullet">✓</span> Laporan berkala perkembangan perkara kepada klien secara transparan.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PRINSIP PENDAMPINGAN -->
+    <div class="principles-box">
+      <h3>🛡️ Prinsip Integritas Pendampingan Kasus</h3>
+      <div class="principles-grid">
+        <div class="principle-item">
+          <h4>Kerahasiaan Mutlak (Privileged)</h4>
+          <p>Seluruh fakta, dokumen rahasia, dan kronologi klien dilindungi kerahasiaannya berdasarkan sumpah advokat.</p>
+        </div>
+        <div class="principle-item">
+          <h4>Bebas Pungutan Liar (Zero Fraud)</h4>
+          <p>Layanan Pro Bono murni tanpa honorarium advokat. Advokat dilarang keras meminta imbalan jasa di luar ketentuan.</p>
+        </div>
+        <div class="principle-item">
+          <h4>Kepatuhan Kode Etik</h4>
+          <p>Setiap tindakan hukum mengacu pada UU Advokat dan ketentuan organisasi DPP LBH LAPAN.</p>
+        </div>
+        <div class="principle-item">
+          <h4>Aksesibilitas Cepat</h4>
+          <p>Setiap aduan dipantau langsung oleh petugas piket HALO LAPAN pada hari dan jam kerja.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="cta-action-wrap">
+      <h3>Siap Memperjuangkan Hak Hukum Anda?</h3>
+      <p>Kirimkan permohonan sekarang atau konsultasikan situasi Anda langsung dengan tim piket kami.</p>
+      <div class="cta-btns">
+        <a href="pengaduan.html" class="btn-main">📝 Isi Formulir Permohonan Online</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konsultasi%20alur%20penanganan%20kasus" target="_blank" class="btn-halo">💬 Hubungi HALO LAPAN</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-wrapper">
+    © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
+  </footer>
+
+</body>
+</html>
