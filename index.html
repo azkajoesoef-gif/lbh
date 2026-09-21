@@ -30,1069 +30,342 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; overflow-x: hidden; }
 
-    body {
-      background-color: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    .header-nav { background: linear-gradient(135deg, #0b192c 0%, #112240 100%); border-bottom: 3px solid #fb8500; box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25); width: 100%; position: sticky; top: 0; z-index: 999; padding: 12px 20px; }
+    .header-container { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 2px solid #fb8500; padding: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.15; }
+    .brand-text h1 span { color: #fb8500; }
+    .brand-text p { font-size: 10px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 12px; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-link-btn { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s; cursor: pointer; background: none; border: none; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active { color: #fb8500; background: rgba(255, 255, 255, 0.05); }
+    .nav-link-btn span.arrow { font-size: 10px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link-btn span.arrow { transform: rotate(180deg); }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #0b192c; border: 1px solid #1e3e62; border-top: 3px solid #fb8500; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); min-width: 220px; padding: 8px; list-style: none; z-index: 1000; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-item:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 600; padding: 9px 12px; display: flex; align-items: center; gap: 8px; border-radius: 6px; transition: all 0.2s; }
+    .dropdown-menu li a:hover { background: rgba(251, 133, 0, 0.15); color: #fb8500; padding-left: 15px; }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-kta-top { background: rgba(251, 133, 0, 0.15); border: 1px solid rgba(251, 133, 0, 0.4); color: #ffb703; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .btn-kta-top:hover { background: #fb8500; color: #ffffff; }
+    .btn-halo-top { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
+    .btn-halo-top:hover { opacity: 0.9; }
+    .btn-hamburger { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px 6px; line-height: 1; }
+    .mobile-menu-drawer { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0b192c; border-bottom: 3px solid #fb8500; box-shadow: 0 10px 25px rgba(0,0,0,0.35); padding: 14px 18px 20px 18px; flex-direction: column; gap: 6px; max-height: 80vh; overflow-y: auto; }
+    .mobile-menu-drawer.active { display: flex; }
+    .m-item-title { width: 100%; background: rgba(255, 255, 255, 0.05); color: #ffffff; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
+    .m-sub-wrap { display: none; flex-direction: column; padding-left: 12px; gap: 4px; margin: 4px 0 8px 0; }
+    .m-sub-wrap.open { display: flex; }
+    .m-sub-wrap a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 9px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+    .m-sub-wrap a:hover { color: #fb8500; background: rgba(255, 255, 255, 0.04); }
+    .m-direct-link { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: block; }
 
-    .header-nav {
-      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
-      width: 100%;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      padding: 12px 20px;
-    }
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 24px 16px 40px 16px; }
 
-    .header-container {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+    .hero-wrapper { background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%); color: #ffffff; border-radius: 20px; padding: 44px 20px; text-align: center; box-shadow: 0 10px 25px -5px rgba(11, 25, 44, 0.25); margin-bottom: 24px; }
+    .hero-logo-box { width: 85px; height: 85px; margin: 0 auto 14px auto; background: #ffffff; border-radius: 50%; padding: 5px; border: 3px solid #fb8500; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); }
+    .hero-logo-box img { width: 100%; height: 100%; object-fit: contain; }
+    .badge-hero { display: inline-block; background: rgba(251, 133, 0, 0.15); color: #ffb703; border: 1px solid rgba(251, 133, 0, 0.35); padding: 5px 14px; border-radius: 50px; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 12px; text-transform: uppercase; }
+    .hero-wrapper h1 { font-size: 1.85rem; font-weight: 800; line-height: 1.3; margin-bottom: 12px; }
+    .hero-wrapper h1 span { color: #fb8500; }
+    .hero-wrapper p { font-size: 0.98rem; color: #cbd5e1; max-width: 800px; margin: 0 auto 22px auto; line-height: 1.6; }
+    .hero-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-main { background: #fb8500; color: #ffffff; padding: 12px 22px; border-radius: 10px; font-size: 13.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(251, 133, 0, 0.3); transition: opacity 0.2s, transform 0.2s; }
+    .btn-main:hover { opacity: 0.92; transform: translateY(-2px); }
+    .btn-outline { background: rgba(255, 255, 255, 0.08); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.25); padding: 12px 22px; border-radius: 10px; font-size: 13.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s; }
+    .btn-outline:hover { background: rgba(255, 255, 255, 0.15); }
 
-    .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+    .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
+    .stat-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 12px; text-align: center; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02); }
+    .stat-card h3 { font-size: 13px; font-weight: 800; color: #0b192c; margin-bottom: 2px; }
+    .stat-card p { font-size: 11.5px; color: #64748b; }
 
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid #fb8500;
-      padding: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .section-title-wrap { text-align: center; margin: 40px 0 22px 0; }
+    .section-tag { font-size: 11px; font-weight: 800; color: #fb8500; text-transform: uppercase; letter-spacing: 0.6px; display: block; margin-bottom: 4px; }
+    .section-title-wrap h2 { font-size: 1.55rem; font-weight: 800; color: #0b192c; }
+    .section-title-wrap p { color: #64748b; font-size: 13.5px; max-width: 680px; margin: 4px auto 0 auto; }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .brand-text h1 {
-      font-size: 17px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.15;
-    }
-
-    .brand-text h1 span {
-      color: #fb8500;
-    }
-
-    .brand-text p {
-      font-size: 10px;
-      color: #94a3b8;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      list-style: none;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link-btn {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.2s;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-link-btn span.arrow {
-      font-size: 10px;
-      transition: transform 0.2s;
-    }
-
-    .nav-item:hover .nav-link-btn span.arrow {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #0b192c;
-      border: 1px solid #1e3e62;
-      border-top: 3px solid #fb8500;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-      min-width: 220px;
-      padding: 8px;
-      list-style: none;
-      z-index: 1000;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .nav-item:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu li a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 9px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-
-    .dropdown-menu li a:hover {
-      background: rgba(251, 133, 0, 0.15);
-      color: #fb8500;
-      padding-left: 15px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-kta-top {
-      background: rgba(251, 133, 0, 0.15);
-      border: 1px solid rgba(251, 133, 0, 0.4);
-      color: #ffb703;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-kta-top:hover {
-      background: #fb8500;
-      color: #ffffff;
-    }
-
-    .btn-halo-top {
-      background: #25d366;
-      color: #ffffff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: opacity 0.2s;
-    }
-
-    .btn-halo-top:hover {
-      opacity: 0.9;
-    }
-
-    .btn-hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #ffffff;
-      font-size: 26px;
-      cursor: pointer;
-      padding: 4px 6px;
-      line-height: 1;
-    }
-
-    .mobile-menu-drawer {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: #0b192c;
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-      padding: 14px 18px 20px 18px;
-      flex-direction: column;
-      gap: 6px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .mobile-menu-drawer.active {
-      display: flex;
-    }
-
-    .m-item-title {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .m-sub-wrap {
-      display: none;
-      flex-direction: column;
-      padding-left: 12px;
-      gap: 4px;
-      margin: 4px 0 8px 0;
-    }
-
-    .m-sub-wrap.open {
-      display: flex;
-    }
-
-    .m-sub-wrap a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 9px 12px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .m-sub-wrap a:hover {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .m-direct-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      display: block;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 24px 16px 40px 16px;
-    }
-
-    .hero-wrapper {
-      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      color: #ffffff;
-      border-radius: 20px;
-      padding: 44px 20px;
-      text-align: center;
-      box-shadow: 0 10px 25px -5px rgba(11, 25, 44, 0.25);
-      margin-bottom: 24px;
-    }
-
-    .hero-logo-box {
-      width: 85px;
-      height: 85px;
-      margin: 0 auto 14px auto;
-      background: #ffffff;
-      border-radius: 50%;
-      padding: 5px;
-      border: 3px solid #fb8500;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-    }
-
-    .hero-logo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .badge-hero {
-      display: inline-block;
-      background: rgba(251, 133, 0, 0.15);
-      color: #ffb703;
-      border: 1px solid rgba(251, 133, 0, 0.35);
-      padding: 5px 14px;
-      border-radius: 50px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .hero-wrapper h1 {
-      font-size: 1.85rem;
-      font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 12px;
-    }
-
-    .hero-wrapper h1 span {
-      color: #fb8500;
-    }
-
-    .hero-wrapper p {
-      font-size: 0.98rem;
-      color: #cbd5e1;
-      max-width: 800px;
-      margin: 0 auto 22px auto;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn-main {
-      background: #fb8500;
-      color: #ffffff;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(251, 133, 0, 0.3);
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .btn-main:hover {
-      opacity: 0.92;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.2s;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    .stat-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 16px 12px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-    }
-
-    .stat-card h3 {
-      font-size: 13px;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 2px;
-    }
-
-    .stat-card p {
-      font-size: 11.5px;
-      color: #64748b;
-    }
-
-    .section-title-wrap {
-      text-align: center;
-      margin: 32px 0 18px 0;
-    }
-
-    .section-tag {
-      font-size: 11px;
-      font-weight: 800;
-      color: #fb8500;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .section-title-wrap h2 {
-      font-size: 1.55rem;
-      font-weight: 800;
-      color: #0b192c;
-    }
-
-    .section-title-wrap p {
-      color: #64748b;
-      font-size: 13.5px;
-      max-width: 680px;
-      margin: 4px auto 0 auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .service-box {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .service-box:hover {
-      transform: translateY(-3px);
-    }
-
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .service-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px 20px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02); transition: transform 0.2s, border-color 0.2s; }
+    .service-box:hover { transform: translateY(-3px); }
     .service-box.green { border-top: 4px solid #15803d; }
     .service-box.gold { border-top: 4px solid #b45309; background: linear-gradient(180deg, #ffffff 0%, #fffcf8 100%); }
     .service-box.orange { border-top: 4px solid #0284c7; }
-
-    .service-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-
+    .service-badge { display: inline-block; font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; text-transform: uppercase; }
     .badge-probono { background: #dcfce7; color: #15803d; }
     .badge-retainer { background: #fef3c7; color: #b45309; }
     .badge-prof { background: #e0f2fe; color: #0369a1; }
+    .service-box h3 { font-size: 1.15rem; font-weight: 800; color: #0b192c; margin-bottom: 6px; }
+    .service-box p.s-desc { font-size: 12.5px; color: #64748b; margin-bottom: 14px; line-height: 1.55; }
+    .s-list { list-style: none; margin-bottom: 16px; }
+    .s-list li { font-size: 12px; color: #475569; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+    .btn-service-link { color: #0b192c; font-size: 12.5px; font-weight: 800; text-decoration: none; display: inline-block; }
+    .btn-service-link:hover { color: #fb8500; }
 
-    .service-box h3 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 6px;
-    }
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 32px; }
+    .step-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px 14px; text-align: center; display: flex; flex-direction: column; align-items: center; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02); transition: transform 0.2s, border-color 0.2s; }
+    .step-card:hover { border-color: #fb8500; transform: translateY(-2px); }
+    .step-num { width: 36px; height: 36px; background: #0b192c; color: #fb8500; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13.5px; font-weight: 800; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(11, 25, 44, 0.15); }
+    .step-card h4 { font-size: 13.5px; font-weight: 800; color: #0b192c; margin-bottom: 4px; }
+    .step-card p { font-size: 12px; color: #64748b; line-height: 1.45; }
 
-    .service-box p.s-desc {
-      font-size: 12.5px;
-      color: #64748b;
-      margin-bottom: 14px;
-      line-height: 1.55;
-    }
+    .dual-promo { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; margin-bottom: 32px; }
+    .legal-card-info { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02); }
+    .kta-cta-card { background: #0b192c; color: #ffffff; border-radius: 16px; padding: 22px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 8px 20px -4px rgba(11, 25, 44, 0.25); }
 
-    .s-list {
-      list-style: none;
-      margin-bottom: 16px;
-    }
+    .leaders-section { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 24px 16px; margin-bottom: 32px; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02); }
+    .leaders-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+    .leader-mini { flex: 0 1 calc(20% - 12px); min-width: 160px; max-width: 200px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 10px; text-align: center; }
+    .leader-mini-photo { width: 68px; height: 68px; border-radius: 50%; margin: 0 auto 8px auto; border: 2px solid #0b192c; overflow: hidden; padding: 2px; background: #ffffff; }
+    .leader-mini-photo.gold { border-color: #fb8500; }
+    .leader-mini-photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: top center; }
+    .leader-mini h4 { font-size: 12px; font-weight: 800; color: #0b192c; margin-bottom: 2px; line-height: 1.3; }
+    .leader-mini span.pos { font-size: 10.5px; font-weight: 700; color: #fb8500; display: block; margin-bottom: 4px; }
+    .leader-mini span.nia { font-family: monospace; font-size: 10px; color: #64748b; background: #ffffff; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; }
 
-    .s-list li {
-      font-size: 12px;
-      color: #475569;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-service-link {
-      color: #0b192c;
-      font-size: 12.5px;
-      font-weight: 800;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-service-link:hover {
-      color: #fb8500;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 32px;
-    }
-
-    .step-card {
+    /* ============ STATISTIK SECTION ============ */
+    .statistik-section {
       background: #ffffff;
       border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 26px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .statistik-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .statistik-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
       border-radius: 14px;
-      padding: 20px 14px;
+      padding: 20px 12px;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
       transition: transform 0.2s, border-color 0.2s;
     }
 
-    .step-card:hover {
+    .statistik-card:hover {
       border-color: #fb8500;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
-    .step-num {
-      width: 36px;
-      height: 36px;
-      background: #0b192c;
-      color: #fb8500;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13.5px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      box-shadow: 0 4px 10px rgba(11, 25, 44, 0.15);
-    }
+    .statistik-card span.icon { font-size: 24px; display: block; margin-bottom: 6px; }
+    .statistik-card h3 { font-size: 1.65rem; font-weight: 800; color: #fb8500; line-height: 1; margin-bottom: 4px; }
+    .statistik-card p { font-size: 11px; color: #64748b; font-weight: 600; line-height: 1.3; }
 
-    .step-card h4 {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 4px;
-    }
-
-    .step-card p {
-      font-size: 12px;
-      color: #64748b;
-      line-height: 1.45;
-    }
-
-    .dual-promo {
+    .chart-wrap {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 16px;
-      margin-bottom: 32px;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
-    .legal-card-info {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02);
-    }
-
-    .kta-cta-card {
-      background: #0b192c;
-      color: #ffffff;
-      border-radius: 16px;
-      padding: 22px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 8px 20px -4px rgba(11, 25, 44, 0.25);
-    }
-
-    .leaders-section {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 24px 16px;
-      margin-bottom: 32px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02);
-    }
-
-    .leaders-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .leader-mini {
-      flex: 0 1 calc(20% - 12px);
-      min-width: 160px;
-      max-width: 200px;
+    .chart-box-mini {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 16px 10px;
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .chart-box-mini h4 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 16px;
+    }
+
+    .chart-row-mini { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .chart-row-mini .lbl { flex: 0 0 100px; font-size: 11.5px; font-weight: 700; color: #475569; }
+    .chart-row-mini .bar-wrap { flex: 1; background: #e2e8f0; border-radius: 20px; height: 20px; overflow: hidden; }
+    .chart-row-mini .bar { height: 100%; border-radius: 20px; background: linear-gradient(90deg, #fb8500 0%, #ffb703 100%); display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; color: #ffffff; font-size: 10px; font-weight: 800; }
+    .chart-row-mini .bar.blue { background: linear-gradient(90deg, #0b192c 0%, #1e3e62 100%); }
+    .chart-row-mini .bar.green { background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%); }
+
+    .statistik-cta {
       text-align: center;
-    }
-
-    .leader-mini-photo {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      margin: 0 auto 8px auto;
-      border: 2px solid #0b192c;
-      overflow: hidden;
-      padding: 2px;
-      background: #ffffff;
-    }
-
-    .leader-mini-photo.gold { border-color: #fb8500; }
-
-    .leader-mini-photo img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
-    }
-
-    .leader-mini h4 {
-      font-size: 12px;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 2px;
-      line-height: 1.3;
-    }
-
-    .leader-mini span.pos {
-      font-size: 10.5px;
-      font-weight: 700;
-      color: #fb8500;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .leader-mini span.nia {
-      font-family: monospace;
-      font-size: 10px;
+      font-size: 11.5px;
       color: #64748b;
-      background: #ffffff;
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid #e2e8f0;
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
     }
 
-    .faq-container {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 18px 22px;
+    /* ============ TESTIMONI SECTION ============ */
+    .testimoni-section {
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      border-radius: 20px;
+      padding: 40px 26px;
       margin-bottom: 32px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.3);
     }
 
-    .faq-item {
-      border-bottom: 1px solid #f1f5f9;
-      padding: 14px 0;
+    .testimoni-section .section-tag { color: #ffb703; }
+    .testimoni-section .section-title-wrap h2 { color: #ffffff; }
+    .testimoni-section .section-title-wrap p { color: #cbd5e1; }
+    .testimoni-section .section-title-wrap { margin-top: 0; }
+
+    .testimoni-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 10px;
     }
 
-    .faq-item:last-child {
-      border-bottom: none;
-      padding-bottom: 4px;
+    .testimoni-card-mini {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 22px 20px;
+      color: #ffffff;
+      transition: transform 0.2s, border-color 0.2s;
     }
 
-    .faq-item:first-child {
-      padding-top: 4px;
+    .testimoni-card-mini:hover {
+      border-color: #fb8500;
+      transform: translateY(-3px);
     }
 
-    .faq-question {
-      font-size: 14px;
-      font-weight: 700;
-      color: #0b192c;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      user-select: none;
-    }
-
-    .faq-question:hover {
-      color: #fb8500;
-    }
-
-    .faq-icon {
-      font-size: 18px;
-      font-weight: 800;
-      transition: transform 0.25s ease, color 0.25s ease;
-      color: #94a3b8;
-      flex-shrink: 0;
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
+    .testimoni-card-mini .rating {
+      color: #fbbf24;
       font-size: 13px;
-      color: #475569;
-      line-height: 1.6;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
 
-    .faq-answer p {
-      padding-top: 8px;
+    .testimoni-card-mini .text {
+      font-size: 12.5px;
+      color: #e2e8f0;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 16px;
     }
 
-    .faq-item.active .faq-answer {
-      max-height: 400px;
-    }
-
-    .faq-item.active .faq-icon {
-      transform: rotate(45deg);
-      color: #fb8500;
-    }
-
-    .contact-banner {
-      background: linear-gradient(135deg, #0b192c 0%, #172554 100%);
-      color: #ffffff;
-      border-radius: 18px;
-      padding: 28px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      box-shadow: 0 8px 25px -4px rgba(11, 25, 44, 0.25);
-    }
-
-    .contact-info {
-      flex: 1 1 320px;
-    }
-
-    .contact-info h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-      color: #ffffff;
-    }
-
-    .contact-info p {
-      color: #cbd5e1;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .btn-wa-banner {
-      background: #25d366;
-      color: #ffffff;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .btn-wa-banner:hover {
-      opacity: 0.92;
-      transform: translateY(-2px);
-    }
-
-    .floating-wa-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      background: #25d366;
-      color: #ffffff;
+    .testimoni-card-mini .author {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 18px;
-      border-radius: 50px;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      z-index: 9999;
-      transition: transform 0.25s, box-shadow 0.25s;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .floating-wa-btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
-    }
-
-    .floating-wa-btn span.icon {
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .footer-wrapper {
-      background: linear-gradient(180deg, #0b192c 0%, #060e1a 100%);
-      color: #cbd5e1;
-      border-top: 3px solid #fb8500;
-      padding: 45px 20px 25px 20px;
-      margin-top: 40px;
-    }
-
-    .footer-container {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.8fr 1fr 1.4fr;
-      gap: 36px;
-      margin-bottom: 32px;
-    }
-
-    .footer-col h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
+    .testimoni-card-mini .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #fb8500;
       color: #ffffff;
-      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      flex-shrink: 0;
     }
 
-    .footer-col h3 span {
-      color: #fb8500;
-    }
-
-    .footer-col p {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #94a3b8;
-      margin-bottom: 14px;
-    }
-
-    .legal-tag-small {
-      display: inline-block;
-      background: rgba(251, 133, 0, 0.1);
-      border: 1px solid rgba(251, 133, 0, 0.3);
-      color: #fb8500;
-      padding: 5px 12px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .footer-col h4 {
-      font-size: 14.5px;
-      font-weight: 700;
+    .testimoni-card-mini .author-info h5 {
+      font-size: 12.5px;
+      font-weight: 800;
       color: #ffffff;
-      margin-bottom: 14px;
-      position: relative;
-      padding-bottom: 6px;
+      margin-bottom: 2px;
     }
 
-    .footer-col h4::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 28px;
-      height: 2px;
-      background: #fb8500;
-      border-radius: 2px;
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: 9px;
-    }
-
-    .footer-links a {
+    .testimoni-card-mini .author-info span {
+      font-size: 10.5px;
       color: #94a3b8;
-      text-decoration: none;
+    }
+
+    .testimoni-cta-link {
+      text-align: center;
+      margin-top: 26px;
+    }
+
+    .testimoni-cta-link a {
+      color: #fb8500;
       font-size: 13px;
-      transition: color 0.2s, padding-left 0.2s;
+      font-weight: 700;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
-    .footer-links a:hover {
-      color: #fb8500;
-      padding-left: 3px;
-    }
+    .testimoni-cta-link a:hover { text-decoration: underline; }
 
-    .footer-contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 12px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
+    /* ============ FAQ ============ */
+    .faq-container { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 18px 22px; margin-bottom: 32px; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.02); }
+    .faq-item { border-bottom: 1px solid #f1f5f9; padding: 14px 0; }
+    .faq-item:last-child { border-bottom: none; padding-bottom: 4px; }
+    .faq-item:first-child { padding-top: 4px; }
+    .faq-question { font-size: 14px; font-weight: 700; color: #0b192c; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; }
+    .faq-question:hover { color: #fb8500; }
+    .faq-icon { font-size: 18px; font-weight: 800; transition: transform 0.25s ease, color 0.25s ease; color: #94a3b8; flex-shrink: 0; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; font-size: 13px; color: #475569; line-height: 1.6; }
+    .faq-answer p { padding-top: 8px; }
+    .faq-item.active .faq-answer { max-height: 400px; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); color: #fb8500; }
 
-    .footer-contact-item span:first-child {
-      font-size: 15px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .contact-banner { background: linear-gradient(135deg, #0b192c 0%, #172554 100%); color: #ffffff; border-radius: 18px; padding: 28px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; box-shadow: 0 8px 25px -4px rgba(11, 25, 44, 0.25); }
+    .contact-info { flex: 1 1 320px; }
+    .contact-info h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; color: #ffffff; }
+    .contact-info p { color: #cbd5e1; font-size: 13px; line-height: 1.5; }
+    .btn-wa-banner { background: #25d366; color: #ffffff; padding: 12px 22px; border-radius: 10px; font-size: 13.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25); transition: opacity 0.2s, transform 0.2s; }
+    .btn-wa-banner:hover { opacity: 0.92; transform: translateY(-2px); }
 
-    .footer-btn-wa {
-      margin-top: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #25d366;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 8px;
-      transition: opacity 0.2s;
-    }
+    .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; transition: transform 0.25s, box-shadow 0.25s; }
+    .floating-wa-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6); }
+    .floating-wa-btn span.icon { font-size: 20px; line-height: 1; }
 
-    .footer-btn-wa:hover {
-      opacity: 0.9;
-    }
-
-    .footer-bottom {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    .footer-bottom strong {
-      color: #cbd5e1;
-    }
+    .footer-wrapper { background: linear-gradient(180deg, #0b192c 0%, #060e1a 100%); color: #cbd5e1; border-top: 3px solid #fb8500; padding: 45px 20px 25px 20px; margin-top: 40px; }
+    .footer-container { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.8fr 1fr 1.4fr; gap: 36px; margin-bottom: 32px; }
+    .footer-col h3 { font-size: 1.25rem; font-weight: 800; color: #ffffff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .footer-col h3 span { color: #fb8500; }
+    .footer-col p { font-size: 13px; line-height: 1.6; color: #94a3b8; margin-bottom: 14px; }
+    .legal-tag-small { display: inline-block; background: rgba(251, 133, 0, 0.1); border: 1px solid rgba(251, 133, 0, 0.3); color: #fb8500; padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; }
+    .footer-col h4 { font-size: 14.5px; font-weight: 700; color: #ffffff; margin-bottom: 14px; position: relative; padding-bottom: 6px; }
+    .footer-col h4::after { content: ""; position: absolute; left: 0; bottom: 0; width: 28px; height: 2px; background: #fb8500; border-radius: 2px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 9px; }
+    .footer-links a { color: #94a3b8; text-decoration: none; font-size: 13px; transition: color 0.2s, padding-left 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-links a:hover { color: #fb8500; padding-left: 3px; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; font-size: 13px; line-height: 1.5; }
+    .footer-contact-item span:first-child { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .footer-btn-wa { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 700; padding: 10px 18px; border-radius: 8px; transition: opacity 0.2s; }
+    .footer-btn-wa:hover { opacity: 0.9; }
+    .footer-bottom { max-width: 1180px; margin: 0 auto; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #64748b; }
+    .footer-bottom strong { color: #cbd5e1; }
 
     @media (max-width: 960px) {
-      .nav-links, .btn-kta-top, .brand-text p {
-        display: none;
-      }
-      .btn-hamburger {
-        display: block;
-      }
-      .header-actions {
-        gap: 6px;
-      }
-      .btn-halo-top {
-        padding: 6px 10px;
-        font-size: 11px;
-      }
-      .stats-bar {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
-      .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-      }
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .dual-promo {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .hero-actions {
-        flex-direction: column;
-      }
-      .btn-main, .btn-outline {
-        width: 100%;
-        justify-content: center;
-      }
-      .leaders-row {
-        gap: 8px;
-      }
-      .leader-mini {
-        flex: 0 1 calc(50% - 6px);
-        min-width: unset;
-        max-width: unset;
-      }
-      .contact-banner {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-        padding: 22px 16px;
-      }
-      .btn-wa-banner {
-        width: 100%;
-        justify-content: center;
-      }
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 26px;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
-      .floating-wa-btn {
-        bottom: 16px;
-        right: 16px;
-        padding: 10px 14px;
-        font-size: 12px;
-      }
+      .nav-links, .btn-kta-top, .brand-text p { display: none; }
+      .btn-hamburger { display: block; }
+      .header-actions { gap: 6px; }
+      .btn-halo-top { padding: 6px 10px; font-size: 11px; }
+      .stats-bar { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .services-grid { grid-template-columns: 1fr; gap: 14px; }
+      .dual-promo { grid-template-columns: 1fr; gap: 14px; }
+      .hero-actions { flex-direction: column; }
+      .btn-main, .btn-outline { width: 100%; justify-content: center; }
+      .leaders-row { gap: 8px; }
+      .leader-mini { flex: 0 1 calc(50% - 6px); min-width: unset; max-width: unset; }
+      .statistik-grid { grid-template-columns: 1fr 1fr; }
+      .chart-wrap { grid-template-columns: 1fr; }
+      .testimoni-grid-3 { grid-template-columns: 1fr; }
+      .contact-banner { flex-direction: column; align-items: stretch; text-align: center; padding: 22px 16px; }
+      .btn-wa-banner { width: 100%; justify-content: center; }
+      .footer-container { grid-template-columns: 1fr; gap: 26px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .floating-wa-btn { bottom: 16px; right: 16px; padding: 10px 14px; font-size: 12px; }
     }
   </style>
 </head>
@@ -1111,99 +384,66 @@
       </a>
 
       <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link-btn active">Beranda</a></li>
         <li class="nav-item">
-          <a href="index.html" class="nav-link-btn active">Beranda</a>
-        </li>
-
-        <li class="nav-item">
-          <button class="nav-link-btn">
-            Tentang Kami <span class="arrow">▼</span>
-          </button>
+          <button class="nav-link-btn">Tentang Kami <span class="arrow">▼</span></button>
           <ul class="dropdown-menu">
             <li><a href="tentang.html">🏛️ Sejarah & Logo Lambang</a></li>
             <li><a href="pengurus.html">👔 Struktur Pengurus DPP</a></li>
           </ul>
         </li>
-
         <li class="nav-item">
-          <button class="nav-link-btn">
-            Bantuan Hukum <span class="arrow">▼</span>
-          </button>
+          <button class="nav-link-btn">Bantuan Hukum <span class="arrow">▼</span></button>
           <ul class="dropdown-menu">
             <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
             <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
             <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
           </ul>
         </li>
-
         <li class="nav-item">
-          <button class="nav-link-btn">
-            Publikasi <span class="arrow">▼</span>
-          </button>
+          <button class="nav-link-btn">Publikasi <span class="arrow">▼</span></button>
           <ul class="dropdown-menu">
             <li><a href="berita.html">📰 Kabar Berita & Siaran Pers</a></li>
             <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
           </ul>
         </li>
-
-        <li class="nav-item">
-          <a href="kontak.html" class="nav-link-btn">Kontak</a>
-        </li>
+        <li class="nav-item"><a href="kontak.html" class="nav-link-btn">Kontak</a></li>
       </ul>
 
       <div class="header-actions">
         <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
-        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
-          💬 HALO LAPAN
-        </a>
-        <button class="btn-hamburger" onclick="toggleMobileMenu()" aria-label="Buka Menu">
-          ☰
-        </button>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">💬 HALO LAPAN</a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()">☰</button>
       </div>
     </div>
 
     <div class="mobile-menu-drawer" id="mobileDrawer">
       <a href="index.html" class="m-direct-link" style="color:#fb8500;">🏠 Beranda</a>
-      
       <div>
-        <button class="m-item-title" onclick="toggleAccordion('mTentang')">
-          <span>🏛️ Tentang Kami</span>
-          <span>▾</span>
-        </button>
+        <button class="m-item-title" onclick="toggleAccordion('mTentang')"><span>🏛️ Tentang Kami</span><span>▾</span></button>
         <div class="m-sub-wrap" id="mTentang">
           <a href="tentang.html">Sejarah Lembaga & Makna Lambang</a>
           <a href="pengurus.html">Bagan Struktur Pengurus DPP</a>
         </div>
       </div>
-
       <div>
-        <button class="m-item-title" onclick="toggleAccordion('mBantuan')">
-          <span>⚖️ Bantuan Hukum</span>
-          <span>▾</span>
-        </button>
+        <button class="m-item-title" onclick="toggleAccordion('mBantuan')"><span>⚖️ Bantuan Hukum</span><span>▾</span></button>
         <div class="m-sub-wrap" id="mBantuan">
           <a href="layanan.html">Layanan, SKTM & Legal Retainer</a>
           <a href="alur.html">Alur SOP Penanganan Kasus</a>
           <a href="pengaduan.html">Formulir Pengaduan Online</a>
         </div>
       </div>
-
       <div>
-        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')">
-          <span>📰 Publikasi & Edukasi</span>
-          <span>▾</span>
-        </button>
+        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')"><span>📰 Publikasi & Edukasi</span><span>▾</span></button>
         <div class="m-sub-wrap" id="mPublikasi">
           <a href="berita.html">Kabar Berita & Siaran Pers</a>
           <a href="edukasi.html">Edukasi & Opini Hukum</a>
         </div>
       </div>
-
       <a href="kontak.html" class="m-direct-link">📍 Kontak & Lokasi</a>
-
-      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center; margin-top:8px;">
-        🔍 Verifikasi KTA Anggota Resmi
-      </a>
+      <a href="karir.html" class="m-direct-link">💼 Karir & Relawan</a>
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center;">🔍 Verifikasi KTA Anggota</a>
     </div>
   </header>
 
@@ -1228,26 +468,10 @@
     </div>
 
     <div class="stats-bar">
-      <div class="stat-card">
-        <span style="font-size: 20px;">🤝</span>
-        <h3>100% Pro Bono</h3>
-        <p>Cuma-cuma bagi warga miskin</p>
-      </div>
-      <div class="stat-card">
-        <span style="font-size: 20px;">🏛️</span>
-        <h3>Terdaftar Resmi</h3>
-        <p>SK Kemenkumham RI</p>
-      </div>
-      <div class="stat-card">
-        <span style="font-size: 20px;">⚖️</span>
-        <h3>Advokat Tersumpah</h3>
-        <p>Litigasi & non-litigasi</p>
-      </div>
-      <div class="stat-card">
-        <span style="font-size: 20px;">⏱️</span>
-        <h3>Respon 3x24 Jam</h3>
-        <p>Gelar perkara kasus cepat</p>
-      </div>
+      <div class="stat-card"><span style="font-size: 20px;">🤝</span><h3>100% Pro Bono</h3><p>Cuma-cuma bagi warga miskin</p></div>
+      <div class="stat-card"><span style="font-size: 20px;">🏛️</span><h3>Terdaftar Resmi</h3><p>SK Kemenkumham RI</p></div>
+      <div class="stat-card"><span style="font-size: 20px;">⚖️</span><h3>Advokat Tersumpah</h3><p>Litigasi & non-litigasi</p></div>
+      <div class="stat-card"><span style="font-size: 20px;">⏱️</span><h3>Respon 3x24 Jam</h3><p>Gelar perkara kasus cepat</p></div>
     </div>
 
     <div class="section-title-wrap">
@@ -1306,26 +530,10 @@
     </div>
 
     <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h4>Pengajuan Berkas</h4>
-        <p>Klien menghubungi HALO LAPAN & mengisi formulir resume perkara beserta identitas.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h4>Telaah Yuridis</h4>
-        <p>Gelar perkara internal DPP maks 3x24 jam untuk analisa posita dan alat bukti pendukung.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h4>Surat Kuasa (SKK)</h4>
-        <p>Penerbitan Surat Kuasa Khusus resmi bagi perkara yang disetujui ditangani advokat.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <h4>Tindakan Hukum</h4>
-        <p>Pelaksanaan mediasi, somasi, hingga advokasi litigasi penuh di ruang persidangan.</p>
-      </div>
+      <div class="step-card"><div class="step-num">01</div><h4>Pengajuan Berkas</h4><p>Klien menghubungi HALO LAPAN & mengisi formulir resume perkara beserta identitas.</p></div>
+      <div class="step-card"><div class="step-num">02</div><h4>Telaah Yuridis</h4><p>Gelar perkara internal DPP maks 3x24 jam untuk analisa posita dan alat bukti pendukung.</p></div>
+      <div class="step-card"><div class="step-num">03</div><h4>Surat Kuasa (SKK)</h4><p>Penerbitan Surat Kuasa Khusus resmi bagi perkara yang disetujui ditangani advokat.</p></div>
+      <div class="step-card"><div class="step-num">04</div><h4>Tindakan Hukum</h4><p>Pelaksanaan mediasi, somasi, hingga advokasi litigasi penuh di ruang persidangan.</p></div>
     </div>
 
     <div class="dual-promo">
@@ -1348,9 +556,7 @@
           <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:6px;">Verifikasi KTA Advokat</h3>
           <p style="font-size:12px; color:#cbd5e1; margin-bottom:14px;">Cek keabsahan Nomor Induk Anggota (NIA) resmi pengurus atau advokat LBH LAPAN secara online.</p>
         </div>
-        <a href="verifikasi-kta.html" class="btn-main" style="background:#fb8500; justify-content:center; width:100%;">
-          🔍 Buka Portal Cek Anggota
-        </a>
+        <a href="verifikasi-kta.html" class="btn-main" style="background:#fb8500; justify-content:center; width:100%;">🔍 Buka Portal Cek Anggota</a>
       </div>
     </div>
 
@@ -1362,49 +568,147 @@
 
       <div class="leaders-row">
         <div class="leader-mini">
-          <div class="leader-mini-photo gold">
-            <img src="https://drive.google.com/thumbnail?id=1J8PSpS_Yln0hIvDa_gY1KOp9N5roHv_t&sz=w400" alt="Dr. Dudung Hidayat">
-          </div>
+          <div class="leader-mini-photo gold"><img src="https://drive.google.com/thumbnail?id=1J8PSpS_Yln0hIvDa_gY1KOp9N5roHv_t&sz=w400" alt="Dr. Dudung Hidayat"></div>
           <h4>Dr. Dudung Hidayat, S.H., M.H.</h4>
           <span class="pos">Dewan Pembina</span>
           <span class="nia">NIA: 10-26-013</span>
         </div>
-
         <div class="leader-mini">
-          <div class="leader-mini-photo">
-            <img src="https://drive.google.com/thumbnail?id=1ftBg4czEv9nxmD0BNqtzG1hByf0buLND&sz=w400" alt="Andre Milko Pelawi">
-          </div>
+          <div class="leader-mini-photo"><img src="https://drive.google.com/thumbnail?id=1ftBg4czEv9nxmD0BNqtzG1hByf0buLND&sz=w400" alt="Andre Milko Pelawi"></div>
           <h4>Andre Milko Pelawi</h4>
           <span class="pos">Ketua Umum</span>
           <span class="nia">NIA: 10-26-001</span>
         </div>
-
         <div class="leader-mini">
-          <div class="leader-mini-photo">
-            <img src="https://drive.google.com/thumbnail?id=1TUBZT8xTBfy1NVl9hyz0RO6qMs04FJRC&sz=w400" alt="Efrem Elman Ndruru">
-          </div>
+          <div class="leader-mini-photo"><img src="https://drive.google.com/thumbnail?id=1TUBZT8xTBfy1NVl9hyz0RO6qMs04FJRC&sz=w400" alt="Efrem Elman Ndruru"></div>
           <h4>Efrem Elman S. Ndruru, S.H.</h4>
           <span class="pos">Sekretaris Umum I</span>
           <span class="nia">NIA: 10-26-002</span>
         </div>
-
         <div class="leader-mini">
-          <div class="leader-mini-photo">
-            <img src="https://drive.google.com/thumbnail?id=1YoAtsC_Unsk3EBEKBfIRRdgNUoAixXbp&sz=w400" alt="Muhammad Azka Medira">
-          </div>
+          <div class="leader-mini-photo"><img src="https://drive.google.com/thumbnail?id=1YoAtsC_Unsk3EBEKBfIRRdgNUoAixXbp&sz=w400" alt="Muhammad Azka Medira"></div>
           <h4>Muhammad Azka Medira</h4>
           <span class="pos">Sekretaris Umum II</span>
           <span class="nia">NIA: 10-26-005</span>
         </div>
-
         <div class="leader-mini">
-          <div class="leader-mini-photo">
-            <img src="https://drive.google.com/thumbnail?id=1E-64HTXcxB5sLE2x4bYF0metWbYj_x2V&sz=w400" alt="Eko Supahwono">
-          </div>
+          <div class="leader-mini-photo"><img src="https://drive.google.com/thumbnail?id=1E-64HTXcxB5sLE2x4bYF0metWbYj_x2V&sz=w400" alt="Eko Supahwono"></div>
           <h4>Eko Supahwono, S.H.</h4>
           <span class="pos">Senior Counsel</span>
           <span class="nia">NIA: 10-26-007</span>
         </div>
+      </div>
+    </div>
+
+    <!-- ============ SECTION STATISTIK ============ -->
+    <div class="section-title-wrap">
+      <span class="section-tag">Transparansi & Akuntabilitas</span>
+      <h2>Statistik & Capaian Kinerja</h2>
+      <p>Data terbuka penanganan perkara dan dampak advokasi LBH LAPAN bagi masyarakat.</p>
+    </div>
+
+    <div class="statistik-section">
+      <div class="statistik-grid">
+        <div class="statistik-card">
+          <span class="icon">⚖️</span>
+          <h3>47</h3>
+          <p>Total Perkara</p>
+        </div>
+        <div class="statistik-card">
+          <span class="icon">🏆</span>
+          <h3>32</h3>
+          <p>Perkara Menang</p>
+        </div>
+        <div class="statistik-card">
+          <span class="icon">🤝</span>
+          <h3>38</h3>
+          <p>Pro Bono Gratis</p>
+        </div>
+        <div class="statistik-card">
+          <span class="icon">👥</span>
+          <h3>120+</h3>
+          <p>Klien Dilayani</p>
+        </div>
+        <div class="statistik-card">
+          <span class="icon">🗺️</span>
+          <h3>4</h3>
+          <p>Provinsi Jangkauan</p>
+        </div>
+        <div class="statistik-card">
+          <span class="icon">📚</span>
+          <h3>8</h3>
+          <p>Kegiatan Edukasi</p>
+        </div>
+      </div>
+
+      <div class="chart-wrap">
+        <div class="chart-box-mini">
+          <h4>📊 Klasifikasi Perkara</h4>
+          <div class="chart-row-mini"><div class="lbl">Pidana</div><div class="bar-wrap"><div class="bar" style="width: 34%;">34%</div></div></div>
+          <div class="chart-row-mini"><div class="lbl">Perdata</div><div class="bar-wrap"><div class="bar blue" style="width: 26%;">26%</div></div></div>
+          <div class="chart-row-mini"><div class="lbl">Agraria</div><div class="bar-wrap"><div class="bar green" style="width: 21%;">21%</div></div></div>
+          <div class="chart-row-mini"><div class="lbl">Ketenagakerjaan</div><div class="bar-wrap"><div class="bar" style="width: 13%;">13%</div></div></div>
+          <div class="chart-row-mini"><div class="lbl">Lainnya</div><div class="bar-wrap"><div class="bar blue" style="width: 6%;">6%</div></div></div>
+        </div>
+
+        <div class="chart-box-mini">
+          <h4>📈 Pro Bono vs Non-Pro Bono</h4>
+          <div class="chart-row-mini"><div class="lbl">Pro Bono</div><div class="bar-wrap"><div class="bar green" style="width: 81%;">81%</div></div></div>
+          <div class="chart-row-mini"><div class="lbl">Retainer & Kasus</div><div class="bar-wrap"><div class="bar blue" style="width: 19%;">19%</div></div></div>
+        </div>
+      </div>
+
+      <p class="statistik-cta">🛡️ Data diperbarui berkala setiap triwulan oleh Divisi Riset Hukum DPP • Periode Nov 2025 – Sep 2026</p>
+    </div>
+
+    <!-- ============ SECTION TESTIMONI ============ -->
+    <div class="testimoni-section">
+      <div class="section-title-wrap">
+        <span class="section-tag">Cerita Nyata Pencari Keadilan</span>
+        <h2>Apa Kata Klien Kami?</h2>
+        <p>Ungkapan langsung dari masyarakat yang telah menerima pendampingan hukum LBH LAPAN.</p>
+      </div>
+
+      <div class="testimoni-grid-3">
+        <div class="testimoni-card-mini">
+          <div class="rating">★★★★★</div>
+          <p class="text">"Sebagai buruh bangunan, saya tidak tahu harus bagaimana saat adik saya ditahan. Advokat di sini membantu dari awal pemeriksaan sampai persidangan, semuanya tanpa biaya."</p>
+          <div class="author">
+            <div class="avatar">S</div>
+            <div class="author-info">
+              <h5>Suryadi</h5>
+              <span>Keluarga Klien Pidana • Jakarta</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimoni-card-mini">
+          <div class="rating">★★★★★</div>
+          <p class="text">"Perusahaan kami pakai Legal Retainer LBH LAPAN untuk audit kontrak dan konsultasi rutin. Pelayanannya cepat, profesional, dan membantu kami terhindar dari sengketa bisnis."</p>
+          <div class="author">
+            <div class="avatar">R</div>
+            <div class="author-info">
+              <h5>Rina Marlina</h5>
+              <span>Direktur UMKM • Bekasi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimoni-card-mini">
+          <div class="rating">★★★★★</div>
+          <p class="text">"Tim LBH LAPAN sangat sabar menjelaskan proses hukum sengketa tanah warisan dan tidak pernah meminta uang sepeser pun. Akhirnya hak saya sebagai ahli waris dipulihkan."</p>
+          <div class="author">
+            <div class="avatar">N</div>
+            <div class="author-info">
+              <h5>Hj. Nurhayati</h5>
+              <span>Klien Sengketa Agraria • Jabar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimoni-cta-link">
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20mengirimkan%20testimoni" target="_blank">💬 Bagikan Testimoni Anda →</a>
       </div>
     </div>
 
@@ -1416,33 +720,16 @@
 
     <div class="faq-container">
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Apakah layanan bantuan hukum Pro Bono benar-benar gratis?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Ya. Sesuai amanat UU No. 16 Tahun 2011, bantuan hukum Pro Bono diberikan tanpa honorarium advokat khusus bagi warga miskin/kurang mampu yang memenuhi persyaratan administrasi (seperti melampirkan Surat Keterangan Tidak Mampu / SKTM).</p>
-        </div>
+        <div class="faq-question"><span>Apakah layanan bantuan hukum Pro Bono benar-benar gratis?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Ya. Sesuai amanat UU No. 16 Tahun 2011, bantuan hukum Pro Bono diberikan tanpa honorarium advokat khusus bagi warga miskin/kurang mampu yang memenuhi persyaratan administrasi (seperti melampirkan SKTM).</p></div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Bagaimana skema kemitraan Legal Retainer bagi perusahaan / UMKM?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Layanan Legal Retainer bertindak sebagai penasihat hukum tetap eksternal dengan biaya terjangkau secara berkala (bulanan/tahunan) untuk mengurus audit kontrak, kepatuhan perizinan, somasi, dan pencegahan sengketa litigasi bisnis.</p>
-        </div>
+        <div class="faq-question"><span>Bagaimana skema kemitraan Legal Retainer bagi perusahaan / UMKM?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Layanan Legal Retainer bertindak sebagai penasihat hukum tetap eksternal dengan biaya terjangkau secara berkala (bulanan/tahunan) untuk mengurus audit kontrak, kepatuhan perizinan, somasi, dan pencegahan sengketa litigasi bisnis.</p></div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Apakah kerahasiaan identitas dan dokumen perkara saya terjamin?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Seluruh advokat dan staf LBH LAPAN terikat pada sumpah jabatan profesi hukum dan kode etik advokat untuk menjaga kerahasiaan setiap data, informasi, dan dokumen perkara klien.</p>
-        </div>
+        <div class="faq-question"><span>Apakah kerahasiaan identitas dan dokumen perkara saya terjamin?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Seluruh advokat dan staf LBH LAPAN terikat pada sumpah jabatan profesi hukum dan kode etik advokat untuk menjaga kerahasiaan setiap data, informasi, dan dokumen perkara klien.</p></div>
       </div>
     </div>
 
@@ -1467,7 +754,6 @@
 
   <footer class="footer-wrapper">
     <div class="footer-container">
-      
       <div class="footer-col">
         <h3>⚖️ LBH <span>LAPAN</span></h3>
         <p>Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri adalah organisasi advokasi bantuan hukum independen dan non-profit yang berdedikasi mewujudkan akses keadilan yang setara bagi seluruh lapisan masyarakat.</p>
@@ -1484,6 +770,7 @@
           <li><a href="alur.html">Alur SOP Penanganan Perkara</a></li>
           <li><a href="berita.html">Kabar Berita & Siaran Pers</a></li>
           <li><a href="edukasi.html">Edukasi & Opini Hukum</a></li>
+          <li><a href="karir.html">Karir & Relawan</a></li>
           <li><a href="pengaduan.html">Formulir Pengaduan Online</a></li>
           <li><a href="kontak.html">Kontak & Lokasi Sekretariat</a></li>
         </ul>
@@ -1507,42 +794,24 @@
           💬 Chat HALO LAPAN
         </a>
       </div>
-
     </div>
 
     <div class="footer-bottom">
-      <div>
-        © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Hak Cipta Dilindungi Undang-Undang.
-      </div>
-      <div>
-        Garda Terdepan Keadilan Anak Negeri
-      </div>
+      <div>© 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Hak Cipta Dilindungi Undang-Undang.</div>
+      <div>Garda Terdepan Keadilan Anak Negeri</div>
     </div>
   </footer>
 
   <script>
-    function toggleMobileMenu() {
-      const drawer = document.getElementById('mobileDrawer');
-      drawer.classList.toggle('active');
-    }
-
-    function toggleAccordion(id) {
-      const subMenu = document.getElementById(id);
-      subMenu.classList.toggle('open');
-    }
-
+    function toggleMobileMenu() { document.getElementById('mobileDrawer').classList.toggle('active'); }
+    function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
     document.addEventListener('click', function(e) {
       const drawer = document.getElementById('mobileDrawer');
       const btn = document.querySelector('.btn-hamburger');
-      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) {
-        drawer.classList.remove('active');
-      }
+      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) drawer.classList.remove('active');
     });
-
     document.querySelectorAll('.faq-question').forEach(item => {
-      item.addEventListener('click', () => {
-        item.parentElement.classList.toggle('active');
-      });
+      item.addEventListener('click', () => item.parentElement.classList.toggle('active'));
     });
   </script>
 
