@@ -105,7 +105,7 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover, .nav-links a.active {
       color: #fb8500;
     }
 
@@ -294,7 +294,7 @@
       color: #64748b;
     }
 
-    /* SECTION HEADER UMUM */
+    /* SECTION HEADER */
     .section-title-wrap {
       text-align: center;
       margin: 32px 0 18px 0;
@@ -679,7 +679,7 @@
       transform: translateY(-2px);
     }
 
-    /* 10. FOOTER LENGKAP */
+    /* 10. FOOTER */
     .footer-wrapper {
       background: linear-gradient(180deg, #0b192c 0%, #060e1a 100%);
       color: #cbd5e1;
@@ -824,7 +824,7 @@
       color: #cbd5e1;
     }
 
-    /* RESPONSIVE LAYAR HP */
+    /* RESPONSIVE */
     @media (max-width: 860px) {
       .nav-links, .btn-kta-top, .brand-text p {
         display: none;
@@ -879,10 +879,10 @@
 </head>
 <body>
 
-  <!-- 1. NAVBAR -->
+  <!-- 1. NAVBAR (NAVIGASI MULTI-HALAMAN RESMI) -->
   <header class="header-nav">
     <div class="header-container">
-      <a href="#" class="brand-link">
+      <a href="index.html" class="brand-link">
         <div class="brand-logo">
           <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
         </div>
@@ -893,15 +893,15 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#">Beranda</a></li>
-        <li><a href="#layanan">Layanan</a></li>
-        <li><a href="#alur">Alur SOP</a></li>
-        <li><a href="#pengurus">Pengurus</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & SKTM</a></li>
+        <li><a href="alur.html">Alur SOP</a></li>
+        <li><a href="pengurus.html">Pengurus DPP</a></li>
+        <li><a href="pengaduan.html">Formulir Aduan</a></li>
       </ul>
 
       <div class="header-actions">
-        <a href="#cek-kta" class="btn-kta-top">🔍 Verifikasi KTA</a>
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA Anggota</a>
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
           💬 HALO LAPAN
         </a>
@@ -924,7 +924,7 @@
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-main">
           💬 HALO LAPAN (Posko Pengaduan)
         </a>
-        <a href="#layanan" class="btn-outline">
+        <a href="layanan.html" class="btn-outline">
           ⚖️ Pelajari Layanan & Syarat SKTM
         </a>
       </div>
@@ -955,7 +955,7 @@
     </div>
 
     <!-- 4. LAYANAN KASUS -->
-    <div id="layanan" class="section-title-wrap">
+    <div class="section-title-wrap">
       <span class="section-tag">Ruang Lingkup Advokasi</span>
       <h2>Layanan Penanganan Kasus</h2>
     </div>
@@ -972,7 +972,7 @@
             <li>✓ Pembelaan persidangan hingga putusan hakim</li>
           </ul>
         </div>
-        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konsultasi%20layanan%20Pro%20Bono" target="_blank" class="btn-service-link">Konsultasi Syarat Pro Bono →</a>
+        <a href="layanan.html" class="btn-service-link">Lihat Detail Syarat Pro Bono →</a>
       </div>
 
       <div class="service-box orange">
@@ -986,12 +986,12 @@
             <li>✓ Legal audit dan penyusunan opini hukum</li>
           </ul>
         </div>
-        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konsultasi%20layanan%20Advokasi%20Profesional" target="_blank" class="btn-service-link">Konsultasi Kasus Profesional →</a>
+        <a href="layanan.html" class="btn-service-link">Lihat Kasus Profesional →</a>
       </div>
     </div>
 
     <!-- 5. ALUR PENANGANAN PERKARA (SOP) -->
-    <div id="alur" class="section-title-wrap">
+    <div class="section-title-wrap">
       <span class="section-tag">Standar Operasional Prosedur</span>
       <h2>Alur Penanganan Perkara</h2>
       <p>Prosedur transparan dan terstandarisasi untuk memastikan hak hukum Anda terlindungi secara pasti.</p>
@@ -1021,7 +1021,7 @@
     </div>
 
     <!-- 6. DUAL PROMO -->
-    <div id="cek-kta" class="dual-promo">
+    <div class="dual-promo">
       <div class="legal-card-info">
         <div>
           <span class="section-tag">Profil & Integritas</span>
@@ -1031,7 +1031,7 @@
           </p>
         </div>
         <div>
-          <a href="#pengurus" class="btn-main" style="padding:9px 16px; font-size:12.5px;">Lihat Susunan Pengurus →</a>
+          <a href="pengurus.html" class="btn-main" style="padding:9px 16px; font-size:12.5px;">Lihat Susunan Pengurus →</a>
         </div>
       </div>
 
@@ -1039,16 +1039,16 @@
         <div>
           <span style="font-size:26px; display:block; margin-bottom:6px;">🛡️</span>
           <h3 style="font-size:1.2rem; font-weight:800; margin-bottom:6px;">Verifikasi KTA Advokat</h3>
-          <p style="font-size:12px; color:#cbd5e1; margin-bottom:14px;">Cek keabsahan Nomor Induk Anggota (NIA) resmi pengurus atau advokat LBH LAPAN.</p>
+          <p style="font-size:12px; color:#cbd5e1; margin-bottom:14px;">Cek keabsahan Nomor Induk Anggota (NIA) resmi pengurus atau advokat LBH LAPAN secara online.</p>
         </div>
-        <a href="https://wa.me/6281220111001?text=Halo%20Admin%20HALO%20LAPAN,%20saya%20ingin%20verifikasi%20keaslian%20KTA%20Anggota" target="_blank" class="btn-main" style="background:#fb8500; justify-content:center; width:100%;">
-          🔍 Verifikasi KTA via Admin
+        <a href="verifikasi-kta.html" class="btn-main" style="background:#fb8500; justify-content:center; width:100%;">
+          🔍 Buka Portal Cek Anggota
         </a>
       </div>
     </div>
 
     <!-- 7. TOKOH PIMPINAN DPP -->
-    <div id="pengurus" class="leaders-section">
+    <div class="leaders-section">
       <div class="section-title-wrap" style="margin: 0 0 8px 0;">
         <span class="section-tag">Kepengurusan Pusat</span>
         <h2 style="font-size: 1.3rem;">Pimpinan & Pengurus Harian DPP</h2>
@@ -1103,7 +1103,7 @@
     </div>
 
     <!-- 8. FAQ TANYA JAWAB -->
-    <div id="faq" class="section-title-wrap">
+    <div class="section-title-wrap">
       <span class="section-tag">Konsultasi Terbuka</span>
       <h2>Pertanyaan Umum (FAQ)</h2>
       <p>Informasi dasar seputar ketentuan layanan bantuan hukum LBH LAPAN</p>
@@ -1156,7 +1156,7 @@
 
   </div>
 
-  <!-- 10. FOOTER LENGKAP -->
+  <!-- 10. FOOTER -->
   <footer class="footer-wrapper">
     <div class="footer-container">
       
@@ -1169,11 +1169,12 @@
       <div class="footer-col">
         <h4>Navigasi Utama</h4>
         <ul class="footer-links">
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#layanan">Layanan Pro Bono</a></li>
-          <li><a href="#alur">Alur SOP Penanganan</a></li>
-          <li><a href="#pengurus">Struktur Pengurus DPP</a></li>
-          <li><a href="#cek-kta">Verifikasi KTA</a></li>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="layanan.html">Layanan & SKTM</a></li>
+          <li><a href="alur.html">Alur SOP Penanganan</a></li>
+          <li><a href="pengurus.html">Struktur Pengurus DPP</a></li>
+          <li><a href="verifikasi-kta.html">Verifikasi KTA Anggota</a></li>
+          <li><a href="pengaduan.html">Formulir Aduan Kasus</a></li>
         </ul>
       </div>
 
