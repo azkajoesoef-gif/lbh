@@ -24,7 +24,7 @@
       overflow-x: hidden;
     }
 
-    /* 1. NAVBAR */
+    /* 1. NAVBAR DENGAN DROPDOWN */
     .header-nav {
       background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
       border-bottom: 3px solid #fb8500;
@@ -90,23 +90,92 @@
       text-transform: uppercase;
     }
 
+    /* MENU DESKTOP */
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 12px;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link-btn {
       color: #cbd5e1;
       text-decoration: none;
       font-size: 13.5px;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
     }
 
-    .nav-links a:hover, .nav-links a.active {
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active {
       color: #fb8500;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link-btn span.arrow {
+      font-size: 10px;
+      transition: transform 0.2s;
+    }
+
+    .nav-item:hover .nav-link-btn span.arrow {
+      transform: rotate(180deg);
+    }
+
+    /* DROPDOWN MENU BOX (DESKTOP) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0b192c;
+      border: 1px solid #1e3e62;
+      border-top: 3px solid #fb8500;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      min-width: 220px;
+      padding: 8px;
+      list-style: none;
+      z-index: 1000;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(251, 133, 0, 0.15);
+      color: #fb8500;
+      padding-left: 15px;
     }
 
     .header-actions {
@@ -162,7 +231,7 @@
       line-height: 1;
     }
 
-    /* LACI MENU HP */
+    /* DRAWER MENU HP (AKORDION MUDAH DISENTUH) */
     .mobile-menu-drawer {
       display: none;
       position: absolute;
@@ -172,38 +241,76 @@
       background: #0b192c;
       border-bottom: 3px solid #fb8500;
       box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-      padding: 16px 20px;
+      padding: 14px 18px 20px 18px;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
+      max-height: 80vh;
+      overflow-y: auto;
     }
 
     .mobile-menu-drawer.active {
       display: flex;
     }
 
-    .mobile-menu-drawer a {
+    .m-item-title {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .m-item-title:hover {
+      background: rgba(251, 133, 0, 0.15);
+      color: #fb8500;
+    }
+
+    .m-sub-wrap {
+      display: none;
+      flex-direction: column;
+      padding-left: 12px;
+      gap: 4px;
+      margin: 4px 0 8px 0;
+    }
+
+    .m-sub-wrap.open {
+      display: flex;
+    }
+
+    .m-sub-wrap a {
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border-left: 3px solid transparent;
-      transition: all 0.2s;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .mobile-menu-drawer a:hover, .mobile-menu-drawer a.active {
+    .m-sub-wrap a:hover {
       color: #fb8500;
-      background: rgba(251, 133, 0, 0.1);
-      border-left-color: #fb8500;
+      background: rgba(255, 255, 255, 0.04);
     }
 
-    .mobile-menu-drawer .btn-kta-mobile {
-      background: #fb8500;
-      color: #ffffff !important;
-      text-align: center;
-      border: none !important;
-      margin-top: 6px;
+    .m-direct-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      display: block;
     }
 
     /* CONTAINER UTAMA */
@@ -735,7 +842,7 @@
       transform: translateY(-2px);
     }
 
-    /* 10. TOMBOL MENGAMBANG WHATSAPP (FLOATING WIDGET) */
+    /* 10. TOMBOL MENGAMBANG WHATSAPP */
     .floating-wa-btn {
       position: fixed;
       bottom: 24px;
@@ -911,7 +1018,7 @@
     }
 
     /* RESPONSIVE KHUSUS LAYAR PONSEL (HP) */
-    @media (max-width: 860px) {
+    @media (max-width: 960px) {
       .nav-links, .btn-kta-top, .brand-text p {
         display: none;
       }
@@ -994,14 +1101,45 @@
         </div>
       </a>
 
-      <!-- MENU TAMPILAN KOMPUTER -->
+      <!-- MENU TAMPILAN KOMPUTER (DENGAN DROPDOWN RAPI) -->
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Beranda</a></li>
-        <li><a href="layanan.html">Layanan & SKTM</a></li>
-        <li><a href="alur.html">Alur SOP</a></li>
-        <li><a href="pengurus.html">Pengurus DPP</a></li>
-        <li><a href="edukasi.html">Edukasi Hukum</a></li>
-        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+        <li class="nav-item">
+          <a href="index.html" class="nav-link-btn active">Beranda</a>
+        </li>
+
+        <!-- DROPDOWN 1: TENTANG KAMI -->
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Tentang Kami <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="tentang.html">🏛️ Sejarah & Logo Lambang</a></li>
+            <li><a href="pengurus.html">👔 Struktur Pengurus DPP</a></li>
+          </ul>
+        </li>
+
+        <!-- DROPDOWN 2: BANTUAN HUKUM -->
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Bantuan Hukum <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="layanan.html">⚖️ Layanan & Syarat SKTM</a></li>
+            <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
+            <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
+          </ul>
+        </li>
+
+        <!-- DROPDOWN 3: PUBLIKASI -->
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Publikasi <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="berita.html">📰 Kabar Berita & Siaran Pers</a></li>
+            <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
+          </ul>
+        </li>
       </ul>
 
       <!-- TOMBOL AKSI & HAMBURGER HP -->
@@ -1016,15 +1154,50 @@
       </div>
     </div>
 
-    <!-- LACI MENU TAMPILAN HP -->
+    <!-- DRAWER MENU TAMPILAN HP (AKORDION RAMAH SENTUH) -->
     <div class="mobile-menu-drawer" id="mobileDrawer">
-      <a href="index.html" class="active">🏠 Beranda</a>
-      <a href="layanan.html">⚖️ Layanan & Syarat SKTM</a>
-      <a href="alur.html">📋 Alur SOP Perkara</a>
-      <a href="pengurus.html">🏛️ Bagan Pengurus DPP</a>
-      <a href="edukasi.html">📚 Edukasi & Opini Hukum</a>
-      <a href="pengaduan.html">📝 Formulir Pengaduan Kasus</a>
-      <a href="verifikasi-kta.html" class="btn-kta-mobile">🔍 Verifikasi KTA Anggota</a>
+      <a href="index.html" class="m-direct-link" style="color:#fb8500;">🏠 Beranda</a>
+      
+      <!-- SUB-MENU 1: TENTANG KAMI -->
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mTentang')">
+          <span>🏛️ Tentang Kami</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mTentang">
+          <a href="tentang.html">Sejarah Lembaga & Makna Lambang</a>
+          <a href="pengurus.html">Bagan Struktur Pengurus DPP</a>
+        </div>
+      </div>
+
+      <!-- SUB-MENU 2: BANTUAN HUKUM -->
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mBantuan')">
+          <span>⚖️ Bantuan Hukum</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mBantuan">
+          <a href="layanan.html">Layanan Pro Bono & Syarat SKTM</a>
+          <a href="alur.html">Alur SOP Penanganan Kasus</a>
+          <a href="pengaduan.html">Formulir Pengaduan Online</a>
+        </div>
+      </div>
+
+      <!-- SUB-MENU 3: PUBLIKASI -->
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')">
+          <span>📰 Publikasi & Edukasi</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mPublikasi">
+          <a href="berita.html">Kabar Berita & Siaran Pers</a>
+          <a href="edukasi.html">Edukasi & Opini Hukum</a>
+        </div>
+      </div>
+
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center; margin-top:8px;">
+        🔍 Verifikasi KTA Anggota Resmi
+      </a>
     </div>
   </header>
 
@@ -1150,7 +1323,7 @@
           </p>
         </div>
         <div>
-          <a href="pengurus.html" class="btn-main" style="padding:9px 16px; font-size:12.5px;">Lihat Susunan Pengurus →</a>
+          <a href="tentang.html" class="btn-main" style="padding:9px 16px; font-size:12.5px;">Sejarah & Makna Logo →</a>
         </div>
       </div>
 
@@ -1275,7 +1448,7 @@
 
   </div>
 
-  <!-- 10. TOMBOL MENGAMBANG WHATSAPP (FLOATING WIDGET) -->
+  <!-- 10. TOMBOL MENGAMBANG WHATSAPP -->
   <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
     <span class="icon">💬</span>
     <span>HALO LAPAN</span>
@@ -1292,15 +1465,16 @@
       </div>
 
       <div class="footer-col">
-        <h4>Navigasi Utama</h4>
+        <h4>Navigasi Portal</h4>
         <ul class="footer-links">
           <li><a href="index.html">Beranda</a></li>
-          <li><a href="layanan.html">Layanan & SKTM</a></li>
-          <li><a href="alur.html">Alur SOP Penanganan</a></li>
-          <li><a href="pengurus.html">Struktur Pengurus DPP</a></li>
-          <li><a href="edukasi.html">Edukasi Hukum</a></li>
-          <li><a href="verifikasi-kta.html">Verifikasi KTA Anggota</a></li>
-          <li><a href="pengaduan.html">Formulir Aduan Kasus</a></li>
+          <li><a href="tentang.html">Sejarah Lembaga & Makna Logo</a></li>
+          <li><a href="pengurus.html">Bagan Susunan Pengurus DPP</a></li>
+          <li><a href="layanan.html">Layanan Pro Bono & SKTM</a></li>
+          <li><a href="alur.html">Alur SOP Penanganan Perkara</a></li>
+          <li><a href="berita.html">Kabar Berita & Siaran Pers</a></li>
+          <li><a href="edukasi.html">Edukasi & Opini Hukum</a></li>
+          <li><a href="pengaduan.html">Formulir Pengaduan Online</a></li>
         </ul>
       </div>
 
@@ -1340,6 +1514,11 @@
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobileDrawer');
       drawer.classList.toggle('active');
+    }
+
+    function toggleAccordion(id) {
+      const subMenu = document.getElementById(id);
+      subMenu.classList.toggle('open');
     }
 
     document.addEventListener('click', function(e) {
