@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edukasi & Artikel Opini Hukum - LBH LAPAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+    .header-nav {
+      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 12px 20px;
+    }
+
+    .header-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #fb8500;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text h1 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .brand-text h1 span { color: #fb8500; }
+
+    .brand-text p {
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #fb8500; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-kta-top {
+      background: rgba(251, 133, 0, 0.15);
+      border: 1px solid rgba(251, 133, 0, 0.4);
+      color: #ffb703;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-kta-top:hover {
+      background: #fb8500;
+      color: #ffffff;
+    }
+
+    .btn-halo-top {
+      background: #25d366;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* MAIN CONTAINER */
+    .main-wrap {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 16px 50px 16px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      background: rgba(251, 133, 0, 0.12);
+      color: #fb8500;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .page-header h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 8px;
+    }
+
+    .page-header p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* FILTER & PENCARIAN */
+    .filter-search-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #0b192c;
+      color: #ffffff;
+      border-color: #0b192c;
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 13px;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .search-box input:focus {
+      border-color: #fb8500;
+    }
+
+    /* GRID ARTIKEL */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 22px;
+      margin-bottom: 40px;
+    }
+
+    .article-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .article-card:hover {
+      border-color: #fb8500;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-category-tag {
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .cat-pidana { background: #fee2e2; color: #b91c1c; }
+    .cat-perdata { background: #eff6ff; color: #1d4ed8; }
+    .cat-agraria { background: #fef3c7; color: #b45309; }
+    .cat-ketenagakerjaan { background: #dcfce7; color: #15803d; }
+
+    .article-card h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .article-card p.excerpt {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .article-meta {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: #94a3b8;
+    }
+
+    .article-meta strong {
+      color: #475569;
+    }
+
+    /* CTA KONSULTASI BOTTOM */
+    .edu-cta-banner {
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 30px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      box-shadow: 0 8px 25px -4px rgba(11, 25, 44, 0.25);
+    }
+
+    .edu-cta-text h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .edu-cta-text p {
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+    .btn-wa-edu {
+      background: #25d366;
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-wa-edu:hover {
+      opacity: 0.9;
+    }
+
+    /* FOOTER */
+    .footer-wrapper {
+      background: #0b192c;
+      color: #94a3b8;
+      border-top: 3px solid #fb8500;
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 12px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .brand-text p { display: none; }
+      .filter-search-row { flex-direction: column; align-items: stretch; }
+      .search-box { width: 100%; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .edu-cta-banner { flex-direction: column; text-align: center; }
+      .btn-wa-edu { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header-nav">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">
+          <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
+        </div>
+        <div class="brand-text">
+          <h1>LBH <span>LAPAN</span></h1>
+          <p>Lingkar Peduli Anak Negeri</p>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & SKTM</a></li>
+        <li><a href="alur.html">Alur SOP</a></li>
+        <li><a href="pengurus.html">Pengurus DPP</a></li>
+        <li><a href="edukasi.html" class="active">Edukasi Hukum</a></li>
+        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
+          💬 HALO LAPAN
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAP -->
+  <main class="main-wrap">
+    <div class="page-header">
+      <span class="badge-tag">Pusat Kajian & Literasi Yuridis</span>
+      <h2>Edukasi & Artikel Opini Hukum</h2>
+      <p>Kajian praktis, panduan hak-hak hukum warga negara, serta ulasan kasus aktual yang disusun oleh Tim Advokat & Legal Researcher DPP LBH LAPAN.</p>
+    </div>
+
+    <!-- FILTER & PENCARIAN -->
+    <div class="filter-search-row">
+      <div class="filter-pills">
+        <button class="filter-btn active" onclick="filterArticles('all')">Semua Topik</button>
+        <button class="filter-btn" onclick="filterArticles('pidana')">Hukum Pidana</button>
+        <button class="filter-btn" onclick="filterArticles('perdata')">Perdata & Kontrak</button>
+        <button class="filter-btn" onclick="filterArticles('agraria')">Agraria & Tanah</button>
+        <button class="filter-btn" onclick="filterArticles('ketenagakerjaan')">Ketenagakerjaan</button>
+      </div>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Cari judul atau kata kunci..." onkeyup="searchArticles()">
+      </div>
+    </div>
+
+    <!-- GRID ARTIKEL EDUKASI -->
+    <div class="articles-grid" id="articleList">
+
+      <!-- ARTIKEL 1 -->
+      <div class="article-card" data-category="pidana">
+        <div>
+          <span class="card-category-tag cat-pidana">Hukum Pidana</span>
+          <h3>Hak Konstitusional Saksi dan Tersangka saat Diperiksa Polisi</h3>
+          <p class="excerpt">
+            Masyarakat kerap merasa tertekan saat menerima surat panggilan kepolisian. Kenali hak hukum Anda untuk didampingi advokat, hak menolak menjawab pertanyaan yang menjerat, serta larangan intimidasi fisik/verbal sesuai KUHAP.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span>Oleh: <strong>Tim Advokat Publik DPP</strong></span>
+          <span>5 Menit Baca</span>
+        </div>
+      </div>
+
+      <!-- ARTIKEL 2 -->
+      <div class="article-card" data-category="agraria">
+        <div>
+          <span class="card-category-tag cat-agraria">Agraria & Tanah</span>
+          <h3>Girik, Letter C, dan Sertifikat Hak Milik (SHM): Kekuatan Pembuktiannya di Pengadilan</h3>
+          <p class="excerpt">
+            Sengketa kepemilikan tanah sering terjadi akibat tumpang tindih alas hak tradisional dengan sertifikat modern. Pahami batas daluwarsa penuntutan hak tanah serta cara mitigasi perampasan lahan sepihak.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span>Oleh: <strong>Divisi Advokasi DPP</strong></span>
+          <span>7 Menit Baca</span>
+        </div>
+      </div>
+
+      <!-- ARTIKEL 3 -->
+      <div class="article-card" data-category="perdata">
+        <div>
+          <span class="card-category-tag cat-perdata">Perdata & Kontrak</span>
+          <h3>Batas Tegas Antara Gagal Bayar (Wanprestasi) dan Tindak Pidana Penipuan</h3>
+          <p class="excerpt">
+            Banyak perkara utang-piutang atau bisnis dilaporkan ke polisi sebagai pasal 378 KUHP (Penipuan). Pelajari yurisprudensi Mahkamah Agung yang menegaskan sengketa perjanjian perdata murni tidak boleh dipidanakan.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span>Oleh: <strong>Senior Counsel DPP</strong></span>
+          <span>6 Menit Baca</span>
+        </div>
+      </div>
+
+      <!-- ARTIKEL 4 -->
+      <div class="article-card" data-category="ketenagakerjaan">
+        <div>
+          <span class="card-category-tag cat-ketenagakerjaan">Ketenagakerjaan</span>
+          <h3>Langkah Hukum Buruh Menghadapi PHK Sepihak Tanpa Pesangon</h3>
+          <p class="excerpt">
+            Panduan praktis perundingan bipartit, mediasi tripartit di Dinas Tenaga Kerja, hingga tata cara pengajuan gugatan ke Pengadilan Hubungan Industrial (PHI) berdasarkan UU Ketenagakerjaan terbaru.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span>Oleh: <strong>Legal Researcher DPP</strong></span>
+          <span>5 Menit Baca</span>
+        </div>
+      </div>
+
+      <!-- ARTIKEL 5 -->
+      <div class="article-card" data-category="pidana">
+        <div>
+          <span class="card-category-tag cat-pidana">Hukum Pidana</span>
+          <h3>Mekanisme Keadilan Restoratif (Restorative Justice) dalam Kasus Pidana Ringan</h3>
+          <p class="excerpt">
+            Tidak semua laporan pidana harus berakhir di penjara. Kenali kriteria perdamaian resmi di tingkat kepolisian dan kejaksaan sesuai Peraturan Kapolri dan Peraturan Kejaksaan RI.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span>Oleh: <strong>Tim Advokat Publik DPP</strong></span>
+          <span>4 Menit Baca</span>
+        </div>
+      </div>
+
+      <!-- ARTIKEL 6 -->
+      <div class="article-card" data-category="perdata">
+        <div>
+          <span class="card-category-tag cat-perdata">Perdata & Kontrak</span>
+          <h3>Pentingnya Somasi Tertulis Sebelum Mengajukan Gugatan ke Pengadilan</h3>
+          <p class="excerpt">
+            Surat peringatan resmi (somasi) bukan sekadar formalitas, melainkan bukti otentik bahwa pihak debitur/mitra telah berada dalam keadaan lalai (*ingebrekestelling*) sebelum gugatan diajukan.
+          </p>
+        </div>
+        <div class="article-meta">
+          <span>Oleh: <strong>Divisi Riset DPP</strong></span>
+          <span>4 Menit Baca</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA KONSULTASI BOTTOM -->
+    <div class="edu-cta-banner">
+      <div class="edu-cta-text">
+        <h3>Memiliki Persoalan Hukum Serupa?</h3>
+        <p>Konsultasikan kasus atau dokumen perjanjian Anda secara langsung bersama tim advokat piket HALO LAPAN.</p>
+      </div>
+      <div>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20membaca%20artikel%20edukasi%20dan%20ingin%20berkonsultasi" target="_blank" class="btn-wa-edu">
+          💬 Konsultasi via HALO LAPAN
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-wrapper">
+    © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
+  </footer>
+
+  <script>
+    function filterArticles(category) {
+      const cards = document.querySelectorAll('.article-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchArticles() {
+      const keyword = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.article-card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const excerpt = card.querySelector('.excerpt').textContent.toLowerCase();
+
+        if (title.includes(keyword) || excerpt.includes(keyword)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
