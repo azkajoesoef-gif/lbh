@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Layanan & Syarat Bantuan Hukum - LBH LAPAN</title>
+  <title>Layanan, SKTM & Legal Retainer - LBH LAPAN</title>
+
+  <!-- FAVICON RESMI -->
+  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +31,7 @@
       min-height: 100vh;
     }
 
-    /* NAVBAR */
+    /* 1. NAVBAR STANDAR RESMI */
     .header-nav {
       background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
       border-bottom: 3px solid #fb8500;
@@ -82,7 +85,9 @@
       line-height: 1.15;
     }
 
-    .brand-text h1 span { color: #fb8500; }
+    .brand-text h1 span {
+      color: #fb8500;
+    }
 
     .brand-text p {
       font-size: 10px;
@@ -92,22 +97,92 @@
       text-transform: uppercase;
     }
 
+    /* MENU DESKTOP */
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 12px;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link-btn {
       color: #cbd5e1;
       text-decoration: none;
       font-size: 13.5px;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: #fb8500; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active {
+      color: #fb8500;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link-btn span.arrow {
+      font-size: 10px;
+      transition: transform 0.2s;
+    }
+
+    .nav-item:hover .nav-link-btn span.arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0b192c;
+      border: 1px solid #1e3e62;
+      border-top: 3px solid #fb8500;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      min-width: 220px;
+      padding: 8px;
+      list-style: none;
+      z-index: 1000;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(251, 133, 0, 0.15);
+      color: #fb8500;
+      padding-left: 15px;
+    }
 
     .header-actions {
       display: flex;
@@ -124,6 +199,7 @@
       font-size: 12.5px;
       font-weight: 700;
       text-decoration: none;
+      transition: all 0.2s;
     }
 
     .btn-kta-top:hover {
@@ -144,10 +220,98 @@
       gap: 6px;
     }
 
-    /* MAIN CONTENT */
+    .btn-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 4px 6px;
+      line-height: 1;
+    }
+
+    /* DRAWER MENU HP */
+    .mobile-menu-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #0b192c;
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      padding: 14px 18px 20px 18px;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .mobile-menu-drawer.active {
+      display: flex;
+    }
+
+    .m-item-title {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .m-sub-wrap {
+      display: none;
+      flex-direction: column;
+      padding-left: 12px;
+      gap: 4px;
+      margin: 4px 0 8px 0;
+    }
+
+    .m-sub-wrap.open {
+      display: flex;
+    }
+
+    .m-sub-wrap a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .m-sub-wrap a:hover {
+      color: #fb8500;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .m-direct-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      display: block;
+    }
+
+    /* MAIN WRAP */
     .main-wrap {
       flex: 1;
-      max-width: 1050px;
+      max-width: 1080px;
       width: 100%;
       margin: 0 auto;
       padding: 36px 16px 50px 16px;
@@ -181,43 +345,54 @@
     .page-header p {
       color: #64748b;
       font-size: 14px;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
     }
 
-    /* CARD SECTION */
-    .service-detail-card {
+    /* SECTION KARTU UTAMA */
+    .service-section-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 32px 26px;
-      margin-bottom: 28px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      margin-bottom: 36px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
 
-    .service-detail-card.green-border {
-      border-top: 5px solid #15803d;
+    .service-section-card.probono-card {
+      border-top: 5px solid #16a34a;
     }
 
-    .service-detail-card.orange-border {
+    .service-section-card.retainer-card {
       border-top: 5px solid #fb8500;
+      background: linear-gradient(180deg, #ffffff 0%, #fffcf8 100%);
     }
 
-    .card-title-row {
+    .service-section-card.prof-card {
+      border-top: 5px solid #0284c7;
+    }
+
+    .header-with-badge {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
       flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 12px;
     }
 
-    .card-title-row h3 {
-      font-size: 1.45rem;
+    .header-with-badge h3 {
+      font-size: 1.4rem;
       font-weight: 800;
       color: #0b192c;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .badge-pill {
+    .type-pill {
       font-size: 11px;
       font-weight: 800;
       padding: 4px 12px;
@@ -225,31 +400,34 @@
       text-transform: uppercase;
     }
 
-    .badge-pro { background: #dcfce7; color: #15803d; }
-    .badge-bisnis { background: #fff7ed; color: #c2410c; }
+    .pill-green { background: #dcfce7; color: #15803d; }
+    .pill-gold { background: #fef3c7; color: #b45309; }
+    .pill-blue { background: #e0f2fe; color: #0369a1; }
 
-    .desc-text {
-      color: #475569;
+    .service-desc {
       font-size: 13.5px;
-      line-height: 1.65;
+      color: #475569;
+      line-height: 1.7;
       margin-bottom: 20px;
+      text-align: justify;
     }
 
-    .grid-info-box {
+    /* GRID SYARAT & KETENTUAN */
+    .req-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 22px;
+      gap: 18px;
+      margin-bottom: 24px;
     }
 
-    .sub-info-block {
+    .req-box {
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 18px 16px;
+      border-radius: 14px;
+      padding: 20px;
     }
 
-    .sub-info-block h4 {
+    .req-box h4 {
       font-size: 13.5px;
       font-weight: 800;
       color: #0b192c;
@@ -259,85 +437,182 @@
       gap: 8px;
     }
 
-    .sub-info-block ul {
+    .req-list {
       list-style: none;
     }
 
-    .sub-info-block li {
+    .req-list li {
       font-size: 12.5px;
       color: #475569;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: flex-start;
       gap: 8px;
       line-height: 1.5;
     }
 
-    .sub-info-block li span.bullet {
-      color: #fb8500;
+    .req-list li span.check {
+      color: #16a34a;
       font-weight: 800;
       flex-shrink: 0;
     }
 
-    /* SKTM BOX */
-    .sktm-highlight {
-      background: #f0fdf4;
-      border: 1.5px dashed #86efac;
+    /* GRID RETAINER FITUR */
+    .retainer-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .retainer-item {
+      background: #ffffff;
+      border: 1.5px solid #fed7aa;
       border-radius: 14px;
       padding: 20px;
-      margin-top: 14px;
+      box-shadow: 0 4px 10px rgba(251, 133, 0, 0.04);
+      transition: transform 0.2s, border-color 0.2s;
     }
 
-    .sktm-highlight h4 {
+    .retainer-item:hover {
+      transform: translateY(-2px);
+      border-color: #fb8500;
+    }
+
+    .retainer-item span.icon {
+      font-size: 26px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .retainer-item h4 {
       font-size: 13.5px;
       font-weight: 800;
-      color: #15803d;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      color: #0b192c;
+      margin-bottom: 6px;
     }
 
-    .sktm-highlight p {
-      font-size: 12.5px;
-      color: #166534;
+    .retainer-item p {
+      font-size: 12px;
+      color: #64748b;
       line-height: 1.55;
     }
 
-    .card-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
+    /* CAKUPAN BIDANG PROFESIONAL */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
     }
 
-    .btn-action-main {
+    .scope-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .scope-item:hover {
+      transform: translateY(-2px);
+      border-color: #fb8500;
+    }
+
+    .scope-item span.icon {
+      font-size: 24px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .scope-item h5 {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 4px;
+    }
+
+    .scope-item p {
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    /* CTA BANNER BOTTOM */
+    .cta-banner {
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 30px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 18px;
+      box-shadow: 0 8px 25px -4px rgba(11, 25, 44, 0.25);
+    }
+
+    .cta-banner-text h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: #ffffff;
+    }
+
+    .cta-banner-text p {
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    .btn-cta-link {
       background: #fb8500;
       color: #ffffff;
-      padding: 11px 20px;
+      padding: 12px 22px;
       border-radius: 10px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      transition: opacity 0.2s;
     }
 
-    .btn-action-halo {
+    .btn-cta-link:hover {
+      opacity: 0.92;
+    }
+
+    /* FLOATING BUTTON & FOOTER */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
       background: #25d366;
       color: #ffffff;
-      padding: 11px 20px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      z-index: 9999;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    /* FOOTER */
+    .floating-wa-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .floating-wa-btn span.icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
     .footer-wrapper {
       background: #0b192c;
       color: #94a3b8;
@@ -347,17 +622,21 @@
       font-size: 12px;
     }
 
-    @media (max-width: 860px) {
-      .nav-links, .brand-text p { display: none; }
-      .grid-info-box { grid-template-columns: 1fr; }
-      .service-detail-card { padding: 22px 16px; }
-      .btn-action-main, .btn-action-halo { width: 100%; justify-content: center; }
+    @media (max-width: 960px) {
+      .nav-links, .btn-kta-top, .brand-text p { display: none; }
+      .btn-hamburger { display: block; }
+      .req-grid { grid-template-columns: 1fr; }
+      .retainer-features-grid { grid-template-columns: 1fr; }
+      .scope-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; text-align: center; }
+      .btn-cta-link { width: 100%; justify-content: center; }
+      .floating-wa-btn { bottom: 16px; right: 16px; padding: 10px 14px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- 1. NAVBAR STANDAR RESMI -->
   <header class="header-nav">
     <div class="header-container">
       <a href="index.html" class="brand-link">
@@ -370,116 +649,282 @@
         </div>
       </a>
 
+      <!-- MENU DESKTOP -->
       <ul class="nav-links">
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="layanan.html" class="active">Layanan & SKTM</a></li>
-        <li><a href="alur.html">Alur SOP</a></li>
-        <li><a href="pengurus.html">Pengurus DPP</a></li>
-        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+        <li class="nav-item">
+          <a href="index.html" class="nav-link-btn">Beranda</a>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Tentang Kami <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="tentang.html">🏛️ Sejarah & Logo Lambang</a></li>
+            <li><a href="pengurus.html">👔 Struktur Pengurus DPP</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn active">
+            Bantuan Hukum <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
+            <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
+            <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Publikasi <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="berita.html">📰 Kabar Berita & Siaran Pers</a></li>
+            <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
+          </ul>
+        </li>
       </ul>
 
+      <!-- TOMBOL AKSI & HAMBURGER HP -->
       <div class="header-actions">
         <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
           💬 HALO LAPAN
         </a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()" aria-label="Buka Menu">
+          ☰
+        </button>
       </div>
+    </div>
+
+    <!-- DRAWER MENU HP -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="index.html" class="m-direct-link">🏠 Beranda</a>
+      
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mTentang')">
+          <span>🏛️ Tentang Kami</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mTentang">
+          <a href="tentang.html">Sejarah Lembaga & Makna Lambang</a>
+          <a href="pengurus.html">Bagan Struktur Pengurus DPP</a>
+        </div>
+      </div>
+
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mBantuan')">
+          <span style="color:#fb8500;">⚖️ Bantuan Hukum</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap open" id="mBantuan">
+          <a href="layanan.html" style="color:#fb8500; font-weight:700;">Layanan, SKTM & Legal Retainer</a>
+          <a href="alur.html">Alur SOP Penanganan Kasus</a>
+          <a href="pengaduan.html">Formulir Pengaduan Online</a>
+        </div>
+      </div>
+
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')">
+          <span>📰 Publikasi & Edukasi</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mPublikasi">
+          <a href="berita.html">Kabar Berita & Siaran Pers</a>
+          <a href="edukasi.html">Edukasi & Opini Hukum</a>
+        </div>
+      </div>
+
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center; margin-top:8px;">
+        🔍 Verifikasi KTA Anggota Resmi
+      </a>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN WRAP -->
   <main class="main-wrap">
     <div class="page-header">
-      <span class="badge-tag">Pilar Penegakan Keadilan</span>
-      <h2>Layanan Hukum & Ketentuan Bantuan</h2>
-      <p>LBH LAPAN hadir memberikan pendampingan hukum yang adil, transparan, dan terpercaya bagi masyarakat marginal serta penanganan perkara khusus secara profesional.</p>
+      <span class="badge-tag">Pilar Pelayanan Hukum</span>
+      <h2>Layanan Advokasi, Syarat SKTM & Legal Retainer</h2>
+      <p>Skema bantuan hukum cuma-cuma (Pro Bono), pendampingan hukum korporasi berkelanjutan (Legal Retainer), serta advokasi perkara khusus.</p>
     </div>
 
-    <!-- 1. PRO BONO -->
-    <div class="service-detail-card green-border">
-      <div class="card-title-row">
-        <h3>Bantuan Hukum Pro Bono (Cuma-Cuma)</h3>
-        <span class="badge-pill badge-pro">100% Bebas Honorarium</span>
+    <!-- SEKSI 1: BANTUAN HUKUM PRO BONO -->
+    <div class="service-section-card probono-card">
+      <div class="header-with-badge">
+        <h3>🤝 Bantuan Hukum Pro Bono (Cuma-Cuma)</h3>
+        <span class="type-pill pill-green">Bebas Biaya Advokat / 100% Gratis</span>
       </div>
-      <p class="desc-text">
-        Sesuai amanat <strong>Undang-Undang Republik Indonesia Nomor 16 Tahun 2011 tentang Bantuan Hukum</strong>, LBH LAPAN menjamin setiap orang miskin atau kelompok orang miskin yang menghadapi masalah hukum berhak mendapatkan akses keadilan secara gratis tanpa dipungut honorarium advokat.
+
+      <p class="service-desc">
+        Berdasarkan <strong>Undang-Undang Republik Indonesia Nomor 16 Tahun 2011 tentang Bantuan Hukum</strong>, LBH LAPAN menyediakan pendampingan dan pembelaan hukum tanpa memungut honorarium advokat khusus bagi warga negara atau kelompok masyarakat miskin yang menghadapi permasalahan hukum pidana, perdata, maupun tata usaha negara.
       </p>
 
-      <div class="grid-info-box">
-        <div class="sub-info-block">
-          <h4>⚖️ Ruang Lingkup Perkara</h4>
-          <ul>
-            <li><span class="bullet">✓</span> Pendampingan tindak pidana (Tersangka, Saksi, atau Korban) di Kepolisian dan Kejaksaan.</li>
-            <li><span class="bullet">✓</span> Pembelaan dan advokasi sidang di Pengadilan Negeri hingga berkekuatan hukum tetap.</li>
-            <li><span class="bullet">✓</span> Gugatan sengketa perdata masyarakat marjinal.</li>
-            <li><span class="bullet">✓</span> Mediasi perkara hak perempuan, anak, dan buruh rentan.</li>
+      <!-- SYARAT SKTM -->
+      <div class="req-grid">
+        <div class="req-box">
+          <h4>📄 Persyaratan Administrasi SKTM</h4>
+          <ul class="req-list">
+            <li><span class="check">✓</span> Surat Keterangan Tidak Mampu (SKTM) asli dari Kepala Desa atau Lurah setempat.</li>
+            <li><span class="check">✓</span> Atau Kartu Jaminan Sosial resmi (KPS, KIS, PKH, KIP, dsb).</li>
+            <li><span class="check">✓</span> Salinan Kartu Tanda Penduduk (KTP) & Kartu Keluarga (KK) pemohon yang masih berlaku.</li>
+            <li><span class="check">✓</span> Mengisi formulir resume kronologi fakta perkara secara tertulis dan jujur.</li>
           </ul>
         </div>
 
-        <div class="sub-info-block">
-          <h4>📋 Dokumen Persyaratan Pro Bono</h4>
-          <ul>
-            <li><span class="bullet">✓</span> Fotokopi KTP / Kartu Keluarga pemohon yang sah.</li>
-            <li><span class="bullet">✓</span> <strong>Surat Keterangan Tidak Mampu (SKTM)</strong> dari Lurah / Kepala Desa setempat (atau kartu jaminan sosial: KIS / PKH / KIP).</li>
-            <li><span class="bullet">✓</span> Surat panggilan kepolisian / resume kronologi perkara.</li>
-            <li><span class="bullet">✓</span> Mengisi formulir permohonan bantuan hukum resmi.</li>
+        <div class="req-box">
+          <h4>⚖️ Ruang Lingkup Pendampingan</h4>
+          <ul class="req-list">
+            <li><span class="check">✓</span> <strong>Litigasi Pidana:</strong> Pendampingan proses BAP penyidikan polisi/kejaksaan hingga pembelaan di sidang pengadilan.</li>
+            <li><span class="check">✓</span> <strong>Litigasi Perdata:</strong> Gugatan atau perlawanan hak atas tanah, sengketa keluarga, dan waris.</li>
+            <li><span class="check">✓</span> <strong>Non-Litigasi:</strong> Konsultasi hukum, mediasi damai, drafting somasi, serta penyuluhan hukum warga.</li>
           </ul>
         </div>
       </div>
 
-      <div class="sktm-highlight">
-        <h4>📄 Ketentuan Khusus Surat Keterangan Tidak Mampu (SKTM)</h4>
-        <p>Bagi warga yang berstatus tersangka dan sedang dalam penahanan sehingga tidak memungkinkan mengurus SKTM secara langsung, pengurusan dokumen persyaratan dapat diwakilkan oleh keluarga sedarah / ahli waris sah dengan membawa bukti fotokopi KK.</p>
-      </div>
-
-      <div class="card-actions">
-        <a href="pengaduan.html" class="btn-action-main">📝 Isi Formulir Permohonan Pro Bono</a>
-        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konsultasi%20syarat%20SKTM%20Pro%20Bono" target="_blank" class="btn-action-halo">💬 Konsultasi Syarat via HALO LAPAN</a>
+      <!-- CATATAN INTEGRITAS -->
+      <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px 16px; border-radius:10px; font-size:12.5px; color:#166534;">
+        <strong>Komitmen Integritas:</strong> Advokat dan Paralegal LBH LAPAN dilarang keras menerima suap, uang terima kasih, atau gratifikasi dalam bentuk apa pun dari penerima bantuan hukum Pro Bono.
       </div>
     </div>
 
-    <!-- 2. PROFESIONAL -->
-    <div class="service-detail-card orange-border">
-      <div class="card-title-row">
-        <h3>Advokasi Hukum Profesional & Korporasi</h3>
-        <span class="badge-pill badge-bisnis">Kasus Khusus & Entitas Bisnis</span>
+    <!-- SEKSI 2: LAYANAN LEGAL RETAINER (BARU) -->
+    <div class="service-section-card retainer-card">
+      <div class="header-with-badge">
+        <h3>🛡️ Layanan Mitra Hukum Tetap (Legal Retainer)</h3>
+        <span class="type-pill pill-gold">Konsultan Hukum Korporasi & UMKM</span>
       </div>
-      <p class="desc-text">
-        Bagi perseorangan berpenghasilan, badan usaha, UMKM, maupun korporasi yang memerlukan penanganan sengketa hukum strategis, LBH LAPAN menyediakan divisi advokat khusus dengan skema operasional transparan berstandar kode etik profesi advokat Republik Indonesia.
+
+      <p class="service-desc">
+        Layanan <strong>Legal Retainer LBH LAPAN</strong> dirancang khusus sebagai mitra hukum strategis (*in-house counsel eksternal*) bagi entitas bisnis, pelaku UMKM, yayasan, koperasi, maupun perseorangan profesional guna memastikan seluruh operasional berjalan sesuai koridor hukum dan terlindungi dari risiko litigasi yang merugikan.
       </p>
 
-      <div class="grid-info-box">
-        <div class="sub-info-block">
-          <h4>🏢 Ruang Lingkup Layanan Komersial</h4>
-          <ul>
-            <li><span class="bullet">✓</span> <strong>Sengketa Tanah & Agraria:</strong> Penguasaan fisik, penyerobotan lahan, dan tumpang tindih sertifikat.</li>
-            <li><span class="bullet">✓</span> <strong>Sengketa Bisnis & Kontrak:</strong> Wanprestasi, perbuatan melawan hukum (PMH), dan penagihan komersial.</li>
-            <li><span class="bullet">✓</span> <strong>Ketenagakerjaan (PHI):</strong> Penyelesaian perselisihan hubungan industrial dan mitigasi audit ketenagakerjaan.</li>
-            <li><span class="bullet">✓</span> <strong>Tindakan Pidana Khusus:</strong> Tipikor, kejahatan siber, perlindungan konsumen, dan sengketa perbankan.</li>
-          </ul>
+      <div class="retainer-features-grid">
+        <div class="retainer-item">
+          <span class="icon">📑</span>
+          <h4>Penyusunan & Audit Kontrak</h4>
+          <p>Pembuatan serta penelaahan berkala perjanjian kerja sama, MoUs, kontrak ketenagakerjaan, dan mitigasi klausul berisiko tinggi.</p>
         </div>
 
-        <div class="sub-info-block">
-          <h4>🛡️ Skema Penanganan Perkara</h4>
-          <ul>
-            <li><span class="bullet">✓</span> <strong>Audit Yuridis Awal:</strong> Telaah dokumen dan konstruksi legal standing perkara.</li>
-            <li><span class="bullet">✓</span> <strong>Jalur Non-Litigasi:</strong> Negosiasi bipartit, mediasi komersial, somasi resmi lembaga, dan perdamaian (*dading*).</li>
-            <li><span class="bullet">✓</span> <strong>Jalur Litigasi Penuh:</strong> Beracara di Pengadilan Negeri, Pengadilan Niaga, PTUN, hingga Kasasi & PK Mahkamah Agung.</li>
-          </ul>
+        <div class="retainer-item">
+          <span class="icon">💬</span>
+          <h4>Konsultasi Yuridis Rutin</h4>
+          <p>Akses prioritas konsultasi hukum harian bagi jajaran direksi/manajemen baik via kanal digital langsung, rapat virtual, maupun tatap muka.</p>
+        </div>
+
+        <div class="retainer-item">
+          <span class="icon">✉️</span>
+          <h4>Penerbitan Surat & Somasi</h4>
+          <p>Pembuatan somasi resmi berkop surat LBH LAPAN, surat tanggapan hukum, legal opinion, serta representasi mediasi sengketa piutang.</p>
+        </div>
+
+        <div class="retainer-item">
+          <span class="icon">👥</span>
+          <h4>Hubungan Tenaga Kerja</h4>
+          <p>Mitigasi sengketa ketenagakerjaan, audit peraturan perusahaan (PP), perjanjian kerja bersama (PKB), serta perundingan bipartit.</p>
+        </div>
+
+        <div class="retainer-item">
+          <span class="icon">🔍</span>
+          <h4>Kepatuhan Regulasi (Compliance)</h4>
+          <p>Pemantauan izin usaha, kepatuhan hukum sektoral, serta pendampingan menghadapi pemeriksaan dinas/instansi terkait.</p>
+        </div>
+
+        <div class="retainer-item">
+          <span class="icon">⚖️</span>
+          <h4>Prioritas Pendampingan Sidang</h4>
+          <p>Skema tarif operasional khusus yang transparan dan prioritas alokasi tim advokat litigasi apabila perkara bergulir ke ranah peradilan.</p>
         </div>
       </div>
 
-      <div class="card-actions">
-        <a href="pengaduan.html" class="btn-action-main">⚖️ Ajukan Kasus Profesional</a>
-        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konsultasi%20Advokasi%20Kasus%20Profesional" target="_blank" class="btn-action-halo">💬 Jadwalkan Diskusi via HALO LAPAN</a>
+      <div style="text-align: right;">
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20mengenai%20skema%20kemitraan%20Legal%20Retainer" target="_blank" class="btn-cta-link" style="background:#0b192c; font-size:12.5px; padding:10px 20px;">
+          🤝 Konsultasi Kemitraan Retainer via WhatsApp →
+        </a>
+      </div>
+    </div>
+
+    <!-- SEKSI 3: ADVOKASI PROFESIONAL & KORPORASI -->
+    <div class="service-section-card prof-card">
+      <div class="header-with-badge">
+        <h3>🏢 Kasus Khusus & Litigasi Non-Retainer</h3>
+        <span class="type-pill pill-blue">Penanganan Perkara Non-Rutin</span>
+      </div>
+
+      <p class="service-desc">
+        Divisi Advokasi Khusus DPP LBH LAPAN juga menerima penanganan perkara secara *case-by-case* untuk sengketa bernilai material signifikan yang membutuhkan pendampingan kuasa hukum intensif.
+      </p>
+
+      <!-- BIDANG SPESIALISASI -->
+      <div class="scope-grid">
+        <div class="scope-item">
+          <span class="icon">📜</span>
+          <h5>Sengketa Komersial</h5>
+          <p>Gugatan perbuatan melawan hukum (PMH), wanprestasi eksekusi jaminan, dan kepailitan/PKPU.</p>
+        </div>
+
+        <div class="scope-item">
+          <span class="icon">🏡</span>
+          <h5>Sengketa Lahan & Properti</h5>
+          <p>Penyelesaian sengketa kepemilikan tanah tumpang tindih sertifikat (SHM/HGB) dan sengketa agraria.</p>
+        </div>
+
+        <div class="scope-item">
+          <span class="icon">🛡️</span>
+          <h5>Tindak Pidana Korporasi</h5>
+          <p>Pembelaan pidana penipuan, penggelapan dalam jabatan, dan perlindungan saksi/ahli di kepolisian.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER BOTTOM -->
+    <div class="cta-banner">
+      <div class="cta-banner-text">
+        <h3>Memerlukan Bantuan Hukum Segera?</h3>
+        <p>Konsultasikan persoalan hukum Anda melalui posko HALO LAPAN atau isi formulir aduan perkara online.</p>
+      </div>
+      <div>
+        <a href="pengaduan.html" class="btn-cta-link">
+          📝 Ajukan Pengaduan Sekarang →
+        </a>
       </div>
     </div>
 
   </main>
 
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
+    <span class="icon">💬</span>
+    <span>HALO LAPAN</span>
+  </a>
+
+  <!-- FOOTER -->
   <footer class="footer-wrapper">
     © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
   </footer>
+
+  <!-- SCRIPT DRAWER MENU HP -->
+  <script>
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.toggle('active');
+    }
+
+    function toggleAccordion(id) {
+      const subMenu = document.getElementById(id);
+      subMenu.classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(e) {
+      const drawer = document.getElementById('mobileDrawer');
+      const btn = document.querySelector('.btn-hamburger');
+      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        drawer.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
