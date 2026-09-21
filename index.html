@@ -735,7 +735,37 @@
       transform: translateY(-2px);
     }
 
-    /* 10. FOOTER */
+    /* 10. TOMBOL MENGAMBANG WHATSAPP (FLOATING WIDGET) */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      z-index: 9999;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .floating-wa-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .floating-wa-btn span.icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* 11. FOOTER */
     .footer-wrapper {
       background: linear-gradient(180deg, #0b192c 0%, #060e1a 100%);
       color: #cbd5e1;
@@ -886,7 +916,7 @@
         display: none;
       }
       .btn-hamburger {
-        display: block; /* MUNCULKAN TOMBOL ☰ DI HP */
+        display: block;
       }
       .header-actions {
         gap: 6px;
@@ -940,6 +970,12 @@
         flex-direction: column;
         text-align: center;
       }
+      .floating-wa-btn {
+        bottom: 16px;
+        right: 16px;
+        padding: 10px 14px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
@@ -980,7 +1016,7 @@
       </div>
     </div>
 
-    <!-- LACI MENU TAMPILAN HP (OTOMATIS MUNCUL SAAT ☰ DIKLIK) -->
+    <!-- LACI MENU TAMPILAN HP -->
     <div class="mobile-menu-drawer" id="mobileDrawer">
       <a href="index.html" class="active">🏠 Beranda</a>
       <a href="layanan.html">⚖️ Layanan & Syarat SKTM</a>
@@ -1239,7 +1275,13 @@
 
   </div>
 
-  <!-- 10. FOOTER -->
+  <!-- 10. TOMBOL MENGAMBANG WHATSAPP (FLOATING WIDGET) -->
+  <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
+    <span class="icon">💬</span>
+    <span>HALO LAPAN</span>
+  </a>
+
+  <!-- 11. FOOTER -->
   <footer class="footer-wrapper">
     <div class="footer-container">
       
@@ -1295,13 +1337,11 @@
 
   <!-- SCRIPT FAQ & DRAWER MENU HP -->
   <script>
-    // FUNGSI BUKA TUTUP MENU HP (☰)
     function toggleMobileMenu() {
       const drawer = document.getElementById('mobileDrawer');
       drawer.classList.toggle('active');
     }
 
-    // Menutup menu jika user menyentuh di luar area menu
     document.addEventListener('click', function(e) {
       const drawer = document.getElementById('mobileDrawer');
       const btn = document.querySelector('.btn-hamburger');
@@ -1310,7 +1350,6 @@
       }
     });
 
-    // FUNGSI FAQ ACCORDION
     document.querySelectorAll('.faq-question').forEach(item => {
       item.addEventListener('click', () => {
         item.parentElement.classList.toggle('active');
