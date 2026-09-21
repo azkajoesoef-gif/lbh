@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulir Pengaduan Hukum - HALO LAPAN</title>
+  <title>Formulir Pengaduan Kasus - LBH LAPAN</title>
+
+  <!-- FAVICON RESMI -->
+  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,7 +31,7 @@
       min-height: 100vh;
     }
 
-    /* NAVBAR */
+    /* 1. NAVBAR STANDAR RESMI */
     .header-nav {
       background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
       border-bottom: 3px solid #fb8500;
@@ -82,7 +85,9 @@
       line-height: 1.15;
     }
 
-    .brand-text h1 span { color: #fb8500; }
+    .brand-text h1 span {
+      color: #fb8500;
+    }
 
     .brand-text p {
       font-size: 10px;
@@ -92,22 +97,92 @@
       text-transform: uppercase;
     }
 
+    /* MENU DESKTOP */
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 12px;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link-btn {
       color: #cbd5e1;
       text-decoration: none;
       font-size: 13.5px;
-      font-weight: 600;
-      transition: color 0.2s;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+      cursor: pointer;
+      background: none;
+      border: none;
     }
 
-    .nav-links a:hover, .nav-links a.active { color: #fb8500; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active {
+      color: #fb8500;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link-btn span.arrow {
+      font-size: 10px;
+      transition: transform 0.2s;
+    }
+
+    .nav-item:hover .nav-link-btn span.arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0b192c;
+      border: 1px solid #1e3e62;
+      border-top: 3px solid #fb8500;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      min-width: 220px;
+      padding: 8px;
+      list-style: none;
+      z-index: 1000;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(251, 133, 0, 0.15);
+      color: #fb8500;
+      padding-left: 15px;
+    }
 
     .header-actions {
       display: flex;
@@ -124,6 +199,7 @@
       font-size: 12.5px;
       font-weight: 700;
       text-decoration: none;
+      transition: all 0.2s;
     }
 
     .btn-kta-top:hover {
@@ -144,7 +220,95 @@
       gap: 6px;
     }
 
-    /* CONTAINER UTAMA */
+    .btn-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 4px 6px;
+      line-height: 1;
+    }
+
+    /* DRAWER MENU HP */
+    .mobile-menu-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #0b192c;
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      padding: 14px 18px 20px 18px;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .mobile-menu-drawer.active {
+      display: flex;
+    }
+
+    .m-item-title {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .m-sub-wrap {
+      display: none;
+      flex-direction: column;
+      padding-left: 12px;
+      gap: 4px;
+      margin: 4px 0 8px 0;
+    }
+
+    .m-sub-wrap.open {
+      display: flex;
+    }
+
+    .m-sub-wrap a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .m-sub-wrap a:hover {
+      color: #fb8500;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .m-direct-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      display: block;
+    }
+
+    /* MAIN WRAP */
     .main-wrap {
       flex: 1;
       max-width: 820px;
@@ -153,44 +317,45 @@
       padding: 36px 16px 50px 16px;
     }
 
-    .form-box {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 36px 28px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+    .page-header {
+      text-align: center;
+      margin-bottom: 30px;
     }
 
-    .badge-halo {
+    .badge-tag {
       display: inline-block;
-      background: rgba(37, 211, 102, 0.15);
-      color: #15803d;
+      background: rgba(251, 133, 0, 0.12);
+      color: #fb8500;
       font-size: 11px;
       font-weight: 800;
       padding: 4px 14px;
       border-radius: 50px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    .form-header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .form-header h2 {
-      font-size: 1.65rem;
+    .page-header h2 {
+      font-size: 1.85rem;
       font-weight: 800;
       color: #0b192c;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .form-header p {
+    .page-header p {
       color: #64748b;
-      font-size: 13.5px;
-      max-width: 580px;
+      font-size: 14px;
+      max-width: 620px;
       margin: 0 auto;
+    }
+
+    /* KARTU FORMULIR PENGADUAN */
+    .form-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 26px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
     }
 
     .form-group {
@@ -205,97 +370,107 @@
       margin-bottom: 6px;
     }
 
-    .form-group label span {
+    .form-group label span.req {
       color: #ef4444;
     }
 
-    .form-control {
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
       width: 100%;
       padding: 12px 14px;
       border-radius: 10px;
       border: 1.5px solid #cbd5e1;
       font-size: 13.5px;
+      color: #1e293b;
       outline: none;
-      transition: border-color 0.2s;
-      background: #f8fafc;
-    }
-
-    .form-control:focus {
-      border-color: #fb8500;
       background: #ffffff;
+      transition: border-color 0.2s;
     }
 
-    .radio-pill-group {
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #fb8500;
+    }
+
+    .form-row-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 16px;
     }
 
-    .radio-pill-item {
-      position: relative;
+    .help-hint {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 4px;
     }
 
-    .radio-pill-item input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-
-    .radio-pill-item label {
-      display: block;
-      padding: 12px 14px;
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      text-align: center;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 700;
-      color: #475569;
-      transition: all 0.2s;
-      background: #f8fafc;
-    }
-
-    .radio-pill-item input:checked + label {
-      border-color: #fb8500;
-      background: #fff7ed;
-      color: #c2410c;
-    }
-
-    .notice-card {
-      background: #f1f5f9;
-      border-left: 4px solid #fb8500;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 12px;
-      color: #475569;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .btn-submit-halo {
-      width: 100%;
+    .btn-submit-form {
       background: #25d366;
       color: #ffffff;
       border: none;
+      width: 100%;
       padding: 14px;
-      border-radius: 12px;
+      border-radius: 10px;
       font-size: 14px;
       font-weight: 800;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
       transition: opacity 0.2s, transform 0.2s;
+      margin-top: 10px;
     }
 
-    .btn-submit-halo:hover {
+    .btn-submit-form:hover {
       opacity: 0.92;
       transform: translateY(-2px);
     }
 
-    /* FOOTER */
+    .security-note {
+      text-align: center;
+      font-size: 11.5px;
+      color: #94a3b8;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* FLOATING BUTTON & FOOTER */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      z-index: 9999;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .floating-wa-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .floating-wa-btn span.icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
     .footer-wrapper {
       background: #0b192c;
       color: #94a3b8;
@@ -305,16 +480,17 @@
       font-size: 12px;
     }
 
-    @media (max-width: 860px) {
-      .nav-links, .brand-text p { display: none; }
-      .radio-pill-group { grid-template-columns: 1fr; }
-      .form-box { padding: 24px 16px; }
+    @media (max-width: 960px) {
+      .nav-links, .btn-kta-top, .brand-text p { display: none; }
+      .btn-hamburger { display: block; }
+      .form-row-2 { grid-template-columns: 1fr; gap: 0; }
+      .floating-wa-btn { bottom: 16px; right: 16px; padding: 10px 14px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- 1. NAVBAR STANDAR RESMI -->
   <header class="header-nav">
     <div class="header-container">
       <a href="index.html" class="brand-link">
@@ -327,134 +503,227 @@
         </div>
       </a>
 
+      <!-- MENU DESKTOP -->
       <ul class="nav-links">
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="layanan.html">Layanan & SKTM</a></li>
-        <li><a href="alur.html">Alur SOP</a></li>
-        <li><a href="pengurus.html">Pengurus DPP</a></li>
-        <li><a href="pengaduan.html" class="active">Formulir Aduan</a></li>
+        <li class="nav-item">
+          <a href="index.html" class="nav-link-btn">Beranda</a>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Tentang Kami <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="tentang.html">🏛️ Sejarah & Logo Lambang</a></li>
+            <li><a href="pengurus.html">👔 Struktur Pengurus DPP</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn active">
+            Bantuan Hukum <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
+            <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
+            <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link-btn">
+            Publikasi <span class="arrow">▼</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="berita.html">📰 Kabar Berita & Siaran Pers</a></li>
+            <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
+          </ul>
+        </li>
       </ul>
 
+      <!-- TOMBOL AKSI & HAMBURGER HP -->
       <div class="header-actions">
         <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
           💬 HALO LAPAN
         </a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()" aria-label="Buka Menu">
+          ☰
+        </button>
       </div>
+    </div>
+
+    <!-- DRAWER MENU HP -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="index.html" class="m-direct-link">🏠 Beranda</a>
+      
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mTentang')">
+          <span>🏛️ Tentang Kami</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mTentang">
+          <a href="tentang.html">Sejarah Lembaga & Makna Lambang</a>
+          <a href="pengurus.html">Bagan Struktur Pengurus DPP</a>
+        </div>
+      </div>
+
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mBantuan')">
+          <span style="color:#fb8500;">⚖️ Bantuan Hukum</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap open" id="mBantuan">
+          <a href="layanan.html">Layanan, SKTM & Legal Retainer</a>
+          <a href="alur.html">Alur SOP Penanganan Kasus</a>
+          <a href="pengaduan.html" style="color:#fb8500; font-weight:700;">Formulir Pengaduan Online</a>
+        </div>
+      </div>
+
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')">
+          <span>📰 Publikasi & Edukasi</span>
+          <span>▾</span>
+        </button>
+        <div class="m-sub-wrap" id="mPublikasi">
+          <a href="berita.html">Kabar Berita & Siaran Pers</a>
+          <a href="edukasi.html">Edukasi & Opini Hukum</a>
+        </div>
+      </div>
+
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center; margin-top:8px;">
+        🔍 Verifikasi KTA Anggota Resmi
+      </a>
     </div>
   </header>
 
-  <!-- CONTAINER FORM PENGADUAN -->
+  <!-- MAIN WRAP -->
   <main class="main-wrap">
-    <div class="form-box">
-      <div class="form-header">
-        <span class="badge-halo">Posko Pengaduan & Intake Kasus</span>
-        <h2>Formulir Permohonan Bantuan Hukum</h2>
-        <p>Lengkapi formulir singkat di bawah ini. Resume perkara Anda akan langsung diteruskan ke tim paralegal & advokat piket <strong>HALO LAPAN</strong> untuk telaah awal.</p>
-      </div>
+    <div class="page-header">
+      <span class="badge-tag">Posko Aduan HALO LAPAN</span>
+      <h2>Formulir Pengaduan Perkara</h2>
+      <p>Sampaikan persoalan hukum Anda secara jelas dan ringkas. Data Anda akan diteruskan langsung ke tim advokat piket HALO LAPAN secara rahasia.</p>
+    </div>
 
-      <form id="aduanForm" onsubmit="kirimAduan(event)">
+    <!-- KARTU FORMULIR -->
+    <div class="form-card">
+      <form onsubmit="event.preventDefault(); submitAduan();">
         
-        <!-- JALUR LAYANAN -->
         <div class="form-group">
-          <label>Jalur Layanan Bantuan Hukum <span>*</span></label>
-          <div class="radio-pill-group">
-            <div class="radio-pill-item">
-              <input type="radio" id="jalurProBono" name="jalur" value="Pro Bono (Cuma-cuma / SKTM)" checked>
-              <label for="jalurProBono">🤝 Pro Bono (Gratis / SKTM)</label>
-            </div>
-            <div class="radio-pill-item">
-              <input type="radio" id="jalurProf" name="jalur" value="Advokasi Profesional">
-              <label for="jalurProf">⚖️ Kasus Khusus / Bisnis</label>
-            </div>
-          </div>
-        </div>
-
-        <!-- NAMA LENGKAP -->
-        <div class="form-group">
-          <label for="namaPemohon">Nama Lengkap Pemohon / Korban <span>*</span></label>
-          <input type="text" id="namaPemohon" class="form-control" placeholder="Sesuai KTP" required>
-        </div>
-
-        <!-- NOMOR TELEPON/WHATSAPP -->
-        <div class="form-group">
-          <label for="telpPemohon">Nomor WhatsApp Aktif <span>*</span></label>
-          <input type="tel" id="telpPemohon" class="form-control" placeholder="Contoh: 081234567890" required>
-        </div>
-
-        <!-- DOMISILI KOTA/KABUPATEN -->
-        <div class="form-group">
-          <label for="domisiliPemohon">Kota / Kabupaten Domisili <span>*</span></label>
-          <input type="text" id="domisiliPemohon" class="form-control" placeholder="Contoh: Jakarta Timur, Cirebon, dll." required>
-        </div>
-
-        <!-- KATEGORI PERKARA -->
-        <div class="form-group">
-          <label for="kategoriKasus">Kategori Perkara Hukum <span>*</span></label>
-          <select id="kategoriKasus" class="form-control" required>
-            <option value="">-- Pilih Jenis Masalah --</option>
-            <option value="Hukum Pidana (Pelapor / Terlapor / Tersangka)">Hukum Pidana (Pelapor / Terlapor / Tersangka)</option>
-            <option value="Hukum Perdata & Perjanjian / Hutang">Hukum Perdata & Perjanjian / Hutang</option>
-            <option value="Sengketa Tanah & Agraria">Sengketa Tanah & Agraria</option>
-            <option value="Hukum Keluarga & Waris / Perceraian">Hukum Keluarga & Waris / Perceraian</option>
-            <option value="Ketenagakerjaan / PHK / Hak Buruh">Ketenagakerjaan / PHK / Hak Buruh</option>
-            <option value="Perlindungan Perempuan & Anak">Perlindungan Perempuan & Anak</option>
-            <option value="Kasus Konsumen / Pinjol / Korporasi">Kasus Konsumen / Pinjol / Korporasi</option>
-            <option value="Lainnya">Lainnya</option>
+          <label>Jalur Bantuan Hukum <span class="req">*</span></label>
+          <select id="jalurLayanan" required>
+            <option value="">-- Pilih Jenis Layanan --</option>
+            <option value="Pro Bono (Warga Kurang Mampu / SKTM)">Pro Bono (Cuma-Cuma / Warga Kurang Mampu Ber-SKTM)</option>
+            <option value="Legal Retainer (Mitra Tetap UMKM / Korporasi)">Legal Retainer (Kemitraan Rutin UMKM / Perusahaan)</option>
+            <option value="Advokasi Kasus Khusus (Perseorangan / Bisnis)">Advokasi Kasus Khusus (Perorangan Mampu / Bisnis)</option>
           </select>
         </div>
 
-        <!-- KRONOLOGI RINGKAS -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>Nama Lengkap Pelapor <span class="req">*</span></label>
+            <input type="text" id="namaPelapor" placeholder="Contoh: Budi Santoso" required>
+          </div>
+
+          <div class="form-group">
+            <label>Nomor WhatsApp Aktif <span class="req">*</span></label>
+            <input type="tel" id="nomorWa" placeholder="Contoh: 08123456789" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>Domisili / Wilayah Kejadian <span class="req">*</span></label>
+            <input type="text" id="wilayah" placeholder="Contoh: Jakarta Timur / Bekasi" required>
+          </div>
+
+          <div class="form-group">
+            <label>Kategori Masalah Hukum <span class="req">*</span></label>
+            <select id="kategoriHukum" required>
+              <option value="">-- Pilih Kategori --</option>
+              <option value="Pidana (Panggilan Polisi / Laporan / Tersangka)">Pidana (Panggilan Polisi / Laporan / Tersangka)</option>
+              <option value="Perdata (Utang-Piutang / Wanprestasi Kontrak)">Perdata (Utang-Piutang / Wanprestasi Kontrak)</option>
+              <option value="Pertanahan & Agraria (Sengketa Lahan / Sertifikat)">Pertanahan & Agraria (Sengketa Lahan / Sertifikat)</option>
+              <option value="Ketenagakerjaan (PHK Sepihak / Upah Buruh)">Ketenagakerjaan (PHK Sepihak / Upah Buruh)</option>
+              <option value="Keluarga & Waris">Keluarga & Waris</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+        </div>
+
         <div class="form-group">
-          <label for="kronologiKasus">Kronologi Singkat Perkara <span>*</span></label>
-          <textarea id="kronologiKasus" rows="5" class="form-control" placeholder="Jelaskan secara ringkas: apa masalahnya, pihak yang terlibat, dan tahap saat ini (misal: sudah ada panggilan polisi / somasi)." required></textarea>
+          <label>Ringkasan Kronologi Kasus <span class="req">*</span></label>
+          <textarea id="kronologi" rows="5" placeholder="Ceritakan secara singkat fakta perkara: siapa pihak lawan, kapan kejadian berlangsung, dan langkah hukum apa yang sedang dihadapi saat ini..." required></textarea>
+          <p class="help-hint">💡 Dokumen bukti fisik seperti KTP, SKTM, atau surat panggilan dapat Anda kirimkan langsung saat chat WhatsApp terbuka.</p>
         </div>
 
-        <div class="notice-card">
-          🔒 <strong>Jaminan Kerahasiaan:</strong> Seluruh data, identitas, dan dokumen yang Anda kirimkan dilindungi kerahasiaannya oleh Sumpah Jabatan dan Kode Etik Advokat LBH LAPAN.
-        </div>
-
-        <button type="submit" class="btn-submit-halo">
-          💬 Kirim Formulir ke WhatsApp HALO LAPAN
+        <button type="submit" class="btn-submit-form">
+          💬 Teruskan Aduan ke WhatsApp HALO LAPAN
         </button>
+
+        <p class="security-note">
+          🔒 <em>Kerahasiaan data dan identitas klien dilindungi kode etik advokat & sumpah jabatan.</em>
+        </p>
+
       </form>
     </div>
+
   </main>
 
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
+    <span>💬</span>
+    <span>HALO LAPAN</span>
+  </a>
+
+  <!-- FOOTER -->
   <footer class="footer-wrapper">
     © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
   </footer>
 
   <script>
-    function kirimAduan(e) {
-      e.preventDefault();
+    function submitAduan() {
+      const jalur = document.getElementById('jalurLayanan').value;
+      const nama = document.getElementById('namaPelapor').value.trim();
+      const wa = document.getElementById('nomorWa').value.trim();
+      const domisili = document.getElementById('wilayah').value.trim();
+      const kategori = document.getElementById('kategoriHukum').value;
+      const kronologi = document.getElementById('kronologi').value.trim();
 
-      const jalur = document.querySelector('input[name="jalur"]:checked').value;
-      const nama = document.getElementById('namaPemohon').value.trim();
-      const telp = document.getElementById('telpPemohon').value.trim();
-      const domisili = document.getElementById('domisiliPemohon').value.trim();
-      const kategori = document.getElementById('kategoriKasus').value;
-      const kronologi = document.getElementById('kronologiKasus').value.trim();
+      const pesanWa = 
+`*PENGADUAN PERKARA - LBH LAPAN*
+---------------------------------------
+• *Jalur Layanan:* ${jalur}
+• *Nama Pelapor:* ${nama}
+• *No. Kontak/WA:* ${wa}
+• *Domisili:* ${domisili}
+• *Kategori Kasus:* ${kategori}
 
-      const pesanWhatsApp = 
-`*PENGADUAN BARU - HALO LAPAN*
-----------------------------------------
-*Jalur Layanan:* ${jalur}
-*Nama Pemohon:* ${nama}
-*No. WhatsApp:* ${telp}
-*Domisili:* ${domisili}
-*Kategori Kasus:* ${kategori}
-
-*Kronologi Singkat:*
+• *Ringkasan Kronologi:*
 ${kronologi}
-----------------------------------------
-_Dikirim melalui Formulir Resmi LBH LAPAN_`;
+---------------------------------------
+_Mohon petunjuk dan arahan advokasi dari Tim Advokat HALO LAPAN. Terima kasih._`;
 
-      const nomorWA = "6281220111001";
-      const urlWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanWhatsApp)}`;
-
-      window.open(urlWA, '_blank');
+      const targetUrl = "https://wa.me/6281220111001?text=" + encodeURIComponent(pesanWa);
+      window.open(targetUrl, '_blank');
     }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('active');
+    }
+
+    function toggleAccordion(id) {
+      const subMenu = document.getElementById(id);
+      subMenu.classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(e) {
+      const drawer = document.getElementById('mobileDrawer');
+      const btn = document.querySelector('.btn-hamburger');
+      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        drawer.classList.remove('active');
+      }
+    });
   </script>
 
 </body>
