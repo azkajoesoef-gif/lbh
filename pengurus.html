@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Struktur Pengurus DPP & Korwil - LBH LAPAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+    .header-nav {
+      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 12px 20px;
+    }
+
+    .header-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #fb8500;
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text h1 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    .brand-text h1 span { color: #fb8500; }
+
+    .brand-text p {
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: #fb8500; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-kta-top {
+      background: rgba(251, 133, 0, 0.15);
+      border: 1px solid rgba(251, 133, 0, 0.4);
+      color: #ffb703;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .btn-kta-top:hover {
+      background: #fb8500;
+      color: #ffffff;
+    }
+
+    .btn-halo-top {
+      background: #25d366;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* MAIN WRAP */
+    .main-wrap {
+      flex: 1;
+      max-width: 1180px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 16px 50px 16px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      background: rgba(251, 133, 0, 0.12);
+      color: #fb8500;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .page-header h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 8px;
+    }
+
+    .page-header p {
+      color: #64748b;
+      font-size: 14px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin: 28px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 8px;
+    }
+
+    .category-title span {
+      background: #fb8500;
+      color: #ffffff;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* GRID ANGGOTA */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .member-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .member-card:hover {
+      border-color: #fb8500;
+      transform: translateY(-3px);
+    }
+
+    .card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .nia-badge {
+      font-family: monospace;
+      font-size: 11px;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      font-weight: 700;
+    }
+
+    .status-badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .status-aktif { background: #dcfce7; color: #15803d; }
+    .status-nonaktif { background: #fee2e2; color: #b91c1c; }
+
+    .member-info h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .member-info p.role {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #fb8500;
+      margin-bottom: 14px;
+    }
+
+    .card-meta-row {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      color: #64748b;
+    }
+
+    #loadingText {
+      text-align: center;
+      font-size: 14px;
+      color: #64748b;
+      padding: 40px;
+    }
+
+    /* FOOTER */
+    .footer-wrapper {
+      background: #0b192c;
+      color: #94a3b8;
+      border-top: 3px solid #fb8500;
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links, .brand-text p { display: none; }
+      .members-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header-nav">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">
+          <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
+        </div>
+        <div class="brand-text">
+          <h1>LBH <span>LAPAN</span></h1>
+          <p>Lingkar Peduli Anak Negeri</p>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="layanan.html">Layanan & SKTM</a></li>
+        <li><a href="alur.html">Alur SOP</a></li>
+        <li><a href="pengurus.html" class="active">Pengurus DPP</a></li>
+        <li><a href="pengaduan.html">Formulir Aduan</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
+          💬 HALO LAPAN
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WRAP -->
+  <main class="main-wrap">
+    <div class="page-header">
+      <span class="badge-tag">Badan Pengurus Resmi</span>
+      <h2>Susunan Pengurus DPP & Wilayah</h2>
+      <p>Aparatur kepengurusan, jajaran advokat publik, paralegal, dan dewan pembina Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri.</p>
+    </div>
+
+    <div id="loadingText">🔄 Memuat susunan kepengurusan dari database resmi...</div>
+
+    <!-- WADAH PENGURUS DPP -->
+    <div id="sectionDpp" style="display: none;">
+      <h3 class="category-title">Dewan Pimpinan Pusat (DPP) <span id="countDpp">0 Anggota</span></h3>
+      <div class="members-grid" id="gridDpp"></div>
+    </div>
+
+    <!-- WADAH KORWIL / DAERAH -->
+    <div id="sectionKorwil" style="display: none;">
+      <h3 class="category-title">Koordinator Wilayah & Daerah (Korwil) <span id="countKorwil">0 Anggota</span></h3>
+      <div class="members-grid" id="gridKorwil"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-wrapper">
+    © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
+  </footer>
+
+  <script>
+    // URL CSV GOOGLE SHEETS
+    const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=371817312&single=true&output=csv";
+
+    function parseCSV(text) {
+      let p = '', c = '', r = [];
+      let q = false;
+      let row = [''];
+      for (let i = 0; i < text.length; i++) {
+        c = text[i];
+        let next = text[i+1];
+        if (c === '"') {
+          if (q && next === '"') { row[row.length - 1] += '"'; i++; }
+          else { q = !q; }
+        } else if (c === ',' && !q) {
+          row.push('');
+        } else if ((c === '\r' || c === '\n') && !q) {
+          if (c === '\r' && next === '\n') { i++; }
+          r.push(row);
+          row = [''];
+        } else {
+          row[row.length - 1] += c;
+        }
+      }
+      if (row.length > 1 || row[0] !== '') { r.push(row); }
+      return r;
+    }
+
+    async function renderPengurus() {
+      const loadingEl = document.getElementById('loadingText');
+      const sectionDpp = document.getElementById('sectionDpp');
+      const sectionKorwil = document.getElementById('sectionKorwil');
+      const gridDpp = document.getElementById('gridDpp');
+      const gridKorwil = document.getElementById('gridKorwil');
+
+      try {
+        const response = await fetch(GOOGLE_SHEET_CSV_URL);
+        const csvText = await response.text();
+        const rows = parseCSV(csvText);
+
+        let dppCount = 0;
+        let korwilCount = 0;
+
+        for (let i = 1; i < rows.length; i++) {
+          const col = rows[i];
+          if (col.length >= 7) {
+            const nama = col[0]?.trim();
+            const wilayah = col[4]?.trim() || "DPP";
+            const jabatan = col[5]?.trim() || "Pengurus";
+            const nia = col[6]?.trim();
+            const status = col[7]?.trim().toUpperCase() || "AKTIF";
+            const masaBerlaku = col[8]?.trim() || "2027";
+
+            if (nama && nia) {
+              const isAktif = status === 'AKTIF';
+              const statusBadge = isAktif 
+                ? `<span class="status-badge status-aktif">✓ Aktif</span>` 
+                : `<span class="status-badge status-nonaktif">✕ Non-Aktif</span>`;
+
+              const cardHtml = `
+                <div class="member-card">
+                  <div>
+                    <div class="card-top-row">
+                      <span class="nia-badge">${nia}</span>
+                      ${statusBadge}
+                    </div>
+                    <div class="member-info">
+                      <h3>${nama}</h3>
+                      <p class="role">${jabatan}</p>
+                    </div>
+                  </div>
+                  <div class="card-meta-row">
+                    <span>Wilayah: <strong>${wilayah}</strong></span>
+                    <span>Hingga: <strong>${masaBerlaku}</strong></span>
+                  </div>
+                </div>
+              `;
+
+              if (wilayah.toUpperCase() === "DPP") {
+                gridDpp.innerHTML += cardHtml;
+                dppCount++;
+              } else {
+                gridKorwil.innerHTML += cardHtml;
+                korwilCount++;
+              }
+            }
+          }
+        }
+
+        document.getElementById('countDpp').textContent = dppCount + " Anggota";
+        document.getElementById('countKorwil').textContent = korwilCount + " Anggota";
+
+        loadingEl.style.display = 'none';
+        sectionDpp.style.display = 'block';
+        if (korwilCount > 0) {
+          sectionKorwil.style.display = 'block';
+        }
+
+      } catch (err) {
+        console.error("Gagal memuat struktur pengurus:", err);
+        loadingEl.textContent = "⚠️ Gagal memuat susunan anggota.";
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', renderPengurus);
+  </script>
+
+</body>
+</html>
