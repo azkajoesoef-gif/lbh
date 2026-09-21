@@ -150,6 +150,62 @@
       opacity: 0.9;
     }
 
+    /* TOMBOL HAMBURGER HP */
+    .btn-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 4px 6px;
+      line-height: 1;
+    }
+
+    /* LACI MENU HP */
+    .mobile-menu-drawer {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #0b192c;
+      border-bottom: 3px solid #fb8500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      padding: 16px 20px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mobile-menu-drawer.active {
+      display: flex;
+    }
+
+    .mobile-menu-drawer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .mobile-menu-drawer a:hover, .mobile-menu-drawer a.active {
+      color: #fb8500;
+      background: rgba(251, 133, 0, 0.1);
+      border-left-color: #fb8500;
+    }
+
+    .mobile-menu-drawer .btn-kta-mobile {
+      background: #fb8500;
+      color: #ffffff !important;
+      text-align: center;
+      border: none !important;
+      margin-top: 6px;
+    }
+
     /* CONTAINER UTAMA */
     .container {
       width: 100%;
@@ -824,10 +880,20 @@
       color: #cbd5e1;
     }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE KHUSUS LAYAR PONSEL (HP) */
     @media (max-width: 860px) {
       .nav-links, .btn-kta-top, .brand-text p {
         display: none;
+      }
+      .btn-hamburger {
+        display: block; /* MUNCULKAN TOMBOL ☰ DI HP */
+      }
+      .header-actions {
+        gap: 6px;
+      }
+      .btn-halo-top {
+        padding: 6px 10px;
+        font-size: 11px;
       }
       .stats-bar {
         grid-template-columns: 1fr 1fr;
@@ -879,7 +945,7 @@
 </head>
 <body>
 
-  <!-- 1. NAVBAR (NAVIGASI MULTI-HALAMAN RESMI) -->
+  <!-- 1. NAVBAR RESPONSIF MULTI-PLATFORM -->
   <header class="header-nav">
     <div class="header-container">
       <a href="index.html" class="brand-link">
@@ -892,20 +958,37 @@
         </div>
       </a>
 
+      <!-- MENU TAMPILAN KOMPUTER -->
       <ul class="nav-links">
         <li><a href="index.html" class="active">Beranda</a></li>
         <li><a href="layanan.html">Layanan & SKTM</a></li>
         <li><a href="alur.html">Alur SOP</a></li>
         <li><a href="pengurus.html">Pengurus DPP</a></li>
+        <li><a href="edukasi.html">Edukasi Hukum</a></li>
         <li><a href="pengaduan.html">Formulir Aduan</a></li>
       </ul>
 
+      <!-- TOMBOL AKSI & HAMBURGER HP -->
       <div class="header-actions">
-        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA Anggota</a>
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
         <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">
           💬 HALO LAPAN
         </a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()" aria-label="Buka Menu">
+          ☰
+        </button>
       </div>
+    </div>
+
+    <!-- LACI MENU TAMPILAN HP (OTOMATIS MUNCUL SAAT ☰ DIKLIK) -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="index.html" class="active">🏠 Beranda</a>
+      <a href="layanan.html">⚖️ Layanan & Syarat SKTM</a>
+      <a href="alur.html">📋 Alur SOP Perkara</a>
+      <a href="pengurus.html">🏛️ Bagan Pengurus DPP</a>
+      <a href="edukasi.html">📚 Edukasi & Opini Hukum</a>
+      <a href="pengaduan.html">📝 Formulir Pengaduan Kasus</a>
+      <a href="verifikasi-kta.html" class="btn-kta-mobile">🔍 Verifikasi KTA Anggota</a>
     </div>
   </header>
 
@@ -1173,6 +1256,7 @@
           <li><a href="layanan.html">Layanan & SKTM</a></li>
           <li><a href="alur.html">Alur SOP Penanganan</a></li>
           <li><a href="pengurus.html">Struktur Pengurus DPP</a></li>
+          <li><a href="edukasi.html">Edukasi Hukum</a></li>
           <li><a href="verifikasi-kta.html">Verifikasi KTA Anggota</a></li>
           <li><a href="pengaduan.html">Formulir Aduan Kasus</a></li>
         </ul>
@@ -1209,7 +1293,24 @@
     </div>
   </footer>
 
+  <!-- SCRIPT FAQ & DRAWER MENU HP -->
   <script>
+    // FUNGSI BUKA TUTUP MENU HP (☰)
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      drawer.classList.toggle('active');
+    }
+
+    // Menutup menu jika user menyentuh di luar area menu
+    document.addEventListener('click', function(e) {
+      const drawer = document.getElementById('mobileDrawer');
+      const btn = document.querySelector('.btn-hamburger');
+      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        drawer.classList.remove('active');
+      }
+    });
+
+    // FUNGSI FAQ ACCORDION
     document.querySelectorAll('.faq-question').forEach(item => {
       item.addEventListener('click', () => {
         item.parentElement.classList.toggle('active');
