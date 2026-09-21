@@ -400,10 +400,9 @@
 
   <script>
     // =========================================================
-    // URL CSV Google Sheets — tab "Data Anggota"
-    // Kalau gid salah, ganti angka gid di bawah
+    // URL CSV Google Sheets — tab "Data Anggota" (GID: 1215966819)
     // =========================================================
-    const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=371817312&single=true&output=csv";
+    const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=1215966819&single=true&output=csv";
 
     function escapeHTML(str) {
       if (str === null || str === undefined) return "";
@@ -449,8 +448,8 @@
         const csvText = await response.text();
         const rows = parseCSV(csvText);
 
-        console.log("Total baris CSV:", rows.length);
-        console.log("Header:", rows[0]);
+        console.log("✅ Total baris CSV:", rows.length);
+        console.log("📋 Header:", rows[0]);
 
         let countPembina = 0, countBph = 0, countAdvokasi = 0, countRiset = 0, countWilayah = 0;
         let countKetum = 0, countSkip = 0;
@@ -475,7 +474,6 @@
           const jabLower = jabatan.toLowerCase();
           const wilUpper = wilayah.toUpperCase();
 
-          // ---- KHUSUS DPP ----
           if (wilUpper === "DPP") {
             if (jabLower.includes('ketua umum')) {
               document.getElementById('gridKetum').innerHTML = `
@@ -570,7 +568,6 @@
               countRiset++;
             }
           }
-          // ---- WILAYAH / DAERAH ----
           else {
             document.getElementById('gridWilayah').innerHTML += `
               <div class="member-card blue-card">
@@ -593,7 +590,7 @@
           }
         }
 
-        console.log("Ringkasan:", { countKetum, countPembina, countBph, countAdvokasi, countRiset, countWilayah, countSkip });
+        console.log("📊 Ringkasan:", { countKetum, countPembina, countBph, countAdvokasi, countRiset, countWilayah, countSkip });
 
         if (countPembina > 0) { document.getElementById('wrapPembina').style.display = 'block'; document.getElementById('countPembina').textContent = countPembina + " Personel"; }
         if (countBph > 0) { document.getElementById('wrapBph').style.display = 'block'; document.getElementById('countBph').textContent = countBph + " Personel"; }
@@ -602,7 +599,7 @@
         if (countWilayah > 0) { document.getElementById('wrapWilayah').style.display = 'block'; document.getElementById('countWilayah').textContent = countWilayah + " Personel"; }
 
         if (countKetum === 0 && countPembina === 0 && countBph === 0 && countAdvokasi === 0 && countRiset === 0 && countWilayah === 0) {
-          loadingEl.innerHTML = "⚠️ Tidak ada data yang lolos filter.<br><small>Cek Console (F12) untuk lihat isi CSV mentah. Kemungkinan: status bukan 'AKTIF' atau kolom bergeser.</small>";
+          loadingEl.innerHTML = "⚠️ Tidak ada data yang lolos filter.<br><small>Cek Console (F12) untuk lihat isi CSV mentah.</small>";
           return;
         }
 
@@ -610,7 +607,7 @@
 
       } catch (err) {
         console.error("Gagal memuat:", err);
-        loadingEl.innerHTML = "⚠️ Gagal menghubungkan ke Google Sheets.<br><small>Error: " + escapeHTML(err.message) + "</small><br><small>Buka Console (F12) untuk detail. Cek juga apakah gid sudah benar (klik tab Data Anggota di Sheet → lihat URL).</small>";
+        loadingEl.innerHTML = "⚠️ Gagal menghubungkan ke Google Sheets.<br><small>Error: " + escapeHTML(err.message) + "</small>";
       }
     }
 
