@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Struktur Organisasi & Pengurus DPP - LBH LAPAN</title>
 
-  <!-- FAVICON RESMI -->
   <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +30,6 @@
       min-height: 100vh;
     }
 
-    /* NAVBAR */
     .header-nav {
       background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
       border-bottom: 3px solid #fb8500;
@@ -230,7 +228,6 @@
       line-height: 1;
     }
 
-    /* DRAWER HP */
     .mobile-menu-drawer {
       display: none;
       position: absolute;
@@ -307,7 +304,6 @@
       display: block;
     }
 
-    /* MAIN */
     .main-wrap {
       flex: 1;
       max-width: 1180px;
@@ -360,7 +356,6 @@
       margin-top: 8px;
     }
 
-    /* BAGAN STRUKTUR ORGANISASI VEKTOR */
     .chart-container-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -371,17 +366,9 @@
       overflow-x: auto;
     }
 
-    .chart-container-card::-webkit-scrollbar {
-      height: 8px;
-    }
-    .chart-container-card::-webkit-scrollbar-track {
-      background: #f1f5f9;
-      border-radius: 4px;
-    }
-    .chart-container-card::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
+    .chart-container-card::-webkit-scrollbar { height: 8px; }
+    .chart-container-card::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+    .chart-container-card::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
     .diagram-viewport {
       width: 980px;
@@ -412,280 +399,165 @@
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
     }
 
-    /* KOTAK PEMBINA DIPERBARUI DENGAN NAMA */
     .box-pembina {
-      top: 10px;
-      left: 360px;
-      width: 260px;
-      height: 52px;
-      background: #1d4ed8;
-      color: #ffffff;
-      padding: 4px;
+      top: 10px; left: 360px; width: 260px; height: 52px;
+      background: #1d4ed8; color: #ffffff; padding: 4px;
     }
     .box-pembina h4 { font-size: 11px; font-weight: 800; letter-spacing: 0.5px; color: #bfdbfe; }
     .box-pembina p { font-size: 12px; font-weight: 800; color: #ffffff; }
 
     .box-ketum {
-      top: 98px;
-      left: 375px;
-      width: 230px;
-      height: 54px;
-      background: #0f172a;
-      color: #ffffff;
-      padding: 6px;
+      top: 98px; left: 375px; width: 230px; height: 54px;
+      background: #0f172a; color: #ffffff; padding: 6px;
     }
     .box-ketum h4 { font-size: 13px; font-weight: 800; color: #ffffff; margin-bottom: 2px; }
     .box-ketum p { font-size: 11.5px; color: #cbd5e1; }
 
     .box-sekretariat {
-      top: 200px;
-      left: 30px;
-      width: 320px;
-      height: 72px;
-      background: #2563eb;
-      color: #ffffff;
-      padding: 6px 8px;
+      top: 200px; left: 30px; width: 320px; height: 72px;
+      background: #2563eb; color: #ffffff; padding: 6px 8px;
     }
     .box-sekretariat h4 { font-size: 12px; font-weight: 800; margin-bottom: 6px; }
-    .sekretariat-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      width: 100%;
-    }
-    .sek-inner {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 4px;
-      padding: 3px 4px;
-    }
+    .sekretariat-split { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
+    .sek-inner { background: rgba(255, 255, 255, 0.15); border-radius: 4px; padding: 3px 4px; }
     .sek-inner h5 { font-size: 9.5px; font-weight: 700; color: #bfdbfe; }
     .sek-inner p { font-size: 10.5px; font-weight: 700; color: #ffffff; }
 
-    /* SENIOR COUNSEL DIPERBARUI PERSIS EKO SUPAHWONO */
     .box-counsel {
-      top: 200px;
-      left: 390px;
-      width: 200px;
-      height: 72px;
-      background: #047857;
-      color: #ffffff;
-      padding: 6px;
+      top: 200px; left: 390px; width: 200px; height: 72px;
+      background: #047857; color: #ffffff; padding: 6px;
     }
     .box-counsel h4 { font-size: 11.5px; font-weight: 800; color: #ffffff; }
     .box-counsel p.name { font-size: 11.5px; font-weight: 700; color: #ffffff; }
     .box-counsel p.sub { font-size: 9px; color: #a7f3d0; }
 
     .box-bendahara {
-      top: 200px;
-      left: 630px;
-      width: 320px;
-      height: 72px;
-      background: #2563eb;
-      color: #ffffff;
-      padding: 6px;
+      top: 200px; left: 630px; width: 320px; height: 72px;
+      background: #2563eb; color: #ffffff; padding: 6px;
     }
     .box-bendahara h4 { font-size: 12px; font-weight: 800; }
     .box-bendahara p.name { font-size: 11.5px; font-weight: 700; color: #ffffff; }
     .box-bendahara p.sub { font-size: 9.5px; color: #bfdbfe; }
 
     .box-kadiv {
-      top: 330px;
-      left: 45px;
-      width: 290px;
-      height: 52px;
-      background: #f0f9ff;
-      border: 2px solid #0284c7;
-      padding: 4px;
+      top: 330px; left: 45px; width: 290px; height: 52px;
+      background: #f0f9ff; border: 2px solid #0284c7; padding: 4px;
     }
     .box-kadiv h4 { font-size: 10.5px; font-weight: 800; color: #0284c7; }
     .box-kadiv p { font-size: 11.5px; font-weight: 700; color: #0b192c; }
 
     .box-advokat {
-      top: 440px;
-      left: 15px;
-      width: 165px;
-      height: 52px;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      padding: 4px;
+      top: 440px; left: 15px; width: 165px; height: 52px;
+      background: #ffffff; border: 1px solid #cbd5e1; padding: 4px;
     }
     .box-advokat h5 { font-size: 10.5px; font-weight: 800; color: #0b192c; }
     .box-advokat p { font-size: 9px; color: #64748b; }
 
     .box-researcher {
-      top: 440px;
-      left: 200px;
-      width: 165px;
-      height: 52px;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      padding: 4px;
+      top: 440px; left: 200px; width: 165px; height: 52px;
+      background: #ffffff; border: 1px solid #cbd5e1; padding: 4px;
     }
     .box-researcher h5 { font-size: 10.5px; font-weight: 800; color: #0b192c; }
     .box-researcher p { font-size: 9px; color: #64748b; }
 
     .box-korwil {
-      top: 330px;
-      left: 645px;
-      width: 290px;
-      height: 60px;
-      background: #fff7ed;
-      border: 2px solid #f97316;
-      padding: 4px;
+      top: 330px; left: 645px; width: 290px; height: 60px;
+      background: #fff7ed; border: 2px solid #f97316; padding: 4px;
     }
     .box-korwil h4 { font-size: 11.5px; font-weight: 800; color: #c2410c; }
     .box-korwil p.sub1 { font-size: 10px; font-weight: 700; color: #0b192c; }
     .box-korwil p.sub2 { font-size: 9px; color: #ea580c; font-style: italic; }
 
     .box-paralegal {
-      top: 440px;
-      left: 645px;
-      width: 290px;
-      height: 52px;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      padding: 4px;
+      top: 440px; left: 645px; width: 290px; height: 52px;
+      background: #ffffff; border: 1px solid #cbd5e1; padding: 4px;
     }
     .box-paralegal h5 { font-size: 10.5px; font-weight: 800; color: #0b192c; }
     .box-paralegal p { font-size: 9px; color: #64748b; }
 
     .chart-label {
-      position: absolute;
-      z-index: 3;
-      font-size: 8.5px;
-      font-weight: 700;
-      color: #be123c;
-      background: #ffffff;
-      padding: 2px 6px;
-      border: 1px solid #fecdd3;
-      border-radius: 4px;
+      position: absolute; z-index: 3;
+      font-size: 8.5px; font-weight: 700; color: #be123c;
+      background: #ffffff; padding: 2px 6px;
+      border: 1px solid #fecdd3; border-radius: 4px;
       white-space: nowrap;
     }
 
     .classification-title {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #0b192c;
+      font-size: 1.25rem; font-weight: 800; color: #0b192c;
       margin: 36px 0 18px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 8px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;
     }
     .classification-title span.badge-count {
-      background: #0b192c;
-      color: #fb8500;
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 6px;
-      font-weight: 700;
+      background: #0b192c; color: #fb8500; font-size: 11px;
+      padding: 3px 10px; border-radius: 6px; font-weight: 700;
     }
 
     .ketum-hero-container { margin-bottom: 30px; }
     .card-ketum-hero {
       background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      color: #ffffff;
-      border-radius: 20px;
-      padding: 30px 26px;
+      color: #ffffff; border-radius: 20px; padding: 30px 26px;
       border: 3px solid #fb8500;
       box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
     }
     .card-ketum-hero .left-side h3 {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 4px;
-      line-height: 1.2;
+      font-size: 1.65rem; font-weight: 800; color: #ffffff;
+      margin-bottom: 4px; line-height: 1.2;
     }
     .card-ketum-hero .left-side p.role {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #fb8500;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      font-size: 14.5px; font-weight: 800; color: #fb8500;
+      letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 10px;
     }
     .card-ketum-hero .right-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 8px;
     }
 
     .pembina-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 24px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 18px; margin-bottom: 24px;
     }
     .card-pembina-premium {
-      background: #ffffff;
-      border: 1.5px solid #fed7aa;
-      border-top: 5px solid #fb8500;
-      border-radius: 16px;
+      background: #ffffff; border: 1.5px solid #fed7aa;
+      border-top: 5px solid #fb8500; border-radius: 16px;
       padding: 22px 20px;
       box-shadow: 0 4px 12px rgba(251, 133, 0, 0.06);
     }
     .card-pembina-premium h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 4px;
+      font-size: 1.25rem; font-weight: 800; color: #0b192c; margin-bottom: 4px;
     }
     .card-pembina-premium p.role {
-      font-size: 13px;
-      font-weight: 700;
-      color: #c2410c;
-      margin-bottom: 12px;
+      font-size: 13px; font-weight: 700; color: #c2410c; margin-bottom: 12px;
     }
 
     .members-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin-bottom: 24px;
     }
 
     .member-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background: #ffffff; border: 1px solid #e2e8f0;
+      border-radius: 14px; padding: 18px;
+      display: flex; flex-direction: column; justify-content: space-between;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
       transition: transform 0.2s, border-color 0.2s;
     }
-    .member-card:hover {
-      border-color: #fb8500;
-      transform: translateY(-3px);
-    }
-
+    .member-card:hover { border-color: #fb8500; transform: translateY(-3px); }
     .member-card.navy-card { border-top: 4px solid #0b192c; }
     .member-card.blue-card { border-top: 4px solid #3b82f6; }
 
     .card-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 10px;
     }
     .nia-badge {
-      font-family: monospace;
-      font-size: 11px;
-      background: #f1f5f9;
-      color: #475569;
-      padding: 3px 8px;
-      border-radius: 6px;
-      border: 1px solid #e2e8f0;
-      font-weight: 700;
+      font-family: monospace; font-size: 11px;
+      background: #f1f5f9; color: #475569;
+      padding: 3px 8px; border-radius: 6px;
+      border: 1px solid #e2e8f0; font-weight: 700;
     }
     .nia-badge.gold {
       background: rgba(251, 133, 0, 0.15);
@@ -694,81 +566,52 @@
     }
 
     .status-badge {
-      font-size: 10px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 20px;
+      font-size: 10px; font-weight: 800;
+      padding: 2px 8px; border-radius: 20px;
       text-transform: uppercase;
-      background: #dcfce7;
-      color: #15803d;
+      background: #dcfce7; color: #15803d;
     }
 
     .member-info h3 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 4px;
-      line-height: 1.35;
+      font-size: 1.15rem; font-weight: 800; color: #0b192c;
+      margin-bottom: 4px; line-height: 1.35;
     }
     .member-info p.role {
-      font-size: 12px;
-      font-weight: 700;
-      color: #0369a1;
-      margin-bottom: 12px;
+      font-size: 12px; font-weight: 700;
+      color: #0369a1; margin-bottom: 12px;
     }
 
     .card-meta-row {
-      border-top: 1px solid #f1f5f9;
-      padding-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      color: #64748b;
+      border-top: 1px solid #f1f5f9; padding-top: 10px;
+      display: flex; justify-content: space-between;
+      align-items: center; font-size: 11px; color: #64748b;
     }
 
     .level-tag-pill {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: #0b192c;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      color: #0b192c; font-size: 10px; font-weight: 700;
+      padding: 2px 6px; border-radius: 4px;
     }
 
     #loadingText {
-      text-align: center;
-      font-size: 14px;
-      color: #64748b;
-      padding: 40px;
+      text-align: center; font-size: 14px;
+      color: #64748b; padding: 40px;
     }
 
     .floating-wa-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      background: #25d366;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      border-radius: 50px;
+      position: fixed; bottom: 24px; right: 20px;
+      background: #25d366; color: #ffffff;
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 18px; border-radius: 50px;
       box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
+      text-decoration: none; font-size: 13px; font-weight: 800;
       z-index: 9999;
     }
 
     .footer-wrapper {
-      background: #0b192c;
-      color: #94a3b8;
+      background: #0b192c; color: #94a3b8;
       border-top: 3px solid #fb8500;
-      padding: 24px 20px;
-      text-align: center;
-      font-size: 12px;
+      padding: 24px 20px; text-align: center; font-size: 12px;
     }
 
     @media (max-width: 960px) {
@@ -783,7 +626,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <header class="header-nav">
     <div class="header-container">
       <a href="index.html" class="brand-link">
@@ -829,7 +671,6 @@
       </div>
     </div>
 
-    <!-- DRAWER HP -->
     <div class="mobile-menu-drawer" id="mobileDrawer">
       <a href="index.html" class="m-direct-link">🏠 Beranda</a>
       <div>
@@ -858,7 +699,6 @@
     </div>
   </header>
 
-  <!-- MAIN WRAP -->
   <main class="main-wrap">
     <div class="page-header">
       <span class="badge-tag">Struktur Lembaga Resmi</span>
@@ -869,35 +709,28 @@
       </div>
     </div>
 
-    <!-- 1. BAGAN DIAGRAM SVG TERKOREKSI -->
     <div class="chart-container-card">
       <div class="diagram-viewport">
         
         <svg class="diagram-svg-layer">
           <line x1="490" y1="62" x2="490" y2="98" stroke="#0f172a" stroke-width="2"/>
           <line x1="490" y1="152" x2="490" y2="180" stroke="#0f172a" stroke-width="2"/>
-          
           <line x1="190" y1="180" x2="790" y2="180" stroke="#0f172a" stroke-width="2"/>
           <line x1="190" y1="180" x2="190" y2="200" stroke="#0f172a" stroke-width="2"/>
           <line x1="490" y1="180" x2="490" y2="200" stroke="#0f172a" stroke-width="2"/>
           <line x1="790" y1="180" x2="790" y2="200" stroke="#0f172a" stroke-width="2"/>
-          
           <line x1="190" y1="272" x2="190" y2="330" stroke="#0f172a" stroke-width="2"/>
           <line x1="790" y1="272" x2="790" y2="330" stroke="#0f172a" stroke-width="2"/>
-
           <line x1="190" y1="382" x2="190" y2="410" stroke="#0f172a" stroke-width="2"/>
           <line x1="97" y1="410" x2="282" y2="410" stroke="#0f172a" stroke-width="2"/>
           <line x1="97" y1="410" x2="97" y2="440" stroke="#0f172a" stroke-width="2"/>
           <line x1="282" y1="410" x2="282" y2="440" stroke="#0f172a" stroke-width="2"/>
-
           <line x1="790" y1="390" x2="790" y2="440" stroke="#0f172a" stroke-width="2"/>
-
           <line x1="390" y1="236" x2="350" y2="236" stroke="#e11d48" stroke-width="2" stroke-dasharray="4,4"/>
           <path d="M 490 272 L 490 305 L 270 305 L 270 330" fill="none" stroke="#e11d48" stroke-width="2" stroke-dasharray="4,4"/>
           <line x1="335" y1="356" x2="645" y2="356" stroke="#e11d48" stroke-width="2" stroke-dasharray="4,4"/>
         </svg>
 
-        <!-- KOTAK DEWAN PEMBINA DENGAN NAMA -->
         <div class="chart-box box-pembina">
           <h4>DEWAN PEMBINA</h4>
           <p>Dr. Dudung Hidayat, S.H., M.H.</p>
@@ -922,7 +755,6 @@
           </div>
         </div>
 
-        <!-- SENIOR COUNSEL SINKRON: EKO SUPAHWONO -->
         <div class="chart-box box-counsel">
           <h4>SENIOR COUNSEL</h4>
           <p class="name">Eko Supahwono, S.H.</p>
@@ -1009,12 +841,10 @@
 
   </main>
 
-  <!-- FLOATING WA -->
   <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
     <span>💬</span><span>HALO LAPAN</span>
   </a>
 
-  <!-- FOOTER -->
   <footer class="footer-wrapper">
     © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
   </footer>
@@ -1023,18 +853,23 @@
     const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=371817312&single=true&output=csv";
 
     function escapeHTML(str) {
-      return str.replace(/[&<>'"]/g, 
+      if (str === null || str === undefined) return "";
+      return String(str).replace(/[&<>'"]/g,
         tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
       );
     }
 
+    function normalize(str) {
+      return (str || "").replace(/\u00A0/g, " ").replace(/\s+/g, " ").trim();
+    }
+
     function parseCSV(text) {
-      let p = '', c = '', r = [];
+      let c = '', r = [];
       let q = false;
       let row = [''];
       for (let i = 0; i < text.length; i++) {
         c = text[i];
-        let next = text[i+1];
+        let next = text[i + 1];
         if (c === '"') {
           if (q && next === '"') { row[row.length - 1] += '"'; i++; }
           else { q = !q; }
@@ -1057,157 +892,147 @@
 
       try {
         const response = await fetch(GOOGLE_SHEET_CSV_URL);
+        if (!response.ok) throw new Error("HTTP " + response.status);
         const csvText = await response.text();
         const rows = parseCSV(csvText);
 
         let countPembina = 0, countBph = 0, countAdvokasi = 0, countRiset = 0;
+        let countKetum = 0;
 
         for (let i = 1; i < rows.length; i++) {
           const col = rows[i];
-          if (col.length >= 7) {
-            const nama = col[0]?.trim();
-            const wilayah = col[4]?.trim() || "DPP";
-            const jabatan = col[5]?.trim() || "Pengurus";
-            const nia = col[6]?.trim();
-            const status = col[7]?.trim().toUpperCase() || "";
+          if (col.length < 8) continue;
 
-            if (nama && nia && wilayah.toUpperCase() === "DPP" && status === "AKTIF") {
-              const jabLower = jabatan.toLowerCase();
+          const nama    = normalize(col[0]);
+          const wilayah = normalize(col[4]) || "DPP";
+          const jabatan = normalize(col[5]) || "Pengurus";
+          const nia     = normalize(col[6]);
+          const status  = normalize(col[7]).toUpperCase();
 
-              if (jabLower.includes('ketua umum')) {
-                document.getElementById('gridKetum').innerHTML = `
-                  <div class="card-ketum-hero">
-                    <div class="left-side">
-                      <p class="role">Ketua Umum DPP LBH LAPAN</p>
-                      <h3>${escapeHTML(nama)}</h3>
-                      <span class="nia-badge gold">NIA: ${escapeHTML(nia)}</span>
-                    </div>
-                    <div class="right-meta">
-                      <span class="status-badge">✓ Aktif Terdaftar</span>
-                      <span class="level-tag-pill" style="color:#ffffff; background:rgba(255,255,255,0.15); border:none;">Dewan Pimpinan Pusat (DPP)</span>
-                    </div>
+          if (!nama || !nia) continue;
+          if (wilayah.toUpperCase() !== "DPP") continue;
+          if (status !== "AKTIF") continue;
+
+          const jabLower = jabatan.toLowerCase();
+
+          if (jabLower.includes('ketua umum')) {
+            document.getElementById('gridKetum').innerHTML = `
+              <div class="card-ketum-hero">
+                <div class="left-side">
+                  <p class="role">Ketua Umum DPP LBH LAPAN</p>
+                  <h3>${escapeHTML(nama)}</h3>
+                  <span class="nia-badge gold">NIA: ${escapeHTML(nia)}</span>
+                </div>
+                <div class="right-meta">
+                  <span class="status-badge">✓ Aktif Terdaftar</span>
+                  <span class="level-tag-pill" style="color:#ffffff; background:rgba(255,255,255,0.15); border:none;">Dewan Pimpinan Pusat (DPP)</span>
+                </div>
+              </div>`;
+            document.getElementById('wrapKetum').style.display = 'block';
+            countKetum++;
+          }
+          else if (jabLower.includes('pembina') || jabLower.includes('senior counsel')) {
+            document.getElementById('gridPembina').innerHTML += `
+              <div class="card-pembina-premium">
+                <div class="card-top-row">
+                  <span class="nia-badge">${escapeHTML(nia)}</span>
+                  <span class="status-badge">✓ Aktif</span>
+                </div>
+                <h3>${escapeHTML(nama)}</h3>
+                <p class="role">${escapeHTML(jabatan)}</p>
+                <div class="card-meta-row">
+                  <span>Kedudukan: <strong>DPP</strong></span>
+                  <span class="level-tag-pill">Advisory Level</span>
+                </div>
+              </div>`;
+            countPembina++;
+          }
+          else if (jabLower.includes('sekretaris') || jabLower.includes('bendahara')) {
+            document.getElementById('gridBph').innerHTML += `
+              <div class="member-card navy-card">
+                <div>
+                  <div class="card-top-row">
+                    <span class="nia-badge">${escapeHTML(nia)}</span>
+                    <span class="status-badge">✓ Aktif</span>
                   </div>
-                `;
-                document.getElementById('wrapKetum').style.display = 'block';
-              }
-              else if (jabLower.includes('pembina') || jabLower.includes('senior counsel')) {
-                document.getElementById('gridPembina').innerHTML += `
-                  <div class="card-pembina-premium">
-                    <div class="card-top-row">
-                      <span class="nia-badge">${escapeHTML(nia)}</span>
-                      <span class="status-badge">✓ Aktif</span>
-                    </div>
+                  <div class="member-info">
                     <h3>${escapeHTML(nama)}</h3>
-                    <p class="role">${escapeHTML(jabatan)}</p>
-                    <div class="card-meta-row">
-                      <span>Kedudukan: <strong>DPP</strong></span>
-                      <span class="level-tag-pill">Advisory Level</span>
-                    </div>
+                    <p class="role" style="color:#0284c7;">${escapeHTML(jabatan)}</p>
                   </div>
-                `;
-                countPembina++;
-              }
-              else if (jabLower.includes('sekretaris') || jabLower.includes('bendahara')) {
-                document.getElementById('gridBph').innerHTML += `
-                  <div class="member-card navy-card">
-                    <div>
-                      <div class="card-top-row">
-                        <span class="nia-badge">${escapeHTML(nia)}</span>
-                        <span class="status-badge">✓ Aktif</span>
-                      </div>
-                      <div class="member-info">
-                        <h3>${escapeHTML(nama)}</h3>
-                        <p class="role" style="color:#0284c7;">${escapeHTML(jabatan)}</p>
-                      </div>
-                    </div>
-                    <div class="card-meta-row">
-                      <span>Kedudukan: <strong>DPP</strong></span>
-                      <span class="level-tag-pill">Badan Pengurus Harian</span>
-                    </div>
+                </div>
+                <div class="card-meta-row">
+                  <span>Kedudukan: <strong>DPP</strong></span>
+                  <span class="level-tag-pill">Badan Pengurus Harian</span>
+                </div>
+              </div>`;
+            countBph++;
+          }
+          else if (jabLower.includes('advokat') || jabLower.includes('advokasi')) {
+            document.getElementById('gridAdvokasi').innerHTML += `
+              <div class="member-card navy-card">
+                <div>
+                  <div class="card-top-row">
+                    <span class="nia-badge">${escapeHTML(nia)}</span>
+                    <span class="status-badge">✓ Aktif</span>
                   </div>
-                `;
-                countBph++;
-              }
-              else if (jabLower.includes('advokat') || jabLower.includes('advokasi')) {
-                document.getElementById('gridAdvokasi').innerHTML += `
-                  <div class="member-card navy-card">
-                    <div>
-                      <div class="card-top-row">
-                        <span class="nia-badge">${escapeHTML(nia)}</span>
-                        <span class="status-badge">✓ Aktif</span>
-                      </div>
-                      <div class="member-info">
-                        <h3>${escapeHTML(nama)}</h3>
-                        <p class="role" style="color:#fb8500;">${escapeHTML(jabatan)}</p>
-                      </div>
-                    </div>
-                    <div class="card-meta-row">
-                      <span>Kedudukan: <strong>DPP</strong></span>
-                      <span class="level-tag-pill">Divisi Advokasi</span>
-                    </div>
+                  <div class="member-info">
+                    <h3>${escapeHTML(nama)}</h3>
+                    <p class="role" style="color:#fb8500;">${escapeHTML(jabatan)}</p>
                   </div>
-                `;
-                countAdvokasi++;
-              }
-              else {
-                document.getElementById('gridRiset').innerHTML += `
-                  <div class="member-card blue-card">
-                    <div>
-                      <div class="card-top-row">
-                        <span class="nia-badge">${escapeHTML(nia)}</span>
-                        <span class="status-badge">✓ Aktif</span>
-                      </div>
-                      <div class="member-info">
-                        <h3>${escapeHTML(nama)}</h3>
-                        <p class="role" style="color:#475569;">${escapeHTML(jabatan)}</p>
-                      </div>
-                    </div>
-                    <div class="card-meta-row">
-                      <span>Kedudukan: <strong>DPP</strong></span>
-                      <span class="level-tag-pill">Kajian & Riset Hukum</span>
-                    </div>
+                </div>
+                <div class="card-meta-row">
+                  <span>Kedudukan: <strong>DPP</strong></span>
+                  <span class="level-tag-pill">Divisi Advokasi</span>
+                </div>
+              </div>`;
+            countAdvokasi++;
+          }
+          else {
+            document.getElementById('gridRiset').innerHTML += `
+              <div class="member-card blue-card">
+                <div>
+                  <div class="card-top-row">
+                    <span class="nia-badge">${escapeHTML(nia)}</span>
+                    <span class="status-badge">✓ Aktif</span>
                   </div>
-                `;
-                countRiset++;
-              }
-            }
+                  <div class="member-info">
+                    <h3>${escapeHTML(nama)}</h3>
+                    <p class="role" style="color:#475569;">${escapeHTML(jabatan)}</p>
+                  </div>
+                </div>
+                <div class="card-meta-row">
+                  <span>Kedudukan: <strong>DPP</strong></span>
+                  <span class="level-tag-pill">Kajian & Riset Hukum</span>
+                </div>
+              </div>`;
+            countRiset++;
           }
         }
 
-        if (countPembina > 0) {
-          document.getElementById('wrapPembina').style.display = 'block';
-          document.getElementById('countPembina').textContent = countPembina + " Personel";
-        }
-        if (countBph > 0) {
-          document.getElementById('wrapBph').style.display = 'block';
-          document.getElementById('countBph').textContent = countBph + " Personel";
-        }
-        if (countAdvokasi > 0) {
-          document.getElementById('wrapAdvokasi').style.display = 'block';
-          document.getElementById('countAdvokasi').textContent = countAdvokasi + " Personel";
-        }
-        if (countRiset > 0) {
-          document.getElementById('wrapRiset').style.display = 'block';
-          document.getElementById('countRiset').textContent = countRiset + " Personel";
+        if (countPembina > 0) { document.getElementById('wrapPembina').style.display = 'block'; document.getElementById('countPembina').textContent = countPembina + " Personel"; }
+        if (countBph > 0) { document.getElementById('wrapBph').style.display = 'block'; document.getElementById('countBph').textContent = countBph + " Personel"; }
+        if (countAdvokasi > 0) { document.getElementById('wrapAdvokasi').style.display = 'block'; document.getElementById('countAdvokasi').textContent = countAdvokasi + " Personel"; }
+        if (countRiset > 0) { document.getElementById('wrapRiset').style.display = 'block'; document.getElementById('countRiset').textContent = countRiset + " Personel"; }
+
+        if (countKetum === 0 && countPembina === 0 && countBph === 0 && countAdvokasi === 0 && countRiset === 0) {
+          loadingEl.innerHTML = "⚠️ Tidak ada data yang lolos filter.<br><small>Periksa: kolom wilayah harus 'DPP' dan status harus 'AKTIF'.</small>";
+          return;
         }
 
         loadingEl.style.display = 'none';
 
       } catch (err) {
-        console.error("Gagal memuat database:", err);
-        loadingEl.textContent = "⚠️ Gagal memuat susunan pengurus DPP.";
+        console.error("Gagal memuat:", err);
+        loadingEl.innerHTML = "⚠️ Gagal memuat susunan pengurus DPP.<br><small>" + escapeHTML(err.message) + "</small>";
       }
     }
 
     function toggleMobileMenu() {
       document.getElementById('mobileDrawer').classList.toggle('active');
     }
-
     function toggleAccordion(id) {
-      const subMenu = document.getElementById(id);
-      subMenu.classList.toggle('open');
+      document.getElementById(id).classList.toggle('open');
     }
-
     document.addEventListener('click', function(e) {
       const drawer = document.getElementById('mobileDrawer');
       const btn = document.querySelector('.btn-hamburger');
