@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bagan Struktur & Pengurus DPP - LBH LAPAN</title>
+  <title>Struktur Organisasi & Pengurus DPP - LBH LAPAN</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -184,175 +184,194 @@
       margin: 0 auto;
     }
 
-    .period-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #0b192c;
-      color: #ffb703;
-      font-size: 12px;
+    .sk-legal-doc {
+      display: inline-block;
+      font-size: 11.5px;
       font-weight: 700;
-      padding: 5px 14px;
-      border-radius: 8px;
-      margin-top: 10px;
+      color: #64748b;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 4px 14px;
+      border-radius: 6px;
+      margin-top: 8px;
     }
 
-    /* BAGAN STRUKTUR ORGANISASI */
-    .chart-section {
+    /* BAGAN STRUKTUR DARI PDF */
+    .chart-container-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 20px;
       padding: 36px 20px;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+      overflow-x: auto;
     }
 
-    .chart-header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .chart-header h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #0b192c;
-    }
-
-    .chart-header p {
-      font-size: 12.5px;
-      color: #64748b;
-    }
-
-    .tree-wrapper {
+    .org-chart-wrapper {
+      min-width: 920px;
+      max-width: 1020px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
       position: relative;
     }
 
-    .tree-box {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 12px 20px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      min-width: 240px;
-    }
-
-    .tree-box.pembina {
-      border: 2px solid #fb8500;
-      background: #fffaf0;
-    }
-
-    .tree-box.ketum {
-      border: 2px solid #0b192c;
-      background: #0b192c;
+    .node-pembina {
+      background: #1e40af;
       color: #ffffff;
-    }
-
-    .tree-box.ketum h4 { color: #ffffff !important; }
-    .tree-box.ketum p { color: #fb8500 !important; }
-
-    .tree-box.bph {
-      border: 2px solid #3b82f6;
-      background: #eff6ff;
-    }
-
-    .tree-box h4 {
-      font-size: 13.5px;
       font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 2px;
+      font-size: 14px;
+      padding: 12px 36px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
     }
 
-    .tree-box p {
-      font-size: 11px;
-      font-weight: 700;
-      color: #64748b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+    .node-ketum {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 12px 40px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.25);
+    }
+    .node-ketum h3 { font-size: 14px; font-weight: 800; margin-bottom: 2px; }
+    .node-ketum p { font-size: 12px; color: #cbd5e1; }
+
+    .level-harian {
+      display: grid;
+      grid-template-columns: 340px 220px 240px;
+      gap: 40px;
+      align-items: center;
+      position: relative;
     }
 
-    .tree-line-v {
-      width: 2px;
-      height: 20px;
-      background: #cbd5e1;
+    .node-sekretariat {
+      background: #1d4ed8;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      text-align: center;
     }
-
-    .tree-row-bph {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-
-    .tree-row-divisi {
+    .node-sekretariat-title { font-size: 13px; font-weight: 800; margin-bottom: 8px; letter-spacing: 0.5px; }
+    .sekretariat-split {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      width: 100%;
-      max-width: 680px;
-      margin-top: 10px;
+      gap: 8px;
     }
+    .sek-sub-box {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 6px;
+    }
+    .sek-sub-box h5 { font-size: 10px; font-weight: 700; color: #93c5fd; }
+    .sek-sub-box p { font-size: 11px; font-weight: 700; color: #ffffff; }
 
-    .tree-box-div {
-      background: #f8fafc;
-      border: 1.5px dashed #cbd5e1;
-      border-radius: 10px;
-      padding: 12px;
+    .node-counsel {
+      background: #047857;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 14px 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(4, 120, 87, 0.2);
+    }
+    .node-counsel h4 { font-size: 12.5px; font-weight: 800; }
+    .node-counsel p.name { font-size: 12px; color: #ffffff; font-weight: 700; margin-bottom: 2px; }
+    .node-counsel p.sub { font-size: 10px; color: #a7f3d0; }
+
+    .node-bendahara {
+      background: #1d4ed8;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 14px 16px;
       text-align: center;
     }
+    .node-bendahara h4 { font-size: 13px; font-weight: 800; }
+    .node-bendahara p.name { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+    .node-bendahara p.sub { font-size: 10px; color: #bfdbfe; }
 
-    .tree-box-div h4 {
-      font-size: 12.5px;
-      font-weight: 800;
-      color: #0b192c;
+    .level-divisi-wrap {
+      display: grid;
+      grid-template-columns: 360px 180px 240px;
+      gap: 40px;
+      align-items: start;
+      margin-top: 24px;
     }
 
-    .tree-box-div p {
-      font-size: 10.5px;
-      color: #64748b;
-      line-height: 1.4;
+    .node-kadiv {
+      border: 2px solid #0284c7;
+      background: #f0f9ff;
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-align: center;
     }
+    .node-kadiv h4 { font-size: 11.5px; font-weight: 800; color: #0369a1; text-transform: uppercase; }
+    .node-kadiv p { font-size: 12px; font-weight: 700; color: #0b192c; }
 
-    /* KARTU ATURAN PERPANJANGAN KTA */
-    .kta-rule-banner {
+    .divisi-child-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .node-leaf-box {
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+    }
+    .node-leaf-box h5 { font-size: 11px; font-weight: 800; color: #0b192c; }
+    .node-leaf-box p { font-size: 9.5px; color: #64748b; }
+
+    .node-korwil {
+      border: 2px solid #f97316;
       background: #fff7ed;
-      border: 1.5px solid #fed7aa;
-      border-radius: 12px;
-      padding: 14px 18px;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      border-radius: 10px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+    .node-korwil h4 { font-size: 12px; font-weight: 800; color: #c2410c; }
+    .node-korwil p.sub { font-size: 10px; color: #ea580c; font-style: italic; }
+
+    .node-paralegal {
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      margin-top: 14px;
+    }
+    .node-paralegal h5 { font-size: 11px; font-weight: 800; color: #0b192c; }
+    .node-paralegal p { font-size: 9.5px; color: #64748b; }
+
+    .line-v-black { width: 2px; height: 24px; background: #0b192c; }
+    .line-v-dashed { width: 2px; height: 24px; border-left: 2px dashed #e11d48; }
+
+    .tag-dashed-label {
+      font-size: 9px;
+      font-weight: 700;
+      color: #be123c;
+      background: #fff1f2;
+      border: 1px dashed #fda4af;
+      padding: 1px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
     }
 
-    .kta-rule-banner span.icon {
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-
-    .kta-rule-banner p {
-      font-size: 12.5px;
-      color: #9a3412;
-      line-height: 1.5;
-    }
-
-    /* SECTION KLASIFIKASI */
+    /* SECTION KLASIFIKASI & HIERARKI KARTU */
     .classification-title {
       font-size: 1.25rem;
       font-weight: 800;
       color: #0b192c;
-      margin: 32px 0 16px 0;
+      margin: 36px 0 18px 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 2px solid #e2e8f0;
       padding-bottom: 8px;
     }
-
     .classification-title span.badge-count {
       background: #0b192c;
       color: #fb8500;
@@ -362,6 +381,74 @@
       font-weight: 700;
     }
 
+    /* 1. KARTU UTAMA KETUA UMUM (LEBIH BESAR & DOMINAN) */
+    .ketum-hero-container {
+      margin-bottom: 30px;
+    }
+    .card-ketum-hero {
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      border: 3px solid #fb8500;
+      box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card-ketum-hero .left-side h3 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .card-ketum-hero .left-side p.role {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fb8500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .card-ketum-hero .right-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    /* 2. KARTU DEWAN PEMBINA & SENIOR COUNSEL (MEDIUM PREMIUM) */
+    .pembina-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .card-pembina-premium {
+      background: #ffffff;
+      border: 1.5px solid #fed7aa;
+      border-top: 5px solid #fb8500;
+      border-radius: 16px;
+      padding: 24px 20px;
+      box-shadow: 0 4px 12px rgba(251, 133, 0, 0.06);
+    }
+    .card-pembina-premium h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 4px;
+    }
+    .card-pembina-premium p.role {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #c2410c;
+      margin-bottom: 12px;
+    }
+
+    /* 3. KARTU BPH, ADVOKASI & RISET (STANDARD HIERARCHY) */
     .members-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -372,21 +459,19 @@
     .member-card {
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 14px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
       transition: transform 0.2s, border-color 0.2s;
     }
-
     .member-card:hover {
       border-color: #fb8500;
       transform: translateY(-3px);
     }
 
-    .member-card.gold-card { border-top: 4px solid #fb8500; }
     .member-card.navy-card { border-top: 4px solid #0b192c; }
     .member-card.blue-card { border-top: 4px solid #3b82f6; }
 
@@ -394,9 +479,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-
     .nia-badge {
       font-family: monospace;
       font-size: 11px;
@@ -407,6 +491,11 @@
       border: 1px solid #e2e8f0;
       font-weight: 700;
     }
+    .nia-badge.gold {
+      background: rgba(251, 133, 0, 0.15);
+      border-color: rgba(251, 133, 0, 0.4);
+      color: #ffb703;
+    }
 
     .status-badge {
       font-size: 10px;
@@ -415,7 +504,6 @@
       border-radius: 20px;
       text-transform: uppercase;
     }
-
     .status-aktif { background: #dcfce7; color: #15803d; }
     .status-nonaktif { background: #fee2e2; color: #b91c1c; }
 
@@ -426,12 +514,11 @@
       margin-bottom: 4px;
       line-height: 1.35;
     }
-
     .member-info p.role {
       font-size: 12.5px;
       font-weight: 700;
-      color: #fb8500;
-      margin-bottom: 14px;
+      color: #0369a1;
+      margin-bottom: 12px;
     }
 
     .card-meta-row {
@@ -444,14 +531,14 @@
       color: #64748b;
     }
 
-    .renewal-pill {
+    .level-tag-pill {
       background: #f8fafc;
-      color: #475569;
+      border: 1px solid #e2e8f0;
+      color: #0b192c;
+      font-size: 10px;
+      font-weight: 700;
       padding: 2px 6px;
       border-radius: 4px;
-      border: 1px solid #e2e8f0;
-      font-size: 10px;
-      font-weight: 600;
     }
 
     #loadingText {
@@ -473,8 +560,9 @@
 
     @media (max-width: 860px) {
       .nav-links, .brand-text p { display: none; }
-      .tree-row-bph { flex-direction: column; }
-      .tree-row-divisi { grid-template-columns: 1fr; }
+      .pembina-grid { grid-template-columns: 1fr; }
+      .card-ketum-hero { flex-direction: column; align-items: flex-start; }
+      .card-ketum-hero .right-meta { align-items: flex-start; }
       .members-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -514,90 +602,130 @@
   <!-- MAIN CONTENT -->
   <main class="main-wrap">
     <div class="page-header">
-      <span class="badge-tag">Aparatur Pusat Lembaga</span>
-      <h2>Bagan Struktur & Pengurus Harian DPP</h2>
-      <p>Susunan resmi Dewan Pimpinan Pusat (DPP) Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri berkedudukan di Jakarta Timur.</p>
+      <span class="badge-tag">Struktur Lembaga Resmi</span>
+      <h2>Bagan Struktur Organisasi & Pengurus DPP</h2>
+      <p>Susunan resmi jajaran fungsionaris Dewan Pimpinan Pusat (DPP) Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri.</p>
       <div>
-        <span class="period-badge">🏛️ Masa Bakti Kepengurusan DPP: 2025 – 2030</span>
+        <span class="sk-legal-doc">🏛️ Lampiran I Surat Keputusan No. 001/SK/LBH-LAPAN/IX/2026</span>
       </div>
     </div>
 
-    <!-- 1. BAGAN STRUKTUR HIERARKI DPP -->
-    <div class="chart-section">
-      <div class="chart-header">
-        <h3>Bagan Struktur Hierarki DPP LBH LAPAN</h3>
-        <p>Garis komando dan tata kelola organisasi tingkat pusat</p>
-      </div>
+    <!-- 1. BAGAN HIERARKI RESMI (DARI PDF) -->
+    <div class="chart-container-card">
+      <div class="org-chart-wrapper">
+        
+        <div class="node-pembina">DEWAN PEMBINA</div>
+        <div class="line-v-black"></div>
 
-      <div class="tree-wrapper">
-        <!-- LEVEL 1: PEMBINA -->
-        <div class="tree-box pembina">
-          <h4>Dewan Pembina</h4>
-          <p>Dr. Dudung Hidayat, S.H., M.H.</p>
-        </div>
-
-        <div class="tree-line-v"></div>
-
-        <!-- LEVEL 2: KETUA UMUM -->
-        <div class="tree-box ketum">
-          <h4>Ketua Umum DPP</h4>
+        <div class="node-ketum">
+          <h3>KETUA UMUM</h3>
           <p>Andre Milko Pelawi</p>
         </div>
 
-        <div class="tree-line-v"></div>
+        <div class="line-v-black" style="height: 30px;"></div>
 
-        <!-- LEVEL 3: BPH & SENIOR COUNSEL -->
-        <div class="tree-row-bph">
-          <div class="tree-box bph">
-            <h4>Sekretariat Jenderal</h4>
-            <p>Sekum I & Sekum II</p>
+        <div class="level-harian">
+          <div class="node-sekretariat">
+            <div class="node-sekretariat-title">SEKRETARIAT</div>
+            <div class="sekretariat-split">
+              <div class="sek-sub-box">
+                <h5>SEKRETARIS I (Operasional)</h5>
+                <p>Efrem Ndruru</p>
+              </div>
+              <div class="sek-sub-box">
+                <h5>SEKRETARIS II (Organisasi)</h5>
+                <p>M Azka Medira</p>
+              </div>
+            </div>
           </div>
-          <div class="tree-box bph">
-            <h4>Senior Counsel</h4>
-            <p>Konsultan Hukum Utama</p>
+
+          <div class="node-counsel">
+            <h4>SENIOR COUNSEL</h4>
+            <p class="name">Eko Supahwanto</p>
+            <p class="sub">(Telaah & Pertimbangan Hukum)</p>
           </div>
-          <div class="tree-box bph">
-            <h4>Kebendaharaan</h4>
-            <p>Bendahara Umum</p>
+
+          <div class="node-bendahara">
+            <h4>BENDAHARA UMUM</h4>
+            <p class="name">Rahmat Nur Alam</p>
+            <p class="sub">(Keuangan & Logistik Perkara)</p>
           </div>
         </div>
 
-        <div class="tree-line-v"></div>
-
-        <!-- LEVEL 4: DIVISI DPP -->
-        <div class="tree-row-divisi">
-          <div class="tree-box-div">
-            <h4>Divisi Advokasi & Penanganan Perkara</h4>
-            <p>Tim Advokat Publik & Litigasi Persidangan</p>
+        <div style="display: grid; grid-template-columns: 340px 220px 240px; gap: 40px; width: 100%; margin: 8px 0;">
+          <div style="text-align: right; padding-right: 10px;">
+            <span class="tag-dashed-label">◀ Arahan Strategis</span>
           </div>
-          <div class="tree-box-div">
-            <h4>Divisi Riset Hukum & Telaah Berkas</h4>
-            <p>Legal Researcher & Analis Regulasi</p>
+          <div style="display: flex; justify-content: center;">
+            <div class="line-v-dashed"></div>
+          </div>
+          <div></div>
+        </div>
+
+        <div class="level-divisi-wrap">
+          <div>
+            <div style="text-align: center; margin-bottom: 6px;">
+              <span class="tag-dashed-label">▼ Arahan Strategis Perkara</span>
+            </div>
+            <div class="node-kadiv">
+              <h4>KADIV ADVOKASI & PENANGANAN PERKARA</h4>
+              <p>Azizun G.S</p>
+            </div>
+            
+            <div class="divisi-child-grid">
+              <div class="node-leaf-box">
+                <h5>ADVOKAT PUBLIK</h5>
+                <p>(Sidang & Kepolisian)</p>
+              </div>
+              <div class="node-leaf-box">
+                <h5>LEGAL RESEARCHER</h5>
+                <p>(Riset, Somasi & Publikasi Medsos)</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+            <span class="tag-dashed-label" style="margin-top: 15px;">Pembinaan Teknis ▶</span>
+            <div style="width: 100%; border-top: 2px dashed #be123c; margin-top: 4px;"></div>
+          </div>
+
+          <div>
+            <div class="node-korwil">
+              <h4>KORWIL</h4>
+              <p style="font-size: 11px; font-weight: 700; color: #0b192c;">(Koordinator Wilayah)</p>
+              <p class="sub">(Akan Ditetapkan Kemudian)</p>
+            </div>
+
+            <div class="node-paralegal">
+              <h5>PARALEGAL</h5>
+              <p>(Aduan Warga & Narahubung)</p>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
 
-    <!-- KETENTUAN PERPANJANGAN KTA TAHUNAN -->
-    <div class="kta-rule-banner">
-      <span class="icon">📜</span>
-      <p>
-        <strong>Kepatuhan Administrasi Keanggotaan:</strong> Kepengurusan DPP berkedudukan tetap untuk periode masa bakti <strong>2025 – 2030</strong>. Selaras dengan ketentuan AD/ART DPP LBH LAPAN, <strong>Kartu Tanda Anggota (KTA) & Nomor Induk Anggota (NIA) wajib dilakukan registrasi ulang / perpanjangan setiap tahun</strong> guna verifikasi keaktifan advokasi.
-      </p>
+    <div id="loadingText">🔄 Menghubungkan susunan pengurus dari database resmi...</div>
+
+    <!-- 2. KEPEMIMPINAN TERTINGGI: KETUA UMUM (HERO CARD BESAR) -->
+    <div id="wrapKetum" style="display: none;" class="ketum-hero-container">
+      <h3 class="classification-title" style="margin-top: 0;">
+        👑 Pimpinan Tertinggi DPP
+      </h3>
+      <div id="gridKetum"></div>
     </div>
 
-    <div id="loadingText">🔄 Memuat database resmi DPP dari Google Sheets...</div>
-
-    <!-- 2. KLASIFIKASI: DEWAN PEMBINA & SENIOR COUNSEL -->
+    <!-- 3. DEWAN PEMBINA & SENIOR COUNSEL (MEDIUM PREMIUM) -->
     <div id="wrapPembina" style="display: none;">
       <h3 class="classification-title">
         🏛️ Dewan Pembina & Penasihat Hukum Senior 
         <span class="badge-count" id="countPembina">0</span>
       </h3>
-      <div class="members-grid" id="gridPembina"></div>
+      <div class="pembina-grid" id="gridPembina"></div>
     </div>
 
-    <!-- 3. KLASIFIKASI: BADAN PENGURUS HARIAN (BPH) DPP -->
+    <!-- 4. BADAN PENGURUS HARIAN (BPH) DPP -->
     <div id="wrapBph" style="display: none;">
       <h3 class="classification-title">
         👔 Badan Pengurus Harian (BPH) DPP 
@@ -606,16 +734,16 @@
       <div class="members-grid" id="gridBph"></div>
     </div>
 
-    <!-- 4. KLASIFIKASI: DIVISI ADVOKASI & ADVOKAT PUBLIK -->
+    <!-- 5. DIVISI ADVOKASI & TIM ADVOKAT PUBLIK -->
     <div id="wrapAdvokasi" style="display: none;">
       <h3 class="classification-title">
-        ⚖️ Divisi Advokasi & Advokat Publik DPP 
+        ⚖️ Divisi Advokasi & Tim Advokat Publik DPP 
         <span class="badge-count" id="countAdvokasi">0</span>
       </h3>
       <div class="members-grid" id="gridAdvokasi"></div>
     </div>
 
-    <!-- 5. KLASIFIKASI: RISET HUKUM DPP -->
+    <!-- 6. DIVISI RISET HUKUM & LEGAL RESEARCHER -->
     <div id="wrapRiset" style="display: none;">
       <h3 class="classification-title">
         📑 Divisi Riset Hukum & Legal Researcher DPP 
@@ -658,32 +786,6 @@
       return r;
     }
 
-    function createMemberCard(nama, jabatan, nia, status, colorClass) {
-      const isAktif = status === 'AKTIF';
-      const statusBadge = isAktif 
-        ? `<span class="status-badge status-aktif">✓ Aktif</span>` 
-        : `<span class="status-badge status-nonaktif">✕ Non-Aktif</span>`;
-
-      return `
-        <div class="member-card ${colorClass}">
-          <div>
-            <div class="card-top-row">
-              <span class="nia-badge">${nia}</span>
-              ${statusBadge}
-            </div>
-            <div class="member-info">
-              <h3>${nama}</h3>
-              <p class="role">${jabatan}</p>
-            </div>
-          </div>
-          <div class="card-meta-row">
-            <span>Kedudukan: <strong>DPP Jakarta</strong></span>
-            <span class="renewal-pill">KTA Tahunan</span>
-          </div>
-        </div>
-      `;
-    }
-
     async function loadDppOrganisasi() {
       const loadingEl = document.getElementById('loadingText');
 
@@ -703,28 +805,113 @@
             const nia = col[6]?.trim();
             const status = col[7]?.trim().toUpperCase() || "AKTIF";
 
-            // FILTER KHUSUS HANYA PENGURUS DPP SAJA
+            // KHUSUS PENGURUS DPP SAJA
             if (nama && nia && wilayah.toUpperCase() === "DPP") {
               const jabLower = jabatan.toLowerCase();
+              const isAktif = status === 'AKTIF';
+              const statusBadge = isAktif 
+                ? `<span class="status-badge status-aktif">✓ Aktif</span>` 
+                : `<span class="status-badge status-nonaktif">✕ Non-Aktif</span>`;
 
-              // 1. DEWAN PEMBINA & SENIOR COUNSEL
-              if (jabLower.includes('pembina') || jabLower.includes('senior counsel')) {
-                document.getElementById('gridPembina').innerHTML += createMemberCard(nama, jabatan, nia, status, 'gold-card');
+              // 1. KETUA UMUM (UKURAN HERO BESAR)
+              if (jabLower.includes('ketua umum')) {
+                document.getElementById('gridKetum').innerHTML = `
+                  <div class="card-ketum-hero">
+                    <div class="left-side">
+                      <p class="role">Ketua Umum DPP LBH LAPAN</p>
+                      <h3>${nama}</h3>
+                      <span class="nia-badge gold">NIA: ${nia}</span>
+                    </div>
+                    <div class="right-meta">
+                      ${statusBadge}
+                      <span class="level-tag-pill" style="color:#ffffff; background:rgba(255,255,255,0.15); border:none;">Tingkat: Dewan Pimpinan Pusat (DPP)</span>
+                    </div>
+                  </div>
+                `;
+                document.getElementById('wrapKetum').style.display = 'block';
+              }
+              // 2. DEWAN PEMBINA & SENIOR COUNSEL (MEDIUM PREMIUM)
+              else if (jabLower.includes('pembina') || jabLower.includes('senior counsel')) {
+                document.getElementById('gridPembina').innerHTML += `
+                  <div class="card-pembina-premium">
+                    <div class="card-top-row">
+                      <span class="nia-badge">${nia}</span>
+                      ${statusBadge}
+                    </div>
+                    <h3>${nama}</h3>
+                    <p class="role">${jabatan}</p>
+                    <div class="card-meta-row">
+                      <span>Kedudukan: <strong>Dewan Pimpinan Pusat (DPP)</strong></span>
+                      <span class="level-tag-pill">Advisory Level</span>
+                    </div>
+                  </div>
+                `;
                 countPembina++;
               }
-              // 2. BADAN PENGURUS HARIAN (BPH) DPP
-              else if (jabLower.includes('ketua umum') || jabLower.includes('sekretaris') || jabLower.includes('bendahara')) {
-                document.getElementById('gridBph').innerHTML += createMemberCard(nama, jabatan, nia, status, 'navy-card');
+              // 3. BADAN PENGURUS HARIAN (BPH)
+              else if (jabLower.includes('sekretaris') || jabLower.includes('bendahara')) {
+                document.getElementById('gridBph').innerHTML += `
+                  <div class="member-card navy-card">
+                    <div>
+                      <div class="card-top-row">
+                        <span class="nia-badge">${nia}</span>
+                        ${statusBadge}
+                      </div>
+                      <div class="member-info">
+                        <h3>${nama}</h3>
+                        <p class="role" style="color:#0284c7;">${jabatan}</p>
+                      </div>
+                    </div>
+                    <div class="card-meta-row">
+                      <span>Kedudukan: <strong>Dewan Pimpinan Pusat (DPP)</strong></span>
+                      <span class="level-tag-pill">Badan Pengurus Harian</span>
+                    </div>
+                  </div>
+                `;
                 countBph++;
               }
-              // 3. DIVISI ADVOKASI & ADVOKAT PUBLIK
+              // 4. DIVISI ADVOKASI & ADVOKAT PUBLIK
               else if (jabLower.includes('advokat') || jabLower.includes('advokasi')) {
-                document.getElementById('gridAdvokasi').innerHTML += createMemberCard(nama, jabatan, nia, status, 'navy-card');
+                document.getElementById('gridAdvokasi').innerHTML += `
+                  <div class="member-card navy-card">
+                    <div>
+                      <div class="card-top-row">
+                        <span class="nia-badge">${nia}</span>
+                        ${statusBadge}
+                      </div>
+                      <div class="member-info">
+                        <h3>${nama}</h3>
+                        <p class="role" style="color:#fb8500;">${jabatan}</p>
+                      </div>
+                    </div>
+                    <div class="card-meta-row">
+                      <span>Kedudukan: <strong>Dewan Pimpinan Pusat (DPP)</strong></span>
+                      <span class="level-tag-pill">Divisi Advokasi</span>
+                    </div>
+                  </div>
+                `;
                 countAdvokasi++;
               }
-              // 4. DIVISI RISET HUKUM (LEGAL RESEARCHER)
+              // 5. LEGAL RESEARCHER & TIM RISET
               else {
-                document.getElementById('gridRiset').innerHTML += createMemberCard(nama, jabatan, nia, status, 'blue-card');
+                document.getElementById('gridRiset').innerHTML += `
+                  <div class="member-card blue-card">
+                    <div>
+                      <div class="card-top-row">
+                        <span class="nia-badge">${nia}</span>
+                        ${statusBadge}
+                      </div>
+                      <div class="member-info">
+                        <h3>${nama}</h3>
+                        <p class="role" style="color:#475569;">${jabatan}</p>
+                      </div>
+                    </div>
+                    <div class="card-meta-row">
+                      <span>Kedudukan: <strong>Dewan Pimpinan Pusat (DPP)</strong></span>
+                      <span class="level-tag-pill">Riset & Kajian</span>
+                    </div>
+                  </div>
+                `;
                 countRiset++;
               }
             }
@@ -733,25 +920,25 @@
 
         if (countPembina > 0) {
           document.getElementById('wrapPembina').style.display = 'block';
-          document.getElementById('countPembina').textContent = countPembina + " Anggota";
+          document.getElementById('countPembina').textContent = countPembina + " Fungsionaris";
         }
         if (countBph > 0) {
           document.getElementById('wrapBph').style.display = 'block';
-          document.getElementById('countBph').textContent = countBph + " Anggota";
+          document.getElementById('countBph').textContent = countBph + " Fungsionaris";
         }
         if (countAdvokasi > 0) {
           document.getElementById('wrapAdvokasi').style.display = 'block';
-          document.getElementById('countAdvokasi').textContent = countAdvokasi + " Anggota";
+          document.getElementById('countAdvokasi').textContent = countAdvokasi + " Fungsionaris";
         }
         if (countRiset > 0) {
           document.getElementById('wrapRiset').style.display = 'block';
-          document.getElementById('countRiset').textContent = countRiset + " Anggota";
+          document.getElementById('countRiset').textContent = countRiset + " Fungsionaris";
         }
 
         loadingEl.style.display = 'none';
 
       } catch (err) {
-        console.error("Gagal sinkron pengurus DPP:", err);
+        console.error("Gagal sinkron susunan pengurus DPP:", err);
         loadingEl.textContent = "⚠️ Gagal memuat susunan pengurus DPP.";
       }
     }
