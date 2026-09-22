@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konsultasi Hukum Berbayar - LBH LAPAN</title>
+
+  <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
+
+  <meta name="description" content="Layanan konsultasi hukum berbayar terjangkau LBH LAPAN. Chat, telepon, atau tatap muka dengan advokat profesional. Pro Bono tetap tersedia untuk warga miskin.">
+  <meta name="keywords" content="konsultasi hukum berbayar, advokat online, chat advokat, LBH LAPAN">
+  <meta name="author" content="LBH Lingkar Peduli Anak Negeri">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b192c">
+  <link rel="canonical" href="https://lbh.lingkarpedulianaknegeri.id/konsultasi-berbayar.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LBH LAPAN">
+  <meta property="og:title" content="Konsultasi Hukum Berbayar - LBH LAPAN">
+  <meta property="og:description" content="Konsultasi hukum profesional dengan harga terjangkau.">
+  <meta property="og:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
+  <meta property="og:url" content="https://lbh.lingkarpedulianaknegeri.id/konsultasi-berbayar.html">
+  <meta property="og:locale" content="id_ID">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Konsultasi Hukum Berbayar - LBH LAPAN">
+  <meta name="twitter:description" content="Konsultasi hukum profesional dengan harga terjangkau.">
+  <meta name="twitter:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+
+    .header-nav { background: linear-gradient(135deg, #0b192c 0%, #112240 100%); border-bottom: 3px solid #fb8500; box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25); width: 100%; position: sticky; top: 0; z-index: 999; padding: 12px 20px; }
+    .header-container { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 2px solid #fb8500; padding: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.15; }
+    .brand-text h1 span { color: #fb8500; }
+    .brand-text p { font-size: 10px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+
+    .nav-links { display: flex; align-items: center; gap: 12px; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-link-btn { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s; cursor: pointer; background: none; border: none; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active { color: #fb8500; background: rgba(255, 255, 255, 0.05); }
+    .nav-link-btn span.arrow { font-size: 10px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link-btn span.arrow { transform: rotate(180deg); }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #0b192c; border: 1px solid #1e3e62; border-top: 3px solid #fb8500; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); min-width: 240px; padding: 8px; list-style: none; z-index: 1000; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-item:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 600; padding: 9px 12px; display: flex; align-items: center; gap: 8px; border-radius: 6px; transition: all 0.2s; }
+    .dropdown-menu li a:hover { background: rgba(251, 133, 0, 0.15); color: #fb8500; padding-left: 15px; }
+
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-kta-top { background: rgba(251, 133, 0, 0.15); border: 1px solid rgba(251, 133, 0, 0.4); color: #ffb703; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; }
+    .btn-halo-top { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-hamburger { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px 6px; line-height: 1; }
+
+    .mobile-menu-drawer { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0b192c; border-bottom: 3px solid #fb8500; box-shadow: 0 10px 25px rgba(0,0,0,0.35); padding: 14px 18px 20px 18px; flex-direction: column; gap: 6px; max-height: 80vh; overflow-y: auto; }
+    .mobile-menu-drawer.active { display: flex; }
+    .m-item-title { width: 100%; background: rgba(255, 255, 255, 0.05); color: #ffffff; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
+    .m-sub-wrap { display: none; flex-direction: column; padding-left: 12px; gap: 4px; margin: 4px 0 8px 0; }
+    .m-sub-wrap.open { display: flex; }
+    .m-sub-wrap a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 9px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+    .m-sub-wrap a:hover { color: #fb8500; background: rgba(255, 255, 255, 0.04); }
+    .m-direct-link { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: block; }
+
+    .main-wrap { flex: 1; max-width: 1080px; width: 100%; margin: 0 auto; padding: 36px 16px 50px 16px; }
+
+    /* HERO */
+    .page-header { text-align: center; margin-bottom: 32px; }
+    .badge-tag { display: inline-block; background: rgba(251, 133, 0, 0.12); color: #fb8500; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
+    .page-header p { color: #64748b; font-size: 14px; max-width: 720px; margin: 0 auto; }
+
+    /* NOTICE PRO BONO */
+    .probono-notice {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border: 2px solid #16a34a;
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 32px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .probono-notice span.icon {
+      font-size: 26px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .probono-notice h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #166534;
+      margin-bottom: 4px;
+    }
+    .probono-notice p {
+      font-size: 13px;
+      color: #166534;
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .probono-notice a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #16a34a;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .probono-notice a:hover { opacity: 0.9; }
+
+    /* GRID PAKET */
+    .paket-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-bottom: 40px;
+    }
+
+    .paket-card {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .paket-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #fb8500 0%, #ffb703 100%);
+    }
+
+    .paket-card:hover {
+      transform: translateY(-8px);
+      border-color: #fb8500;
+      box-shadow: 0 20px 40px -15px rgba(251, 133, 0, 0.3);
+    }
+
+    .paket-card.popular {
+      border-color: #fb8500;
+      background: linear-gradient(180deg, #ffffff 0%, #fffcf8 100%);
+      box-shadow: 0 10px 30px -8px rgba(251, 133, 0, 0.25);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 16px;
+      right: -34px;
+      background: #fb8500;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 40px;
+      transform: rotate(45deg);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .paket-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #fb8500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .paket-card h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 6px;
+    }
+
+    .paket-duration {
+      font-size: 12.5px;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .paket-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px dashed #e2e8f0;
+    }
+
+    .paket-price .currency {
+      font-size: 15px;
+      font-weight: 700;
+      color: #64748b;
+    }
+
+    .paket-price .amount {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #fb8500;
+      line-height: 1;
+    }
+
+    .paket-price .amount-big {
+      font-size: 1.85rem;
+    }
+
+    .paket-features {
+      list-style: none;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+
+    .paket-features li {
+      font-size: 12.5px;
+      color: #475569;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 9px;
+      line-height: 1.5;
+    }
+
+    .paket-features li::before {
+      content: "✓";
+      color: #16a34a;
+      font-weight: 800;
+      flex-shrink: 0;
+      font-size: 13px;
+    }
+
+    .paket-features li.no::before {
+      content: "✕";
+      color: #cbd5e1;
+    }
+
+    .paket-features li.no {
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    .btn-pilih-paket {
+      background: #0b192c;
+      color: #ffffff;
+      padding: 13px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .btn-pilih-paket:hover {
+      background: #fb8500;
+      transform: scale(1.02);
+    }
+
+    .paket-card.popular .btn-pilih-paket {
+      background: #fb8500;
+    }
+
+    .paket-card.popular .btn-pilih-paket:hover {
+      background: #0b192c;
+    }
+
+    /* ALUR SECTION */
+    .alur-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 26px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .alur-section h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .alur-section > p {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 22px;
+    }
+
+    .alur-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .alur-step {
+      text-align: center;
+      position: relative;
+    }
+
+    .alur-step .step-num {
+      width: 44px;
+      height: 44px;
+      background: #0b192c;
+      color: #fb8500;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      margin: 0 auto 10px auto;
+      border: 2px solid #fb8500;
+      box-shadow: 0 4px 12px rgba(11, 25, 44, 0.15);
+    }
+
+    .alur-step h4 {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .alur-step p {
+      font-size: 11.5px;
+      color: #64748b;
+      line-height: 1.45;
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px 26px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .faq-section h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0b192c;
+      margin-bottom: 18px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #f1f5f9;
+      padding: 14px 0;
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-question {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0b192c;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+
+    .faq-question:hover { color: #fb8500; }
+
+    .faq-icon {
+      font-size: 18px;
+      font-weight: 800;
+      transition: transform 0.25s ease;
+      color: #94a3b8;
+      flex-shrink: 0;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      font-size: 12.5px;
+      color: #475569;
+      line-height: 1.65;
+    }
+
+    .faq-answer p { padding-top: 8px; }
+
+    .faq-item.active .faq-answer { max-height: 300px; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); color: #fb8500; }
+
+    /* CTA */
+    .cta-banner {
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.3);
+    }
+
+    .cta-banner h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .cta-banner p {
+      color: #cbd5e1;
+      font-size: 13.5px;
+      max-width: 600px;
+      margin: 0 auto 20px auto;
+    }
+
+    .btn-cta {
+      background: #fb8500;
+      color: #ffffff;
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .btn-cta:hover { opacity: 0.92; transform: translateY(-2px); }
+
+    .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; }
+    .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
+
+    @media (max-width: 960px) {
+      .nav-links, .btn-kta-top, .brand-text p { display: none; }
+      .btn-hamburger { display: block; }
+      .paket-grid { grid-template-columns: 1fr; gap: 16px; }
+      .alur-steps { grid-template-columns: 1fr 1fr; }
+      .probono-notice { flex-direction: column; }
+      .cta-banner { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-nav">
+    <div class="header-container">
+      <a href="index.html" class="brand-link">
+        <div class="brand-logo">
+          <img src="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w300" alt="Logo LBH LAPAN">
+        </div>
+        <div class="brand-text">
+          <h1>LBH <span>LAPAN</span></h1>
+          <p>Lingkar Peduli Anak Negeri</p>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link-btn">Beranda</a></li>
+        <li class="nav-item">
+          <button class="nav-link-btn">Tentang Kami <span class="arrow">▼</span></button>
+          <ul class="dropdown-menu">
+            <li><a href="tentang.html">🏛️ Sejarah & Logo Lambang</a></li>
+            <li><a href="pengurus.html">👔 Struktur Pengurus DPP</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link-btn active">Bantuan Hukum <span class="arrow">▼</span></button>
+          <ul class="dropdown-menu">
+            <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
+            <li><a href="konsultasi-berbayar.html">💬 Konsultasi Berbayar</a></li>
+            <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
+            <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link-btn">Publikasi <span class="arrow">▼</span></button>
+          <ul class="dropdown-menu">
+            <li><a href="berita.html">📰 Kabar Berita & Siaran Pers</a></li>
+            <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="karir.html" class="nav-link-btn">Karir</a>
+        </li>
+        <li class="nav-item">
+          <a href="kontak.html" class="nav-link-btn">Kontak</a>
+        </li>
+      </ul>
+
+      <div class="header-actions">
+        <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">💬 HALO LAPAN</a>
+        <button class="btn-hamburger" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+      <a href="index.html" class="m-direct-link">🏠 Beranda</a>
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mTentang')"><span>🏛️ Tentang Kami</span><span>▾</span></button>
+        <div class="m-sub-wrap" id="mTentang">
+          <a href="tentang.html">Sejarah Lembaga & Makna Lambang</a>
+          <a href="pengurus.html">Bagan Struktur Pengurus DPP</a>
+        </div>
+      </div>
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mBantuan')"><span style="color:#fb8500;">⚖️ Bantuan Hukum</span><span>▾</span></button>
+        <div class="m-sub-wrap open" id="mBantuan">
+          <a href="layanan.html">Layanan, SKTM & Legal Retainer</a>
+          <a href="konsultasi-berbayar.html" style="color:#fb8500; font-weight:700;">Konsultasi Berbayar</a>
+          <a href="alur.html">Alur SOP Penanganan Kasus</a>
+          <a href="pengaduan.html">Formulir Pengaduan Online</a>
+        </div>
+      </div>
+      <div>
+        <button class="m-item-title" onclick="toggleAccordion('mPublikasi')"><span>📰 Publikasi & Edukasi</span><span>▾</span></button>
+        <div class="m-sub-wrap" id="mPublikasi">
+          <a href="berita.html">Kabar Berita & Siaran Pers</a>
+          <a href="edukasi.html">Edukasi & Opini Hukum</a>
+        </div>
+      </div>
+      <a href="karir.html" class="m-direct-link">💼 Karir & Relawan</a>
+      <a href="kontak.html" class="m-direct-link">📍 Kontak & Lokasi</a>
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center;">🔍 Verifikasi KTA Anggota</a>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <div class="page-header">
+      <span class="badge-tag">Konsultasi Profesional</span>
+      <h2>Konsultasi Hukum Berbayar</h2>
+      <p>Pilih paket konsultasi yang sesuai kebutuhan Anda. Dapatkan jawaban langsung dari advokat berpengalaman LBH LAPAN.</p>
+    </div>
+
+    <!-- NOTICE PRO BONO -->
+    <div class="probono-notice">
+      <span class="icon">💚</span>
+      <div>
+        <h4>Warga Tidak Mampu? Gunakan Pro Bono Gratis</h4>
+        <p>Jika Anda memiliki SKTM atau kartu jaminan sosial (KIS/PKH/KIP), Anda berhak mendapat bantuan hukum <strong>100% GRATIS</strong> sesuai UU No. 16 Tahun 2011. Jangan bayar apapun.</p>
+        <a href="layanan.html">📄 Info Pro Bono Gratis →</a>
+      </div>
+    </div>
+
+    <!-- PAKET -->
+    <div class="paket-grid">
+
+      <!-- PAKET 1: CHAT -->
+      <div class="paket-card">
+        <div class="paket-icon">💬</div>
+        <h3>Konsultasi Chat</h3>
+        <p class="paket-duration">via WhatsApp · 30 menit</p>
+
+        <div class="paket-price">
+          <span class="currency">Rp</span>
+          <span class="amount">25<span style="font-size: 1rem;">rb</span></span>
+        </div>
+
+        <ul class="paket-features">
+          <li>Chat intensif 30 menit dengan advokat</li>
+          <li>Tanya-jawab hukum dasar</li>
+          <li>Dapat saran awal & rekomendasi langkah</li>
+          <li>Ringkasan jawaban via teks</li>
+          <li>Respon maks. 1x24 jam</li>
+        </ul>
+
+        <button onclick="pilihPaket('Chat', 'Rp 25.000', '30 menit')" class="btn-pilih-paket">
+          📱 Pilih Paket Chat
+        </button>
+      </div>
+
+      <!-- PAKET 2: TELEPON (POPULAR) -->
+      <div class="paket-card popular">
+        <span class="popular-badge">POPULER</span>
+        <div class="paket-icon">📞</div>
+        <h3>Konsultasi Telepon</h3>
+        <p class="paket-duration">Panggilan suara · 45 menit</p>
+
+        <div class="paket-price">
+          <span class="currency">Rp</span>
+          <span class="amount">100<span style="font-size: 1rem;">rb</span></span>
+        </div>
+
+        <ul class="paket-features">
+          <li>Panggilan telepon 45 menit</li>
+          <li>Diskusi lebih mendalam & detail</li>
+          <li>Analisis kasus Anda spesifik</li>
+          <li>Rekomendasi langkah hukum konkret</li>
+          <li>Catatan konsultasi tertulis</li>
+        </ul>
+
+        <button onclick="pilihPaket('Telepon', 'Rp 100.000', '45 menit')" class="btn-pilih-paket">
+          📞 Pilih Paket Telepon
+        </button>
+      </div>
+
+      <!-- PAKET 3: TATAP MUKA -->
+      <div class="paket-card">
+        <div class="paket-icon">🤝</div>
+        <h3>Konsultasi Tatap Muka</h3>
+        <p class="paket-duration">Kantor/Online Meeting · 60 menit</p>
+
+        <div class="paket-price">
+          <span class="currency">Rp</span>
+          <span class="amount amount-big">300<span style="font-size: 1rem;">rb</span></span>
+        </div>
+
+        <ul class="paket-features">
+          <li>Sesi tatap muka / video call 60 menit</li>
+          <li>Pembahasan menyeluruh dengan dokumen</li>
+          <li>Legal opinion tertulis (2-3 halaman)</li>
+          <li>Review dokumen/bukti yang Anda bawa</li>
+          <li>Prioritas penanganan lanjutan</li>
+        </ul>
+
+        <button onclick="pilihPaket('Tatap Muka', 'Rp 300.000', '60 menit')" class="btn-pilih-paket">
+          🤝 Pilih Paket Tatap Muka
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ALUR KONSULTASI -->
+    <div class="alur-section">
+      <h3>📋 Alur Konsultasi Berbayar</h3>
+      <p>Proses cepat & transparan, hanya 5 langkah</p>
+
+      <div class="alur-steps">
+        <div class="alur-step">
+          <div class="step-num">01</div>
+          <h4>Pilih Paket</h4>
+          <p>Klik tombol paket yang Anda inginkan</p>
+        </div>
+        <div class="alur-step">
+          <div class="step-num">02</div>
+          <h4>Chat WhatsApp</h4>
+          <p>Anda diarahkan ke WA dengan detail paket</p>
+        </div>
+        <div class="alur-step">
+          <div class="step-num">03</div>
+          <h4>Bayar QRIS</h4>
+          <p>Admin kirim QRIS / rekening untuk transfer</p>
+        </div>
+        <div class="alur-step">
+          <div class="step-num">04</div>
+          <h4>Verifikasi</h4>
+          <p>Kirim bukti bayar, admin konfirmasi 5 menit</p>
+        </div>
+        <div class="alur-step">
+          <div class="step-num">05</div>
+          <h4>Konsultasi</h4>
+          <p>Advokat menghubungi Anda sesuai jadwal</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h3>❓ Pertanyaan Umum</h3>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Kenapa ada konsultasi berbayar, bukannya LBH itu gratis?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>LBH LAPAN tetap menyediakan layanan <strong>Pro Bono (gratis)</strong> bagi warga miskin ber-SKTM sesuai UU No. 16/2011. Konsultasi berbayar ini adalah opsi untuk warga mampu yang ingin konsultasi cepat & prioritas tanpa perlu SKTM. Pendapatan dari sini membantu operasional LBH & memperluas layanan pro bono.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana cara pembayarannya?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Setelah Anda pilih paket, Anda akan diarahkan ke WhatsApp HALO LAPAN. Admin akan mengirimkan QRIS (bisa scan dari semua e-wallet & mobile banking) atau nomor rekening bank. Anda transfer, kirim bukti, admin verifikasi dalam 5 menit.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Kalau saya sudah bayar tapi advokat tidak bisa?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Jika karena alasan apapun konsultasi tidak bisa dilaksanakan, dana Anda akan dikembalikan 100% (refund penuh). Kami juga bisa menjadwalkan ulang sesuai waktu Anda.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apakah bisa minta refund jika saya berubah pikiran?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Refund 100% tersedia jika Anda membatalkan <strong>sebelum</strong> konsultasi dimulai. Setelah sesi konsultasi berjalan, dana tidak bisa dikembalikan.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apakah data saya dijamin kerahasiaannya?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Ya. Seluruh advokat LBH LAPAN terikat sumpah jabatan & kode etik advokat. Identitas, kronologi, dan dokumen Anda bersifat rahasia (privileged communication) dan tidak akan dibagikan ke pihak manapun.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bisakah konsultasi berlanjut ke pendampingan perkara?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Bisa. Jika kasus Anda membutuhkan pendampingan lebih lanjut (litigasi/non-litigasi), advokat akan menyusun skema biaya terpisah yang transparan. Untuk warga ber-SKTM, jalur Pro Bono tetap bisa diakses.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-banner">
+      <h3>Belum Yakin Pilih Paket yang Mana?</h3>
+      <p>Chat dulu dengan tim HALO LAPAN untuk konsultasi paket mana yang paling cocok dengan kebutuhan Anda.</p>
+      <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20tanya%20soal%20paket%20konsultasi%20berbayar" target="_blank" class="btn-cta">
+        💬 Tanya Admin HALO LAPAN →
+      </a>
+    </div>
+
+  </main>
+
+  <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
+    <span>💬</span><span>HALO LAPAN</span>
+  </a>
+
+  <footer class="footer-wrapper">
+    © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
+  </footer>
+
+  <script>
+    // =========================================================
+    // KONFIGURASI — EDIT DI SINI KALAU MAU UBAH PESAN WA
+    // =========================================================
+    const WA_NUMBER = "6281220111001";
+
+    function pilihPaket(namaPaket, harga, durasi) {
+      const pesan =
+`*PENDAFTARAN KONSULTASI BERBAYAR - LBH LAPAN*
+
+Halo Admin HALO LAPAN, saya ingin konsultasi berbayar:
+
+• *Paket:* ${namaPaket}
+• *Durasi:* ${durasi}
+• *Harga:* ${harga}
+
+*Data Pemohon:*
+• Nama Lengkap:
+• Domisili:
+• Topik/Kasus Hukum:
+
+Mohon dibantu info cara pembayaran & jadwal konsultasi. Terima kasih 🙏`;
+
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`;
+      window.open(url, '_blank');
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileDrawer').classList.toggle('active');
+    }
+    function toggleAccordion(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+    document.addEventListener('click', function(e) {
+      const drawer = document.getElementById('mobileDrawer');
+      const btn = document.querySelector('.btn-hamburger');
+      if (drawer && btn && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        drawer.classList.remove('active');
+      }
+    });
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        item.parentElement.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
