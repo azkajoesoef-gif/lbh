@@ -70,396 +70,286 @@
 
     .main-wrap { flex: 1; max-width: 1080px; width: 100%; margin: 0 auto; padding: 36px 16px 50px 16px; }
 
-    /* HERO */
     .page-header { text-align: center; margin-bottom: 32px; }
     .badge-tag { display: inline-block; background: rgba(251, 133, 0, 0.12); color: #fb8500; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
     .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
     .page-header p { color: #64748b; font-size: 14px; max-width: 720px; margin: 0 auto; }
 
-    /* NOTICE PRO BONO */
-    .probono-notice {
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-      border: 2px solid #16a34a;
-      border-radius: 16px;
-      padding: 20px 22px;
-      margin-bottom: 32px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-    .probono-notice span.icon {
-      font-size: 26px;
-      flex-shrink: 0;
-      line-height: 1;
-      margin-top: 2px;
-    }
-    .probono-notice h4 {
-      font-size: 14px;
-      font-weight: 800;
-      color: #166534;
-      margin-bottom: 4px;
-    }
-    .probono-notice p {
-      font-size: 13px;
-      color: #166534;
-      line-height: 1.55;
-      margin-bottom: 8px;
-    }
-    .probono-notice a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #16a34a;
-      color: #ffffff;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 7px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
+    .probono-notice { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 2px solid #16a34a; border-radius: 16px; padding: 20px 22px; margin-bottom: 32px; display: flex; gap: 14px; align-items: flex-start; }
+    .probono-notice span.icon { font-size: 26px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+    .probono-notice h4 { font-size: 14px; font-weight: 800; color: #166534; margin-bottom: 4px; }
+    .probono-notice p { font-size: 13px; color: #166534; line-height: 1.55; margin-bottom: 8px; }
+    .probono-notice a { display: inline-flex; align-items: center; gap: 6px; background: #16a34a; color: #ffffff; font-size: 12px; font-weight: 700; padding: 7px 14px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
     .probono-notice a:hover { opacity: 0.9; }
 
-    /* GRID PAKET */
-    .paket-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-bottom: 40px;
-    }
+    .paket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 40px; }
+    .paket-card { background: #ffffff; border: 2px solid #e2e8f0; border-radius: 20px; padding: 30px 24px; display: flex; flex-direction: column; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; }
+    .paket-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, #fb8500 0%, #ffb703 100%); }
+    .paket-card:hover { transform: translateY(-8px); border-color: #fb8500; box-shadow: 0 20px 40px -15px rgba(251, 133, 0, 0.3); }
+    .paket-card.popular { border-color: #fb8500; background: linear-gradient(180deg, #ffffff 0%, #fffcf8 100%); box-shadow: 0 10px 30px -8px rgba(251, 133, 0, 0.25); }
+    .popular-badge { position: absolute; top: 16px; right: -34px; background: #fb8500; color: #ffffff; font-size: 10px; font-weight: 800; padding: 4px 40px; transform: rotate(45deg); letter-spacing: 1px; text-transform: uppercase; }
+    .paket-icon { width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%); color: #fb8500; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 16px; }
+    .paket-card h3 { font-size: 1.35rem; font-weight: 800; color: #0b192c; margin-bottom: 6px; }
+    .paket-duration { font-size: 12.5px; color: #64748b; font-weight: 600; margin-bottom: 18px; }
+    .paket-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px dashed #e2e8f0; }
+    .paket-price .currency { font-size: 15px; font-weight: 700; color: #64748b; }
+    .paket-price .amount { font-size: 2.25rem; font-weight: 800; color: #fb8500; line-height: 1; }
+    .paket-price .amount-big { font-size: 1.85rem; }
+    .paket-features { list-style: none; margin-bottom: 22px; flex: 1; }
+    .paket-features li { font-size: 12.5px; color: #475569; display: flex; align-items: flex-start; gap: 8px; margin-bottom: 9px; line-height: 1.5; }
+    .paket-features li::before { content: "✓"; color: #16a34a; font-weight: 800; flex-shrink: 0; font-size: 13px; }
+    .btn-pilih-paket { background: #0b192c; color: #ffffff; padding: 13px 20px; border-radius: 10px; font-size: 13px; font-weight: 800; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; cursor: pointer; border: none; width: 100%; font-family: inherit; }
+    .btn-pilih-paket:hover { background: #fb8500; transform: scale(1.02); }
+    .paket-card.popular .btn-pilih-paket { background: #fb8500; }
+    .paket-card.popular .btn-pilih-paket:hover { background: #0b192c; }
 
-    .paket-card {
-      background: #ffffff;
-      border: 2px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 30px 24px;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
+    .alur-section { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 32px 26px; margin-bottom: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+    .alur-section h3 { font-size: 1.3rem; font-weight: 800; color: #0b192c; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+    .alur-section > p { font-size: 13px; color: #64748b; margin-bottom: 22px; }
+    .alur-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    .alur-step { text-align: center; }
+    .alur-step .step-num { width: 44px; height: 44px; background: #0b192c; color: #fb8500; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; margin: 0 auto 10px auto; border: 2px solid #fb8500; box-shadow: 0 4px 12px rgba(11, 25, 44, 0.15); }
+    .alur-step h4 { font-size: 12.5px; font-weight: 800; color: #0b192c; margin-bottom: 4px; line-height: 1.3; }
+    .alur-step p { font-size: 11.5px; color: #64748b; line-height: 1.45; }
 
-    .paket-card::before {
-      content: "";
-      position: absolute;
+    .faq-section { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 32px 26px; margin-bottom: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+    .faq-section h3 { font-size: 1.3rem; font-weight: 800; color: #0b192c; margin-bottom: 18px; }
+    .faq-item { border-bottom: 1px solid #f1f5f9; padding: 14px 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-size: 13.5px; font-weight: 700; color: #0b192c; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; }
+    .faq-question:hover { color: #fb8500; }
+    .faq-icon { font-size: 18px; font-weight: 800; transition: transform 0.25s ease; color: #94a3b8; flex-shrink: 0; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; font-size: 12.5px; color: #475569; line-height: 1.65; }
+    .faq-answer p { padding-top: 8px; }
+    .faq-item.active .faq-answer { max-height: 300px; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); color: #fb8500; }
+
+    .cta-banner { background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%); color: #ffffff; border-radius: 20px; padding: 32px 28px; text-align: center; box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.3); }
+    .cta-banner h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 8px; }
+    .cta-banner p { color: #cbd5e1; font-size: 13.5px; max-width: 600px; margin: 0 auto 20px auto; }
+    .btn-cta { background: #fb8500; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-size: 13.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: opacity 0.2s, transform 0.2s; }
+    .btn-cta:hover { opacity: 0.92; transform: translateY(-2px); }
+
+    /* ============ MODAL PEMESANAN ============ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, #fb8500 0%, #ffb703 100%);
-    }
-
-    .paket-card:hover {
-      transform: translateY(-8px);
-      border-color: #fb8500;
-      box-shadow: 0 20px 40px -15px rgba(251, 133, 0, 0.3);
-    }
-
-    .paket-card.popular {
-      border-color: #fb8500;
-      background: linear-gradient(180deg, #ffffff 0%, #fffcf8 100%);
-      box-shadow: 0 10px 30px -8px rgba(251, 133, 0, 0.25);
-    }
-
-    .popular-badge {
-      position: absolute;
-      top: 16px;
-      right: -34px;
-      background: #fb8500;
-      color: #ffffff;
-      font-size: 10px;
-      font-weight: 800;
-      padding: 4px 40px;
-      transform: rotate(45deg);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .paket-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      color: #fb8500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-
-    .paket-card h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 6px;
-    }
-
-    .paket-duration {
-      font-size: 12.5px;
-      color: #64748b;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .paket-price {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 2px dashed #e2e8f0;
-    }
-
-    .paket-price .currency {
-      font-size: 15px;
-      font-weight: 700;
-      color: #64748b;
-    }
-
-    .paket-price .amount {
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: #fb8500;
-      line-height: 1;
-    }
-
-    .paket-price .amount-big {
-      font-size: 1.85rem;
-    }
-
-    .paket-features {
-      list-style: none;
-      margin-bottom: 22px;
-      flex: 1;
-    }
-
-    .paket-features li {
-      font-size: 12.5px;
-      color: #475569;
-      display: flex;
+      height: 100%;
+      background: rgba(11, 25, 44, 0.8);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      padding: 20px;
+      overflow-y: auto;
       align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 9px;
-      line-height: 1.5;
-    }
-
-    .paket-features li::before {
-      content: "✓";
-      color: #16a34a;
-      font-weight: 800;
-      flex-shrink: 0;
-      font-size: 13px;
-    }
-
-    .paket-features li.no::before {
-      content: "✕";
-      color: #cbd5e1;
-    }
-
-    .paket-features li.no {
-      color: #94a3b8;
-      text-decoration: line-through;
-    }
-
-    .btn-pilih-paket {
-      background: #0b192c;
-      color: #ffffff;
-      padding: 13px 20px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 8px;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-      font-family: inherit;
     }
 
-    .btn-pilih-paket:hover {
-      background: #fb8500;
-      transform: scale(1.02);
-    }
+    .modal-overlay.active { display: flex; }
 
-    .paket-card.popular .btn-pilih-paket {
-      background: #fb8500;
-    }
-
-    .paket-card.popular .btn-pilih-paket:hover {
-      background: #0b192c;
-    }
-
-    /* ALUR SECTION */
-    .alur-section {
+    .modal-content {
       background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 32px 26px;
-      margin-bottom: 32px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border-radius: 24px;
+      max-width: 560px;
+      width: 100%;
+      margin: 30px auto;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      animation: modalSlide 0.3s ease;
+      position: relative;
     }
 
-    .alur-section h3 {
-      font-size: 1.3rem;
+    @keyframes modalSlide {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+      color: #ffffff;
+      padding: 24px 26px;
+      position: relative;
+      border-bottom: 4px solid #fb8500;
+    }
+
+    .modal-header h3 {
+      font-size: 1.25rem;
       font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .alur-section > p {
+    .modal-paket-info {
       font-size: 13px;
-      color: #64748b;
-      margin-bottom: 22px;
-    }
-
-    .alur-steps {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
-
-    .alur-step {
-      text-align: center;
-      position: relative;
-    }
-
-    .alur-step .step-num {
-      width: 44px;
-      height: 44px;
-      background: #0b192c;
       color: #fb8500;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border: none;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
-      font-weight: 800;
-      margin: 0 auto 10px auto;
-      border: 2px solid #fb8500;
-      box-shadow: 0 4px 12px rgba(11, 25, 44, 0.15);
+      transition: background 0.2s;
+      line-height: 1;
+      font-family: inherit;
     }
 
-    .alur-step h4 {
-      font-size: 12.5px;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
+    .modal-close:hover { background: #ef4444; }
 
-    .alur-step p {
-      font-size: 11.5px;
-      color: #64748b;
-      line-height: 1.45;
-    }
+    .modal-body { padding: 24px 26px 28px 26px; }
 
-    /* FAQ */
-    .faq-section {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 32px 26px;
-      margin-bottom: 32px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-    }
+    .form-section { margin-bottom: 22px; }
 
-    .faq-section h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 18px;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid #f1f5f9;
-      padding: 14px 0;
-    }
-
-    .faq-item:last-child { border-bottom: none; }
-
-    .faq-question {
+    .form-section h4 {
       font-size: 13.5px;
-      font-weight: 700;
+      font-weight: 800;
       color: #0b192c;
-      cursor: pointer;
+      margin-bottom: 12px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      user-select: none;
+      gap: 8px;
     }
 
-    .faq-question:hover { color: #fb8500; }
-
-    .faq-icon {
-      font-size: 18px;
+    .form-section h4 .step-badge {
+      background: #fb8500;
+      color: #ffffff;
+      font-size: 11px;
       font-weight: 800;
-      transition: transform 0.25s ease;
-      color: #94a3b8;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
 
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s ease;
-      font-size: 12.5px;
-      color: #475569;
-      line-height: 1.65;
-    }
-
-    .faq-answer p { padding-top: 8px; }
-
-    .faq-item.active .faq-answer { max-height: 300px; }
-    .faq-item.active .faq-icon { transform: rotate(45deg); color: #fb8500; }
-
-    /* CTA */
-    .cta-banner {
-      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      color: #ffffff;
-      border-radius: 20px;
-      padding: 32px 28px;
-      text-align: center;
-      box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.3);
-    }
-
-    .cta-banner h3 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .cta-banner p {
-      color: #cbd5e1;
-      font-size: 13.5px;
-      max-width: 600px;
-      margin: 0 auto 20px auto;
-    }
-
-    .btn-cta {
-      background: #fb8500;
-      color: #ffffff;
-      padding: 13px 26px;
+    .modal-input,
+    .modal-textarea {
+      width: 100%;
+      padding: 12px 14px;
       border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
       font-size: 13.5px;
-      font-weight: 700;
-      text-decoration: none;
+      color: #1e293b;
+      outline: none;
+      background: #ffffff;
+      margin-bottom: 10px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .modal-input:focus,
+    .modal-textarea:focus {
+      border-color: #fb8500;
+      box-shadow: 0 0 0 3px rgba(251, 133, 0, 0.1);
+    }
+
+    .modal-textarea { resize: vertical; min-height: 70px; }
+
+    .qris-box {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .qris-box img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .qris-nominal {
+      font-size: 14px;
+      color: #475569;
+      margin-top: 10px;
+    }
+
+    .qris-nominal strong {
+      color: #fb8500;
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .qris-receiver {
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 8px;
+      padding-top: 10px;
+      border-top: 1px dashed #cbd5e1;
+    }
+
+    .qris-dummy-badge {
+      display: inline-block;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-konfirmasi {
+      background: #25d366;
+      color: #ffffff;
+      border: none;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+      transition: all 0.2s;
+      font-family: inherit;
+      margin-top: 6px;
     }
 
-    .btn-cta:hover { opacity: 0.92; transform: translateY(-2px); }
+    .btn-konfirmasi:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+    }
+
+    .modal-note {
+      font-size: 11.5px;
+      color: #64748b;
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
 
     .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; }
     .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
@@ -471,6 +361,9 @@
       .alur-steps { grid-template-columns: 1fr 1fr; }
       .probono-notice { flex-direction: column; }
       .cta-banner { padding: 24px 20px; }
+      .modal-body { padding: 20px 18px 24px 18px; }
+      .modal-header { padding: 20px; }
+      .qris-box img { width: 180px; height: 180px; }
     }
   </style>
 </head>
@@ -513,12 +406,8 @@
             <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="karir.html" class="nav-link-btn">Karir</a>
-        </li>
-        <li class="nav-item">
-          <a href="kontak.html" class="nav-link-btn">Kontak</a>
-        </li>
+        <li class="nav-item"><a href="karir.html" class="nav-link-btn">Karir</a></li>
+        <li class="nav-item"><a href="kontak.html" class="nav-link-btn">Kontak</a></li>
       </ul>
 
       <div class="header-actions">
@@ -566,7 +455,6 @@
       <p>Pilih paket konsultasi yang sesuai kebutuhan Anda. Dapatkan jawaban langsung dari advokat berpengalaman LBH LAPAN.</p>
     </div>
 
-    <!-- NOTICE PRO BONO -->
     <div class="probono-notice">
       <span class="icon">💚</span>
       <div>
@@ -576,20 +464,16 @@
       </div>
     </div>
 
-    <!-- PAKET -->
     <div class="paket-grid">
 
-      <!-- PAKET 1: CHAT -->
       <div class="paket-card">
         <div class="paket-icon">💬</div>
         <h3>Konsultasi Chat</h3>
         <p class="paket-duration">via WhatsApp · 30 menit</p>
-
         <div class="paket-price">
           <span class="currency">Rp</span>
           <span class="amount">25<span style="font-size: 1rem;">rb</span></span>
         </div>
-
         <ul class="paket-features">
           <li>Chat intensif 30 menit dengan advokat</li>
           <li>Tanya-jawab hukum dasar</li>
@@ -597,24 +481,20 @@
           <li>Ringkasan jawaban via teks</li>
           <li>Respon maks. 1x24 jam</li>
         </ul>
-
-        <button onclick="pilihPaket('Chat', 'Rp 25.000', '30 menit')" class="btn-pilih-paket">
+        <button onclick="pilihPaket('Konsultasi Chat', 'Rp 25.000', '30 menit via WhatsApp')" class="btn-pilih-paket">
           📱 Pilih Paket Chat
         </button>
       </div>
 
-      <!-- PAKET 2: TELEPON (POPULAR) -->
       <div class="paket-card popular">
         <span class="popular-badge">POPULER</span>
         <div class="paket-icon">📞</div>
         <h3>Konsultasi Telepon</h3>
         <p class="paket-duration">Panggilan suara · 45 menit</p>
-
         <div class="paket-price">
           <span class="currency">Rp</span>
           <span class="amount">100<span style="font-size: 1rem;">rb</span></span>
         </div>
-
         <ul class="paket-features">
           <li>Panggilan telepon 45 menit</li>
           <li>Diskusi lebih mendalam & detail</li>
@@ -622,23 +502,19 @@
           <li>Rekomendasi langkah hukum konkret</li>
           <li>Catatan konsultasi tertulis</li>
         </ul>
-
-        <button onclick="pilihPaket('Telepon', 'Rp 100.000', '45 menit')" class="btn-pilih-paket">
+        <button onclick="pilihPaket('Konsultasi Telepon', 'Rp 100.000', '45 menit via telepon')" class="btn-pilih-paket">
           📞 Pilih Paket Telepon
         </button>
       </div>
 
-      <!-- PAKET 3: TATAP MUKA -->
       <div class="paket-card">
         <div class="paket-icon">🤝</div>
         <h3>Konsultasi Tatap Muka</h3>
         <p class="paket-duration">Kantor/Online Meeting · 60 menit</p>
-
         <div class="paket-price">
           <span class="currency">Rp</span>
           <span class="amount amount-big">300<span style="font-size: 1rem;">rb</span></span>
         </div>
-
         <ul class="paket-features">
           <li>Sesi tatap muka / video call 60 menit</li>
           <li>Pembahasan menyeluruh dengan dokumen</li>
@@ -646,124 +522,107 @@
           <li>Review dokumen/bukti yang Anda bawa</li>
           <li>Prioritas penanganan lanjutan</li>
         </ul>
-
-        <button onclick="pilihPaket('Tatap Muka', 'Rp 300.000', '60 menit')" class="btn-pilih-paket">
+        <button onclick="pilihPaket('Konsultasi Tatap Muka', 'Rp 300.000', '60 menit tatap muka')" class="btn-pilih-paket">
           🤝 Pilih Paket Tatap Muka
         </button>
       </div>
 
     </div>
 
-    <!-- ALUR KONSULTASI -->
     <div class="alur-section">
       <h3>📋 Alur Konsultasi Berbayar</h3>
       <p>Proses cepat & transparan, hanya 5 langkah</p>
-
       <div class="alur-steps">
-        <div class="alur-step">
-          <div class="step-num">01</div>
-          <h4>Pilih Paket</h4>
-          <p>Klik tombol paket yang Anda inginkan</p>
-        </div>
-        <div class="alur-step">
-          <div class="step-num">02</div>
-          <h4>Chat WhatsApp</h4>
-          <p>Anda diarahkan ke WA dengan detail paket</p>
-        </div>
-        <div class="alur-step">
-          <div class="step-num">03</div>
-          <h4>Bayar QRIS</h4>
-          <p>Admin kirim QRIS / rekening untuk transfer</p>
-        </div>
-        <div class="alur-step">
-          <div class="step-num">04</div>
-          <h4>Verifikasi</h4>
-          <p>Kirim bukti bayar, admin konfirmasi 5 menit</p>
-        </div>
-        <div class="alur-step">
-          <div class="step-num">05</div>
-          <h4>Konsultasi</h4>
-          <p>Advokat menghubungi Anda sesuai jadwal</p>
-        </div>
+        <div class="alur-step"><div class="step-num">01</div><h4>Pilih Paket</h4><p>Klik paket yang Anda inginkan</p></div>
+        <div class="alur-step"><div class="step-num">02</div><h4>Isi Form</h4><p>Isi data & lihat QRIS di halaman</p></div>
+        <div class="alur-step"><div class="step-num">03</div><h4>Bayar QRIS</h4><p>Scan dengan e-wallet apapun</p></div>
+        <div class="alur-step"><div class="step-num">04</div><h4>Konfirmasi</h4><p>Kirim bukti bayar via WhatsApp</p></div>
+        <div class="alur-step"><div class="step-num">05</div><h4>Konsultasi</h4><p>Advokat hubungi sesuai jadwal</p></div>
       </div>
     </div>
 
-    <!-- FAQ -->
     <div class="faq-section">
       <h3>❓ Pertanyaan Umum</h3>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Kenapa ada konsultasi berbayar, bukannya LBH itu gratis?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>LBH LAPAN tetap menyediakan layanan <strong>Pro Bono (gratis)</strong> bagi warga miskin ber-SKTM sesuai UU No. 16/2011. Konsultasi berbayar ini adalah opsi untuk warga mampu yang ingin konsultasi cepat & prioritas tanpa perlu SKTM. Pendapatan dari sini membantu operasional LBH & memperluas layanan pro bono.</p>
-        </div>
+        <div class="faq-question"><span>Kenapa ada konsultasi berbayar, bukannya LBH itu gratis?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>LBH LAPAN tetap menyediakan layanan <strong>Pro Bono (gratis)</strong> bagi warga miskin ber-SKTM sesuai UU No. 16/2011. Konsultasi berbayar ini adalah opsi untuk warga mampu yang ingin konsultasi cepat & prioritas tanpa perlu SKTM.</p></div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Bagaimana cara pembayarannya?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Setelah Anda pilih paket, Anda akan diarahkan ke WhatsApp HALO LAPAN. Admin akan mengirimkan QRIS (bisa scan dari semua e-wallet & mobile banking) atau nomor rekening bank. Anda transfer, kirim bukti, admin verifikasi dalam 5 menit.</p>
-        </div>
+        <div class="faq-question"><span>Bagaimana cara pembayarannya?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Setelah Anda pilih paket & isi form, Anda akan melihat QRIS di halaman. Scan QRIS dengan e-wallet/mobile banking, masukkan nominal, transfer, lalu kirim bukti via WhatsApp.</p></div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Kalau saya sudah bayar tapi advokat tidak bisa?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Jika karena alasan apapun konsultasi tidak bisa dilaksanakan, dana Anda akan dikembalikan 100% (refund penuh). Kami juga bisa menjadwalkan ulang sesuai waktu Anda.</p>
-        </div>
+        <div class="faq-question"><span>Kalau saya sudah bayar tapi advokat tidak bisa?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Jika karena alasan apapun konsultasi tidak bisa dilaksanakan, dana Anda akan dikembalikan 100% (refund penuh). Kami juga bisa menjadwalkan ulang sesuai waktu Anda.</p></div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Apakah bisa minta refund jika saya berubah pikiran?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Refund 100% tersedia jika Anda membatalkan <strong>sebelum</strong> konsultasi dimulai. Setelah sesi konsultasi berjalan, dana tidak bisa dikembalikan.</p>
-        </div>
+        <div class="faq-question"><span>Apakah data saya dijamin kerahasiaannya?</span><span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Ya. Seluruh advokat LBH LAPAN terikat sumpah jabatan & kode etik advokat. Identitas, kronologi, dan dokumen Anda bersifat rahasia (privileged communication).</p></div>
       </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Apakah data saya dijamin kerahasiaannya?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Ya. Seluruh advokat LBH LAPAN terikat sumpah jabatan & kode etik advokat. Identitas, kronologi, dan dokumen Anda bersifat rahasia (privileged communication) dan tidak akan dibagikan ke pihak manapun.</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Bisakah konsultasi berlanjut ke pendampingan perkara?</span>
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-answer">
-          <p>Bisa. Jika kasus Anda membutuhkan pendampingan lebih lanjut (litigasi/non-litigasi), advokat akan menyusun skema biaya terpisah yang transparan. Untuk warga ber-SKTM, jalur Pro Bono tetap bisa diakses.</p>
-        </div>
-      </div>
-
     </div>
 
-    <!-- CTA -->
     <div class="cta-banner">
       <h3>Belum Yakin Pilih Paket yang Mana?</h3>
-      <p>Chat dulu dengan tim HALO LAPAN untuk konsultasi paket mana yang paling cocok dengan kebutuhan Anda.</p>
+      <p>Chat dulu dengan tim HALO LAPAN untuk konsultasi paket mana yang paling cocok.</p>
       <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20tanya%20soal%20paket%20konsultasi%20berbayar" target="_blank" class="btn-cta">
         💬 Tanya Admin HALO LAPAN →
       </a>
     </div>
 
   </main>
+
+  <!-- ============ MODAL PEMESANAN ============ -->
+  <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📝 Pemesanan Konsultasi</h3>
+        <p class="modal-paket-info" id="modalPaketInfo">Paket & Harga</p>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-section">
+          <h4><span class="step-badge">1</span> Data Pemohon</h4>
+          <input type="text" id="inputNama" class="modal-input" placeholder="Nama Lengkap" required>
+          <input type="tel" id="inputWa" class="modal-input" placeholder="Nomor WhatsApp Aktif (08xx)" required>
+          <textarea id="inputTopik" class="modal-textarea" placeholder="Topik / Ringkasan Kasus Hukum Anda" required></textarea>
+        </div>
+
+        <div class="form-section">
+          <h4><span class="step-badge">2</span> Scan & Bayar QRIS</h4>
+          <div class="qris-box">
+            <!-- ===================================================== -->
+            <!-- QRIS DUMMY - GANTI URL DI BAWAH DENGAN QRIS ASLI      -->
+            <!-- Setelah Anda dapat QRIS asli, ganti src img dengan:    -->
+            <!-- src="https://lbh.lingkarpedulianaknegeri.id/qris.png" -->
+            <!-- ===================================================== -->
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=QRIS%20DUMMY%20-%20LBH%20LAPAN%20-%20Segera%20diganti%20dengan%20QRIS%20asli"
+              alt="QRIS Dummy LBH LAPAN"
+              id="qrisImage">
+            <div class="qris-nominal">
+              Nominal Transfer
+              <strong id="modalNominal">Rp 25.000</strong>
+            </div>
+            <div class="qris-receiver">
+              A/N: <strong>LBH Lingkar Peduli Anak Negeri</strong>
+            </div>
+            <span class="qris-dummy-badge">⚠️ Mode Dummy — QRIS Belum Aktif</span>
+          </div>
+        </div>
+
+        <button class="btn-konfirmasi" onclick="konfirmasiPembayaran()">
+          ✅ Saya Sudah Bayar — Konfirmasi via WhatsApp
+        </button>
+
+        <p class="modal-note">
+          Setelah klik tombol di atas, Anda akan diarahkan ke WhatsApp HALO LAPAN dengan data otomatis. Silakan kirim screenshot bukti transfer untuk verifikasi (maks. 5 menit).
+        </p>
+
+      </div>
+    </div>
+  </div>
 
   <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="floating-wa-btn">
     <span>💬</span><span>HALO LAPAN</span>
@@ -775,30 +634,77 @@
 
   <script>
     // =========================================================
-    // KONFIGURASI — EDIT DI SINI KALAU MAU UBAH PESAN WA
+    // KONFIGURASI
     // =========================================================
     const WA_NUMBER = "6281220111001";
 
+    let paketTerpilih = {
+      nama: "",
+      harga: "",
+      durasi: ""
+    };
+
     function pilihPaket(namaPaket, harga, durasi) {
+      paketTerpilih = { nama: namaPaket, harga: harga, durasi: durasi };
+
+      // Update info di modal
+      document.getElementById('modalPaketInfo').textContent = `${namaPaket} • ${harga} • ${durasi}`;
+      document.getElementById('modalNominal').textContent = harga;
+
+      // Reset form
+      document.getElementById('inputNama').value = '';
+      document.getElementById('inputWa').value = '';
+      document.getElementById('inputTopik').value = '';
+
+      // Buka modal
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function konfirmasiPembayaran() {
+      const nama = document.getElementById('inputNama').value.trim();
+      const wa = document.getElementById('inputWa').value.trim();
+      const topik = document.getElementById('inputTopik').value.trim();
+
+      if (!nama) { alert('Mohon isi Nama Lengkap Anda.'); return; }
+      if (!wa) { alert('Mohon isi Nomor WhatsApp Anda.'); return; }
+      if (!topik) { alert('Mohon isi Topik / Ringkasan Kasus.'); return; }
+
       const pesan =
 `*PENDAFTARAN KONSULTASI BERBAYAR - LBH LAPAN*
+_(via website lbh.lingkarpedulianaknegeri.id)_
 
-Halo Admin HALO LAPAN, saya ingin konsultasi berbayar:
+*📦 Paket yang Dipilih:*
+• ${paketTerpilih.nama}
+• ${paketTerpilih.durasi}
+• Harga: ${paketTerpilih.harga}
 
-• *Paket:* ${namaPaket}
-• *Durasi:* ${durasi}
-• *Harga:* ${harga}
+*👤 Data Pemohon:*
+• Nama: ${nama}
+• No. WhatsApp: ${wa}
+• Topik/Kasus: ${topik}
 
-*Data Pemohon:*
-• Nama Lengkap:
-• Domisili:
-• Topik/Kasus Hukum:
+*💳 Pembayaran:*
+Saya sudah transfer via QRIS sesuai nominal di atas.
 
-Mohon dibantu info cara pembayaran & jadwal konsultasi. Terima kasih 🙏`;
+📎 _Bukti transfer saya lampirkan di chat ini._
+
+Mohon dibantu verifikasi & jadwalkan konsultasi. Terima kasih 🙏`;
 
       const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`;
       window.open(url, '_blank');
+      closeModal();
     }
+
+    // Tutup modal dengan ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
 
     function toggleMobileMenu() {
       document.getElementById('mobileDrawer').classList.toggle('active');
@@ -814,7 +720,6 @@ Mohon dibantu info cara pembayaran & jadwal konsultasi. Terima kasih 🙏`;
       }
     });
 
-    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(item => {
       item.addEventListener('click', () => {
         item.parentElement.classList.toggle('active');
