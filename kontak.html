@@ -25,7 +25,6 @@
   <meta name="twitter:description" content="Alamat sekretariat dan peta lokasi DPP LBH LAPAN.">
   <meta name="twitter:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
 
-  <!-- Leaflet CSS (peta interaktif) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,309 +77,55 @@
     .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
     .page-header p { color: #64748b; font-size: 14px; max-width: 680px; margin: 0 auto; }
 
-    /* PETA */
-    .map-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 12px;
-      margin-bottom: 28px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-    }
+    .map-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 12px; margin-bottom: 28px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04); }
+    #petaLBH { width: 100%; height: 480px; border-radius: 14px; overflow: hidden; z-index: 1; }
+    .map-hint { text-align: center; font-size: 12px; color: #64748b; padding: 10px 4px 2px 4px; }
 
-    #petaLBH {
-      width: 100%;
-      height: 480px;
-      border-radius: 14px;
-      overflow: hidden;
-      z-index: 1;
-    }
+    .custom-marker { background: #fb8500; width: 36px; height: 36px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); display: flex; align-items: center; justify-content: center; }
+    .custom-marker span { transform: rotate(45deg); font-size: 16px; color: #ffffff; }
+    .custom-marker.marker-korwil { background: #2563eb; }
+    .custom-marker.marker-dki { background: #047857; }
 
-    .map-hint {
-      text-align: center;
-      font-size: 12px;
-      color: #64748b;
-      padding: 10px 4px 2px 4px;
-    }
+    .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
+    .leaflet-popup-content { margin: 14px 16px; font-family: 'Plus Jakarta Sans', sans-serif; min-width: 220px; }
+    .popup-title { font-size: 14px; font-weight: 800; color: #0b192c; margin-bottom: 6px; }
+    .popup-addr { font-size: 12px; color: #64748b; line-height: 1.5; margin-bottom: 8px; }
+    .popup-btn { display: inline-block; background: #fb8500; color: #ffffff; font-size: 11.5px; font-weight: 700; padding: 6px 12px; border-radius: 6px; text-decoration: none; }
 
-    /* MARKER CUSTOM */
-    .custom-marker {
-      background: #fb8500;
-      width: 36px;
-      height: 36px;
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg);
-      border: 3px solid #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .custom-marker span {
-      transform: rotate(45deg);
-      font-size: 16px;
-      color: #ffffff;
-    }
-    .custom-marker.marker-korwil {
-      background: #2563eb;
-    }
-    .custom-marker.marker-dki {
-      background: #047857;
-    }
-
-    /* POPUP LEAFLET */
-    .leaflet-popup-content-wrapper {
-      border-radius: 12px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-    .leaflet-popup-content {
-      margin: 14px 16px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      min-width: 220px;
-    }
-    .popup-title {
-      font-size: 14px;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 6px;
-    }
-    .popup-addr {
-      font-size: 12px;
-      color: #64748b;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-    .popup-btn {
-      display: inline-block;
-      background: #fb8500;
-      color: #ffffff;
-      font-size: 11.5px;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-
-    /* GRID KARTU LOKASI */
-    .location-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-      margin-bottom: 32px;
-    }
-
-    .location-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 24px 22px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .location-card:hover {
-      border-color: #fb8500;
-      transform: translateY(-3px);
-    }
-
+    .location-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; margin-bottom: 32px; }
+    .location-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px 22px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02); display: flex; flex-direction: column; gap: 14px; transition: transform 0.2s, border-color 0.2s; }
+    .location-card:hover { border-color: #fb8500; transform: translateY(-3px); }
     .location-card.main-office { border-top: 5px solid #fb8500; }
     .location-card.korwil-card { border-top: 5px solid #2563eb; }
-
-    .loc-badge {
-      display: inline-block;
-      font-size: 10.5px;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      align-self: flex-start;
-    }
-
+    .loc-badge { display: inline-block; font-size: 10.5px; font-weight: 800; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; align-self: flex-start; }
     .loc-badge.primary { background: rgba(251, 133, 0, 0.12); color: #c2410c; }
     .loc-badge.regional { background: #eff6ff; color: #1d4ed8; }
-
-    .location-card h3 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #0b192c;
-      line-height: 1.35;
-    }
-
-    .loc-info-row {
-      display: flex;
-      gap: 10px;
-      font-size: 13px;
-      color: #475569;
-      line-height: 1.55;
-      align-items: flex-start;
-    }
-
-    .loc-info-row span.emoji {
-      flex-shrink: 0;
-      font-size: 15px;
-      margin-top: 1px;
-    }
-
-    .loc-btn-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-
-    .loc-btn {
-      background: #0b192c;
-      color: #ffffff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: opacity 0.2s;
-    }
-
+    .location-card h3 { font-size: 1.15rem; font-weight: 800; color: #0b192c; line-height: 1.35; }
+    .loc-info-row { display: flex; gap: 10px; font-size: 13px; color: #475569; line-height: 1.55; align-items: flex-start; }
+    .loc-info-row span.emoji { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .loc-btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .loc-btn { background: #0b192c; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.2s; }
     .loc-btn:hover { opacity: 0.9; }
-
     .loc-btn.wa-btn { background: #25d366; }
-    .loc-btn.outline-btn { background: #f1f5f9; color: #0b192c; border: 1px solid #e2e8f0; }
 
-    /* SECTION KONTAK CEPAT */
-    .quick-contact-section {
-      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      color: #ffffff;
-      border-radius: 20px;
-      padding: 36px 28px;
-      margin-bottom: 32px;
-      box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.3);
-    }
-
-    .quick-contact-section h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .quick-contact-section > p {
-      text-align: center;
-      color: #cbd5e1;
-      font-size: 13.5px;
-      margin-bottom: 26px;
-    }
-
-    .quick-contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .quick-contact-item {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      padding: 22px 18px;
-      text-align: center;
-    }
-
-    .quick-contact-item span.icon {
-      font-size: 28px;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    .quick-contact-item h4 {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: #fb8500;
-      margin-bottom: 6px;
-    }
-
-    .quick-contact-item p {
-      font-size: 12px;
-      color: #cbd5e1;
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .quick-contact-item a {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 6px 14px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 11.5px;
-      font-weight: 700;
-      display: inline-block;
-      transition: background 0.2s;
-    }
-
+    .quick-contact-section { background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%); color: #ffffff; border-radius: 20px; padding: 36px 28px; margin-bottom: 32px; box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.3); }
+    .quick-contact-section h3 { font-size: 1.4rem; font-weight: 800; text-align: center; margin-bottom: 8px; }
+    .quick-contact-section > p { text-align: center; color: #cbd5e1; font-size: 13.5px; margin-bottom: 26px; }
+    .quick-contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .quick-contact-item { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px; padding: 22px 18px; text-align: center; }
+    .quick-contact-item span.icon { font-size: 28px; display: block; margin-bottom: 10px; }
+    .quick-contact-item h4 { font-size: 13.5px; font-weight: 800; color: #fb8500; margin-bottom: 6px; }
+    .quick-contact-item p { font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-bottom: 12px; }
+    .quick-contact-item a { color: #ffffff; background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 11.5px; font-weight: 700; display: inline-block; transition: background 0.2s; }
     .quick-contact-item a:hover { background: #fb8500; }
 
-    /* CTA */
-    .cta-banner {
-      background: #ffffff;
-      border: 2px solid #fb8500;
-      border-radius: 18px;
-      padding: 26px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      box-shadow: 0 6px 18px rgba(251, 133, 0, 0.08);
-    }
-
-    .cta-banner h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 4px;
-    }
-
-    .cta-banner p {
-      font-size: 13px;
-      color: #64748b;
-    }
-
-    .btn-cta {
-      background: #fb8500;
-      color: #ffffff;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .cta-banner { background: #ffffff; border: 2px solid #fb8500; border-radius: 18px; padding: 26px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; box-shadow: 0 6px 18px rgba(251, 133, 0, 0.08); }
+    .cta-banner h3 { font-size: 1.25rem; font-weight: 800; color: #0b192c; margin-bottom: 4px; }
+    .cta-banner p { font-size: 13px; color: #64748b; }
+    .btn-cta { background: #fb8500; color: #ffffff; padding: 12px 22px; border-radius: 10px; font-size: 13px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
     .btn-cta:hover { opacity: 0.92; }
 
-    .floating-wa-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      background: #25d366;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      border-radius: 50px;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      z-index: 9999;
-    }
-
+    .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; }
     .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
 
     @media (max-width: 960px) {
@@ -433,6 +178,9 @@
           </ul>
         </li>
         <li class="nav-item">
+          <a href="karir.html" class="nav-link-btn">Karir</a>
+        </li>
+        <li class="nav-item">
           <a href="kontak.html" class="nav-link-btn active">Kontak</a>
         </li>
       </ul>
@@ -468,6 +216,7 @@
           <a href="edukasi.html">Edukasi & Opini Hukum</a>
         </div>
       </div>
+      <a href="karir.html" class="m-direct-link">💼 Karir & Relawan</a>
       <a href="kontak.html" class="m-direct-link" style="color:#fb8500;">📍 Kontak & Lokasi</a>
       <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center;">🔍 Verifikasi KTA Anggota</a>
     </div>
@@ -480,16 +229,13 @@
       <p>Temukan lokasi kantor sekretariat DPP LBH Lingkar Peduli Anak Negeri dan wilayah kerja kami di seluruh Indonesia.</p>
     </div>
 
-    <!-- PETA INTERAKTIF -->
     <div class="map-card">
       <div id="petaLBH"></div>
       <p class="map-hint">🗺️ Klik marker untuk melihat detail lokasi. Geser & zoom peta untuk menjelajah.</p>
     </div>
 
-    <!-- KARTU DETAIL LOKASI -->
     <div class="location-grid">
 
-      <!-- KANTOR PUSAT -->
       <div class="location-card main-office">
         <span class="loc-badge primary">🏛️ Kantor Pusat</span>
         <h3>Sekretariat DPP LBH LAPAN</h3>
@@ -515,7 +261,6 @@
         </div>
       </div>
 
-      <!-- KORWIL JAWA BARAT -->
       <div class="location-card korwil-card">
         <span class="loc-badge regional">🗺️ Korwil</span>
         <h3>Korwil Jawa Barat</h3>
@@ -538,7 +283,6 @@
         </div>
       </div>
 
-      <!-- KORWIL DKI JAKARTA -->
       <div class="location-card korwil-card">
         <span class="loc-badge regional">🗺️ Korwil</span>
         <h3>Korwil DKI Jakarta</h3>
@@ -563,7 +307,6 @@
 
     </div>
 
-    <!-- KONTAK CEPAT -->
     <div class="quick-contact-section">
       <h3>Pusat Kontak LBH LAPAN</h3>
       <p>Hubungi kami melalui saluran resmi berikut ini</p>
@@ -592,7 +335,6 @@
       </div>
     </div>
 
-    <!-- CTA BANNER -->
     <div class="cta-banner">
       <div>
         <h3>Butuh Konsultasi Hukum Tatap Muka?</h3>
@@ -615,15 +357,9 @@
     © 2026 <strong>LBH Lingkar Peduli Anak Negeri (LBH LAPAN)</strong>. Seluruh Hak Cipta Dilindungi.
   </footer>
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <script>
-    // =========================================================
-    // KONFIGURASI LOKASI — EDIT DI SINI KALAU ALAMAT BEDA
-    // Koordinat: [latitude, longitude]
-    // Cara cari koordinat: buka Google Maps → klik kanan lokasi → copy angka
-    // =========================================================
     const LOKASI = [
       {
         nama: "Sekretariat DPP LBH LAPAN",
@@ -651,19 +387,16 @@
       }
     ];
 
-    // Inisialisasi peta
     const map = L.map('petaLBH', {
       scrollWheelZoom: false,
       zoomControl: true
-    }).setView([-6.4, 107.0], 7); // Pusat awal (Indonesia bagian barat)
+    }).setView([-6.4, 107.0], 7);
 
-    // Tile layer OpenStreetMap (gratis)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | LBH LAPAN',
       maxZoom: 19
     }).addTo(map);
 
-    // Fungsi bikin marker custom
     function buatMarkerIcon(tipe) {
       let cls = 'custom-marker';
       if (tipe === 'korwil') cls += ' marker-korwil';
@@ -677,7 +410,6 @@
       });
     }
 
-    // Tambah semua marker ke peta
     const bounds = [];
     LOKASI.forEach(lok => {
       const marker = L.marker([lok.lat, lok.lng], { icon: buatMarkerIcon(lok.tipe) }).addTo(map);
@@ -691,15 +423,12 @@
       bounds.push([lok.lat, lok.lng]);
     });
 
-    // Zoom otomatis agar semua marker terlihat
     if (bounds.length > 0) {
       map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
     }
 
-    // Aktifkan scroll zoom saat user klik peta
     map.on('click', () => map.scrollWheelZoom.enable());
 
-    // Toggle drawer mobile
     function toggleMobileMenu() {
       document.getElementById('mobileDrawer').classList.toggle('active');
     }
