@@ -7,18 +7,18 @@
 
   <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
 
-  <meta name="description" content="Sejarah pendirian, legalitas resmi Kemenkumham, dan makna filosofis lambang Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri.">
+  <meta name="description" content="Sejarah pendirian, legalitas resmi, dan makna filosofis lambang Lembaga Bantuan Hukum Lingkar Peduli Anak Negeri.">
   <meta name="keywords" content="sejarah LBH LAPAN, profil LBH, lambang LBH, legalitas LBH, akta notaris LBH">
   <meta name="author" content="LBH Lingkar Peduli Anak Negeri">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0b192c">
-  <link rel="canonical" href="https://azkajoesoef-gif.github.io/lbh/tentang.html">
+  <link rel="canonical" href="https://lbhlapan.com/tentang.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="LBH LAPAN">
   <meta property="og:title" content="Sejarah Lembaga & Filosofi Lambang - LBH LAPAN">
   <meta property="og:description" content="Sejarah pendirian, legalitas resmi, dan makna filosofis lambang LBH LAPAN.">
   <meta property="og:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
-  <meta property="og:url" content="https://azkajoesoef-gif.github.io/lbh/tentang.html">
+  <meta property="og:url" content="https://lbhlapan.com/tentang.html">
   <meta property="og:locale" content="id_ID">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sejarah Lembaga & Filosofi Lambang - LBH LAPAN">
@@ -30,516 +30,74 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-    body {
-      background-color: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    .header-nav { background: linear-gradient(135deg, #0b192c 0%, #112240 100%); border-bottom: 3px solid #fb8500; box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25); width: 100%; position: sticky; top: 0; z-index: 999; padding: 12px 20px; }
+    .header-container { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 2px solid #fb8500; padding: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.15; }
+    .brand-text h1 span { color: #fb8500; }
+    .brand-text p { font-size: 10px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
-    .header-nav {
-      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
-      width: 100%;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      padding: 12px 20px;
-    }
+    .nav-links { display: flex; align-items: center; gap: 12px; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-link-btn { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s; cursor: pointer; background: none; border: none; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active { color: #fb8500; background: rgba(255, 255, 255, 0.05); }
+    .nav-link-btn span.arrow { font-size: 10px; transition: transform 0.2s; }
+    .nav-item:hover .nav-link-btn span.arrow { transform: rotate(180deg); }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #0b192c; border: 1px solid #1e3e62; border-top: 3px solid #fb8500; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); min-width: 220px; padding: 8px; list-style: none; z-index: 1000; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .nav-item:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 600; padding: 9px 12px; display: flex; align-items: center; gap: 8px; border-radius: 6px; transition: all 0.2s; }
+    .dropdown-menu li a:hover { background: rgba(251, 133, 0, 0.15); color: #fb8500; padding-left: 15px; }
 
-    .header-container {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-kta-top { background: rgba(251, 133, 0, 0.15); border: 1px solid rgba(251, 133, 0, 0.4); color: #ffb703; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; }
+    .btn-halo-top { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-hamburger { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px 6px; line-height: 1; }
 
-    .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+    .mobile-menu-drawer { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0b192c; border-bottom: 3px solid #fb8500; box-shadow: 0 10px 25px rgba(0,0,0,0.35); padding: 14px 18px 20px 18px; flex-direction: column; gap: 6px; max-height: 80vh; overflow-y: auto; }
+    .mobile-menu-drawer.active { display: flex; }
+    .m-item-title { width: 100%; background: rgba(255, 255, 255, 0.05); color: #ffffff; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
+    .m-sub-wrap { display: none; flex-direction: column; padding-left: 12px; gap: 4px; margin: 4px 0 8px 0; }
+    .m-sub-wrap.open { display: flex; }
+    .m-sub-wrap a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 9px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+    .m-sub-wrap a:hover { color: #fb8500; background: rgba(255, 255, 255, 0.04); }
+    .m-direct-link { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: block; }
 
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid #fb8500;
-      padding: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .main-wrap { flex: 1; max-width: 1020px; width: 100%; margin: 0 auto; padding: 36px 16px 50px 16px; }
+    .page-header { text-align: center; margin-bottom: 36px; }
+    .badge-tag { display: inline-block; background: rgba(251, 133, 0, 0.12); color: #fb8500; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
+    .page-header p { color: #64748b; font-size: 14px; max-width: 680px; margin: 0 auto; }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+    .legal-credentials-card { background: #ffffff; border: 1.5px solid #fed7aa; border-left: 5px solid #fb8500; border-radius: 12px; padding: 16px 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .legal-credentials-card .info-text h4 { font-size: 13.5px; font-weight: 800; color: #0b192c; margin-bottom: 2px; }
+    .legal-credentials-card .info-text p { font-size: 12px; color: #64748b; }
+    .badge-ahu { background: #0b192c; color: #fb8500; font-family: monospace; font-size: 11.5px; font-weight: 800; padding: 6px 12px; border-radius: 6px; }
 
-    .brand-text h1 {
-      font-size: 17px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.15;
-    }
+    .content-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 36px 28px; margin-bottom: 36px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+    .content-box h3 { font-size: 1.45rem; font-weight: 800; color: #0b192c; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
+    .content-box p { font-size: 13.5px; color: #475569; line-height: 1.8; margin-bottom: 16px; text-align: justify; }
+    .quote-callout { background: #f8fafc; border-left: 4px solid #fb8500; padding: 16px 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-style: italic; color: #334155; font-size: 13.5px; }
 
-    .brand-text h1 span {
-      color: #fb8500;
-    }
+    .logo-hero-box { background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%); color: #ffffff; border-radius: 20px; padding: 36px 28px; margin-bottom: 36px; display: flex; align-items: center; gap: 32px; box-shadow: 0 10px 25px -5px rgba(11, 25, 44, 0.3); }
+    .logo-img-wrapper { width: 140px; height: 140px; background: #ffffff; border-radius: 50%; border: 4px solid #fb8500; padding: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.3); }
+    .logo-img-wrapper img { width: 100%; height: 100%; object-fit: contain; }
+    .logo-hero-text h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; color: #ffffff; }
+    .logo-hero-text p { font-size: 13.5px; color: #cbd5e1; line-height: 1.65; }
 
-    .brand-text p {
-      font-size: 10px;
-      color: #94a3b8;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
+    .meaning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
+    .meaning-item { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); transition: transform 0.2s, border-color 0.2s; }
+    .meaning-item:hover { border-color: #fb8500; transform: translateY(-2px); }
+    .meaning-item h4 { font-size: 13.5px; font-weight: 800; color: #0b192c; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .meaning-item p { font-size: 12.5px; color: #64748b; line-height: 1.6; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      list-style: none;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-link-btn {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.2s;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-link-btn span.arrow {
-      font-size: 10px;
-      transition: transform 0.2s;
-    }
-
-    .nav-item:hover .nav-link-btn span.arrow {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #0b192c;
-      border: 1px solid #1e3e62;
-      border-top: 3px solid #fb8500;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-      min-width: 220px;
-      padding: 8px;
-      list-style: none;
-      z-index: 1000;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .nav-item:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu li a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 9px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-
-    .dropdown-menu li a:hover {
-      background: rgba(251, 133, 0, 0.15);
-      color: #fb8500;
-      padding-left: 15px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-kta-top {
-      background: rgba(251, 133, 0, 0.15);
-      border: 1px solid rgba(251, 133, 0, 0.4);
-      color: #ffb703;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .btn-halo-top {
-      background: #25d366;
-      color: #ffffff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #ffffff;
-      font-size: 26px;
-      cursor: pointer;
-      padding: 4px 6px;
-      line-height: 1;
-    }
-
-    .mobile-menu-drawer {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: #0b192c;
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-      padding: 14px 18px 20px 18px;
-      flex-direction: column;
-      gap: 6px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .mobile-menu-drawer.active {
-      display: flex;
-    }
-
-    .m-item-title {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .m-sub-wrap {
-      display: none;
-      flex-direction: column;
-      padding-left: 12px;
-      gap: 4px;
-      margin: 4px 0 8px 0;
-    }
-
-    .m-sub-wrap.open {
-      display: flex;
-    }
-
-    .m-sub-wrap a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 9px 12px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .m-sub-wrap a:hover {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .m-direct-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      display: block;
-    }
-
-    .main-wrap {
-      flex: 1;
-      max-width: 1020px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 36px 16px 50px 16px;
-    }
-
-    .page-header {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .badge-tag {
-      display: inline-block;
-      background: rgba(251, 133, 0, 0.12);
-      color: #fb8500;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 4px 14px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .page-header h2 {
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 8px;
-    }
-
-    .page-header p {
-      color: #64748b;
-      font-size: 14px;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    .legal-credentials-card {
-      background: #ffffff;
-      border: 1.5px solid #fed7aa;
-      border-left: 5px solid #fb8500;
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .legal-credentials-card .info-text h4 {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 2px;
-    }
-
-    .legal-credentials-card .info-text p {
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    .badge-ahu {
-      background: #0b192c;
-      color: #fb8500;
-      font-family: monospace;
-      font-size: 11.5px;
-      font-weight: 800;
-      padding: 6px 12px;
-      border-radius: 6px;
-    }
-
-    .content-box {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 36px 28px;
-      margin-bottom: 36px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-    }
-
-    .content-box h3 {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 2px solid #f1f5f9;
-      padding-bottom: 10px;
-    }
-
-    .content-box p {
-      font-size: 13.5px;
-      color: #475569;
-      line-height: 1.8;
-      margin-bottom: 16px;
-      text-align: justify;
-    }
-
-    .quote-callout {
-      background: #f8fafc;
-      border-left: 4px solid #fb8500;
-      padding: 16px 20px;
-      border-radius: 0 12px 12px 0;
-      margin: 20px 0;
-      font-style: italic;
-      color: #334155;
-      font-size: 13.5px;
-    }
-
-    .logo-hero-box {
-      background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
-      color: #ffffff;
-      border-radius: 20px;
-      padding: 36px 28px;
-      margin-bottom: 36px;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      box-shadow: 0 10px 25px -5px rgba(11, 25, 44, 0.3);
-    }
-
-    .logo-img-wrapper {
-      width: 140px;
-      height: 140px;
-      background: #ffffff;
-      border-radius: 50%;
-      border: 4px solid #fb8500;
-      padding: 6px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-    }
-
-    .logo-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .logo-hero-text h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      color: #ffffff;
-    }
-
-    .logo-hero-text p {
-      font-size: 13.5px;
-      color: #cbd5e1;
-      line-height: 1.65;
-    }
-
-    .meaning-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .meaning-item {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 22px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .meaning-item:hover {
-      border-color: #fb8500;
-      transform: translateY(-2px);
-    }
-
-    .meaning-item h4 {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .meaning-item p {
-      font-size: 12.5px;
-      color: #64748b;
-      line-height: 1.6;
-    }
-
-    .floating-wa-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      background: #25d366;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      border-radius: 50px;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      z-index: 9999;
-    }
-
-    .footer-wrapper {
-      background: #0b192c;
-      color: #94a3b8;
-      border-top: 3px solid #fb8500;
-      padding: 24px 20px;
-      text-align: center;
-      font-size: 12px;
-    }
+    .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; }
+    .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
 
     @media (max-width: 960px) {
       .nav-links, .btn-kta-top, .brand-text p { display: none; }
@@ -577,6 +135,7 @@
           <button class="nav-link-btn">Bantuan Hukum <span class="arrow">▼</span></button>
           <ul class="dropdown-menu">
             <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
+            <li><a href="konsultasi-berbayar.html">💬 Konsultasi Berbayar</a></li>
             <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
             <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
           </ul>
@@ -588,9 +147,8 @@
             <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="karir.html" class="nav-link-btn">Karir</a></li><li class="nav-item"><a href="kontak.html" class="nav-link-btn">Kontak</a>
-        </li>
+        <li class="nav-item"><a href="karir.html" class="nav-link-btn">Karir</a></li>
+        <li class="nav-item"><a href="kontak.html" class="nav-link-btn">Kontak</a></li>
       </ul>
 
       <div class="header-actions">
@@ -613,6 +171,7 @@
         <button class="m-item-title" onclick="toggleAccordion('mBantuan')"><span>⚖️ Bantuan Hukum</span><span>▾</span></button>
         <div class="m-sub-wrap" id="mBantuan">
           <a href="layanan.html">Layanan, SKTM & Legal Retainer</a>
+          <a href="konsultasi-berbayar.html">Konsultasi Berbayar</a>
           <a href="alur.html">Alur SOP Penanganan Kasus</a>
           <a href="pengaduan.html">Formulir Pengaduan Online</a>
         </div>
@@ -626,7 +185,7 @@
       </div>
       <a href="karir.html" class="m-direct-link">💼 Karir & Relawan</a>
       <a href="kontak.html" class="m-direct-link">📍 Kontak & Lokasi</a>
-      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center;">🔍 Verifikasi KTA Anggota Resmi</a>
+      <a href="verifikasi-kta.html" class="m-direct-link" style="background:#fb8500; color:#fff; text-align:center;">🔍 Verifikasi KTA Anggota</a>
     </div>
   </header>
 
@@ -634,15 +193,16 @@
     <div class="page-header">
       <span class="badge-tag">Identitas & Riwayat Lembaga</span>
       <h2>Sejarah Lembaga & Makna Lambang</h2>
-      <p>Latar belakang berdirinya LBH Lingkar Peduli Anak Negeri, kedudukan hukum resmi negara, serta nilai filosofis lambang organisasi.</p>
+      <p>Latar belakang berdirinya LBH Lingkar Peduli Anak Negeri, kedudukan hukum resmi, serta nilai filosofis lambang organisasi.</p>
     </div>
 
+    <!-- LEGALITAS FORMAL (REVISI) -->
     <div class="legal-credentials-card">
       <div class="info-text">
-        <h4>🏛️ Legalitas Formal Organisasi Bantuan Hukum</h4>
-        <p>Akta Notaris Heru Susanto, S.H., M.Kn. Nomor 25 Tanggal 21 November 2025 • Kementerian Hukum RI</p>
+        <h4>🏛️ Legalitas Formal Organisasi</h4>
+        <p>Berbadan hukum resmi melalui Akta Notaris Heru Susanto, S.H., M.Kn. Nomor 25 Tanggal 21 November 2025</p>
       </div>
-      <span class="badge-ahu">AHU: KEMENKUM-RI / LBH-LAPAN / 2025</span>
+      <span class="badge-ahu">Terdaftar Kementerian Hukum RI</span>
     </div>
 
     <div class="content-box">
@@ -655,11 +215,14 @@
         "Keadilan substantif tidak boleh terhalang status ekonomi. Setiap anak bangsa berhak atas pengakuan, jaminan, perlindungan, dan kepastian hukum yang adil serta perlakuan yang sama di hadapan hukum."
       </div>
 
+      <!-- PARAGRAF 1 - REVISI (klaim OBH) -->
       <p>
-        Berpijak pada mandat konstitusi Pasal 28D ayat (1) Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 serta instrumen hukum <strong>Undang-Undang Republik Indonesia Nomor 16 Tahun 2011 tentang Bantuan Hukum</strong>, LBH LAPAN beroperasi sebagai lembaga bantuan hukum non-profit yang independen dan berintegritas.
+        Berpijak pada mandat konstitusi Pasal 28D ayat (1) Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 serta <strong>menjiwai semangat Undang-Undang Republik Indonesia Nomor 16 Tahun 2011 tentang Bantuan Hukum</strong>, LBH LAPAN hadir sebagai lembaga advokasi bantuan hukum non-profit yang independen dan berintegritas. Seluruh advokat dan staf kami terikat pada Sumpah Advokat serta Kode Etik Advokat Indonesia (KEAI).
       </p>
+
+      <!-- PARAGRAF 2 - REVISI (badan hukum perkumpulan) -->
       <p>
-        Secara yuridis kenegaraan, lembaga ini disahkan melalui <strong>Akta Pendirian Notaris Heru Susanto, S.H., M.Kn. Nomor 25 Tanggal 21 November 2025</strong> dan terdaftar resmi di <strong>Kementerian Hukum Republik Indonesia</strong> (Direktorat Jenderal Administrasi Hukum Umum). LBH LAPAN berkomitmen menegakkan pendampingan hukum yang bebas pungutan liar, profesional, dan akuntabel bagi seluruh pencari keadilan.
+        Secara yuridis kenegaraan, lembaga ini disahkan melalui <strong>Akta Pendirian Notaris Heru Susanto, S.H., M.Kn. Nomor 25 Tanggal 21 November 2025</strong> dan <strong>terdaftar sebagai badan hukum perkumpulan di Kementerian Hukum Republik Indonesia</strong> (Direktorat Jenderal Administrasi Hukum Umum). LBH LAPAN berkomitmen menegakkan pendampingan hukum yang bebas pungutan liar, profesional, dan akuntabel bagi seluruh pencari keadilan.
       </p>
     </div>
 
@@ -676,7 +239,6 @@
     <div class="content-box">
       <h3>⚖️ Makna Simbol & Unsur Grafis</h3>
       <div class="meaning-grid">
-        
         <div class="meaning-item">
           <h4>⭕ Bentuk Lingkaran Utuh</h4>
           <p>Melambangkan kebulatan tekad, kesatuan nurani, dan komitmen perlindungan hukum tanpa batas (<em>lingkar peduli</em>) untuk merangkul segenap warga negara tanpa membeda-bedakan latar belakang sosial.</p>
@@ -696,7 +258,6 @@
           <h4>🟠 Aksen Jingga Emas (Orange Gold)</h4>
           <p>Melambangkan keberanian moral, dinamisme pembelaan kaum tertindas, serta harapan terang bagi masyarakat yang memperjuangkan hak hukumnya di ruang peradilan.</p>
         </div>
-
       </div>
     </div>
 
@@ -711,15 +272,8 @@
   </footer>
 
   <script>
-    function toggleMobileMenu() {
-      document.getElementById('mobileDrawer').classList.toggle('active');
-    }
-
-    function toggleAccordion(id) {
-      const subMenu = document.getElementById(id);
-      subMenu.classList.toggle('open');
-    }
-
+    function toggleMobileMenu() { document.getElementById('mobileDrawer').classList.toggle('active'); }
+    function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
     document.addEventListener('click', function(e) {
       const drawer = document.getElementById('mobileDrawer');
       const btn = document.querySelector('.btn-hamburger');
