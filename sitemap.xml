@@ -1,62 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/index.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/index.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/tentang.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/tentang.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/pengurus.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/pengurus.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/layanan.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/layanan.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/alur.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/konsultasi-berbayar.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lbhlapan.com/alur.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/pengaduan.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/pengaduan.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/berita.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/berita.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/edukasi.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/edukasi.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://azkajoesoef-gif.github.io/lbh/verifikasi-kta.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <loc>https://lbhlapan.com/verifikasi-kta.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lbhlapan.com/karir.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lbhlapan.com/kontak.html</loc>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
