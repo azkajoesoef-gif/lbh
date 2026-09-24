@@ -3,490 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verifikasi Keabsahan NIA Advokat & Pengurus - LBH LAPAN</title>
+  <title>Verifikasi Keanggotaan LBH LAPAN</title>
 
   <link rel="icon" type="image/png" href="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w100">
 
-  <meta name="description" content="Cek keabsahan Nomor Induk Anggota (NIA) resmi pengurus atau advokat LBH Lingkar Peduli Anak Negeri secara online. Cegah penipuan legal.">
-  <meta name="keywords" content="verifikasi NIA, cek KTA, keabsahan advokat, cek anggota LBH">
+  <meta name="description" content="Verifikasi keabsahan Nomor Induk Anggota (NIA) internal pengurus dan advokat LBH Lingkar Peduli Anak Negeri.">
+  <meta name="keywords" content="verifikasi NIA, cek KTA, keanggotaan LBH, verifikasi anggota">
   <meta name="author" content="LBH Lingkar Peduli Anak Negeri">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0b192c">
   <link rel="canonical" href="https://lbhlapan.com/verifikasi-kta.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="LBH LAPAN">
-  <meta property="og:title" content="Verifikasi Keabsahan NIA Advokat & Pengurus - LBH LAPAN">
-  <meta property="og:description" content="Cek keabsahan NIA resmi advokat dan pengurus LBH LAPAN secara online.">
-  <meta property="og:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
+  <meta property="og:title" content="Verifikasi Keanggotaan LBH LAPAN">
+  <meta property="og:description" content="Cek keabsahan NIA internal pengurus dan advokat LBH LAPAN.">
+  <meta property="og:image" content="https://lbhlapan.com/assets/og-cover-1200x630.jpg">
   <meta property="og:url" content="https://lbhlapan.com/verifikasi-kta.html">
   <meta property="og:locale" content="id_ID">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Verifikasi Keabsahan NIA Advokat - LBH LAPAN">
-  <meta name="twitter:description" content="Cek keabsahan NIA resmi advokat dan pengurus LBH LAPAN.">
-  <meta name="twitter:image" content="https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w1200">
+  <meta name="twitter:title" content="Verifikasi Keanggotaan LBH LAPAN">
+  <meta name="twitter:description" content="Cek keabsahan NIA internal pengurus dan advokat LBH LAPAN.">
+  <meta name="twitter:image" content="https://lbhlapan.com/assets/og-cover-1200x630.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: #f8fafc; color: #1e293b; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
 
-    body {
-      background-color: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .header-nav {
-      background: linear-gradient(135deg, #0b192c 0%, #112240 100%);
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25);
-      width: 100%;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      padding: 12px 20px;
-    }
-
-    .header-container {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .brand-logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2px solid #fb8500;
-      padding: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .brand-text h1 {
-      font-size: 17px;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1.15;
-    }
-
+    .header-nav { background: linear-gradient(135deg, #0b192c 0%, #112240 100%); border-bottom: 3px solid #fb8500; box-shadow: 0 4px 15px rgba(11, 25, 44, 0.25); width: 100%; position: sticky; top: 0; z-index: 999; padding: 12px 20px; }
+    .header-container { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #ffffff; border: 2px solid #fb8500; padding: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 17px; font-weight: 800; color: #ffffff; line-height: 1.15; }
     .brand-text h1 span { color: #fb8500; }
-    .brand-text p {
-      font-size: 10px;
-      color: #94a3b8;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
+    .brand-text p { font-size: 10px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      list-style: none;
-    }
-
+    .nav-links { display: flex; align-items: center; gap: 12px; list-style: none; }
     .nav-item { position: relative; }
-
-    .nav-link-btn {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.2s;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-
-    .nav-link-btn:hover, .nav-item:hover .nav-link-btn {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-link-btn span.arrow {
-      font-size: 10px;
-      transition: transform 0.2s;
-    }
-
+    .nav-link-btn { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px; transition: all 0.2s; cursor: pointer; background: none; border: none; }
+    .nav-link-btn:hover, .nav-item:hover .nav-link-btn, .nav-link-btn.active { color: #fb8500; background: rgba(255, 255, 255, 0.05); }
+    .nav-link-btn span.arrow { font-size: 10px; transition: transform 0.2s; }
     .nav-item:hover .nav-link-btn span.arrow { transform: rotate(180deg); }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #0b192c;
-      border: 1px solid #1e3e62;
-      border-top: 3px solid #fb8500;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-      min-width: 220px;
-      padding: 8px;
-      list-style: none;
-      z-index: 1000;
-      animation: fadeIn 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #0b192c; border: 1px solid #1e3e62; border-top: 3px solid #fb8500; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35); min-width: 240px; padding: 8px; list-style: none; z-index: 1000; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
     .nav-item:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { color: #cbd5e1; text-decoration: none; font-size: 13px; font-weight: 600; padding: 9px 12px; display: flex; align-items: center; gap: 8px; border-radius: 6px; transition: all 0.2s; }
+    .dropdown-menu li a:hover { background: rgba(251, 133, 0, 0.15); color: #fb8500; padding-left: 15px; }
 
-    .dropdown-menu li a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 9px 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-kta-top { background: #fb8500; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; }
+    .btn-halo-top { background: #25d366; color: #ffffff; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-hamburger { display: none; background: none; border: none; color: #ffffff; font-size: 26px; cursor: pointer; padding: 4px 6px; line-height: 1; }
 
-    .dropdown-menu li a:hover {
-      background: rgba(251, 133, 0, 0.15);
-      color: #fb8500;
-      padding-left: 15px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn-kta-top {
-      background: #fb8500;
-      color: #ffffff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .btn-halo-top {
-      background: #25d366;
-      color: #ffffff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn-hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #ffffff;
-      font-size: 26px;
-      cursor: pointer;
-      padding: 4px 6px;
-      line-height: 1;
-    }
-
-    .mobile-menu-drawer {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background: #0b192c;
-      border-bottom: 3px solid #fb8500;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-      padding: 14px 18px 20px 18px;
-      flex-direction: column;
-      gap: 6px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
+    .mobile-menu-drawer { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #0b192c; border-bottom: 3px solid #fb8500; box-shadow: 0 10px 25px rgba(0,0,0,0.35); padding: 14px 18px 20px 18px; flex-direction: column; gap: 6px; max-height: 80vh; overflow-y: auto; }
     .mobile-menu-drawer.active { display: flex; }
-
-    .m-item-title {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .m-sub-wrap {
-      display: none;
-      flex-direction: column;
-      padding-left: 12px;
-      gap: 4px;
-      margin: 4px 0 8px 0;
-    }
-
+    .m-item-title { width: 100%; background: rgba(255, 255, 255, 0.05); color: #ffffff; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; }
+    .m-sub-wrap { display: none; flex-direction: column; padding-left: 12px; gap: 4px; margin: 4px 0 8px 0; }
     .m-sub-wrap.open { display: flex; }
+    .m-sub-wrap a { color: #cbd5e1; text-decoration: none; font-size: 13.5px; font-weight: 600; padding: 9px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; }
+    .m-sub-wrap a:hover { color: #fb8500; background: rgba(255, 255, 255, 0.04); }
+    .m-direct-link { color: #ffffff; text-decoration: none; font-size: 14px; font-weight: 800; padding: 12px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: block; }
 
-    .m-sub-wrap a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 9px 12px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .main-wrap { flex: 1; max-width: 820px; width: 100%; margin: 0 auto; padding: 36px 16px 50px 16px; }
+    .page-header { text-align: center; margin-bottom: 28px; }
+    .badge-tag { display: inline-block; background: rgba(251, 133, 0, 0.12); color: #fb8500; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .page-header h2 { font-size: 1.85rem; font-weight: 800; color: #0b192c; margin-bottom: 8px; }
+    .page-header p { color: #64748b; font-size: 13.5px; max-width: 620px; margin: 0 auto; }
 
-    .m-sub-wrap a:hover {
-      color: #fb8500;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .m-direct-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      display: block;
-    }
-
-    .main-wrap {
-      flex: 1;
-      max-width: 820px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 36px 16px 50px 16px;
-    }
-
-    .page-header {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .badge-tag {
-      display: inline-block;
-      background: rgba(251, 133, 0, 0.12);
-      color: #fb8500;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 4px 14px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .page-header h2 {
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: #0b192c;
-      margin-bottom: 8px;
-    }
-
-    .page-header p {
-      color: #64748b;
-      font-size: 13.5px;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    .search-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 28px 22px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-      margin-bottom: 20px;
-    }
-
-    .search-input-group {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .search-input-group input {
-      flex: 1;
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 2px solid #cbd5e1;
-      font-size: 14px;
-      outline: none;
-      text-transform: uppercase;
-    }
-
+    .search-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px 22px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); margin-bottom: 20px; }
+    .search-input-group { display: flex; gap: 10px; margin-bottom: 12px; }
+    .search-input-group input { flex: 1; padding: 12px 16px; border-radius: 10px; border: 2px solid #cbd5e1; font-size: 14px; outline: none; text-transform: uppercase; }
     .search-input-group input:focus { border-color: #fb8500; }
+    .btn-search { background: #0b192c; color: #ffffff; border: none; padding: 12px 24px; border-radius: 10px; font-size: 13.5px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }
+    .btn-search:hover:not(:disabled) { background: #1e3e62; }
+    .btn-search:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .btn-search {
-      background: #0b192c;
-      color: #ffffff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
+    .turnstile-wrap { display: flex; justify-content: center; margin: 16px 0 12px 0; }
 
-    .btn-search:hover { background: #1e3e62; }
+    .pdp-notice { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px; font-size: 11.5px; color: #64748b; line-height: 1.5; }
+    .pdp-notice strong { color: #0b192c; }
 
-    .pdp-notice {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 11.5px;
-      color: #64748b;
-      line-height: 1.5;
-    }
+    .info-note { background: #fef3c7; border: 1px solid #fde68a; border-left: 4px solid #f59e0b; border-radius: 0 10px 10px 0; padding: 12px 16px; font-size: 12.5px; color: #92400e; line-height: 1.55; margin-top: 12px; }
 
-    .verified-badge-card {
-      background: #ffffff;
-      border: 2px solid #22c55e;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 6px 20px rgba(34, 197, 94, 0.08);
-    }
+    #resultArea { min-height: 20px; }
 
-    .verified-badge-card.nonaktif-card {
-      border-color: #ef4444;
-      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.08);
-    }
+    .verified-badge-card { background: #ffffff; border: 2px solid #22c55e; border-radius: 18px; padding: 24px; box-shadow: 0 6px 20px rgba(34, 197, 94, 0.08); animation: resultFadeIn 0.4s ease; }
+    .verified-badge-card.nonaktif-card { border-color: #ef4444; box-shadow: 0 6px 20px rgba(239, 68, 68, 0.08); }
 
-    .top-status-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 14px;
-      border-bottom: 1px solid #f1f5f9;
-      padding-bottom: 10px;
-    }
+    @keyframes resultFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .status-pill {
-      font-size: 11.5px;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 20px;
-      text-transform: uppercase;
-    }
-
+    .top-status-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+    .status-pill { font-size: 11.5px; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; }
     .pill-aktif { background: #dcfce7; color: #15803d; }
     .pill-nonaktif { background: #fee2e2; color: #b91c1c; }
 
-    .meta-data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
+    .meta-data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .meta-data-table td { padding: 7px 0; vertical-align: top; }
+    .meta-data-table td.label { color: #64748b; width: 38%; font-weight: 600; }
+    .meta-data-table td.value { color: #0b192c; font-weight: 700; }
 
-    .meta-data-table td {
-      padding: 7px 0;
-      vertical-align: top;
-    }
+    .not-found-card { background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; border-radius: 14px; padding: 18px; text-align: center; font-size: 13px; line-height: 1.6; animation: resultFadeIn 0.4s ease; }
 
-    .meta-data-table td.label {
-      color: #64748b;
-      width: 38%;
-      font-weight: 600;
-    }
+    .error-card { background: #fef3c7; border: 1px solid #fde68a; color: #92400e; border-radius: 14px; padding: 18px; text-align: center; font-size: 13px; line-height: 1.6; animation: resultFadeIn 0.4s ease; }
 
-    .meta-data-table td.value {
-      color: #0b192c;
-      font-weight: 700;
-    }
+    .loading-state { text-align: center; padding: 18px; color: #64748b; }
 
-    .not-found-card {
-      background: #fff1f2;
-      border: 1px solid #fecdd3;
-      color: #be123c;
-      border-radius: 14px;
-      padding: 18px;
-      text-align: center;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .floating-wa-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 20px;
-      background: #25d366;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      border-radius: 50px;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
-      z-index: 9999;
-    }
-
-    .footer-wrapper {
-      background: #0b192c;
-      color: #94a3b8;
-      border-top: 3px solid #fb8500;
-      padding: 24px 20px;
-      text-align: center;
-      font-size: 12px;
-    }
+    .floating-wa-btn { position: fixed; bottom: 24px; right: 20px; background: #25d366; color: #ffffff; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 50px; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.45); text-decoration: none; font-size: 13px; font-weight: 800; z-index: 9999; }
+    .footer-wrapper { background: #0b192c; color: #94a3b8; border-top: 3px solid #fb8500; padding: 24px 20px; text-align: center; font-size: 12px; }
 
     @media (max-width: 960px) {
       .nav-links, .btn-kta-top, .brand-text p { display: none; }
@@ -523,6 +153,7 @@
           <button class="nav-link-btn">Bantuan Hukum <span class="arrow">▼</span></button>
           <ul class="dropdown-menu">
             <li><a href="layanan.html">⚖️ Layanan, SKTM & Retainer</a></li>
+            <li><a href="konsultasi-berbayar.html">💬 Konsultasi Berbayar</a></li>
             <li><a href="alur.html">📋 Alur SOP Penanganan</a></li>
             <li><a href="pengaduan.html">📝 Formulir Pengaduan</a></li>
           </ul>
@@ -534,14 +165,13 @@
             <li><a href="edukasi.html">📚 Edukasi & Opini Hukum</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="karir.html" class="nav-link-btn">Karir</a></li><li class="nav-item"><a href="kontak.html" class="nav-link-btn">Kontak</a>
-        </li>
+        <li class="nav-item"><a href="karir.html" class="nav-link-btn">Karir</a></li>
+        <li class="nav-item"><a href="kontak.html" class="nav-link-btn">Kontak</a></li>
       </ul>
 
       <div class="header-actions">
         <a href="verifikasi-kta.html" class="btn-kta-top">🔍 Cek KTA</a>
-        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20berkonsultasi%20bantuan%20hukum" target="_blank" class="btn-halo-top">💬 HALO LAPAN</a>
+        <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN" target="_blank" class="btn-halo-top">💬 HALO LAPAN</a>
         <button class="btn-hamburger" onclick="toggleMobileMenu()">☰</button>
       </div>
     </div>
@@ -559,6 +189,7 @@
         <button class="m-item-title" onclick="toggleAccordion('mBantuan')"><span>⚖️ Bantuan Hukum</span><span>▾</span></button>
         <div class="m-sub-wrap" id="mBantuan">
           <a href="layanan.html">Layanan, SKTM & Legal Retainer</a>
+          <a href="konsultasi-berbayar.html">Konsultasi Berbayar</a>
           <a href="alur.html">Alur SOP Penanganan Kasus</a>
           <a href="pengaduan.html">Formulir Pengaduan Online</a>
         </div>
@@ -579,23 +210,47 @@
   <main class="main-wrap">
     <div class="page-header">
       <span class="badge-tag">Pencegahan Penipuan Legal</span>
-      <h2>Verifikasi Keabsahan NIA Advokat</h2>
-      <p>Pemeriksaan otentikasi Nomor Induk Anggota (NIA) resmi DPP LBH Lingkar Peduli Anak Negeri.</p>
+      <h2>Verifikasi Keanggotaan LBH LAPAN</h2>
+      <p>Pemeriksaan otentikasi Nomor Induk Anggota (NIA) internal DPP LBH Lingkar Peduli Anak Negeri.</p>
     </div>
 
     <div class="search-card">
-      <form onsubmit="event.preventDefault(); verifyKtaStrict();">
+      <form onsubmit="event.preventDefault(); verifyKta();">
         <div class="search-input-group">
-          <input type="text" id="niaInput" placeholder="Masukkan NIA Lengkap (Contoh: 10-26-001)" required autocomplete="off">
-          <button type="submit" class="btn-search">🔍 Validasi</button>
+          <input
+            type="text"
+            id="niaInput"
+            placeholder="Masukkan NIA Lengkap (Contoh: 10-26-001)"
+            required
+            autocomplete="off"
+            inputmode="text"
+            aria-describedby="niaHint"
+            maxlength="9"
+            pattern="\d{2}-\d{2}-\d{3}">
+          <button type="submit" class="btn-search" id="btnSubmit" disabled>🔍 Validasi</button>
         </div>
+        <p id="niaHint" style="font-size: 11.5px; color: #94a3b8; margin-bottom: 8px;">Format NIA: XX-XX-XXX (contoh: 10-26-001)</p>
+
+        <!-- Turnstile Widget -->
+        <div class="turnstile-wrap">
+          <div class="cf-turnstile"
+               data-sitekey="0x4AAAAAAFB45smjjhcNLpVa"
+               data-callback="onTurnstileSuccess"
+               data-expired-callback="onTurnstileExpired"
+               data-theme="light"></div>
+        </div>
+
         <div class="pdp-notice">
-          🛡️ <strong>Kepatuhan UU PDP No. 27/2022:</strong> Sistem ini menggunakan validasi identitas terarah (<em>strict matching</em>). Pencarian nama sebagian ditutup guna mencegah penyalahgunaan profil fungsionaris. Masukkan kode NIA secara utuh persis sesuai fisik KTA.
+          🛡️ <strong>Kepatuhan UU PDP No. 27/2022:</strong> Sistem ini menggunakan validasi terarah (<em>strict matching</em>) yang diproses di server. Browser Anda tidak mengunduh data anggota. Masukkan kode NIA secara utuh sesuai fisik KTA.
         </div>
       </form>
+
+      <div class="info-note">
+        ℹ️ <strong>Catatan:</strong> NIA adalah nomor anggota internal LBH LAPAN dan <strong>bukan</strong> nomor induk/kartu tanda pengenal advokat. Status advokat dibuktikan dengan KTPA/berita acara sumpah dari organisasi advokat.
+      </div>
     </div>
 
-    <div id="resultArea"></div>
+    <div id="resultArea" aria-live="polite"></div>
   </main>
 
   <a href="https://wa.me/6281220111001?text=Halo%20HALO%20LAPAN,%20saya%20ingin%20konfirmasi%20keabsahan%20anggota" target="_blank" class="floating-wa-btn">
@@ -607,143 +262,219 @@
   </footer>
 
   <script>
-    const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSvc37S4ZCWY6zVtsstctGUUqKykekvhH5ggA48mOCDoCE3ZZQcKwIZCfLmInkGQ5gxv3UIQwFlKaMt/pub?gid=371817312&single=true&output=csv";
+    // =========================================================
+    // KONFIGURASI — endpoint Worker
+    // =========================================================
+    const LOOKUP_API_URL = 'https://lbhlapan.com/api/lookup';
+    const REQUEST_TIMEOUT_MS = 8000;
+    const CLIENT_RATE_LIMIT_MAX = 5;
+    const CLIENT_RATE_LIMIT_WINDOW = 60000;
+
+    let turnstileToken = '';
+    let turnstileReady = false;
+    let recentRequests = [];
 
     function escapeHTML(str) {
-      if (str === null || str === undefined) return "";
+      if (str === null || str === undefined) return '';
       return String(str).replace(/[&<>'"]/g,
         tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
       );
     }
 
-    function normalize(str) {
-      return (str || "").replace(/\u00A0/g, " ").replace(/\s+/g, " ").trim();
+    // =========================================================
+    // TURNSTILE CALLBACKS
+    // =========================================================
+    window.onTurnstileSuccess = function(token) {
+      turnstileToken = token;
+      turnstileReady = true;
+      updateSubmitState();
+    };
+
+    window.onTurnstileExpired = function() {
+      turnstileToken = '';
+      turnstileReady = false;
+      updateSubmitState();
+    };
+
+    // =========================================================
+    // VALIDASI INPUT & STATE
+    // =========================================================
+    function normalizeNIA(str) {
+      return String(str || '').trim().toUpperCase();
     }
 
-    function parseCSV(text) {
-      let c = '', r = [];
-      let q = false;
-      let row = [''];
-      for (let i = 0; i < text.length; i++) {
-        c = text[i];
-        let next = text[i + 1];
-        if (c === '"') {
-          if (q && next === '"') { row[row.length - 1] += '"'; i++; }
-          else { q = !q; }
-        } else if (c === ',' && !q) {
-          row.push('');
-        } else if ((c === '\r' || c === '\n') && !q) {
-          if (c === '\r' && next === '\n') { i++; }
-          r.push(row);
-          row = [''];
-        } else {
-          row[row.length - 1] += c;
-        }
+    function isValidNIAFormat(nia) {
+      return /^\d{2}-\d{2}-\d{3}$/.test(nia);
+    }
+
+    function updateSubmitState() {
+      const inputVal = normalizeNIA(document.getElementById('niaInput').value);
+      const btn = document.getElementById('btnSubmit');
+      const formatOk = isValidNIAFormat(inputVal);
+      btn.disabled = !(formatOk && turnstileReady);
+    }
+
+    // Auto-format input: tambah tanda hubung otomatis
+    document.getElementById('niaInput').addEventListener('input', function(e) {
+      let v = e.target.value.replace(/[^0-9]/g, '');
+      if (v.length > 2) v = v.substring(0, 2) + '-' + v.substring(2);
+      if (v.length > 5) v = v.substring(0, 5) + '-' + v.substring(5);
+      if (v.length > 9) v = v.substring(0, 9);
+      e.target.value = v;
+      updateSubmitState();
+    });
+
+    // =========================================================
+    // CLIENT-SIDE RATE LIMIT (UX only)
+    // =========================================================
+    function checkClientRateLimit() {
+      const now = Date.now();
+      recentRequests = recentRequests.filter(t => (now - t) < CLIENT_RATE_LIMIT_WINDOW);
+      if (recentRequests.length >= CLIENT_RATE_LIMIT_MAX) {
+        return false;
       }
-      if (row.length > 1 || row[0] !== '') { r.push(row); }
-      return r;
+      recentRequests.push(now);
+      return true;
     }
 
-    async function verifyKtaStrict() {
-      const inputVal = document.getElementById('niaInput').value.trim();
+    // =========================================================
+    // SUBMIT VERIFIKASI
+    // =========================================================
+    async function verifyKta() {
+      const inputVal = document.getElementById('niaInput').value;
       const resultArea = document.getElementById('resultArea');
+      const btn = document.getElementById('btnSubmit');
+      const nia = normalizeNIA(inputVal);
 
-      if (inputVal.length < 5) {
-        resultArea.innerHTML = `
-          <div class="not-found-card">
-            ⚠️ Masukkan format Nomor Induk Anggota (NIA) secara lengkap (contoh: 10-26-001).
-          </div>
-        `;
+      if (!isValidNIAFormat(nia)) {
+        resultArea.innerHTML = '<div class="not-found-card">⚠️ Format NIA tidak sesuai. Gunakan format XX-XX-XXX.</div>';
         return;
       }
 
-      const targetNia = normalize(inputVal).toUpperCase();
-      resultArea.innerHTML = `<div style="text-align:center; padding:18px; color:#64748b;">🔄 Menghubungkan ke basis data register DPP...</div>`;
+      if (!turnstileToken) {
+        resultArea.innerHTML = '<div class="error-card">⚠️ Mohon selesaikan verifikasi keamanan (captcha) terlebih dahulu.</div>';
+        return;
+      }
+
+      if (!checkClientRateLimit()) {
+        resultArea.innerHTML = '<div class="error-card">⚠️ Terlalu banyak percobaan. Mohon tunggu 1 menit sebelum mencoba lagi.</div>';
+        return;
+      }
+
+      btn.disabled = true;
+      resultArea.innerHTML = '<div class="loading-state">🔄 Memverifikasi ke server...</div>';
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
       try {
-        const res = await fetch(GOOGLE_SHEET_CSV_URL);
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        const text = await res.text();
-        const rows = parseCSV(text);
+        const res = await fetch(LOOKUP_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nia: nia, turnstileToken: turnstileToken }),
+          signal: controller.signal
+        });
 
-        let match = null;
+        clearTimeout(timeoutId);
 
-        for (let i = 1; i < rows.length; i++) {
-          const col = rows[i];
-
-          if (col.length < 8) continue;
-
-          const nama    = normalize(col[0]);
-          const wilayah = normalize(col[4]);
-          const jabatan = normalize(col[5]);
-          const nia     = normalize(col[6]).toUpperCase();
-          const status  = normalize(col[7]).toUpperCase();
-
-          if (nia === targetNia) {
-            match = { nama, wilayah, jabatan, nia, status };
-            break;
-          }
+        if (res.status === 429) {
+          resultArea.innerHTML = '<div class="error-card">⚠️ Terlalu banyak percobaan dari jaringan Anda. Mohon tunggu 1 menit.</div>';
+          resetTurnstile();
+          return;
         }
 
-        if (match) {
-          const isAktif = match.status === 'AKTIF';
-          const cardClass = isAktif ? 'verified-badge-card' : 'verified-badge-card nonaktif-card';
-          const pillClass = isAktif ? 'pill-aktif' : 'pill-nonaktif';
-          const statusText = isAktif ? '✓ ANGGOTA RESMI AKTIF' : '✕ STATUS NON-AKTIF';
+        if (res.status === 403) {
+          resultArea.innerHTML = '<div class="error-card">⚠️ Verifikasi keamanan gagal. Silakan muat ulang halaman.</div>';
+          resetTurnstile();
+          return;
+        }
 
-          resultArea.innerHTML = `
-            <div class="${cardClass}">
-              <div class="top-status-row">
-                <span class="status-pill ${pillClass}">${statusText}</span>
-                <span style="font-family:monospace; font-weight:800; font-size:13px; color:#0b192c;">${escapeHTML(match.nia)}</span>
-              </div>
-              <table class="meta-data-table">
-                <tr>
-                  <td class="label">Nama Fungsionaris</td>
-                  <td class="value">${escapeHTML(match.nama)}</td>
-                </tr>
-                <tr>
-                  <td class="label">Nomor Induk Anggota (NIA)</td>
-                  <td class="value" style="font-family:monospace; color:#fb8500;">${escapeHTML(match.nia)}</td>
-                </tr>
-                <tr>
-                  <td class="label">Amanat / Jabatan</td>
-                  <td class="value">${escapeHTML(match.jabatan || '-')}</td>
-                </tr>
-                <tr>
-                  <td class="label">Kedudukan Organisasi</td>
-                  <td class="value">${match.wilayah === 'DPP' ? 'Dewan Pimpinan Pusat (DPP)' : escapeHTML(match.wilayah)}</td>
-                </tr>
-              </table>
-            </div>
-          `;
+        if (!res.ok) {
+          throw new Error('Server error: ' + res.status);
+        }
+
+        const data = await res.json();
+
+        if (data.found && data.data) {
+          renderFound(data.data);
         } else {
-          resultArea.innerHTML = `
-            <div class="not-found-card">
-              <strong>⚠️ Nomor Induk Anggota (${escapeHTML(inputVal)}) Tidak Ditemukan!</strong><br>
-              Nomor tidak terdaftar pada register resmi DPP LBH LAPAN. Pastikan tidak ada kesalahan pengetikan tanda hubung (-). Segera laporkan ke HALO LAPAN bila ada pihak yang bertindak tanpa surat kuasa/KTA sah.
-            </div>
-          `;
+          renderNotFound(inputVal);
         }
+
+        // Reset captcha setiap submit
+        resetTurnstile();
 
       } catch (err) {
-        console.error("Gagal verifikasi:", err);
-        resultArea.innerHTML = `
-          <div class="not-found-card">
-            ⚠️ Gagal memverifikasi ke basis data.<br><small>${escapeHTML(err.message)}</small>
-          </div>
-        `;
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') {
+          resultArea.innerHTML = '<div class="error-card">⚠️ Koneksi timeout. Periksa jaringan Anda dan coba lagi.</div>';
+        } else {
+          console.error('Verify error:', err);
+          resultArea.innerHTML = '<div class="error-card">⚠️ Gagal memverifikasi. Coba lagi beberapa saat.</div>';
+        }
+        resetTurnstile();
       }
     }
 
-    function toggleMobileMenu() {
-      document.getElementById('mobileDrawer').classList.toggle('active');
+    function renderFound(match) {
+      const resultArea = document.getElementById('resultArea');
+      const isAktif = String(match.status || '').toUpperCase() === 'AKTIF';
+      const cardClass = isAktif ? 'verified-badge-card' : 'verified-badge-card nonaktif-card';
+      const pillClass = isAktif ? 'pill-aktif' : 'pill-nonaktif';
+      const statusText = isAktif ? '✓ ANGGOTA RESMI AKTIF' : '✕ STATUS NON-AKTIF';
+
+      resultArea.innerHTML = `
+        <div class="${cardClass}">
+          <div class="top-status-row">
+            <span class="status-pill ${pillClass}">${statusText}</span>
+            <span style="font-family:monospace; font-weight:800; font-size:13px; color:#0b192c;">${escapeHTML(match.nia)}</span>
+          </div>
+          <table class="meta-data-table">
+            <tr>
+              <td class="label">Nama Fungsionaris</td>
+              <td class="value">${escapeHTML(match.nama)}</td>
+            </tr>
+            <tr>
+              <td class="label">Nomor Induk Anggota (NIA)</td>
+              <td class="value" style="font-family:monospace; color:#fb8500;">${escapeHTML(match.nia)}</td>
+            </tr>
+            <tr>
+              <td class="label">Amanat / Jabatan</td>
+              <td class="value">${escapeHTML(match.jabatan || '-')}</td>
+            </tr>
+            <tr>
+              <td class="label">Kedudukan Organisasi</td>
+              <td class="value">${escapeHTML(match.kedudukan || '-')}</td>
+            </tr>
+          </table>
+        </div>
+      `;
     }
 
-    function toggleAccordion(id) {
-      document.getElementById(id).classList.toggle('open');
+    function renderNotFound(inputVal) {
+      const resultArea = document.getElementById('resultArea');
+      resultArea.innerHTML = `
+        <div class="not-found-card">
+          <strong>⚠️ Nomor Induk Anggota (${escapeHTML(inputVal)}) Tidak Ditemukan</strong><br>
+          Nomor tidak terdaftar pada register resmi DPP LBH LAPAN. Pastikan tidak ada kesalahan pengetikan tanda hubung (-). Segera laporkan ke HALO LAPAN bila ada pihak yang bertindak tanpa surat kuasa/KTA sah.
+        </div>
+      `;
     }
 
+    function resetTurnstile() {
+      turnstileToken = '';
+      turnstileReady = false;
+      if (typeof turnstile !== 'undefined') {
+        try { turnstile.reset(); } catch(e) {}
+      }
+      updateSubmitState();
+    }
+
+    // =========================================================
+    // MOBILE MENU
+    // =========================================================
+    function toggleMobileMenu() { document.getElementById('mobileDrawer').classList.toggle('active'); }
+    function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
     document.addEventListener('click', function(e) {
       const drawer = document.getElementById('mobileDrawer');
       const btn = document.querySelector('.btn-hamburger');
@@ -751,6 +482,8 @@
         drawer.classList.remove('active');
       }
     });
+
+    window.addEventListener('DOMContentLoaded', updateSubmitState);
   </script>
 
 </body>
