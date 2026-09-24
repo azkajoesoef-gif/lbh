@@ -85,7 +85,7 @@
     .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin-bottom: 32px; }
     .news-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; cursor: pointer; }
     .news-card:hover { transform: translateY(-3px); border-color: #fb8500; box-shadow: 0 12px 24px rgba(0,0,0,0.08); }
-    .news-thumb { width: 100%; height: 200px; background: #0b192c; overflow: hidden; position: relative; }
+    .news-thumb { width: 100%; height: 260px; background: #0b192c; overflow: hidden; position: relative; }
     .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
     .news-card:hover .news-thumb img { transform: scale(1.05); }
     .news-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -106,9 +106,30 @@
     .modal-content { background: #ffffff; border-radius: 20px; max-width: 820px; width: 100%; margin: 40px auto; overflow: hidden; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4); animation: modalSlide 0.3s ease; }
     @keyframes modalSlide { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    .modal-hero { width: 100%; height: 320px; background: #0b192c; position: relative; overflow: hidden; }
-    .modal-hero img { width: 100%; height: 100%; object-fit: cover; }
-    .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.6); color: #ffffff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; line-height: 1; }
+    /* ========================================================= */
+    /* MODAL HERO: FOTO FULL TANPA KEPOTONG                       */
+    /* ========================================================= */
+    .modal-hero {
+      width: 100%;
+      background: #0b192c;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+      max-height: 560px;
+    }
+    .modal-hero img {
+      max-width: 100%;
+      max-height: 560px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(0, 0, 0, 0.6); color: #ffffff; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 20px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; line-height: 1; z-index: 2; }
     .modal-close:hover { background: #fb8500; }
 
     .modal-body { padding: 32px 30px; }
@@ -120,21 +141,7 @@
 
     .modal-footer { padding: 18px 30px 28px 30px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
 
-    .btn-copy-link {
-      background: #f1f5f9;
-      color: #0b192c;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      border: 1px solid #e2e8f0;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
+    .btn-copy-link { background: #f1f5f9; color: #0b192c; padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 700; border: 1px solid #e2e8f0; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; transition: all 0.2s; }
     .btn-copy-link:hover { background: #e2e8f0; }
     .btn-copy-link.copied { background: #16a34a; color: #ffffff; border-color: #16a34a; }
 
@@ -153,7 +160,9 @@
       .news-grid { grid-template-columns: 1fr; }
       .filter-search-row { flex-direction: column; align-items: stretch; }
       .search-box { width: 100%; }
-      .modal-hero { height: 200px; }
+      .news-thumb { height: 220px; }
+      .modal-hero { min-height: 220px; max-height: 400px; }
+      .modal-hero img { max-height: 400px; }
       .modal-body { padding: 24px 20px; }
       .modal-body h2 { font-size: 1.35rem; }
       .modal-footer { padding: 14px 20px 22px 20px; flex-direction: column; }
@@ -317,7 +326,6 @@
       return (str || "").replace(/\u00A0/g, " ").replace(/\s+/g, " ").trim();
     }
 
-    // Auto-generate slug dari judul kalau kolom G kosong
     function slugify(text) {
       return String(text || "")
         .toLowerCase()
@@ -374,7 +382,7 @@
         newsGrid.innerHTML += `
           <div class="news-card" onclick="openModal(${originalIdx})">
             <div class="news-thumb">
-              <img src="${escapeHTML(b.foto)}" alt="${escapeHTML(b.judul)}" loading="lazy" onerror="this.src='https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w600'">
+              <img src="${escapeHTML(b.foto)}" alt="${escapeHTML(b.judul)}" loading="lazy" onerror="this.src='https://lbhlapan.com/assets/og-cover-1200x630.jpg'">
             </div>
             <div class="news-body">
               <div>
@@ -417,10 +425,9 @@
           let   slug     = col[6] ? normalize(col[6]) : "";
 
           if (!foto || !foto.startsWith("http") || foto === "[link removed]") {
-            foto = "https://drive.google.com/thumbnail?id=12Ietwr0pgn3hZXiiu-Z9z1dnlatYVKv8&sz=w600";
+            foto = "https://lbhlapan.com/assets/og-cover-1200x630.jpg";
           }
 
-          // Auto-generate slug kalau kosong
           if (!slug && judul) {
             slug = slugify(judul);
           }
@@ -433,7 +440,6 @@
         renderBerita(allBerita);
         loadingEl.style.display = 'none';
 
-        // Cek URL parameter ?b=slug → auto-open modal
         const params = new URLSearchParams(window.location.search);
         const slugParam = params.get('b');
         if (slugParam) {
@@ -490,7 +496,6 @@
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
 
-      // Update URL jadi ?b=slug
       if (!skipUrlUpdate && b.slug) {
         const url = new URL(window.location);
         url.searchParams.set('b', b.slug);
@@ -503,7 +508,6 @@
       document.body.style.overflow = '';
       currentIdx = -1;
 
-      // Hapus ?b=slug dari URL
       const url = new URL(window.location);
       if (url.searchParams.has('b')) {
         url.searchParams.delete('b');
@@ -540,7 +544,6 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // Handle back button
     window.addEventListener('popstate', function() {
       const params = new URLSearchParams(window.location.search);
       const slugParam = params.get('b');
